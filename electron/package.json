@@ -1,0 +1,80 @@
+{
+  "name": "meeting-assistant",
+  "productName": "Meeting Assistant",
+  "version": "0.1.0",
+  "description": "Diarisation, transcription et compte rendu de réunions — application de bureau.",
+  "private": true,
+  "main": "main.js",
+  "author": "Yele Consulting",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "electron .",
+    "dev:hot": "cross-env ELECTRON_DEV_URL=http://localhost:3000 electron .",
+    "build:webapp": "cd ../webapp && npm run build",
+    "build:python": "cd .. && pyinstaller build/backend.spec --noconfirm --clean",
+    "build:assets": "cd .. && python scripts/prepare_assets.py",
+    "build:all": "npm run build:python && npm run build:webapp",
+    "dist": "electron-builder --win nsis",
+    "release": "npm run build:all && npm run dist"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "tree-kill": "^1.2.2"
+  },
+  "build": {
+    "appId": "com.yele.meeting-assistant",
+    "productName": "Meeting Assistant",
+    "copyright": "Copyright © 2026 Yele Consulting",
+    "directories": {
+      "buildResources": "build",
+      "output": "../release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "model_manifest.js",
+      "downloader.js"
+    ],
+    "asar": true,
+    "extraResources": [
+      {
+        "from": "../dist/backend",
+        "to": "backend",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "../webapp/out",
+        "to": "webapp-out",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "../bin",
+        "to": "assets/bin",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Meeting Assistant"
+    }
+  }
+}

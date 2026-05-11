@@ -1,0 +1,93 @@
+# ─── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ─── Virtual environments ───────────────────────────────────────────────────
+meeting_assistant/
+venv/
+.venv/
+env/
+
+# ─── Benchmarks & inspection scripts (local-only) ───────────────────────────
+_bench_*.py
+_bench_results/
+_inspect_*.py
+
+# ─── Build artifacts (PyInstaller / Electron / Next.js) ─────────────────────
+build/
+dist/
+release/
+*.spec.bak
+webapp/.next/
+webapp/out/
+webapp/node_modules/
+webapp/tsconfig.tsbuildinfo
+electron/node_modules/
+electron/dist/
+electron/build/
+
+# ─── ML models & weights (too big for git — host elsewhere) ─────────────────
+models/
+pretrained_models/
+sherpa-onnx-streaming-zipformer-fr-kroko/
+bin/
+assets/models/
+assets/models_hf/
+assets/hf_cache/
+*.gguf
+*.onnx
+*.bin
+*.pt
+*.pth
+*.safetensors
+
+# ─── Audio / media samples (personal data) ──────────────────────────────────
+*.m4a
+*.mp3
+*.wav
+*.flac
+*.ogg
+*.mp4
+*.webm
+
+# ─── Runtime outputs (jobs, transcripts, reports) ───────────────────────────
+results/
+outputs/
+*.normalized.txt
+*.transcript.*.txt
+compte_rendu.md
+compte_rendu.*.json
+dicte_audio_*
+
+# Personal docs accidentally dropped in the repo
+Comité AO.docx
+
+# ─── Logs ───────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Editors & OS ───────────────────────────────────────────────────────────
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ─── Env / secrets ──────────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ─── Memory / scratch ───────────────────────────────────────────────────────
+memory/

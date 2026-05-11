@@ -1,0 +1,365 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: 171 55 35;
+  --brand-dark: 138 45 26;
+  --accent-blue: 47 114 140;
+  --accent-green: 105 151 71;
+  --accent-yellow: 216 169 37;
+
+  --ink: 31 27 24;
+  --ink-muted: 90 82 77;
+  --surface: 251 247 243;
+  --surface-card: 255 255 255;
+  --surface-border: 232 221 212;
+
+  --ring: 47 114 140;
+  --glow-start: 47 114 140;
+  --glow-end: 171 55 35;
+}
+
+.dark {
+  --brand: 215 95 78;
+  --brand-dark: 180 68 52;
+  --accent-blue: 120 180 205;
+  --accent-green: 150 195 115;
+  --accent-yellow: 230 190 80;
+
+  --ink: 240 234 227;
+  --ink-muted: 165 155 145;
+  --surface: 18 20 24;
+  --surface-card: 26 29 35;
+  --surface-border: 45 50 58;
+
+  --ring: 120 180 205;
+  --glow-start: 120 180 205;
+  --glow-end: 215 95 78;
+}
+
+html {
+  color-scheme: light;
+}
+.dark html,
+html.dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: rgb(var(--surface));
+  color: rgb(var(--ink));
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 0% 0%, rgb(var(--accent-blue) / 0.08), transparent 45%),
+    radial-gradient(circle at 100% 100%, rgb(var(--brand) / 0.06), transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Workspace panel — softer surface tint for the Dicte.ai feel */
+.workspace-canvas {
+  background:
+    linear-gradient(180deg, rgb(var(--surface-card) / 0.55) 0%, rgb(var(--surface-card) / 0.85) 100%);
+}
+
+* {
+  border-color: rgb(var(--surface-border));
+}
+
+::selection {
+  background: rgb(var(--accent-blue) / 0.25);
+  color: rgb(var(--ink));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--ring));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--surface-border));
+  border-radius: 8px;
+  border: 2px solid rgb(var(--surface));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--ink-muted) / 0.5);
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-brand px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-200 ease-out hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-sm;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-lg border border-surface-border bg-surface-card px-5 py-2.5 text-sm font-medium text-ink shadow-sm transition-all duration-200 ease-out hover:border-accent-blue hover:text-accent-blue hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-danger {
+    @apply inline-flex items-center gap-2 rounded-lg bg-brand-dark px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-200 ease-out hover:bg-brand hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg border border-surface-border bg-surface-card/60 p-2 text-ink-muted backdrop-blur transition-all duration-200 ease-out hover:text-ink hover:border-accent-blue hover:shadow-soft;
+  }
+  .card {
+    @apply rounded-2xl border border-surface-border bg-surface-card/90 p-6 shadow-soft backdrop-blur-sm transition-all duration-300;
+  }
+  .card-interactive {
+    @apply card hover:shadow-glow hover:-translate-y-0.5;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors;
+  }
+  .tag-gradient {
+    background: linear-gradient(
+      120deg,
+      rgb(var(--accent-blue) / 0.12),
+      rgb(var(--brand) / 0.12)
+    );
+  }
+  .editor-toolbar {
+    @apply flex flex-wrap items-center gap-0.5 rounded-full border border-surface-border bg-surface-card/95 px-2 py-1.5 shadow-lg backdrop-blur-md;
+  }
+  .sidebar-toggle {
+    @apply fixed left-3 top-3 z-40 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-surface-border bg-surface-card/90 text-ink-muted shadow-soft backdrop-blur transition-all duration-200 hover:text-ink hover:border-accent-blue hover:shadow-glow;
+  }
+  .nav-icon-btn {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-lg border border-surface-border bg-surface-card text-ink shadow-soft transition-all duration-200 hover:border-accent-blue hover:text-accent-blue hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/40;
+  }
+}
+
+/* ── Effects ───────────────────────────────────────────── */
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: rgb(var(--brand));
+  box-shadow: 0 0 0 0 rgb(var(--brand) / 0.6);
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgb(var(--brand) / 0.6); }
+  70% { box-shadow: 0 0 0 14px rgb(var(--brand) / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(var(--brand) / 0); }
+}
+
+/* Animated gradient underline for active tabs */
+.tab-active-underline {
+  position: relative;
+}
+.tab-active-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgb(var(--accent-blue)),
+    rgb(var(--brand))
+  );
+  border-radius: 2px;
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Shimmer effect for loading bars */
+.shimmer-bar {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--accent-blue)) 0%,
+    rgb(var(--accent-blue) / 0.6) 40%,
+    rgb(var(--brand) / 0.7) 60%,
+    rgb(var(--brand)) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.2s linear infinite;
+}
+
+/* Soft glow behind focused elements */
+.glow-ring {
+  position: relative;
+}
+.glow-ring::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--glow-start) / 0.6),
+    rgb(var(--glow-end) / 0.6)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.glow-ring:hover::before,
+.glow-ring:focus-within::before {
+  opacity: 1;
+}
+
+/* Editor (tiptap) — typography rules, since we don't use @tailwindcss/typography */
+.ProseMirror {
+  color: rgb(var(--ink));
+  font-size: 18px;
+  line-height: 1.8;
+}
+.ProseMirror > * + * {
+  margin-top: 0.85em;
+}
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4 {
+  font-weight: 700;
+  color: rgb(var(--ink));
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+.ProseMirror h1 {
+  font-size: 2.25rem;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  color: rgb(var(--brand));
+}
+.ProseMirror h2 {
+  font-size: 1.7rem;
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+  color: rgb(var(--brand-dark));
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid rgb(var(--surface-border));
+}
+.ProseMirror h3 {
+  font-size: 1.3rem;
+  margin-top: 1.4em;
+  margin-bottom: 0.3em;
+}
+.ProseMirror h4 {
+  font-size: 1.1rem;
+  margin-top: 1.2em;
+  margin-bottom: 0.3em;
+}
+.ProseMirror p {
+  margin: 0;
+}
+.ProseMirror strong {
+  font-weight: 700;
+  color: rgb(var(--ink));
+}
+.ProseMirror em {
+  font-style: italic;
+}
+.ProseMirror a {
+  color: rgb(var(--accent-blue));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 1.5em;
+  margin: 0.4em 0;
+}
+.ProseMirror ul {
+  list-style: disc;
+}
+.ProseMirror ol {
+  list-style: decimal;
+}
+.ProseMirror li {
+  margin: 0.15em 0;
+}
+.ProseMirror li > p {
+  margin: 0;
+}
+.ProseMirror blockquote {
+  border-left: 3px solid rgb(var(--accent-blue) / 0.5);
+  padding-left: 1em;
+  margin: 0.75em 0;
+  color: rgb(var(--ink-muted));
+  font-style: italic;
+}
+.ProseMirror code {
+  background: rgb(var(--surface));
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.ProseMirror pre {
+  background: rgb(var(--surface));
+  border: 1px solid rgb(var(--surface-border));
+  padding: 0.85em 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.9em;
+}
+.ProseMirror hr {
+  border: 0;
+  border-top: 1px solid rgb(var(--surface-border));
+  margin: 1.5em 0;
+}
+.ProseMirror table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  table-layout: fixed;
+  overflow: hidden;
+}
+.ProseMirror table td,
+.ProseMirror table th {
+  border: 1px solid rgb(var(--surface-border));
+  padding: 6px 10px;
+  vertical-align: top;
+  min-width: 1em;
+  position: relative;
+}
+.ProseMirror table th {
+  background: rgb(var(--accent-blue) / 0.08);
+  font-weight: 600;
+  text-align: left;
+}
+.ProseMirror table .selectedCell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(var(--accent-blue) / 0.12);
+  pointer-events: none;
+}
+
+/* Prose dark mode */
+.dark .prose {
+  --tw-prose-body: rgb(var(--ink));
+  --tw-prose-headings: rgb(var(--ink));
+  --tw-prose-bold: rgb(var(--ink));
+  --tw-prose-links: rgb(var(--accent-blue));
+  --tw-prose-code: rgb(var(--ink));
+  --tw-prose-quotes: rgb(var(--ink-muted));
+  --tw-prose-bullets: rgb(var(--ink-muted));
+  --tw-prose-hr: rgb(var(--surface-border));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
