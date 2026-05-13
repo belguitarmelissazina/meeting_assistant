@@ -1,0 +1,6 @@
+=== EXTRACTION OUTPUT ===
+```json
+{
+  "decisions": []
+}
+```

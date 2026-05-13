@@ -1,0 +1,12 @@
+{
+  "titre": "Présentation des expertises en IA générative et besoins métiers",
+  "contexte": "Les participants échangent sur leurs compétences techniques et leurs attentes pour collaborer sur des projets centrés sur l’IA générative, notamment dans le domaine de la gestion d’assistants interactifs et des analyses spécialisées.",
+
+  "points": [
+    "Mathieu, expert en IA et DataIa chez Élé Consulting, décrit ses missions couvrant l’équilibre offre-demande, gouvernance et analyse métiers pour des projets comme les études de rentabilité des moyens de production.",
+    "Maya, consultante confirmée spécialisée en IA générative (NLP), partage son expérience en traitement automatique des langues et en déploiement local de modèles finetuned (ex. QNTubine) pour des solutions actionnables multimodales.",
+    "Le projet RTE d’études EOD rentabilité des moyens de production a été automatisé par Maya via un pipeline génératif, intégrant des fichiers PPT hétérogènes (graphiques/textes) pour produire des rapports structurés sans altérer leur rigueur.",
+    "Bruno et Dinka, impliqués dans la feuille de route Smart Cockpit et l’implémentation de réseaux de neurones, soulignent un intérêt croissant pour les interfaces conversationnelles basées sur le MCP (Multimodal Conversational Platform) pour optimiser les interactions opérateurs-outils.",
+    "Aucune décision ou action définie concrète n’a été explicitement annoncée concernant des collaborations structurées ou des missions prioritaires entre les équipes."
+  ]
+}

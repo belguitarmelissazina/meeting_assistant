@@ -1,0 +1,8 @@
+=== EXTRACTION OUTPUT ===
+```json
+{
+  "decisions": [
+    "Discuter des besoins et attentes en matière d’IA générative pour comprendre comment travailler ensemble"
+  ]
+}
+```

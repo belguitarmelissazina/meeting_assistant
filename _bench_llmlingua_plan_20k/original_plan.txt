@@ -1,0 +1,12 @@
+=== PLAN OUTPUT ===
+{
+  "plan": [
+    {
+      "action": "Vérifier avec Gérald les suites à donner à la généralisation du projet de génération de rapports automatisés",
+      "responsable": "—",
+      "echeance": "—",
+      "type": "suggestion"
+    }
+  ]
+}
+

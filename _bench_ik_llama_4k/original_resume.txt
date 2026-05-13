@@ -1,0 +1,49 @@
+=== CHUNK COMPRESSE ===
+SPEAKER_00: BonjourNordine.
+SPEAKER_00: Bonjourd’hui Et voici, Mathieu tout le monde est.
+SPEAKER_00: là Bonjour à.
+SPEAKER_00: tous Ce que je vous propose c’est un petit tour de table parce que moi je ne connais pas tout le.
+SPEAKER_00: monde Je peux commencer si vous voulez donc moi c’est j’ai, remassé je suisexpert dataIa manager de la pratice DataIa au sein de l’élé consulting et donc par exemple travaille avec Maya sur les sujets de l’IA, générative je travaille aussi avec Della côtéRD sur la feuille de route équilibre
+SPEAKER_00: gouvernance et régulation sur un projet d’équilibreoffre demande et la rentabilité des moyens de base etégalement côté décoffert sur desanalyses plutôtorientées.
+SPEAKER_00: métiers
+SPEAKER_01: Parce que je peux me présenter aussi donc moi c’est Maya, Saraoi je suis consultante confirmée, chezIVB je travaille principalement sur des projets d’IA génératifs donc en interne et en projet que j’ai menéégalement chezRTE avec Daina etGérald et donc je suis docteur en deep learning j’ai fait un
+SPEAKER_01: doctorat en traitement automatique des langues et je rejoins il y a deux en septembre donc, voilà j’en quelques missions en ce.
+SPEAKER_01: sens-là
+SPEAKER_00: Je vous laisse vous.
+SPEAKER_00: présenter
+SPEAKER_02: Allez je commence donc Bruno le méthélier donc je suis à laRD et je pilote la feuille de route Smart Cockpit.
+SPEAKER_02: interactif Donc ça veut dire en gros si on travaille sur les assistants en particulier pour lesopérateurs en soin de.
+SPEAKER_02: conduite, Bonjour Mathieu, sort je suis à laRD aussiRTE la thématique assistant là dont parle Bruno là ça fait une dizaine d’années au moins qu’on l’a qu’elle évolue qu’on la fait mûrir et moi je travaille dessus depuis tout ce.
+SPEAKER_00: temps-là Très.
+SPEAKER_00: bien Dans, Dinka
+SPEAKER_02: je suis aussi de la, ridée je travaille sur des thématiques d’implémentation des réseaux de neurones pour l’écosystème.
+SPEAKER_02: principalement
+SPEAKER_00: MaisJérôme, Picot moi je ne
+SPEAKER_02: suis plus à la, grider j’y
+SPEAKER_00: étais mais si, plus je suis dans une direction
+SPEAKER_02: qui
+SPEAKER_00: s’appelle maintenant intelligenceartificielle et innovation et je travaille sur des
+SPEAKER_02: sujets
+SPEAKER_00: principalement dits et génératives autour des, LLM, MCP.
+SPEAKER_00: etc Très, bien est-ce que vous voulez que je présente notre société où il n’a pas?
+SPEAKER_02: besoin De mon, côté je diseffectivement que j’aieuccasion de travailler qu’il est alors pas dans le même contexte puisqu’avant j’étais au département d’exploitation et puis encore avant j’étais au département, marche etc et.
+SPEAKER_02: çaVoilà donc là j’ai dû croiser deux de vos collègues et plus sur des aspects voilà ça veut dire concept à moins recherche en tout cas donc, voilà je connais un petit.
+SPEAKER_02: peu Je connais moinseffectivement vos activités là-dessus mais voilà en tout cas je crois qu’on aeu aussi l’occasion de voir de participer à des échanges sur un modèle que vous avez développé pour la gestion des congestions me semble bref voilà en tout cas de mon point de, vue c’estime vous
+SPEAKER_02: connaître
+SPEAKER_00: un.., peuOussiOk donc on peutzapper oui ou non., DandineOui c’est bon.
+SPEAKER_00: seulement Donc ce que je vous propose c’est que vous discutiez un petit peu justement sur vos besoins sur l’IA générative et qu’on puisse un petit peu justement comprendre vos, besoins vos attentes et puis et puis voir comment on pourrait potentiellement travailler.,
+SPEAKER_02: ensembleOui alors peut-être donceffectivement alors je me lance donc en.
+SPEAKER_02: contexte Donc nouseffectivement les.
+SPEAKER_02: sujets Alors je parle sur la partie assistante puisque donc dans cette table on aeffectivementJérôme Carpendront la partie disciplinaire on va dire il y a lesNLP donc côtéRD on n’est plus sur la partie on va dire assistant donc mise en application un petit peu de tout ça et recherche un peu sur la
+SPEAKER_02: question plus de l’interaction après voilà donc
+
+=== RESUME OUTPUT ===
+```json
+{
+"titre": "Présentation des besoins en IA générative et feuille de route projetuelle",
+"contexte": "Les participants de la réunion discutent des besoins et des attentes spécifiques concernant les projets implémentant des solutions d'intelligence artificielle, notamment générative, pour optimiser les systèmes et les interactions avec les utilisateurs.",
+"points": [
+    "Mathieu est expert en IA et gère les projets liés à cette technologie, notamment les modèles génératifs et les analyses orientées métiers.",
+    "Maya, consultante confirmée, travaille sur des projets d’IA générative, notamment en traitement automatique des langues, et a rejoint l’entreprise il y a deux ans.",
+    "Dina et Gerald ont collaboré sur des projets implémentant des assistants pour les opérateurs, notamment dans le domaine de la gestion des congestions.",
+    "Jérôme Carpe â̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂̂

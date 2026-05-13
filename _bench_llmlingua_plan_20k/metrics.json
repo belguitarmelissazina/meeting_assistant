@@ -1,0 +1,30 @@
+{
+  "original": {
+    "chars_input": 20000,
+    "compress_s": 0.0,
+    "resume_wall_s": 0.0,
+    "resume_input_tok": 0,
+    "resume_output_tok": 0,
+    "extraction_wall_s": 0.0,
+    "extraction_input_tok": 0,
+    "extraction_output_tok": 0,
+    "plan_wall_s": 527.5384340286255,
+    "plan_input_tok": 5736,
+    "plan_output_tok": 72,
+    "total_wall_s": 527.5384340286255
+  },
+  "ratio_0.4": {
+    "chars_input": 8392,
+    "compress_s": 4.91522479057312,
+    "resume_wall_s": 0.0,
+    "resume_input_tok": 0,
+    "resume_output_tok": 0,
+    "extraction_wall_s": 0.0,
+    "extraction_input_tok": 0,
+    "extraction_output_tok": 0,
+    "plan_wall_s": 177.29911971092224,
+    "plan_input_tok": 2580,
+    "plan_output_tok": 161,
+    "total_wall_s": 182.21434450149536
+  }
+}

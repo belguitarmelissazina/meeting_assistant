@@ -1,0 +1,11 @@
+{
+  "titre": "Tour de table sur l’IA générative et ses applications métiers",
+  "contexte": "Les participants échangent sur leurs besoins en IA générative, notamment pour des projets liés à la gestion d’assistants opérationnels et à l’automatisation de rapports techniques.",
+  "points": [
+    "Mathieu présente son rôle comme expert Data/Ia manager chez Élé Consulting, spécialisé dans les projets IA générative (ex : équilibre offre-demande) et gouvernance des données métiers.",
+    "Maya, consultante confirmée chez IVB, décrit ses compétences en traitement automatique des langues et en deep learning, appliquées à des missions internes/externes comme RTE, pour transformer des documents complexes en contenus actionnables.",
+    "Bruno et Dinka (RD/RTE) détaillent leurs travaux sur les assistants interactifs pour opérateurs de conduite, axés sur la feuille de route Smart Cockpit et l’implémentation de réseaux de neurones pour optimiser l’interaction homme-machine.",
+    "Jérôme Picot évoque son expertise en IA générative (LLM, MCP) dans le cadre d’innovation, sans mission précise définie à ce stade, mais centré sur des interfaces conversationnelles fluides pour appeler ou afficher des services adaptés.",
+    "Maya partage un exemple concret : automatisation de la rédaction de rapports exhaustifs à partir de fichiers hétérogènes (PPT) contenant des graphiques et données de rentabilité des moyens de production chez RTE."
+  ]
+}

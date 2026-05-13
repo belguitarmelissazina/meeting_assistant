@@ -1,0 +1,3 @@
+root ::= "[" item ("," item)* "]"
+item ::= "{\"owner\":\"" string "\",\"task\":\"" string "\"}"
+string ::= [^"\\\\]{3,80}

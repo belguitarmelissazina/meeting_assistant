@@ -37,6 +37,16 @@ import psutil
 from scipy.ndimage import gaussian_filter1d
 from sentence_transformers import SentenceTransformer
 
+# Force stdout/stderr en UTF-8 sur Windows (console PowerShell defaut cp1252
+# qui ne sait pas encoder les caracteres unicode genre ->, ↳, etc.).
+if sys.platform == "win32":
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            try:
+                stream.reconfigure(encoding="utf-8", errors="replace")
+            except Exception:
+                pass
+
 # Charge automatiquement .env (OPENAI_API_KEY, ANTHROPIC_API_KEY, etc.)
 try:
     from dotenv import load_dotenv
@@ -96,7 +106,7 @@ class Config:
     # Distance minimum (en nombre de fenêtres) entre deux frontières
     boundary_min_distance: int = 10
     # Taille max d'un chunk (chars) — si dépassé, re-split sémantique récursif
-    max_chunk_chars: int = 30000
+    max_chunk_chars: int = 15000
 
     # ── llama-server.exe ──
     # Packaged builds override these via env vars (LLAMA_BIN_DIR, MODELS_DIR)
@@ -126,6 +136,17 @@ class Config:
     # True  → utilise les PROMPT_*_SMALL (prompts compacts, pour modèles <3B)
     # False → utilise les PROMPT_* originaux (testés sur Mistral-3B)
     small_model: bool = False
+
+    # ── Plan d'attaque ──
+    # "perchunk" : plan unifié (engagement + suggestion, cap 2 items/chunk via
+    #              grammar) extrait par chunk pendant la réunion (1 appel LLM
+    #              en plus par chunk, HIT cache sur [system][chunk]). Plan
+    #              final = assemblage déterministe.
+    # "legacy"   : 1 appel LLM final sur les résumés agrégés. Pas de hit cache.
+    # Override via env var MEETING_PLAN_MODE.
+    plan_attack_mode: str = field(
+        default_factory=lambda: os.environ.get("MEETING_PLAN_MODE", "perchunk")
+    )
 
     # ── Sortie ──
     output_path: str = "compte_rendu.md"
@@ -541,31 +562,52 @@ def start_llm_server_slots(cfg: Config, parallel_slots: int) -> None:
     if not Path(cfg.llm_model_path).exists():
         raise FileNotFoundError(f"Modèle introuvable : {cfg.llm_model_path}")
 
-    total_ctx = cfg.llm_n_ctx if cfg.llm_n_ctx > 0 else 32768
+    # ctx-size 16384 (vs 32768 avant) : avec max_chunk_chars=15000
+    # (~3750 tokens) + system + instructions + output (~400), un ctx de 16k
+    # est largement suffisant. Moitie de KV-cache RAM, prefill plus rapide,
+    # et evite les ralentissements observes sur ik_llama avec gros ctx.
+    total_ctx = cfg.llm_n_ctx if cfg.llm_n_ctx > 0 else 16384
     cmd = [
         cfg.llama_server_exe,
         "-m", cfg.llm_model_path,
         "--port", str(cfg.llm_server_port),
         "--ctx-size", str(total_ctx),
         "--parallel", str(parallel_slots),
-        "--fit", "off",
-        "--log-disable",
+        # Flash Attention : prerequis pour KV-quant safe sur la plupart des
+        # archis (sinon ik_llama boucle sans EOS, mainline tombe en fallback
+        # non-optimise). Aussi : +10-25% TG via online softmax block-by-block.
+        "--flash-attn", "on",
+        # Cache RAM (host-memory prompt cache, -cram) desactive.
+        # ik_llama default = 8192 MiB qui sature la RAM apres ~10 chunks et cause
+        # OOM kill silencieux par Windows. Le prefix-cache par slot (toujours
+        # actif, non concerne par ce flag) suffit pour cache hit cross-prompt
+        # sur le meme chunk (RESUME -> EXTRACTION -> PLAN).
+        # Mainline supporte aussi --cache-ram, valeur 0 = disable identique.
+        "--cache-ram", "0",
         # KV cache quantization — decode is bandwidth-bound on CPU
         "--cache-type-k", cfg.llm_kv_cache_type,
         "--cache-type-v", cfg.llm_kv_cache_type,
-        # Prefix cache reuse across requests — avoids re-prefilling the
-        # identical system prompt on every chunk call
-        "--cache-reuse", "256",
+        # Flags retires :
+        # - --cache-reuse 256 : aucun gain mesurable (prefix-cache natif suffit),
+        #   et pas supporte par ik_llama.cpp.
+        # - --fit off : controle GPU offload auto-fit, sans effet sur CPU-only
+        #   (llm_n_gpu_layers=0 chez nous), incompatible avec la syntaxe ik_llama.
     ]
-    # Recent optims (PLD + larger prefill batches). Toggleable via env
-    # var LLM_FAST_FLAGS (default "1" = on). Set "0" to disable for A/B.
+    # Logs llama-server : silencieux par defaut (--log-disable), verbeux si
+    # LLAMA_VERBOSE=1 (utile pour diagnostiquer le cache, n_past, batch.n_tokens
+    # dans _llama_server_stderr.log).
+    if os.environ.get("LLAMA_VERBOSE") != "1":
+        cmd.append("--log-disable")
+    # Larger prefill batches. Toggleable via env var LLM_FAST_FLAGS
+    # (default "1" = on). Set "0" to disable for A/B.
+    #
+    # PLD retiré : bench A/B 2026-05 a montré une régression -5 % sur RESUME
+    # (output abstractif court → acceptance rate trop bas, verify pass coûte
+    # plus qu'il rapporte) et neutre sur EXTRACTION / PLAN (output JSON court).
     if os.environ.get("LLM_FAST_FLAGS", "1") != "0":
         cmd += [
             "--batch-size", "4096",
             "--ubatch-size", "1024",
-            "--draft-max", "8",
-            "--draft-min", "2",
-            "--lookup-cache-dynamic",
         ]
     if cfg.llm_n_threads:
         cmd += ["--threads", str(cfg.llm_n_threads)]
@@ -573,11 +615,23 @@ def start_llm_server_slots(cfg: Config, parallel_slots: int) -> None:
         cmd += ["-ngl", str(cfg.llm_n_gpu_layers)]
 
     log.info(f"Démarrage llama-server (parallel={parallel_slots}, ctx_total={total_ctx})...")
+    log.info(f"  cmd: {' '.join(cmd)}")
+    stderr_log = Path("_llama_server_stderr.log")
     t0 = time.time()
+    verbose_console = os.environ.get("LLAMA_VERBOSE") == "1"
+    if verbose_console:
+        # Logs llama-server affiches DIRECTEMENT en console (stderr du process)
+        # au lieu d'etre rediriges dans le fichier. Pratique pour diagnostiquer
+        # en live (cache hit, n_past, etc.).
+        _stderr_fh = None
+        stderr_target = None
+    else:
+        _stderr_fh = open(stderr_log, "w", encoding="utf-8", errors="replace")
+        stderr_target = _stderr_fh
     _server_process = subprocess.Popen(
         cmd,
         stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
+        stderr=stderr_target,
         creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0,
     )
     atexit.register(_kill_server)
@@ -593,7 +647,14 @@ def start_llm_server_slots(cfg: Config, parallel_slots: int) -> None:
         except Exception:
             pass
         if _server_process.poll() is not None:
-            raise RuntimeError("llama-server s'est arrêté prématurément.")
+            if _stderr_fh is not None:
+                _stderr_fh.flush(); _stderr_fh.close()
+                tail = stderr_log.read_text(encoding="utf-8", errors="replace")[-2000:]
+            else:
+                tail = "(logs llama-server en mode --verbose, voir console)"
+            raise RuntimeError(
+                f"llama-server s'est arrêté prématurément. Stderr (dernières 2000 chars) :\n{tail}"
+            )
         time.sleep(1)
     raise TimeoutError(f"llama-server timeout ({cfg.llm_server_startup_timeout}s)")
 
@@ -697,87 +758,69 @@ def llm_complete(prompt: str, cfg: Config, timeout: int = 300,
 # ---------------------------------------------------------------------------
 # Prompts
 # ---------------------------------------------------------------------------
+# Structure document-first / instruction-last : le chunk est en tete pour
+# maximiser la reutilisation du KV cache entre RESUME et EXTRACTION via
+# llama-server --cache-reuse. Voir LLAMA_CACHE_REUSE_DEEP_DIVE.md pour le
+# detail technique et la litterature academique (Liu et al. TACL 2024,
+# Anthropic +30%, vLLM/SGLang prefix caching).
 PROMPT_RESUME = """\
-Tu dois résumer UN extrait chronologique d'une réunion et produire UN SEUL objet JSON.
-
-CONSIGNES :
-- Titre court et précis pour le sujet principal de cet extrait.
-- "contexte" : UNE phrase qui résume le sujet.
-- "points" : 3 à 5 bullets factuels, chacun UNE phrase courte et autonome.
-  Chaque bullet = une information discrète (qui, quoi, pour quelle raison).
-  Pas de redite du contexte, pas de transition ("ensuite", "puis").
-- Style sobre, professionnel. Pas d'opinion, pas d'emphase inutile.
-- N'INVENTE RIEN. Ne développe jamais un sigle.
-
-FORMAT DE SORTIE — JSON STRICT, rien d'autre :
-{{
-  "titre": "string",
-  "contexte": "string",
-  "points": ["string", "string", "string"]
-}}
-
 Extrait :
-{texte}"""
+{texte}
 
-PROMPT_EXTRACTION = """\
-Tu dois extraire les décisions de cet extrait de réunion. Produis UN SEUL objet JSON.
+---
 
-RÈGLE ABSOLUE : EXTRACTION PURE — ne liste QUE ce qui est EXPLICITEMENT dit.
-
-DÉCISIONS :
-Une décision est un choix ACTÉ par le groupe ("on décide de", "on valide", "c'est acté").
-- ❌ Une discussion ou exploration d'options N'EST PAS une décision.
-- ❌ Un engagement à faire une action future N'EST PAS une décision (c'est du plan d'attaque, traité ailleurs).
-- Si rien n'est acté → tableau vide.
-
-EXEMPLES :
-
-Passage : « J'ai développé un outil N8N avec plusieurs agents. »
-→ {{"decisions": []}}
-
-Passage : « On pourrait faire un atelier UX un jour. »
-→ {{"decisions": []}}
-
-Passage : « On valide le passage en production la semaine prochaine. »
-→ {{"decisions": ["Passage en production validé pour la semaine prochaine"]}}
-
-FORMAT DE SORTIE — JSON STRICT, rien d'autre :
-{{
-  "decisions": ["string", ...]
-}}
-
-Extrait :
-{texte}"""
-
-PROMPT_PLAN_ATTACK = """\
-Tu es un consultant senior. Voici le compte rendu d'une réunion avec ses sujets et décisions.
-
-Construis un **Plan d'attaque** unifié : la liste des actions concrètes à mener
-après la réunion. Combine deux types d'items en une seule liste priorisée :
-
-1. ENGAGEMENTS EXPLICITES (priorité haute) — actions que les participants
-   ont clairement promis d'exécuter ("je vais faire X", "on organise Y",
-   "d'ici fin de semaine"). Le responsable et l'échéance sont à reprendre
-   tels que mentionnés dans le transcript, sans invention.
-
-2. RECOMMANDATIONS CONSULTANT (2 à 4 items) — actions de bon sens à suggérer
-   au client pour donner suite efficacement aux sujets abordés. Pour ces items,
-   mets "—" en responsable et "—" en échéance (tu ne les inventes pas).
+Résume cet extrait de réunion en UN objet JSON.
 
 RÈGLES :
-- 4 à 10 items au total.
-- Chaque item est RATTACHÉ à un sujet de la réunion (champ `sujet`).
-- Ne reformule pas une décision déjà prise — les décisions sont déjà listées ailleurs.
+- titre : court et précis, sujet principal de l'extrait
+- contexte : UNE phrase qui résume le sujet
+- points : 3 à 5 bullets factuels, chacun UNE phrase courte autonome (qui, quoi, pourquoi). Pas de transition ("ensuite", "puis"), pas de redite du contexte.
+- Style sobre, pas d'opinion.
+- N'INVENTE RIEN. Ne développe pas les sigles.
+
+FORMAT JSON STRICT, rien d'autre :
+{{"titre": "string", "contexte": "string", "points": ["string", "string", "string"]}}"""
+
+PROMPT_EXTRACTION = """\
+Extrait :
+{texte}
+
+---
+
+Extrais les décisions de cet extrait de réunion. Produis UN objet JSON.
+
+RÈGLE ABSOLUE : EXTRACTION PURE. Ne liste QUE ce qui est EXPLICITEMENT dit.
+
+DÉCISION = choix ACTÉ par le groupe ("on décide de", "on valide", "c'est acté").
+- Une discussion ou exploration d'options N'EST PAS une décision.
+- Un engagement à faire une action future N'EST PAS une décision (plan d'attaque, traité ailleurs).
+- Si rien n'est acté, tableau vide.
+
+EXEMPLES :
+« J'ai développé un outil N8N avec plusieurs agents. » → {{"decisions": []}}
+« On pourrait faire un atelier UX un jour. » → {{"decisions": []}}
+« On valide le passage en production la semaine prochaine. » → {{"decisions": ["Passage en production validé pour la semaine prochaine"]}}
+
+FORMAT JSON STRICT, rien d'autre :
+{{"decisions": ["string", ...]}}"""
+
+PROMPT_PLAN_ATTACK = """\
+Tu es un consultant senior. Voici le compte rendu (sujets + décisions). Construis un Plan d'attaque : liste priorisée d'actions concrètes post-réunion.
+
+DEUX TYPES d'items mélangés :
+1. ENGAGEMENTS EXPLICITES (priorité haute) : actions promises dans le transcript ("je vais X", "on organise Y", "d'ici fin de semaine"). Reprends responsable et échéance EXACTEMENT tels que mentionnés, sans invention.
+2. RECOMMANDATIONS CONSULTANT (2 à 4 items) : actions de bon sens à suggérer. Pour ces items, "—" en responsable et "—" en échéance.
+
+RÈGLES :
+- 4 à 10 items total.
+- Chaque item rattaché à un sujet (champ `sujet`).
+- Ne reformule pas une décision déjà listée ailleurs.
 - N'invente JAMAIS un responsable ni une échéance absents du transcript.
-- Utilise "—" partout où l'info n'est pas explicite.
+- "—" partout où l'info n'est pas explicite.
 - Ne développe pas les sigles.
 
-FORMAT DE SORTIE — JSON STRICT, rien d'autre :
-{{
-  "plan": [
-    {{"action": "string", "sujet": "string", "responsable": "string ou —", "echeance": "string ou —"}}
-  ]
-}}
+FORMAT JSON STRICT, rien d'autre :
+{{"plan": [{{"action": "string", "sujet": "string", "responsable": "string ou —", "echeance": "string ou —"}}]}}
 
 Matière :
 {contenu}"""
@@ -814,22 +857,63 @@ Transcript (début) :
 {intro}"""
 
 PROMPT_EXEC_SUMMARY = """\
-Voici le DÉBUT du transcript d'une réunion suivi des titres et résumés de chaque section.
-Rédige un **Executive Summary** 5 ou 6 phrases maximum.
+Voici le début du transcript d'une réunion + les titres/résumés de chaque section. Rédige un Executive Summary de 5 phrases.
 
-OBJECTIF : capturer le BUT GLOBAL de la réunion, les grands thèmes abordés et la conclusion générale.
-Ne résume PAS chaque section une par une — donne une vision de haut niveau.
+OBJECTIF : but global, grands thèmes, conclusion. PAS de résumé section par section, vision de haut niveau.
 
 RÈGLES :
 - N'invente aucune information.
 - Ne développe pas les sigles.
-- Pas de listes, pas de titres — juste un paragraphe.
+- Pas de listes, pas de titres : un paragraphe.
 
---- DÉBUT DU TRANSCRIPT ---
+--- DÉBUT TRANSCRIPT ---
 {intro}
 
---- SECTIONS IDENTIFIÉES ---
+--- SECTIONS ---
 {contenu}"""
+
+# Per-chunk : extrait les items du plan d'attaque (engagements + suggestions)
+# en UN SEUL appel LLM. Document-first → HIT cache reuse sur [system][chunk]
+# entre résumé/extraction/plan du MÊME chunk. Voir LLAMA_CACHE_REUSE_DEEP_DIVE.md.
+#
+# Cap matériel via SCHEMA_PLAN_PERCHUNK.maxItems (grammar GBNF côté llama-server)
+# + pression "rien si rien" en prompt (cf. PROMPT_EXTRACTION pour les décisions).
+PROMPT_PLAN_PERCHUNK = """\
+Extrait :
+{texte}
+
+---
+
+Extrais les ACTIONS POST-RÉUNION concrètes de cet extrait. Produis UN objet JSON.
+
+DEUX TYPES D'ITEMS :
+1. ENGAGEMENT : action promise EXPLICITEMENT ("je vais X", "on organise Y", "d'ici vendredi").
+   → Responsable et échéance EXACTEMENT tels que mentionnés.
+2. SUGGESTION : action de bon sens qui découle du sujet, sans avoir été promise.
+   → Responsable et échéance toujours "—".
+
+RÈGLE ABSOLUE — RIEN SI RIEN :
+- Mieux vaut un tableau vide qu'une action forcée.
+- Recap, smalltalk, tour de table, présentation pendant la réunion → [].
+- Action faite PENDANT la réunion ("je vais vous présenter…") N'EST PAS post-réunion.
+- Mention d'un outil/modèle DÉJÀ existant N'EST PAS une action future.
+- Décision actée sans suite N'EST PAS un item de plan.
+
+INTERDICTIONS :
+- Pas de méta-commentaire ("à vérifier", "supposons que…", "non explicitement nommé").
+- Jamais "SPEAKER_XX" en responsable → "—".
+- N'invente JAMAIS un responsable ni une échéance.
+
+LIMITE STRICTE : 0 à 2 items max.
+
+EXEMPLES :
+« Je vais vous présenter le projet RTE. » → {{"plan": []}}
+« On a un modèle pour la congestion développé chez RTE. » → {{"plan": []}}
+« Alice s'occupe de la doc, vendredi. » → {{"plan": [{{"action": "S'occuper de la doc", "responsable": "Alice", "echeance": "vendredi", "type": "engagement"}}]}}
+« On pourrait faire un atelier UX un jour. » → {{"plan": [{{"action": "Organiser un atelier UX", "responsable": "—", "echeance": "—", "type": "suggestion"}}]}}
+
+FORMAT JSON STRICT, rien d'autre :
+{{"plan": [{{"action": "string", "responsable": "string ou —", "echeance": "string ou —", "type": "engagement | suggestion"}}, ...]}}"""
 
 
 # ---------------------------------------------------------------------------
@@ -874,6 +958,29 @@ SCHEMA_PLAN_ATTACK = {
                     "echeance": {"type": "string"},
                 },
                 "required": ["action", "sujet", "responsable", "echeance"],
+                "additionalProperties": False,
+            },
+        },
+    },
+    "required": ["plan"],
+    "additionalProperties": False,
+}
+
+SCHEMA_PLAN_PERCHUNK = {
+    "type": "object",
+    "properties": {
+        "plan": {
+            "type": "array",
+            "maxItems": 2,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "action": {"type": "string"},
+                    "responsable": {"type": "string"},
+                    "echeance": {"type": "string"},
+                    "type": {"type": "string", "enum": ["engagement", "suggestion"]},
+                },
+                "required": ["action", "responsable", "echeance", "type"],
                 "additionalProperties": False,
             },
         },
@@ -962,10 +1069,13 @@ class RamSampler:
 
 
 # ---------------------------------------------------------------------------
-# Génération par chunk (2 appels LLM : résumé + extraction)
+# Génération par chunk (2 ou 3 appels LLM selon cfg.plan_attack_mode)
 # ---------------------------------------------------------------------------
 def generate_section_json(chunk: TopicChunk, cfg: Config) -> dict:
-    """2 appels LLM par chunk : résumé narratif + extraction pure."""
+    """Appels LLM par chunk : résumé + extraction (toujours), et en mode
+    "perchunk", un appel supplémentaire (plan d'attaque unifié engagement +
+    suggestion) qui bénéficie du HIT cache sur [system][chunk] (document-first).
+    """
     log.info(f"  → LLM chunk {chunk.chunk_id} ({len(chunk.segments)} segs, ~{len(chunk.text)} chars)")
 
     reminder = _entity_reminder()
@@ -985,6 +1095,18 @@ def generate_section_json(chunk: TopicChunk, cfg: Config) -> dict:
         json_schema=SCHEMA_EXTRACTION,
     )
     log_perf(f"Chunk {chunk.chunk_id} extraction", t1)
+
+    raw_plan: str = ""
+    plan_data: dict = {}
+    if cfg.plan_attack_mode == "perchunk":
+        t2 = time.time()
+        raw_plan = llm_complete(
+            PROMPT_PLAN_PERCHUNK.format(texte=chunk.text) + reminder, cfg,
+            timeout=cfg.llm_section_timeout,
+            json_schema=SCHEMA_PLAN_PERCHUNK,
+        )
+        log_perf(f"Chunk {chunk.chunk_id} plan", t2)
+        plan_data = _parse_json_safe(raw_plan, chunk.chunk_id)
 
     resume_data = _parse_json_safe(raw_resume, chunk.chunk_id)
     extract_data = _parse_json_safe(raw_extract, chunk.chunk_id)
@@ -1007,14 +1129,43 @@ def generate_section_json(chunk: TopicChunk, cfg: Config) -> dict:
     else:
         resume = str(resume_data.get("resume") or raw_resume.strip()).strip()
 
+    # Plan d'attaque per-chunk : engagement (responsable/échéance tels quels,
+    # filet anti-SPEAKER_XX) + suggestion (responsable/échéance forcés "—").
+    plan_items: list[dict] = []
+    for item in (plan_data.get("plan") or []):
+        if not isinstance(item, dict):
+            continue
+        action = str(item.get("action") or "").strip()
+        if not action:
+            continue
+        item_type = str(item.get("type") or "suggestion").strip().lower()
+        if item_type not in ("engagement", "suggestion"):
+            item_type = "suggestion"
+        if item_type == "engagement":
+            resp = str(item.get("responsable") or "—").strip() or "—"
+            if re.match(r"^SPEAKER_\d+$", resp):
+                resp = "—"
+            ech = str(item.get("echeance") or "—").strip() or "—"
+        else:
+            resp = "—"
+            ech = "—"
+        plan_items.append({
+            "action": action,
+            "responsable": resp,
+            "echeance": ech,
+            "type": item_type,
+        })
+
     return {
         "titre": str(resume_data.get("titre") or f"Sujet {chunk.chunk_id + 1}").strip(),
         "contexte": contexte,
         "points": points,
         "resume": resume,
         "decisions": [str(d).strip() for d in (extract_data.get("decisions") or []) if str(d).strip()],
+        "plan": plan_items,
         "_raw_resume": raw_resume,
         "_raw_extract": raw_extract,
+        "_raw_plan": raw_plan,
         "_chunk_id": chunk.chunk_id,
         "_start_time": chunk.start_time,
         "_end_time": chunk.end_time,
@@ -1067,10 +1218,15 @@ def apply_speaker_mapping(segments: list, mapping: dict[str, dict]) -> list:
 
 
 # ---------------------------------------------------------------------------
-# Plan d'attaque (unifie engagements explicites + recommandations consultant)
+# Plan d'attaque — deux modes :
+#   "legacy"   : 1 appel LLM final sur les résumés agrégés (pas de hit cache).
+#   "perchunk" : assemblage déterministe du plan unifié extrait par chunk
+#                pendant la réunion (1 appel LLM par chunk, hit cache sur
+#                [system][chunk]). Pas d'appel LLM ici.
+# Dispatch via cfg.plan_attack_mode.
 # ---------------------------------------------------------------------------
-def build_plan_attack(sections: list[dict], cfg: Config) -> list[dict]:
-    """Appel LLM : plan d'attaque unifié basé sur les sujets et décisions."""
+def build_plan_attack_legacy(sections: list[dict], cfg: Config) -> list[dict]:
+    """Appel LLM final : plan d'attaque unifié basé sur les sujets/décisions."""
     contenu_parts = []
     for i, s in enumerate(sections, 1):
         part = f"## {i}. {s['titre']}\n{s['resume']}"
@@ -1081,13 +1237,57 @@ def build_plan_attack(sections: list[dict], cfg: Config) -> list[dict]:
 
     prompt = PROMPT_PLAN_ATTACK.format(contenu=contenu) + _entity_reminder()
     tokens_est = len(prompt) // 4
-    log.info(f"Plan d'attaque (~{tokens_est} tokens estimés)...")
+    log.info(f"Plan d'attaque (legacy, ~{tokens_est} tokens estimés)...")
     t0 = time.time()
     raw = llm_complete(prompt, cfg, timeout=cfg.llm_section_timeout,
                        json_schema=SCHEMA_PLAN_ATTACK)
-    log_perf("Plan d'attaque", t0)
+    log_perf("Plan d'attaque (legacy)", t0)
     data = _parse_json_safe(raw, -1)
     return data.get("plan", [])
+
+
+def build_plan_attack_perchunk(sections: list[dict], cfg: Config) -> list[dict]:
+    """Assemblage déterministe (sans appel LLM) : agrège les items du plan
+    extraits par chunk via generate_section_json. Sujet = titre de la
+    section d'origine.
+
+    Tri : engagements (priorité haute) avant suggestions, puis ordre des
+    chunks. Cap matériel à 2 items/chunk garanti par SCHEMA_PLAN_PERCHUNK."""
+    engagements: list[dict] = []
+    suggestions: list[dict] = []
+    for s in sections:
+        sujet = (s.get("titre") or "—").strip() or "—"
+        for item in (s.get("plan") or []):
+            action = (item.get("action") or "").strip()
+            if not action:
+                continue
+            row = {
+                "action": action,
+                "sujet": sujet,
+                "responsable": item.get("responsable") or "—",
+                "echeance": item.get("echeance") or "—",
+            }
+            if item.get("type") == "engagement":
+                engagements.append(row)
+            else:
+                suggestions.append(row)
+
+    plan = engagements + suggestions
+    log.info(f"Plan d'attaque (perchunk) : {len(plan)} items assemblés "
+             f"({len(engagements)} engagements + {len(suggestions)} suggestions, "
+             f"sans appel LLM final)")
+    return plan
+
+
+def build_plan_attack(sections: list[dict], cfg: Config) -> list[dict]:
+    """Dispatcher : choisit l'implémentation selon cfg.plan_attack_mode."""
+    mode = (cfg.plan_attack_mode or "perchunk").lower()
+    if mode == "legacy":
+        return build_plan_attack_legacy(sections, cfg)
+    if mode == "perchunk":
+        return build_plan_attack_perchunk(sections, cfg)
+    log.warning(f"plan_attack_mode inconnu '{mode}' — fallback perchunk")
+    return build_plan_attack_perchunk(sections, cfg)
 
 
 # ---------------------------------------------------------------------------
@@ -1365,16 +1565,26 @@ def run_pipeline(cfg: Config, parallel_slots: int = 1,
     output = Path(cfg.output_path)
     output.write_text(final_report, encoding="utf-8")
 
+    def _count_type(s: dict, t: str) -> int:
+        return sum(1 for it in (s.get("plan") or []) if it.get("type") == t)
+
+    n_engagements_total = sum(_count_type(s, "engagement") for s in sections)
+    n_suggestions_total = sum(_count_type(s, "suggestion") for s in sections)
     assembly_debug = {
         "exec_summary": exec_summary,
         "n_sections": len(sections),
         "n_decisions_total": sum(len(s["decisions"]) for s in sections),
+        "n_engagements_total": n_engagements_total,
+        "n_suggestions_total": n_suggestions_total,
         "n_plan_items_total": len(plan),
+        "plan_attack_mode": cfg.plan_attack_mode,
         "sections_summary": [
             {
                 "chunk_id": s.get("_chunk_id"),
                 "titre": s["titre"],
                 "n_decisions": len(s["decisions"]),
+                "n_engagements": _count_type(s, "engagement"),
+                "n_suggestions": _count_type(s, "suggestion"),
                 "start_time": s.get("_start_time"),
                 "end_time": s.get("_end_time"),
             }
@@ -1397,6 +1607,10 @@ def run_pipeline(cfg: Config, parallel_slots: int = 1,
     log.info(f"[PERF] Fichier : {output.resolve()}")
     log.info("=" * 60)
 
+    # n_llm_calls : perchunk = 3 par chunk + 1 exec_summary ; legacy = 2 par
+    # chunk + 1 exec_summary + 1 plan_attack
+    per_chunk_calls = 3 if cfg.plan_attack_mode == "perchunk" else 2
+    final_calls = 1 if cfg.plan_attack_mode == "perchunk" else 2
     metrics = {
         "pipeline": "meeting_minutes_pipeline.py",
         "date": time.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -1412,8 +1626,12 @@ def run_pipeline(cfg: Config, parallel_slots: int = 1,
         "n_chunks": len(chunks),
         "n_boundaries": len(boundaries),
         "n_decisions_total": assembly_debug["n_decisions_total"],
+        "n_engagements_total": assembly_debug["n_engagements_total"],
+        "n_suggestions_total": assembly_debug["n_suggestions_total"],
         "n_plan_items_total": assembly_debug["n_plan_items_total"],
-        "n_llm_calls": len(chunks) + 1,
+        "n_llm_calls": len(chunks) * per_chunk_calls + final_calls,
+        "n_llm_calls_per_chunk": per_chunk_calls,
+        "plan_attack_mode": cfg.plan_attack_mode,
         "mode": mode_label,
         "parallel_slots": actual_slots,
         "ram_llama_server_peak_mb": round(sampler.peak_server(), 0),
@@ -1431,6 +1649,7 @@ def run_pipeline(cfg: Config, parallel_slots: int = 1,
             "prompt_resume": PROMPT_RESUME,
             "prompt_extraction": PROMPT_EXTRACTION,
             "prompt_plan_attack": PROMPT_PLAN_ATTACK,
+            "prompt_plan_perchunk": PROMPT_PLAN_PERCHUNK,
             "prompt_exec_summary": PROMPT_EXEC_SUMMARY,
         },
     }
@@ -1471,11 +1690,18 @@ if __name__ == "__main__":
                         help="Noms des participants séparés par virgule.")
     parser.add_argument("--entreprises", type=str, default=None,
                         help="Noms des entreprises impliquées.")
-    parser.add_argument("--parallel-chunks", default="2",
-        help="Nombre de chunks traités en parallèle. '1' = séquentiel, "
-             "'auto' = tous simultanément. Défaut 2 : ctx total constant "
-             "(32k), chaque slot a 16k tokens — assez pour des chunks "
-             "jusqu'à ~30k chars FR.")
+    parser.add_argument("--parallel-chunks", default="1",
+        help="Nombre de chunks traités en parallèle. '1' = séquentiel "
+             "(défaut, optimal sur CPU memory-bound — voir bench parallelisme). "
+             "'auto' = tous simultanément. Sur CPU sans GPU, parallel >1 "
+             "n'apporte pas de gain car la bande passante RAM sature.")
+    parser.add_argument("--plan-attack-mode", choices=["perchunk", "legacy"],
+        default=_cfg.plan_attack_mode,
+        help="'perchunk' (défaut) : plan unifié (engagement + suggestion, "
+             "cap 2 items/chunk) extrait par chunk pendant la réunion (+1 "
+             "appel LLM par chunk avec HIT cache), plan final = assemblage "
+             "déterministe sans LLM. 'legacy' : 1 appel LLM final sur les "
+             "résumés agrégés.")
 
     args = parser.parse_args()
 
@@ -1513,6 +1739,7 @@ if __name__ == "__main__":
         boundary_percentile=args.percentile,
         boundary_min_distance=args.min_distance,
         max_chunk_chars=args.max_chunk_chars,
+        plan_attack_mode=args.plan_attack_mode,
     )
 
     run_pipeline(cfg, parallel_slots=parallel_slots,

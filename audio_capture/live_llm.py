@@ -544,7 +544,11 @@ class LiveLLMWorker:
     """
 
     def __init__(self, out_dir: Path, context: dict | None = None,
-                 parallel_slots: int = 2) -> None:
+                 parallel_slots: int = 1) -> None:
+        # Defaut 1 (sequentiel) : sur CPU memory-bound, parallel>1 n'apporte
+        # pas de gain (bande passante RAM saturée). Bench confirme ~0% gain
+        # parallel=2 vs sequentiel sur Ministral 3B Q4 sur Intel Iris Xe.
+        # Voir _bench_parallelism.py et LLAMA_CACHE_REUSE_DEEP_DIVE.md.
         self.out_dir = Path(out_dir)
         self.out_dir.mkdir(parents=True, exist_ok=True)
         self.context = context or {}
@@ -636,15 +640,18 @@ class LiveLLMWorker:
             with self._concurrent_lock:
                 max_obs = self._max_concurrent
                 total = self._total_processed
-            if max_obs >= 2:
-                verdict = (f"✅ PARALLÉLISATION ACTIVE "
+            if self._parallel_slots <= 1:
+                verdict = ("Mode séquentiel (parallel=1, défaut optimal "
+                           "sur CPU memory-bound)")
+            elif max_obs >= 2:
+                verdict = (f"PARALLÉLISATION ACTIVE "
                            f"(max {max_obs} chunks simultanés observés)")
             elif total > 1:
-                verdict = ("⚠ Parallélisation NON observée : chunks "
+                verdict = ("Parallélisation NON observée : chunks "
                            "trop espacés pour se chevaucher (le pool a "
                            "fonctionné mais les chunks sont arrivés un par un)")
             else:
-                verdict = ("ℹ Trop peu de chunks pour évaluer la "
+                verdict = ("Trop peu de chunks pour évaluer la "
                            "parallélisation")
             logger.info(
                 "[LIVE][LLM] === RÉCAP PARALLÉLISATION === "
@@ -658,22 +665,18 @@ class LiveLLMWorker:
             mmp = self._mmp
             import time as _time
             t_finalize = _time.time()
-            logger.info("[LIVE][LLM] %d sections triées — lancement "
-                        "exec_summary || plan_attack en parallèle "
-                        "sur 2 slots llama-server", len(sections))
-            # Les deux appels sont indépendants (ne lisent que `sections`)
-            # → on les lance simultanément sur 2 slots llama-server.
-            with ThreadPoolExecutor(max_workers=2,
-                                     thread_name_prefix="live-finalize") as pool:
-                f_exec = pool.submit(mmp.build_exec_summary, sections,
-                                      self._cfg, transcript_path=None)
-                f_plan = pool.submit(mmp.build_plan_attack, sections, self._cfg)
-                exec_summary = f_exec.result()
-                plan = f_plan.result()
+            logger.info("[LIVE][LLM] %d sections triées — exec_summary + "
+                        "plan_attack en séquentiel (CPU memory-bound, "
+                        "pas de gain a parallelliser)", len(sections))
+            # Sequential : sur CPU memory-bound, parallel ces 2 appels ne
+            # gagne rien (bande passante RAM partagee). Mesure : bench
+            # parallelisme montre ~0% gain parallel=2 vs sequentiel.
+            exec_summary = mmp.build_exec_summary(sections, self._cfg,
+                                                   transcript_path=None)
+            plan = mmp.build_plan_attack(sections, self._cfg)
             logger.info(
                 "[LIVE][LLM] ✓ Exec summary + plan d'attaque terminés en "
-                "%.1fs (parallèle, vs ~2× sériel) — %d items plan — "
-                "assemblage markdown…",
+                "%.1fs (séquentiel) — %d items plan — assemblage markdown…",
                 _time.time() - t_finalize, len(plan),
             )
             source = str(self.out_dir / "transcript.txt")

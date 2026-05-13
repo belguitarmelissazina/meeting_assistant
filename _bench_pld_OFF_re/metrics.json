@@ -1,0 +1,16 @@
+{
+  "original": {
+    "chars_input": 8000,
+    "compress_s": 0.0,
+    "resume_wall_s": 214.01728129386902,
+    "resume_input_tok": 2446,
+    "resume_output_tok": 300,
+    "extraction_wall_s": 0.0,
+    "extraction_input_tok": 0,
+    "extraction_output_tok": 0,
+    "plan_wall_s": 0.0,
+    "plan_input_tok": 0,
+    "plan_output_tok": 0,
+    "total_wall_s": 214.01728129386902
+  }
+}

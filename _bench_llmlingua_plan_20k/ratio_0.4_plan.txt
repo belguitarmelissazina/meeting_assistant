@@ -1,0 +1,18 @@
+=== PLAN OUTPUT ===
+{
+  "plan": [
+    {
+      "action": "Explorer les besoins et attentes en matière d’IA générative pour comprendre comment travailler ensemble sur ce sujet",
+      "responsable": "—",
+      "echeance": "—",
+      "type": "suggestion"
+    },
+    {
+      "action": "Présenter le projet de transformation des contenus documents complexes (multimodal) en fiches de synthèse et documents actionnables, incluant l’industrialisation et le monitoring des modèles génératifs locaux (QNTubine, Mistral)",
+      "responsable": "Bruno Mélière",
+      "echeance": "—",
+      "type": "engagement"
+    }
+  ]
+}
+
