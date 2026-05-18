@@ -29,6 +29,7 @@
     "appId": "com.yele.meeting-assistant",
     "productName": "Meeting Assistant",
     "copyright": "Copyright © 2026 Yele Consulting",
+    "icon": "icon.png",
     "directories": {
       "buildResources": "build",
       "output": "../release"
@@ -38,7 +39,9 @@
       "preload.js",
       "package.json",
       "model_manifest.js",
-      "downloader.js"
+      "downloader.js",
+      "icon.png",
+      "icon.ico"
     ],
     "asar": true,
     "extraResources": [
@@ -59,6 +62,7 @@
       }
     ],
     "win": {
+      "icon": "build/icon.ico",
       "target": [
         {
           "target": "nsis",

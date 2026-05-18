@@ -1,6 +1,6 @@
 "use strict";
 
-const { app, BrowserWindow, shell } = require("electron");
+const { app, BrowserWindow, shell, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const { spawn } = require("child_process");
@@ -15,6 +15,14 @@ const HEALTH_PATH = "/api/health";
 const HEALTH_TIMEOUT_MS = 90_000;
 
 const isDev = !app.isPackaged;
+
+// Icône de l'app (barre des tâches / fenêtres). Sur Windows on prend l'.ico
+// multi-tailles (rendu net en 16-32px) ; sinon le PNG. Packagée via
+// build.files ; ce chemin résout en dev ET dans l'asar.
+const APP_ICON = path.join(
+  __dirname,
+  process.platform === "win32" ? "icon.ico" : "icon.png"
+);
 
 // En production, les modèles sont téléchargés au premier lancement dans
 // le dossier userData (writable sans admin) plutôt que packagés dans
@@ -200,6 +208,7 @@ async function showDownloadWindow() {
     resizable: false,
     minimizable: true,
     maximizable: false,
+    icon: APP_ICON,
     backgroundColor: "#0b0b0f",
     title: "Meeting Assistant — Installation",
     webPreferences: { contextIsolation: true, nodeIntegration: false },
@@ -323,6 +332,7 @@ async function showSplash() {
     fullscreenable: false,
     center: true,
     show: false,
+    icon: APP_ICON,
     // Fallback avant peinture du HTML. La fenêtre n'est révélée qu'après
     // loadURL (show:false) donc pas de flash réel ; on garde le crème
     // clair de l'app (--surface light) comme couleur neutre.
@@ -355,6 +365,7 @@ function createWindow() {
     minWidth: 900,
     minHeight: 600,
     title: "Meeting Assistant",
+    icon: APP_ICON,
     backgroundColor: "#0b0b0f",
     // Ne pas peindre une fenêtre blanche : on attend `ready-to-show`, puis
     // on affiche la fenêtre ET on ferme le splash dans la même frame.
@@ -368,6 +379,10 @@ function createWindow() {
   });
 
   mainWindow.setMenuBarVisibility(false);
+
+  // Le titre de la fenêtre reste « Meeting Assistant » : on empêche la page
+  // (<title> du webapp) de l'écraser.
+  mainWindow.on("page-title-updated", (e) => e.preventDefault());
 
   // Idempotent : `reveal()` ne doit s'exécuter QU'UNE fois. Sinon le timer
   // de secours rappellerait mainWindow.show() après coup — et comme une
@@ -397,6 +412,14 @@ function createWindow() {
     return { action: "deny" };
   });
 
+  // Recherche native dans la page (Ctrl+F sur le compte rendu ouvert).
+  // On relaie le résultat (match courant / total) au renderer.
+  mainWindow.webContents.on("found-in-page", (_e, result) => {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.webContents.send("find:result", result);
+    }
+  });
+
   const r = resolveResources();
   if (isDev && process.env.ELECTRON_DEV_URL) {
     // Optional: point at `next dev` at http://localhost:3000 for hot reload.
@@ -417,6 +440,22 @@ function createWindow() {
     mainWindow = null;
   });
 }
+
+// ── Find-in-page (Ctrl+F dans le compte rendu) ───────────────────────────────
+ipcMain.on("find:start", (_e, text, options) => {
+  if (!mainWindow || mainWindow.isDestroyed()) return;
+  const q = (text || "").trim();
+  if (!q) {
+    mainWindow.webContents.stopFindInPage("clearSelection");
+    return;
+  }
+  mainWindow.webContents.findInPage(q, options || {});
+});
+
+ipcMain.on("find:stop", () => {
+  if (!mainWindow || mainWindow.isDestroyed()) return;
+  mainWindow.webContents.stopFindInPage("clearSelection");
+});
 
 // ── App lifecycle ────────────────────────────────────────────────────────────
 const gotLock = app.requestSingleInstanceLock();
