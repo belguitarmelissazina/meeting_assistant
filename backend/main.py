@@ -29,7 +29,7 @@ import sys
 import time
 import uuid
 from pathlib import Path
-from typing import Literal
+from typing import Literal, TYPE_CHECKING
 
 from fastapi import BackgroundTasks, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -39,7 +39,14 @@ from pydantic import BaseModel
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from audio_capture import AudioRecorder, LiveProcessor  # noqa: E402
+# NB : `audio_capture` tire numpy + (transitivement) sounddevice / sherpa /
+# torch. C'est inutile pour démarrer le serveur HTTP et répondre à
+# /api/health — on diffère donc l'import au premier `record_start()`. Grâce à
+# `from __future__ import annotations` (haut du module), les annotations
+# `recorder: AudioRecorder | None` ne sont jamais évaluées au runtime.
+if TYPE_CHECKING:
+    from audio_capture import AudioRecorder, LiveProcessor  # noqa: F401
+
 from .job_logger import JobLogger, get_active as _get_active_log, set_active as _set_active_log  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -290,7 +297,24 @@ def _rehydrate_jobs() -> None:
         log.info("Historique rechargé : %d réunion(s)", len(jobs))
 
 
-_rehydrate_jobs()
+# Rehydrate de l'historique : scan de ~/Documents/Réunions/ + lecture
+# INTÉGRALE de chaque compte_rendu.md / transcript.txt. Coût proportionnel
+# au nombre de réunions passées → on le déporte dans un thread daemon pour
+# ne PAS bloquer l'import du module. uvicorn binde le port et /api/health
+# répond immédiatement ; les jobs apparaissent dans l'UI dès le scan fini
+# (le frontend poll /api/jobs en continu).
+def _rehydrate_jobs_bg() -> None:
+    try:
+        _rehydrate_jobs()
+    except Exception:
+        log.exception("Rehydrate de l'historique a échoué")
+
+
+import threading as _threading_boot  # noqa: E402
+
+_threading_boot.Thread(
+    target=_rehydrate_jobs_bg, daemon=True, name="rehydrate-jobs"
+).start()
 
 
 # ── FastAPI app ────────────────────────────────────────────────────────────
@@ -981,6 +1005,9 @@ async def record_cancel() -> dict:
 @app.post("/api/record/start")
 async def record_start(payload: RecordStartPayload | None = None) -> dict:
     global recorder, live_processor
+    # Import différé : 1er endroit où l'on construit réellement AudioRecorder /
+    # LiveProcessor. Sort le coût d'import (numpy/sherpa/…) du démarrage serveur.
+    from audio_capture import AudioRecorder, LiveProcessor
     # Auto-reset si un enregistrement précédent est coincé (init ratée,
     # stop perdu, backend rechargé à chaud, …). Mieux vaut récupérer que
     # bloquer l'utilisateur sur un 409.

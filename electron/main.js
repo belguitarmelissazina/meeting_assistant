@@ -265,6 +265,86 @@ async function ensureModelsDownloaded() {
   }
 }
 
+// ── Splash de démarrage ───────────────────────────────────────────────────────
+// Affichée IMMÉDIATEMENT (avant le spawn backend) pour que l'app paraisse
+// s'ouvrir instantanément, au lieu de laisser l'utilisateur devant un écran
+// vide pendant le cold-start de backend.exe + waitForBackend(). Remplacée
+// par la fenêtre principale dès que /api/health répond.
+let splashWindow = null;
+
+function splashHtml() {
+  // Couleurs alignées sur webapp/app/globals.css. Le thème suit la
+  // préférence système via @media prefers-color-scheme (= comportement
+  // par défaut de l'app quand l'utilisateur n'a pas forcé un thème).
+  return `<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"/>
+<title>Meeting Assistant</title>
+<style>
+  :root{
+    --surface:251 247 243; --ink:31 27 24; --ink-muted:90 82 77;
+    --brand:171 55 35; --border:232 221 212; --accent:47 114 140;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --surface:18 20 24; --ink:240 234 227; --ink-muted:165 155 145;
+      --brand:215 95 78; --border:45 50 58; --accent:120 180 205;
+    }
+  }
+  html,body{margin:0;padding:0;height:100%;
+    background:rgb(var(--surface));color:rgb(var(--ink));
+    font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    overflow:hidden;-webkit-user-select:none;user-select:none;}
+  body{display:flex;flex-direction:column;justify-content:center;
+    align-items:center;padding:32px;text-align:center;box-sizing:border-box;
+    border:1px solid rgb(var(--border));
+    background-image:
+      radial-gradient(circle at 0% 0%, rgb(var(--accent) / 0.08), transparent 45%),
+      radial-gradient(circle at 100% 100%, rgb(var(--brand) / 0.06), transparent 50%);}
+  .spinner{width:42px;height:42px;border-radius:50%;
+    border:3px solid rgb(var(--border));border-top-color:rgb(var(--brand));
+    animation:spin .8s linear infinite;margin-bottom:24px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  h1{font-size:17px;font-weight:600;margin:0 0 8px;color:rgb(var(--ink));}
+  .sub{font-size:13px;color:rgb(var(--ink-muted));margin:0;}
+</style></head>
+<body>
+  <div class="spinner"></div>
+  <h1>Meeting Assistant</h1>
+  <p class="sub">Démarrage…</p>
+</body></html>`;
+}
+
+async function showSplash() {
+  splashWindow = new BrowserWindow({
+    width: 460,
+    height: 280,
+    frame: false,
+    resizable: false,
+    maximizable: false,
+    fullscreenable: false,
+    center: true,
+    show: false,
+    // Fallback avant peinture du HTML. La fenêtre n'est révélée qu'après
+    // loadURL (show:false) donc pas de flash réel ; on garde le crème
+    // clair de l'app (--surface light) comme couleur neutre.
+    backgroundColor: "#FBF7F3",
+    title: "Meeting Assistant",
+    webPreferences: { contextIsolation: true, nodeIntegration: false },
+  });
+  splashWindow.setMenuBarVisibility(false);
+  await splashWindow.loadURL(
+    "data:text/html;charset=utf-8," + encodeURIComponent(splashHtml())
+  );
+  if (splashWindow && !splashWindow.isDestroyed()) splashWindow.show();
+  return splashWindow;
+}
+
+function closeSplash() {
+  if (splashWindow && !splashWindow.isDestroyed()) {
+    splashWindow.close();
+  }
+  splashWindow = null;
+}
+
 // ── Window ───────────────────────────────────────────────────────────────────
 let mainWindow = null;
 
@@ -276,6 +356,9 @@ function createWindow() {
     minHeight: 600,
     title: "Meeting Assistant",
     backgroundColor: "#0b0b0f",
+    // Ne pas peindre une fenêtre blanche : on attend `ready-to-show`, puis
+    // on affiche la fenêtre ET on ferme le splash dans la même frame.
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
@@ -285,6 +368,28 @@ function createWindow() {
   });
 
   mainWindow.setMenuBarVisibility(false);
+
+  // Idempotent : `reveal()` ne doit s'exécuter QU'UNE fois. Sinon le timer
+  // de secours rappellerait mainWindow.show() après coup — et comme une
+  // fenêtre réduite est isVisible()===false, ça la dé-minimiserait tout seul.
+  let revealed = false;
+  let revealTimer = null;
+  const reveal = () => {
+    if (revealed) return;
+    revealed = true;
+    if (revealTimer) {
+      clearTimeout(revealTimer);
+      revealTimer = null;
+    }
+    if (mainWindow && !mainWindow.isDestroyed() && !mainWindow.isVisible()) {
+      mainWindow.show();
+    }
+    closeSplash();
+  };
+  mainWindow.once("ready-to-show", reveal);
+  // Filet de sécurité : si `ready-to-show` ne se déclenche pas (rare), on
+  // révèle quand même au bout de 8 s pour ne jamais rester bloqué sur le splash.
+  revealTimer = setTimeout(reveal, 8000);
 
   // Open external links in the system browser, not in-app.
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
@@ -305,6 +410,10 @@ function createWindow() {
   }
 
   mainWindow.on("closed", () => {
+    if (revealTimer) {
+      clearTimeout(revealTimer);
+      revealTimer = null;
+    }
     mainWindow = null;
   });
 }
@@ -326,14 +435,20 @@ if (!gotLock) {
       // 1) Vérifie/télécharge les modèles ML (premier lancement uniquement).
       //    Bloque tant que les ~2.3 GB ne sont pas en place — sinon le
       //    backend planterait au démarrage sur "FileNotFoundError".
+      //    (Cette étape a sa propre fenêtre de progression.)
       await ensureModelsDownloaded();
-      // 2) Démarre le backend Python.
+      // 2) Splash immédiat : l'utilisateur voit une fenêtre en <1 s pendant
+      //    tout le cold-start backend (étapes 3-4), au lieu d'un écran vide.
+      await showSplash();
+      // 3) Démarre le backend Python.
       startBackend();
-      // 3) Attend que /api/health réponde.
+      // 4) Attend que /api/health réponde.
       await waitForBackend();
-      // 4) Affiche la fenêtre principale.
+      // 5) Crée la fenêtre principale ; elle remplace le splash dès qu'elle
+      //    est prête à peindre (voir `reveal()` dans createWindow()).
       createWindow();
     } catch (err) {
+      closeSplash();
       console.error("[electron] startup failure:", err);
       const { dialog } = require("electron");
       dialog.showErrorBox(
