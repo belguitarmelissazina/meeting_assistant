@@ -150,7 +150,86 @@ export default function SettingsDialog({ open, onClose, onSaved }: Props) {
             </div>
           )}
         </section>
+
+        <div className="my-6 border-t border-surface-border" />
+
+        <CalendarSettings open={open} />
       </div>
     </div>
+  );
+}
+
+/**
+ * Statut + déconnexion du calendrier Microsoft. La *connexion* (device code)
+ * se fait dans l'onglet « Calendrier » de la page d'accueil — on évite ici
+ * de dupliquer la machine à états du device flow.
+ */
+function CalendarSettings({ open }: { open: boolean }) {
+  const [state, setState] = useState<
+    "loading" | "signed_out" | "pending" | "signed_in" | "error"
+  >("loading");
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    setState("loading");
+    fetch(apiUrl("/api/calendar/status"))
+      .then((r) => r.json())
+      .then((d) => setState(d?.state ?? "error"))
+      .catch(() => setState("error"));
+  }, [open]);
+
+  async function disconnect() {
+    setBusy(true);
+    try {
+      await fetch(apiUrl("/api/calendar/logout"), { method: "POST" });
+      setState("signed_out");
+    } catch {
+      /* ignore */
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const connected = state === "signed_in";
+
+  return (
+    <section>
+      <div className="mb-2 flex items-center justify-between">
+        <span className="text-sm font-semibold text-ink">Calendrier Microsoft</span>
+        <span
+          className={`text-xs ${
+            connected ? "text-accent-green" : "text-ink-muted"
+          }`}
+        >
+          {state === "loading"
+            ? "…"
+            : connected
+            ? "Connecté"
+            : state === "pending"
+            ? "Connexion en cours"
+            : "Non connecté"}
+        </span>
+      </div>
+      {!connected && (
+        <p className="text-xs text-ink-muted">
+          Connectez votre agenda depuis l&apos;onglet{" "}
+          <span className="font-medium text-ink">Calendrier</span> de
+          l&apos;accueil pour lister vos réunions.
+        </p>
+      )}
+      {connected && (
+        <div className="mt-3 flex justify-end">
+          <button
+            type="button"
+            onClick={disconnect}
+            disabled={busy}
+            className="rounded-lg border border-surface-border px-3 py-2 text-sm text-ink-muted hover:text-brand hover:border-brand/40 disabled:opacity-60"
+          >
+            {busy ? "Déconnexion…" : "Déconnecter"}
+          </button>
+        </div>
+      )}
+    </section>
   );
 }

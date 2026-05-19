@@ -2,12 +2,28 @@
 
 import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
-import JobPanel from "@/components/JobPanel";
+import MeetingsHome from "@/components/MeetingsHome";
+import MeetingDetail from "@/components/MeetingDetail";
 import OnboardingView from "@/components/OnboardingView";
 import SettingsDialog from "@/components/SettingsDialog";
+import ReportFindBar from "@/components/ReportFindBar";
+import type { TimelineItem } from "../lib/meetings";
+
+/** Item minimal pour ouvrir un job sélectionné hors timeline (Sidebar /
+ *  enregistrement hors agenda) — MeetingDetail recharge les vraies données. */
+function jobItem(id: string): TimelineItem {
+  return {
+    key: `job:${id}`,
+    title: "Réunion",
+    date: new Date(),
+    kind: "recorded",
+    status: "done",
+    jobId: id,
+  };
+}
 
 export default function Home() {
-  const [jobId, setJobId] = useState<string | null>(null);
+  const [selected, setSelected] = useState<TimelineItem | null>(null);
   const [composing, setComposing] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -25,34 +41,41 @@ export default function Home() {
   const toggleSidebar = () => setOpen(!sidebarOpen);
 
   const handleNew = () => {
-    setJobId(null);
+    setSelected(null);
     setComposing(true);
     setOpen(false);
   };
 
-  const handleSelect = (id: string) => {
+  const handleSelectJob = (id: string) => {
     setComposing(false);
-    setJobId(id);
+    setSelected(jobItem(id));
     setOpen(false);
   };
 
-  const showOnboarding = composing || jobId === null;
+  const goHome = () => {
+    setSelected(null);
+    setComposing(false);
+  };
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
+      {/* Ctrl+F dans le compte rendu ouvert (réunion sélectionnée). */}
+      <ReportFindBar enabled={selected !== null} />
+
       <Sidebar
         open={sidebarOpen}
         onClose={() => setOpen(false)}
-        selectedId={jobId}
-        onSelect={handleSelect}
+        onOpen={() => setOpen(true)}
+        ctrlFEnabled={selected === null}
+        selectedId={selected?.jobId ?? null}
+        onSelect={handleSelectJob}
         onNew={handleNew}
         onDeleted={(id) => {
-          if (id === jobId) setJobId(null);
+          if (id === selected?.jobId) goHome();
         }}
       />
 
       <main className="relative h-full w-full overflow-y-auto">
-        {/* Top-left fixed nav rail: menu + new meeting */}
         <div className="fixed left-4 top-4 z-20 flex items-center gap-2">
           <button
             type="button"
@@ -70,8 +93,8 @@ export default function Home() {
           <button
             type="button"
             onClick={handleNew}
-            aria-label="Nouvelle réunion"
-            title="Nouvelle réunion"
+            aria-label="Réunion hors agenda"
+            title="Réunion hors agenda"
             className="nav-icon-btn"
           >
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -96,15 +119,19 @@ export default function Home() {
         <SettingsDialog open={settingsOpen} onClose={() => setSettingsOpen(false)} />
 
         <div className="mx-auto w-full max-w-[1280px] px-6 pb-16 pt-20 md:px-10 lg:px-14">
-          {showOnboarding ? (
-            <OnboardingView
-              onJobCreated={(id) => {
-                setComposing(false);
-                setJobId(id);
+          {composing ? (
+            <OnboardingView onJobCreated={handleSelectJob} onBack={goHome} />
+          ) : selected ? (
+            <MeetingDetail
+              key={selected.key}
+              item={selected}
+              onBack={goHome}
+              onJobCreated={() => {
+                /* MeetingDetail gère son job interne ; rien à faire ici. */
               }}
             />
           ) : (
-            <JobPanel jobId={jobId} />
+            <MeetingsHome onSelect={setSelected} onAdHoc={handleNew} />
           )}
         </div>
       </main>

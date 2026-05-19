@@ -15,21 +15,33 @@
     "build:assets": "cd .. && python scripts/prepare_assets.py",
     "build:all": "npm run build:python && npm run build:webapp",
     "dist": "electron-builder --win nsis",
-    "release": "npm run build:all && npm run dist"
+    "release": "npm run build:all && npm run dist",
+    "build:local": "npm run build:all && node build-app.js",
+    "publish": "npm run build:all && node build-app.js --publish"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.4.4",
     "electron": "^33.0.0",
     "electron-builder": "^25.1.8"
   },
   "dependencies": {
-    "tree-kill": "^1.2.2"
+    "tree-kill": "^1.2.2",
+    "electron-updater": "^6.3.9"
   },
   "build": {
     "appId": "com.yele.meeting-assistant",
     "productName": "Meeting Assistant",
     "copyright": "Copyright © 2026 Yele Consulting",
     "icon": "icon.png",
+    "publish": {
+      "provider": "github",
+      "owner": "belguitarmelissazina",
+      "repo": "meeting-assistant-releases",
+      "private": true,
+      "releaseType": "release"
+    },
     "directories": {
       "buildResources": "build",
       "output": "../release"
@@ -69,7 +81,7 @@
           "arch": ["x64"]
         }
       ],
-      "artifactName": "${productName}-Setup-${version}.${ext}"
+      "artifactName": "MeetingAssistant-Setup-${version}.${ext}"
     },
     "nsis": {
       "oneClick": false,

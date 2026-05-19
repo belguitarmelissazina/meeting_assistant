@@ -6,6 +6,7 @@ const fs = require("fs");
 const { spawn } = require("child_process");
 const http = require("http");
 const treeKill = require("tree-kill");
+const { autoUpdater } = require("electron-updater");
 const { downloadAll, allPresent } = require("./downloader");
 
 const BACKEND_PORT = 8000;
@@ -457,6 +458,56 @@ ipcMain.on("find:stop", () => {
   mainWindow.webContents.stopFindInPage("clearSelection");
 });
 
+// ── Mise à jour automatique (GitHub privé, electron-updater) ─────────────────
+// Télécharge en fond, installe au redémarrage. L'utilisateur ne désinstalle
+// jamais rien. En dev (app non packagée) : no-op. Toute erreur est silencieuse
+// (un poste hors-ligne ou un souci réseau ne doit pas bloquer l'app).
+function setupAutoUpdate() {
+  if (isDev) return;
+  try {
+    autoUpdater.autoDownload = true;
+    autoUpdater.autoInstallOnAppQuit = true;
+
+    autoUpdater.on("update-downloaded", (info) => {
+      const { dialog } = require("electron");
+      const win =
+        mainWindow && !mainWindow.isDestroyed() ? mainWindow : undefined;
+      dialog
+        .showMessageBox(win, {
+          type: "info",
+          buttons: ["Redémarrer maintenant", "Plus tard"],
+          defaultId: 0,
+          cancelId: 1,
+          title: "Mise à jour",
+          message: "Une nouvelle version de Meeting Assistant est prête.",
+          detail: `Version ${
+            info && info.version ? info.version : ""
+          } — elle s'installera au redémarrage de l'application.`,
+        })
+        .then((r) => {
+          if (r.response === 0) {
+            stopBackend();
+            autoUpdater.quitAndInstall();
+          }
+        })
+        .catch(() => {});
+    });
+
+    autoUpdater.on("error", (e) => {
+      console.error(
+        "[updater] error:",
+        e == null ? "unknown" : e.stack || e.message || String(e)
+      );
+    });
+
+    autoUpdater.checkForUpdates().catch((e) => {
+      console.error("[updater] checkForUpdates failed:", e && e.message);
+    });
+  } catch (e) {
+    console.error("[updater] setup failed:", e && e.message);
+  }
+}
+
 // ── App lifecycle ────────────────────────────────────────────────────────────
 const gotLock = app.requestSingleInstanceLock();
 if (!gotLock) {
@@ -486,6 +537,8 @@ if (!gotLock) {
       // 5) Crée la fenêtre principale ; elle remplace le splash dès qu'elle
       //    est prête à peindre (voir `reveal()` dans createWindow()).
       createWindow();
+      // 6) Vérifie les mises à jour en arrière-plan (prod uniquement).
+      setupAutoUpdate();
     } catch (err) {
       closeSplash();
       console.error("[electron] startup failure:", err);

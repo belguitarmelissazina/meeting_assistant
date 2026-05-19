@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Réunions — Diarisation & Compte rendu",
-  description: "Enregistrement, diarisation, transcription, compte rendu",
+  title: "Meeting Assistant",
+  description: "Meeting Assistant",
 };
 
 const themeInitScript = `

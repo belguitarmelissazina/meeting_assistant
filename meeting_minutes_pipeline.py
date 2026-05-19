@@ -1323,12 +1323,21 @@ def assemble_report(sections: list[dict], exec_summary: str, source: str,
                     speaker_mapping: dict[str, dict] | None = None) -> str:
     lines: list[str] = []
 
-    lines.append("# Compte rendu de réunion\n")
-    lines.append(f"*Source : `{source}`*\n")
+    # Numérotation séquentielle : Participants peut être absent (enregistrement
+    # sans speaker_mapping) → la section suivante doit alors devenir « 1. »,
+    # pas « 2. ». Le compteur n'avance que pour les sections réellement émises.
+    n = 0
 
-    # 1. Participants
+    def _h(titre: str) -> str:
+        nonlocal n
+        n += 1
+        return f"## {n}. {titre}\n"
+
+    lines.append("# Compte rendu de réunion\n")
+
+    # Participants
     if speaker_mapping:
-        lines.append("## 1. Participants\n")
+        lines.append(_h("Participants"))
         by_company: dict[str, list[str]] = {}
         for info in speaker_mapping.values():
             company = info.get("entreprise") or "Non précisé"
@@ -1337,12 +1346,12 @@ def assemble_report(sections: list[dict], exec_summary: str, source: str,
             lines.append(f"**{company}** : {', '.join(sorted(names))}\n")
         lines.append("")
 
-    # 2. Executive Summary
-    lines.append("## 2. Executive Summary\n")
+    # Synthèse (anciennement « Executive Summary » — libellé FR)
+    lines.append(_h("Synthèse"))
     lines.append(exec_summary.strip() + "\n")
 
-    # 3. Sujets abordés
-    lines.append("## 3. Sujets abordés\n")
+    # Sujets abordés
+    lines.append(_h("Sujets abordés"))
     for i, s in enumerate(sections, 1):
         lines.append(f"### {i}. {s['titre']}\n")
         contexte = (s.get("contexte") or "").strip()
@@ -1363,8 +1372,8 @@ def assemble_report(sections: list[dict], exec_summary: str, source: str,
                 lines.append(f"- {d}")
             lines.append("")
 
-    # 4. Décisions
-    lines.append("## 4. Décisions\n")
+    # Décisions
+    lines.append(_h("Décisions"))
     all_decisions = [(s["titre"], d) for s in sections for d in s["decisions"]]
     if all_decisions:
         lines.append("| # | Sujet | Décision |")
@@ -1376,8 +1385,8 @@ def assemble_report(sections: list[dict], exec_summary: str, source: str,
     else:
         lines.append("_Aucune décision formellement prise._\n")
 
-    # 5. Plan d'attaque (engagements explicites + recommandations consultant)
-    lines.append("## 5. Plan d'attaque\n")
+    # Plan d'attaque (engagements explicites + recommandations consultant)
+    lines.append(_h("Plan d'attaque"))
     if plan:
         lines.append("| # | Sujet | Action | Responsable | Échéance |")
         lines.append("|---|-------|--------|-------------|----------|")

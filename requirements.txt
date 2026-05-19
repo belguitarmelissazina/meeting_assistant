@@ -82,3 +82,9 @@ uvicorn==0.44.0
 watchfiles==1.1.1
 websockets==16.0
 wespeakerruntime==1.0.1
+
+# Microsoft Graph calendar integration (ajouté manuellement — pas dans le
+# snapshot pip freeze d'origine). Versions minimales, pip résout le reste.
+msal>=1.28.0
+msal-extensions>=1.1.0
+requests>=2.32.0

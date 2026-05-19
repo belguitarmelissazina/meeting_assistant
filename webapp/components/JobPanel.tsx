@@ -5,9 +5,13 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import ReportEditor, { type SaveState } from "./ReportEditor";
 import { apiUrl } from "../lib/api";
+import { consumeCalendarPrefill } from "../lib/calendarPrefill";
 
 interface Props {
   jobId: string | null;
+  /** Masque l'entête interne (titre/statut) quand un parent affiche déjà
+   *  l'entête de la réunion (cas MeetingDetail). */
+  hideHeader?: boolean;
 }
 
 interface MeetingCtx {
@@ -31,9 +35,12 @@ interface JobStatus {
   context?: MeetingCtx;
 }
 
-export default function JobPanel({ jobId }: Props) {
+export default function JobPanel({ jobId, hideHeader }: Props) {
   const [job, setJob] = useState<JobStatus | null>(null);
   const [saveState, setSaveState] = useState<SaveState>({ kind: "idle" });
+  // Mini-lecteur audio fixé en bas (overlay) — fermé par défaut pour que le
+  // compte rendu soit l'élément principal de la page.
+  const [audioOpen, setAudioOpen] = useState(false);
 
   useEffect(() => {
     if (!jobId) {
@@ -61,6 +68,7 @@ export default function JobPanel({ jobId }: Props) {
 
   useEffect(() => {
     setSaveState({ kind: "idle" });
+    setAudioOpen(false);
   }, [jobId]);
 
   if (!jobId || !job) {
@@ -72,18 +80,28 @@ export default function JobPanel({ jobId }: Props) {
 
   return (
     <div className="flex flex-col animate-fade-in">
-      <header className="mb-6 flex items-start justify-between gap-6">
-        <div className="min-w-0 flex-1">
-          <h1 className="truncate text-3xl font-semibold tracking-tight text-ink">
-            {job.label || `Réunion ${job.id.slice(0, 8)}`}
-          </h1>
-          <p className="mt-1.5 flex items-center gap-2 text-sm text-ink-muted">
+      {hideHeader ? (
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <p className="flex items-center gap-2 text-sm text-ink-muted">
             <StatusDot status={job.status} />
             <span>{isDone ? "Compte-rendu prêt" : job.step}</span>
           </p>
+          {isDone && <TopActions job={job} saveState={saveState} onPlayAudio={() => setAudioOpen(true)} />}
         </div>
-        {isDone && <TopActions job={job} saveState={saveState} />}
-      </header>
+      ) : (
+        <header className="mb-6 flex items-start justify-between gap-6">
+          <div className="min-w-0 flex-1">
+            <h1 className="truncate text-3xl font-semibold tracking-tight text-ink">
+              {job.label || `Réunion ${job.id.slice(0, 8)}`}
+            </h1>
+            <p className="mt-1.5 flex items-center gap-2 text-sm text-ink-muted">
+              <StatusDot status={job.status} />
+              <span>{isDone ? "Compte-rendu prêt" : job.step}</span>
+            </p>
+          </div>
+          {isDone && <TopActions job={job} saveState={saveState} onPlayAudio={() => setAudioOpen(true)} />}
+        </header>
+      )}
 
       {!isDraft && !isDone && (
         <div className="mb-6">
@@ -91,16 +109,10 @@ export default function JobPanel({ jobId }: Props) {
         </div>
       )}
 
-      {isDone && job.audioAvailable && (
-        <div className="mb-6">
-          <SlimAudio jobId={job.id} />
-        </div>
-      )}
-
       {isDraft ? (
         <>
           {job.audioAvailable && <SlimAudio jobId={job.id} />}
-          <DraftForm jobId={job.id} source={job.source} />
+          <DraftForm jobId={job.id} />
         </>
       ) : (
         <>
@@ -121,6 +133,50 @@ export default function JobPanel({ jobId }: Props) {
             </div>
           )}
         </>
+      )}
+
+      {isDone && job.audioAvailable && audioOpen && (
+        <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-4">
+          <div className="pointer-events-auto flex w-full max-w-2xl items-center gap-3 rounded-xl border border-surface-border bg-surface-card/95 px-3 py-2 shadow-2xl backdrop-blur">
+            <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-accent-blue/10 text-accent-blue">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18V5l12-2v13" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="18" cy="16" r="3" />
+              </svg>
+            </span>
+            <audio
+              key={job.id}
+              controls
+              preload="metadata"
+              src={apiUrl(`/api/jobs/${job.id}/audio`)}
+              className="h-9 min-w-0 flex-1"
+            />
+            <a
+              href={apiUrl(`/api/jobs/${job.id}/audio`)}
+              download
+              title="Télécharger l'audio"
+              className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-surface hover:text-accent-blue"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </a>
+            <button
+              type="button"
+              onClick={() => setAudioOpen(false)}
+              title="Fermer le lecteur"
+              className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-brand/10 hover:text-brand"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
@@ -146,100 +202,32 @@ function StatusDot({ status }: { status: JobStatus["status"] }) {
 function TopActions({
   job,
   saveState,
+  onPlayAudio,
 }: {
   job: JobStatus;
   saveState: SaveState;
+  onPlayAudio: () => void;
 }) {
-  const [downloadingKind, setDownloadingKind] = useState<null | "report" | "transcript">(null);
-  const [downloadError, setDownloadError] = useState<string | null>(null);
-  const showTranscriptDownload = job.source === "audio" && job.transcriptAvailable;
-
-  async function download(kind: "report" | "transcript", fallbackExt: string) {
-    setDownloadError(null);
-    setDownloadingKind(kind);
-    try {
-      const r = await fetch(apiUrl(`/api/jobs/${job.id}/download?kind=${kind}`));
-      if (!r.ok) {
-        let msg = `Erreur ${r.status}`;
-        try {
-          const data = await r.json();
-          if (data?.detail) msg = String(data.detail);
-        } catch {
-          /* ignore */
-        }
-        throw new Error(msg);
-      }
-      const blob = await r.blob();
-      const cd = r.headers.get("content-disposition") || "";
-      const m = /filename="?([^"]+)"?/i.exec(cd);
-      const fname = m?.[1] || `${job.label || job.id}${fallbackExt}`;
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = fname;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch (e) {
-      setDownloadError(e instanceof Error ? e.message : "Téléchargement impossible");
-    } finally {
-      setDownloadingKind(null);
-    }
-  }
-
+  // Les fichiers (compte_rendu.docx, transcript.txt) sont déjà dans le
+  // dossier de la réunion (Documents/Réunions/…) → pas de bouton de
+  // téléchargement ici. Seule la lecture audio reste utile.
   return (
-    <div className="flex flex-col items-end gap-1.5">
-      <div className="flex items-center gap-2">
-        <SaveStatusPill state={saveState} />
-        {job.audioAvailable && (
-          <a
-            href={apiUrl(`/api/jobs/${job.id}/audio`)}
-            download
-            title="Télécharger l'audio"
-            aria-label="Télécharger l'audio"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-surface-card text-ink-muted shadow-sm transition-all duration-200 hover:text-accent-blue hover:border-accent-blue hover:shadow-md"
-          >
-            <AudioDownloadIcon />
-          </a>
-        )}
-        {showTranscriptDownload && (
-          <button
-            type="button"
-            onClick={() => download("transcript", ".txt")}
-            disabled={downloadingKind !== null}
-            title="Télécharger le transcript"
-            aria-label="Télécharger le transcript"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-surface-card text-ink-muted shadow-sm transition-all duration-200 hover:text-accent-blue hover:border-accent-blue hover:shadow-md disabled:opacity-60"
-          >
-            {downloadingKind === "transcript" ? (
-              <span className="h-3 w-3 animate-spin rounded-full border-2 border-accent-blue/30 border-t-accent-blue" />
-            ) : (
-              <TranscriptDownloadIcon />
-            )}
-          </button>
-        )}
-        {job.reportDocxAvailable && (
-          <button
-            type="button"
-            onClick={() => download("report", ".docx")}
-            disabled={downloadingKind !== null}
-            title="Télécharger en Word"
-            aria-label="Télécharger en Word"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-surface-card text-ink-muted shadow-sm transition-all duration-200 hover:text-accent-blue hover:border-accent-blue hover:shadow-md disabled:opacity-60"
-          >
-            {downloadingKind === "report" ? (
-              <span className="h-3 w-3 animate-spin rounded-full border-2 border-accent-blue/30 border-t-accent-blue" />
-            ) : (
-              <DownloadIcon />
-            )}
-          </button>
-        )}
-      </div>
-      {downloadError && (
-        <div className="max-w-sm rounded-md border border-brand/30 bg-brand/5 px-3 py-2 text-xs text-brand">
-          {downloadError}
-        </div>
+    <div className="flex items-center gap-2">
+      <SaveStatusPill state={saveState} />
+      {job.audioAvailable && (
+        <button
+          type="button"
+          onClick={onPlayAudio}
+          title="Écouter l'enregistrement"
+          aria-label="Écouter l'enregistrement"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-surface-card text-ink-muted shadow-sm transition-all duration-200 hover:text-accent-blue hover:border-accent-blue hover:shadow-md"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" />
+            <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+          </svg>
+        </button>
       )}
     </div>
   );
@@ -298,22 +286,17 @@ function SlimAudio({ jobId }: { jobId: string }) {
   );
 }
 
-function DraftForm({
-  jobId,
-  source,
-}: {
-  jobId: string;
-  source?: JobStatus["source"];
-}) {
-  const [participants, setParticipants] = useState("");
-  const [entreprises, setEntreprises] = useState("");
-  const [contexte, setContexte] = useState("");
-  const [diarize, setDiarize] = useState(true);
+function DraftForm({ jobId }: { jobId: string }) {
+  // Prefill « one-shot » si l'utilisateur est venu d'une réunion du
+  // calendrier. Consommé une seule fois au montage (useState lazy init).
+  const [prefill] = useState(() => consumeCalendarPrefill());
+  const [participants, setParticipants] = useState(prefill?.participants ?? "");
+  const [entreprises, setEntreprises] = useState(prefill?.entreprises ?? "");
+  const [contexte, setContexte] = useState(prefill?.contexte ?? "");
   const [llm, setLlm] = useState<"local" | "mistral">("local");
   const [mistralKeySet, setMistralKeySet] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const showDiarizeToggle = source === "audio";
 
   useEffect(() => {
     fetch(apiUrl("/api/settings"))
@@ -335,7 +318,7 @@ function DraftForm({
       const r = await fetch(apiUrl(`/api/jobs/${jobId}/process`), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ participants, entreprises, contexte, diarize, llm }),
+        body: JSON.stringify({ participants, entreprises, contexte, llm }),
       });
       if (!r.ok) throw new Error(await r.text());
     } catch (e) {
@@ -350,6 +333,22 @@ function DraftForm({
       <p className="mb-5 text-sm text-ink-muted">
         Écoutez l&apos;enregistrement, renseignez les informations, puis lancez le traitement.
       </p>
+
+      {prefill && (
+        <div className="mb-5 flex items-start gap-2 rounded-lg border border-accent-blue/30 bg-accent-blue/5 px-3 py-2.5 text-xs text-ink-muted">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 flex-shrink-0 text-accent-blue">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <span>
+            Pré-rempli depuis votre réunion{" "}
+            <span className="font-medium text-ink">« {prefill.subject} »</span>.
+            Vérifiez et ajustez si besoin.
+          </span>
+        </div>
+      )}
 
       <div className="mb-5">
         <label className="mb-1.5 flex items-center justify-between text-sm font-semibold text-ink">
@@ -383,17 +382,6 @@ function DraftForm({
           placeholder="Yele Consulting, RTE"
         />
       </div>
-
-      {showDiarizeToggle && (
-        <div className="mt-5">
-          <ToggleRow
-            checked={diarize}
-            onChange={setDiarize}
-            label="Diarisation"
-            hint="Identifier les tours de parole par locuteur (+ un peu de temps de traitement)"
-          />
-        </div>
-      )}
 
       <div className="mt-3">
         <LlmSelector value={llm} onChange={setLlm} mistralKeySet={mistralKeySet} />
@@ -495,41 +483,6 @@ function LlmOption({
   );
 }
 
-function ToggleRow({
-  checked,
-  onChange,
-  label,
-  hint,
-}: {
-  checked: boolean;
-  onChange: (v: boolean) => void;
-  label: string;
-  hint: string;
-}) {
-  return (
-    <label className="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-surface-border bg-surface-card px-4 py-3">
-      <div className="min-w-0">
-        <span className="block text-sm font-medium text-ink">{label}</span>
-        <span className="mt-0.5 block text-xs text-ink-muted">{hint}</span>
-      </div>
-      <button
-        type="button"
-        role="switch"
-        aria-checked={checked}
-        onClick={() => onChange(!checked)}
-        className={`relative inline-flex h-6 w-11 flex-shrink-0 items-center rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue/30 ${
-          checked ? "bg-accent-blue" : "bg-surface-border"
-        }`}
-      >
-        <span
-          className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform duration-200 ${
-            checked ? "translate-x-5" : "translate-x-0.5"
-          }`}
-        />
-      </button>
-    </label>
-  );
-}
 
 function Field({
   label,
@@ -558,38 +511,6 @@ function Field({
         className="w-full rounded-lg border border-surface-border bg-surface-card px-3 py-2 text-sm text-ink placeholder:text-ink-muted/60 transition focus:border-accent-blue focus:outline-none focus:ring-2 focus:ring-accent-blue/20"
       />
     </div>
-  );
-}
-
-function DownloadIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
-    </svg>
-  );
-}
-
-function AudioDownloadIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-      <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" />
-      <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
-    </svg>
-  );
-}
-
-function TranscriptDownloadIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-      <polyline points="14 2 14 8 20 8" />
-      <line x1="8" y1="13" x2="13" y2="13" />
-      <line x1="8" y1="17" x2="13" y2="17" />
-      <polyline points="16 15 19 18 16 21" />
-    </svg>
   );
 }
 

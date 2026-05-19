@@ -45,6 +45,50 @@ turndown.use(gfm);
 // garantit la structure, l'échappement n'apporte rien et pollue la sortie.
 turndown.escape = (text: string) => text;
 
+// La règle table de turndown-plugin-gfm laisse le tableau en HTML brut dès
+// que la 1re ligne ne passe pas son `isHeadingRow` strict (tiptap émet
+// `<table class="md-table"><tbody><tr><th><p>…` avec des <p>/blancs). Le
+// backend (_md_to_docx) ne lit QUE le GFM `| … |` → docx cassé. On force
+// donc une reconstruction GFM déterministe de tout <table>.
+turndown.addRule("cellParagraphUnwrap", {
+  filter: (node) =>
+    node.nodeName === "P" &&
+    !!(node as unknown as HTMLElement).closest?.("td, th"),
+  replacement: (content) => content,
+});
+
+turndown.addRule("gfmTable", {
+  filter: "table",
+  replacement: (_content, node) => {
+    const table = node as unknown as HTMLElement;
+    const trs = Array.from(table.querySelectorAll("tr"));
+    if (trs.length === 0) return "";
+    const rows = trs.map((tr) =>
+      Array.from(tr.querySelectorAll("th, td")).map((c) =>
+        (c.textContent || "")
+          .replace(/\s+/g, " ")
+          .trim()
+          .replace(/\|/g, "\\|"),
+      ),
+    );
+    const ncols = rows.reduce((m, r) => Math.max(m, r.length), 0);
+    if (ncols === 0) return "";
+    const pad = (r: string[]) =>
+      "| " + Array.from({ length: ncols }, (_, i) => r[i] ?? "").join(" | ") + " |";
+    const header = pad(rows[0]);
+    const sep = "| " + Array.from({ length: ncols }, () => "---").join(" | ") + " |";
+    const body = rows.slice(1).map(pad);
+    return "\n\n" + [header, sep, ...body].join("\n") + "\n\n";
+  },
+});
+
+// Filet de sécurité : aucune balise de tableau ne doit jamais survivre en
+// HTML brut dans le markdown, même si la règle `gfmTable` ne s'appliquait pas.
+turndown.addRule("tableTagsPassthrough", {
+  filter: ["thead", "tbody", "tfoot", "tr", "th", "td"],
+  replacement: (content) => content,
+});
+
 const ReportEditor = forwardRef<ReportEditorHandle, Props>(function ReportEditor(
   { jobId, initialMarkdown, onStateChange },
   ref,

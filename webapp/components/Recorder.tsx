@@ -2,14 +2,44 @@
 
 import { useEffect, useRef, useState } from "react";
 import { apiUrl } from "../lib/api";
+import { setCalendarPrefill } from "../lib/calendarPrefill";
+
+/** Réunion d'agenda à laquelle rattacher l'enregistrement (optionnel). */
+export interface RecordingMeeting {
+  calendar: {
+    eventId?: string;
+    subject?: string;
+    start?: string;
+    end?: string;
+    location?: string;
+    organizer?: string;
+    attendees: string[];
+  };
+  /** Pour ancrer le LLM live + pré-remplir le formulaire de contexte. */
+  participants: string;
+  entreprises: string;
+  contexte: string;
+}
 
 interface Props {
   onJobCreated: (id: string) => void;
+  /** Si fourni, l'enregistrement est lié à cette réunion d'agenda. */
+  meeting?: RecordingMeeting | null;
+  /** Appelé dès le clic « Arrêter » (avant la finalisation backend) →
+   *  le parent peut afficher un écran « Génération du compte rendu ». */
+  onStopStart?: () => void;
+  /** Appelé si la finalisation échoue → le parent ré-affiche le Recorder. */
+  onStopFailed?: () => void;
 }
 
 type State = "idle" | "recording" | "stopping" | "processing";
 
-export default function Recorder({ onJobCreated }: Props) {
+export default function Recorder({
+  onJobCreated,
+  meeting,
+  onStopStart,
+  onStopFailed,
+}: Props) {
   const [state, setState] = useState<State>("idle");
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
@@ -33,8 +63,35 @@ export default function Recorder({ onJobCreated }: Props) {
   async function start() {
     setError(null);
     try {
-      const r = await fetch(apiUrl("/api/record/start"), { method: "POST" });
+      // On envoie toujours un corps JSON : enableLiveLlm=true conserve le
+      // comportement live d'origine ; `calendar` rattache la réunion.
+      const body = meeting
+        ? {
+            enableLiveLlm: true,
+            participants: meeting.participants,
+            entreprises: meeting.entreprises,
+            contexte: meeting.contexte,
+            calendar: meeting.calendar,
+          }
+        : { enableLiveLlm: true };
+
+      const r = await fetch(apiUrl("/api/record/start"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
       if (!r.ok) throw new Error(await r.text());
+
+      // Pré-remplit le formulaire de contexte (cas non-live / fallback).
+      if (meeting) {
+        setCalendarPrefill({
+          subject: meeting.calendar.subject || "Réunion",
+          participants: meeting.participants,
+          entreprises: meeting.entreprises,
+          contexte: meeting.contexte,
+        });
+      }
+
       setDuration(0);
       setState("recording");
     } catch (e) {
@@ -44,6 +101,7 @@ export default function Recorder({ onJobCreated }: Props) {
 
   async function stop() {
     setState("stopping");
+    onStopStart?.();
     try {
       const r = await fetch(apiUrl("/api/record/stop"), { method: "POST" });
       if (!r.ok) throw new Error(await r.text());
@@ -53,6 +111,7 @@ export default function Recorder({ onJobCreated }: Props) {
     } catch (e) {
       setError(e instanceof Error ? e.message : "Erreur");
       setState("idle");
+      onStopFailed?.();
     }
   }
 

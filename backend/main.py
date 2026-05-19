@@ -220,6 +220,12 @@ class Job:
         self.transcript_path: Path | None = None
         self.error: str | None = None
         self.context: dict = {}
+        # Réunion d'agenda liée (None si enregistrement hors agenda). Persisté
+        # dans `.calendar_event.json` au sein du dossier → rechargé au boot.
+        self.calendar: dict | None = None
+        # Dossier (catégorie) classant la réunion, = sous-dossier réel de
+        # Documents/Réunions/. None = à la racine ("Sans dossier").
+        self.folder: str | None = None
         # st_ctime = creation time sur Windows, stable même après renommage
         self.created_at = self.out_dir.stat().st_ctime
         self.label = self.out_dir.name
@@ -240,59 +246,118 @@ class Job:
             "transcript": self.transcript,
             "error": self.error,
             "context": self.context or {},
+            "calendar": self.calendar,
+            "folder": self.folder,
         }
 
 
 jobs: dict[str, Job] = {}
 recorder: AudioRecorder | None = None
 live_processor: LiveProcessor | None = None
+# Réunion d'agenda choisie au record/start, consommée au record/stop pour
+# nommer le dossier + écrire le marqueur. None = enregistrement hors agenda.
+_pending_calendar: dict | None = None
 pipeline_lock = asyncio.Lock()
 
 
+def _looks_like_meeting(folder: Path) -> bool:
+    """Un dossier de réunion contient un audio.* ou un transcript.raw.txt.
+    Un dossier-catégorie n'en a pas (il ne contient que des sous-dossiers)."""
+    try:
+        if any(p.stem == "audio" and p.is_file() for p in folder.iterdir()):
+            return True
+    except OSError:
+        return False
+    return (folder / "transcript.raw.txt").exists()
+
+
+def list_category_folders() -> list[str]:
+    """Sous-dossiers de Documents/Réunions/ qui servent de catégories
+    (= ne sont pas eux-mêmes une réunion). Inclut les dossiers vides."""
+    out: list[str] = []
+    try:
+        for d in sorted(HISTORY_DIR.iterdir()):
+            if d.is_dir() and not _looks_like_meeting(d):
+                out.append(d.name)
+    except OSError:
+        pass
+    return out
+
+
+def _load_job_from_dir(folder: Path, category: str | None) -> tuple[str, Job] | None:
+    audios = [p for p in folder.iterdir() if p.stem == "audio" and p.is_file()]
+    raw_transcript = folder / "transcript.raw.txt"
+    # Marqueur invisible : si le dossier a été créé par un enregistrement
+    # live, on a posé ce fichier pour s'en souvenir au redémarrage.
+    origin_marker = folder / ".origin.recording"
+    origin: JobOrigin = "recording" if origin_marker.exists() else "upload"
+    if audios:
+        job_id = uuid.uuid4().hex
+        job = Job(job_id, audios[0], folder, source="audio", origin=origin)
+    elif raw_transcript.exists():
+        job_id = uuid.uuid4().hex
+        # Un transcript uploadé est toujours "upload" (pas de live pour du texte).
+        job = Job(job_id, raw_transcript, folder, source="transcript", origin="upload")
+    else:
+        return None
+    job.folder = category
+    cal_marker = folder / ".calendar_event.json"
+    if cal_marker.exists():
+        try:
+            import json as _json
+            job.calendar = _json.loads(cal_marker.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            job.calendar = None
+    report_md = folder / "compte_rendu.md"
+    report_docx = folder / "compte_rendu.docx"
+    if report_md.exists() or report_docx.exists():
+        job.status = "done"
+        job.step = "Terminé"
+        if report_md.exists():
+            job.report_path = report_md
+            try:
+                job.report_markdown = report_md.read_text(encoding="utf-8")
+            except OSError:
+                pass
+        if report_docx.exists():
+            job.report_docx_path = report_docx
+        if job.source == "audio":
+            # Nouveau nom d'abord, puis ancien (dossiers créés avant le renommage).
+            for candidate in (folder / "transcript.txt",
+                              folder / "audio.transcript.midpoint.txt"):
+                if candidate.exists():
+                    job.transcript_path = candidate
+                    try:
+                        job.transcript = candidate.read_text(encoding="utf-8")
+                    except OSError:
+                        pass
+                    break
+            # Balayage unique au boot : épure les anciens dossiers encombrés.
+            # UNIQUEMENT source="audio" — un dossier source="transcript" repose
+            # sur transcript.raw.txt (cf. _looks_like_meeting) : ne pas l'effacer.
+            try:
+                _cleanup_intermediate_files(job)
+            except Exception:
+                log.exception("Nettoyage rehydrate échoué pour %s", folder)
+    return job_id, job
+
+
 def _rehydrate_jobs() -> None:
-    for folder in sorted(HISTORY_DIR.iterdir()):
-        if not folder.is_dir():
+    for entry in sorted(HISTORY_DIR.iterdir()):
+        if not entry.is_dir():
             continue
-        audios = [p for p in folder.iterdir() if p.stem == "audio" and p.is_file()]
-        raw_transcript = folder / "transcript.raw.txt"
-        # Marqueur invisible : si le dossier a été créé par un enregistrement
-        # live, on a posé ce fichier pour s'en souvenir au redémarrage.
-        origin_marker = folder / ".origin.recording"
-        origin: JobOrigin = "recording" if origin_marker.exists() else "upload"
-        if audios:
-            job_id = uuid.uuid4().hex
-            job = Job(job_id, audios[0], folder, source="audio", origin=origin)
-        elif raw_transcript.exists():
-            job_id = uuid.uuid4().hex
-            # Un transcript uploadé est toujours "upload" (pas de live pour du texte).
-            job = Job(job_id, raw_transcript, folder, source="transcript", origin="upload")
-        else:
+        if _looks_like_meeting(entry):
+            loaded = _load_job_from_dir(entry, None)
+            if loaded:
+                jobs[loaded[0]] = loaded[1]
             continue
-        report_md = folder / "compte_rendu.md"
-        report_docx = folder / "compte_rendu.docx"
-        if report_md.exists() or report_docx.exists():
-            job.status = "done"
-            job.step = "Terminé"
-            if report_md.exists():
-                job.report_path = report_md
-                try:
-                    job.report_markdown = report_md.read_text(encoding="utf-8")
-                except OSError:
-                    pass
-            if report_docx.exists():
-                job.report_docx_path = report_docx
-            if job.source == "audio":
-                # Nouveau nom d'abord, puis ancien (dossiers créés avant le renommage).
-                for candidate in (folder / "transcript.txt",
-                                  folder / "audio.transcript.midpoint.txt"):
-                    if candidate.exists():
-                        job.transcript_path = candidate
-                        try:
-                            job.transcript = candidate.read_text(encoding="utf-8")
-                        except OSError:
-                            pass
-                        break
-        jobs[job_id] = job
+        # Sinon : dossier-catégorie → on charge les réunions qu'il contient
+        # (un seul niveau de profondeur — pas de sous-sous-dossiers).
+        for sub in sorted(entry.iterdir()):
+            if sub.is_dir() and _looks_like_meeting(sub):
+                loaded = _load_job_from_dir(sub, entry.name)
+                if loaded:
+                    jobs[loaded[0]] = loaded[1]
     if jobs:
         log.info("Historique rechargé : %d réunion(s)", len(jobs))
 
@@ -373,6 +438,18 @@ class MeetingContext(BaseModel):
     llm: Literal["local", "mistral"] = "local"
 
 
+class CalendarMeta(BaseModel):
+    """Snapshot d'un événement Graph, figé au moment de l'enregistrement.
+    Persisté tel quel dans `.calendar_event.json`."""
+    eventId: str | None = None
+    subject: str | None = None
+    start: str | None = None
+    end: str | None = None
+    location: str | None = None
+    organizer: str | None = None
+    attendees: list[str] = []
+
+
 class RecordStartPayload(BaseModel):
     """Payload optionnel pour démarrer un enregistrement.
 
@@ -383,11 +460,15 @@ class RecordStartPayload(BaseModel):
 
     participants/entreprises/contexte : seulement utilisés si enableLiveLlm
       est True, pour ancrer les entités dans les prompts du LLM live.
+
+    calendar : si fourni, l'enregistrement est rattaché à cette réunion
+      d'agenda (dossier nommé d'après le sujet + marqueur `.calendar_event.json`).
     """
     enableLiveLlm: bool = False
     participants: str | None = None
     entreprises: str | None = None
     contexte: str | None = None
+    calendar: CalendarMeta | None = None
 
 
 class SettingsPayload(BaseModel):
@@ -400,6 +481,15 @@ class RenamePayload(BaseModel):
 
 class ReportPayload(BaseModel):
     markdown: str
+
+
+class FolderPayload(BaseModel):
+    name: str
+
+
+class MoveFolderPayload(BaseModel):
+    # None / "" => racine de Documents/Réunions (catégorie "Sans dossier").
+    folder: str | None = None
 
 
 # ── Pipeline runner ────────────────────────────────────────────────────────
@@ -495,7 +585,9 @@ async def _run_pipeline_locked(job: Job) -> None:
     try:
         if job.source == "audio":
             stem = job.audio_path.stem  # "audio"
-            diarize = bool((job.context or {}).get("diarize", True))
+            # Diarisation toujours active (plus d'option de désactivation côté
+            # UI ; un client obsolète envoyant diarize=false est ignoré).
+            diarize = True
             raw_transcript = job.out_dir / "transcript.txt"
 
             # Court-circuit live : si le LiveProcessor a déjà produit le
@@ -505,16 +597,10 @@ async def _run_pipeline_locked(job: Job) -> None:
                 log.info("Job %s : court-circuit diar (transcript live détecté)",
                          job.id)
             else:
-                job.step = (
-                    "Conversion + Diarisation + Transcription"
-                    if diarize
-                    else "Conversion + Transcription"
-                )
+                job.step = "Conversion + Diarisation + Transcription"
                 _log_start(job.step)
                 diar_args = ["-i", str(job.audio_path), "-o", str(job.out_dir)]
-                if not diarize:
-                    diar_args.append("--no-diarize")
-                elif job.origin == "recording":
+                if job.origin == "recording":
                     # Enregistrement dans l'app → clustering bootstrap+online.
                     diar_args.append("--bootstrap-online")
                 await _run_subprocess(
@@ -614,13 +700,12 @@ async def _run_pipeline_locked(job: Job) -> None:
 
 
 def _cleanup_intermediate_files(job: Job) -> None:
-    """Ne garde que la source, le transcript normalisé et les comptes rendus.
-    Le fichier `traitement_<label>.md` (logs + récap durées) est stocké
-    séparément dans `~/.meeting_assistant/logs/` à côté du CSV RAM."""
+    """Ne garde dans le dossier réunion QUE : l'audio, compte_rendu.md/.docx,
+    et `.calendar_event.json` (requis pour le lien/nommage agenda). Tout le
+    reste (transcripts, *.json de diarisation, .origin.recording, métriques…)
+    est supprimé. Le `traitement_<label>.md` est ailleurs (~/.meeting_assistant/logs/)."""
     keep = {job.audio_path.name, "compte_rendu.md", "compte_rendu.docx",
-            ".origin.recording"}
-    if job.transcript_path is not None:
-        keep.add(job.transcript_path.name)
+            ".calendar_event.json"}
     for entry in job.out_dir.iterdir():
         if not entry.is_file() or entry.name in keep:
             continue
@@ -631,9 +716,18 @@ def _cleanup_intermediate_files(job: Job) -> None:
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────
-def _new_folder() -> Path:
-    """Dossier daté unique ; ajoute un suffixe en cas de collision."""
+def _new_folder(name_hint: str | None = None) -> Path:
+    """Dossier daté unique ; ajoute un suffixe en cas de collision.
+
+    `name_hint` (ex. sujet de la réunion d'agenda) → suffixe lisible dans
+    l'Explorateur : `2026-05-19_14h00m00s_Revue produit`. Hors agenda, on
+    garde l'horodatage seul comme avant.
+    """
     base = time.strftime(FOLDER_FMT)
+    if name_hint:
+        safe = _sanitize_label(name_hint)
+        if safe:
+            base = f"{base}_{safe}"
     folder = HISTORY_DIR / base
     i = 2
     while folder.exists():
@@ -972,11 +1066,51 @@ async def update_settings(body: SettingsPayload) -> dict:
     return {"mistralKeySet": bool(key)}
 
 
+# ── Calendrier Microsoft (Graph, device code flow délégué) ─────────────────
+# `graph_calendar` tire msal/requests → import PARESSEUX dans chaque handler
+# pour ne pas alourdir le démarrage du serveur (cf. /api/health rapide).
+# Les fonctions du module sont synchrones (msal/requests) → asyncio.to_thread.
+@app.get("/api/calendar/status")
+async def calendar_status() -> dict:
+    from . import graph_calendar as gc
+    return await asyncio.to_thread(gc.status)
+
+
+@app.post("/api/calendar/login")
+async def calendar_login() -> dict:
+    """Démarre le device code flow. Renvoie le code à saisir sur
+    microsoft.com/devicelogin ; l'acquisition se poursuit en tâche de fond
+    (le front poll /api/calendar/status jusqu'à `signed_in`)."""
+    from . import graph_calendar as gc
+    return await asyncio.to_thread(gc.start_login)
+
+
+@app.post("/api/calendar/logout")
+async def calendar_logout() -> dict:
+    from . import graph_calendar as gc
+    await asyncio.to_thread(gc.logout)
+    return {"state": "signed_out"}
+
+
+@app.get("/api/calendar/upcoming")
+async def calendar_upcoming(days: int = 7) -> JSONResponse:
+    from . import graph_calendar as gc
+    try:
+        meetings = await asyncio.to_thread(gc.list_upcoming, days)
+    except gc.NotAuthenticated as exc:
+        raise HTTPException(status_code=401, detail=str(exc)) from exc
+    except Exception as exc:
+        log.warning("Lecture du calendrier échouée : %s", exc)
+        raise HTTPException(status_code=502, detail=f"Calendrier indisponible : {exc}") from exc
+    return JSONResponse({"meetings": meetings})
+
+
 @app.post("/api/record/cancel")
 async def record_cancel() -> dict:
     """Reset en cas d'enregistrement fantôme (backend coincé après un stop
     raté ou une init bloquée)."""
-    global recorder, live_processor
+    global recorder, live_processor, _pending_calendar
+    _pending_calendar = None
     cleaned = False
     if recorder is not None:
         try:
@@ -1004,10 +1138,17 @@ async def record_cancel() -> dict:
 
 @app.post("/api/record/start")
 async def record_start(payload: RecordStartPayload | None = None) -> dict:
-    global recorder, live_processor
+    global recorder, live_processor, _pending_calendar
     # Import différé : 1er endroit où l'on construit réellement AudioRecorder /
     # LiveProcessor. Sort le coût d'import (numpy/sherpa/…) du démarrage serveur.
     from audio_capture import AudioRecorder, LiveProcessor
+
+    # Réunion d'agenda liée à cet enregistrement (consommée au record/stop).
+    _pending_calendar = (
+        payload.calendar.model_dump()
+        if payload is not None and payload.calendar is not None
+        else None
+    )
     # Auto-reset si un enregistrement précédent est coincé (init ratée,
     # stop perdu, backend rechargé à chaud, …). Mieux vaut récupérer que
     # bloquer l'utilisateur sur un 409.
@@ -1089,9 +1230,12 @@ async def record_start(payload: RecordStartPayload | None = None) -> dict:
 
 @app.post("/api/record/stop")
 async def record_stop() -> dict:
-    global recorder, live_processor
+    global recorder, live_processor, _pending_calendar
     if recorder is None or not recorder.is_recording:
         raise HTTPException(status_code=400, detail="Aucun enregistrement en cours")
+    # Snapshot + reset de la réunion liée (posée au record/start).
+    cal = _pending_calendar
+    _pending_calendar = None
     # Marque le moment du clic STOP — chronos 'attente compte rendu' démarre.
     # Affiché en évidence dans le summary du traitement.md.
     job_log = _get_active_log()
@@ -1115,12 +1259,18 @@ async def record_stop() -> dict:
             _set_active_log(None)
         raise HTTPException(status_code=500, detail="Aucune donnée audio capturée")
 
-    folder = _new_folder()
+    folder = _new_folder(cal.get("subject") if cal else None)
     final_path = folder / "audio.wav"
     shutil.move(str(audio_path), str(final_path))
     # Marqueur de persistance : pour savoir au rehydrate que ce dossier
     # provient d'un enregistrement live (→ clustering bootstrap+online).
     (folder / ".origin.recording").write_text("", encoding="utf-8")
+    # Marqueur de rattachement à la réunion d'agenda (rechargé au boot).
+    if cal:
+        import json as _json
+        (folder / ".calendar_event.json").write_text(
+            _json.dumps(cal, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
 
     # Renomme le JobLogger avec le nom du dossier de la réunion (toujours
     # dans ~/.meeting_assistant/logs/, à côté du CSV RAM). No-op si le
@@ -1153,6 +1303,7 @@ async def record_stop() -> dict:
 
     job_id = uuid.uuid4().hex
     job = Job(job_id, final_path, folder, source="audio", origin="recording")
+    job.calendar = cal
 
     # Si le LLM live a abouti pendant la captation, compte_rendu.md est
     # déjà dans le dossier → on marque le job "done" direct, l'utilisateur
@@ -1181,6 +1332,13 @@ async def record_stop() -> dict:
                 pass
         log.info("Job %s : compte rendu live prêt — aucune action manuelle requise",
                  job.id)
+        # Le chemin live-done ne passe jamais par _run_pipeline_locked (où le
+        # cleanup est sinon déclenché) → on épure ici. transcript déjà chargé
+        # en mémoire (job.transcript) donc la vue en session reste OK.
+        try:
+            _cleanup_intermediate_files(job)
+        except Exception:
+            log.exception("Nettoyage live-done échoué pour %s", folder)
 
     # Si le job est totalement fini (compte rendu live OK) → on ferme le
     # JobLogger maintenant (récap + tableau étapes écrits dans traitement.md).
@@ -1448,3 +1606,93 @@ async def delete_job(job_id: str) -> dict:
             ),
         )
     return {"ok": True}
+
+
+# ── Dossiers (catégories = sous-dossiers réels de Documents/Réunions/) ──────
+@app.get("/api/folders")
+async def get_folders() -> dict:
+    return {"folders": list_category_folders()}
+
+
+@app.post("/api/folders")
+async def create_folder(body: FolderPayload) -> dict:
+    name = _sanitize_label(body.name)
+    if not name:
+        raise HTTPException(status_code=400, detail="Nom de dossier invalide")
+    target = HISTORY_DIR / name
+    try:
+        target.mkdir(parents=True, exist_ok=False)
+    except FileExistsError as exc:
+        raise HTTPException(status_code=409, detail="Ce dossier existe déjà") from exc
+    except OSError as exc:
+        raise HTTPException(status_code=500, detail=f"Création impossible : {exc}") from exc
+    return {"folders": list_category_folders()}
+
+
+@app.delete("/api/folders/{name}")
+async def delete_folder(name: str) -> dict:
+    d = HISTORY_DIR / name
+    if not d.is_dir() or _looks_like_meeting(d):
+        raise HTTPException(status_code=404, detail="Dossier introuvable")
+    has_meetings = any(
+        s.is_dir() and _looks_like_meeting(s) for s in d.iterdir()
+    )
+    if has_meetings:
+        raise HTTPException(
+            status_code=409,
+            detail="Le dossier contient des réunions — déplacez-les d'abord.",
+        )
+    _force_rmtree(d)
+    if d.exists():
+        raise HTTPException(
+            status_code=423,
+            detail="Suppression impossible (dossier verrouillé). Fermez l'Explorateur puis réessayez.",
+        )
+    return {"folders": list_category_folders()}
+
+
+@app.post("/api/jobs/{job_id}/folder")
+async def move_job_folder(job_id: str, body: MoveFolderPayload) -> JSONResponse:
+    """Déplace le dossier de la réunion dans une catégorie (sous-dossier réel
+    de Documents/Réunions/) ou la ramène à la racine (folder = null)."""
+    job = jobs.get(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job introuvable")
+    if job.status in ("queued", "running"):
+        raise HTTPException(status_code=409, detail="Traitement en cours")
+
+    raw = (body.folder or "").strip()
+    cat = _sanitize_label(raw) if raw else None
+    if raw and not cat:
+        raise HTTPException(status_code=400, detail="Nom de dossier invalide")
+    if cat == (job.folder or None):
+        return JSONResponse(job.public())
+
+    parent = HISTORY_DIR / cat if cat else HISTORY_DIR
+    if cat:
+        try:
+            parent.mkdir(parents=True, exist_ok=True)
+        except OSError as exc:
+            raise HTTPException(status_code=500, detail=f"Dossier inaccessible : {exc}") from exc
+
+    dest = parent / job.out_dir.name
+    if dest.exists():
+        raise HTTPException(
+            status_code=409,
+            detail="Une réunion du même nom existe déjà dans ce dossier",
+        )
+    try:
+        shutil.move(str(job.out_dir), str(dest))
+    except OSError as exc:
+        raise HTTPException(status_code=500, detail=f"Déplacement impossible : {exc}") from exc
+
+    job.out_dir = dest
+    job.audio_path = dest / job.audio_path.name
+    if job.report_path:
+        job.report_path = dest / job.report_path.name
+    if job.report_docx_path:
+        job.report_docx_path = dest / job.report_docx_path.name
+    if job.transcript_path:
+        job.transcript_path = dest / job.transcript_path.name
+    job.folder = cat
+    return JSONResponse(job.public())
