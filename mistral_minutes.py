@@ -84,7 +84,7 @@ suivant EXACTEMENT la structure ci-dessous :
 
 # Compte rendu de réunion
 
-## 1. Executive Summary
+## 1. Résumé
 Un paragraphe de 5 à 6 phrases maximum résumant l'objectif global, les grands
 thèmes et la conclusion générale. Pas de liste, pas de titre imbriqué.
 
@@ -155,9 +155,28 @@ def _call_mistral(system_prompt: str, user_prompt: str, api_key: str,
 
     try:
         result = json.loads(body)
-        return result["choices"][0]["message"]["content"].strip()
+        content = result["choices"][0]["message"]["content"].strip()
     except (KeyError, json.JSONDecodeError) as e:
         raise RuntimeError(f"Réponse Mistral inattendue : {body[:500]}") from e
+    return _strip_outer_code_fence(content)
+
+
+def _strip_outer_code_fence(text: str) -> str:
+    """Retire un éventuel ```markdown … ``` (ou ```…```) entourant TOUTE la
+    réponse. Mistral encadre fréquemment le markdown dans un fence pour
+    « l'isoler », ce qui transforme tout le compte rendu en un bloc <pre><code>
+    dans l'éditeur (monospace, aucune mise en forme)."""
+    s = text.strip()
+    if not s.startswith("```"):
+        return s
+    first_nl = s.find("\n")
+    if first_nl == -1:
+        return s
+    end = s.rstrip().rfind("```")
+    # `end` doit être le fence FERMANT — pas le même que l'ouvrant.
+    if end <= 0 or end == s.find("```"):
+        return s
+    return s[first_nl + 1 : end].strip()
 
 
 def generate(transcript_path: Path, output_path: Path,

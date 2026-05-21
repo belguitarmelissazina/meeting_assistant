@@ -257,6 +257,10 @@ live_processor: LiveProcessor | None = None
 # Réunion d'agenda choisie au record/start, consommée au record/stop pour
 # nommer le dossier + écrire le marqueur. None = enregistrement hors agenda.
 _pending_calendar: dict | None = None
+# Timestamp (ms epoch) du record/start en cours — utilisé par
+# GET /api/record/status pour que le frontend reconstitue le timer côté UI
+# même quand il rouvre la page après une navigation.
+_recording_started_at_ms: int | None = None
 pipeline_lock = asyncio.Lock()
 
 
@@ -1109,8 +1113,9 @@ async def calendar_upcoming(days: int = 7) -> JSONResponse:
 async def record_cancel() -> dict:
     """Reset en cas d'enregistrement fantôme (backend coincé après un stop
     raté ou une init bloquée)."""
-    global recorder, live_processor, _pending_calendar
+    global recorder, live_processor, _pending_calendar, _recording_started_at_ms
     _pending_calendar = None
+    _recording_started_at_ms = None
     cleaned = False
     if recorder is not None:
         try:
@@ -1136,9 +1141,24 @@ async def record_cancel() -> dict:
     return {"cleaned": cleaned}
 
 
+@app.get("/api/record/status")
+async def record_status() -> dict:
+    """État du recorder global (un seul enregistrement à la fois). Permet au
+    frontend de re-synchroniser son UI : si l'utilisateur quitte la page
+    pendant un enregistrement et y revient, le bouton/timer doivent refléter
+    la réalité (backend qui enregistre toujours)."""
+    if recorder is None or not recorder.is_recording:
+        return {"recording": False}
+    return {
+        "recording": True,
+        "startedAt": _recording_started_at_ms,
+        "calendar": _pending_calendar,
+    }
+
+
 @app.post("/api/record/start")
 async def record_start(payload: RecordStartPayload | None = None) -> dict:
-    global recorder, live_processor, _pending_calendar
+    global recorder, live_processor, _pending_calendar, _recording_started_at_ms
     # Import différé : 1er endroit où l'on construit réellement AudioRecorder /
     # LiveProcessor. Sort le coût d'import (numpy/sherpa/…) du démarrage serveur.
     from audio_capture import AudioRecorder, LiveProcessor
@@ -1220,9 +1240,10 @@ async def record_start(payload: RecordStartPayload | None = None) -> dict:
     _t.Thread(target=_background_start, args=(live_processor,),
               daemon=True, name="lp-start").start()
 
+    _recording_started_at_ms = int(time.time() * 1000)
     return {
         "pid": _os.getpid(),
-        "startedAt": int(time.time() * 1000),
+        "startedAt": _recording_started_at_ms,
         "liveProcessing": True,
         "liveLlm": enable_live_llm,
     }
@@ -1230,12 +1251,13 @@ async def record_start(payload: RecordStartPayload | None = None) -> dict:
 
 @app.post("/api/record/stop")
 async def record_stop() -> dict:
-    global recorder, live_processor, _pending_calendar
+    global recorder, live_processor, _pending_calendar, _recording_started_at_ms
     if recorder is None or not recorder.is_recording:
         raise HTTPException(status_code=400, detail="Aucun enregistrement en cours")
     # Snapshot + reset de la réunion liée (posée au record/start).
     cal = _pending_calendar
     _pending_calendar = None
+    _recording_started_at_ms = None
     # Marque le moment du clic STOP — chronos 'attente compte rendu' démarre.
     # Affiché en évidence dans le summary du traitement.md.
     job_log = _get_active_log()
@@ -1580,6 +1602,37 @@ async def update_report(job_id: str, body: ReportPayload) -> JSONResponse:
     except Exception as exc:
         log.warning("Regen DOCX échouée pour job %s : %s", job.id, exc)
     return JSONResponse(job.public())
+
+
+@app.post("/api/jobs/{job_id}/open-folder")
+async def open_job_folder(job_id: str) -> dict:
+    """Ouvre le dossier de la réunion dans l'explorateur de fichiers.
+    Le backend tourne en local sur la machine de l'utilisateur, il peut donc
+    demander à l'OS d'ouvrir le dossier directement."""
+    job = jobs.get(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job introuvable")
+    folder = job.out_dir
+    if not folder.exists():
+        raise HTTPException(status_code=404, detail="Dossier introuvable")
+    try:
+        import subprocess
+        if sys.platform == "win32":
+            # explorer.exe (et non os.startfile) : un processus en
+            # arrière-plan ne peut pas voler le premier plan, mais explorer
+            # a ce droit et réutilise une fenêtre déjà ouverte sur ce
+            # dossier — la fenêtre passe donc bien devant.
+            subprocess.Popen(["explorer", str(folder)])  # noqa: S607
+        elif sys.platform == "darwin":
+            subprocess.Popen(["open", str(folder)])
+        else:
+            subprocess.Popen(["xdg-open", str(folder)])
+    except Exception as exc:
+        log.exception("Ouverture du dossier impossible : %s", exc)
+        raise HTTPException(
+            status_code=500, detail="Ouverture du dossier impossible"
+        ) from exc
+    return {"ok": True}
 
 
 @app.delete("/api/jobs/{job_id}")

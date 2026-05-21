@@ -74,9 +74,6 @@ export default function SettingsDialog({ open, onClose, onSaved }: Props) {
         <div className="mb-5 flex items-start justify-between gap-4">
           <div>
             <h2 className="text-xl font-semibold text-ink">Paramètres</h2>
-            <p className="mt-1 text-sm text-ink-muted">
-              Clé stockée localement dans <span className="font-mono text-xs">~/.meeting_assistant</span>.
-            </p>
           </div>
           <button
             type="button"
@@ -111,13 +108,9 @@ export default function SettingsDialog({ open, onClose, onSaved }: Props) {
             spellCheck={false}
             value={keyInput}
             onChange={(e) => setKeyInput(e.target.value)}
-            placeholder={mistralKeySet ? "••••••••••••  (laissez vide pour conserver)" : "sk-…"}
+            placeholder={mistralKeySet ? "••••••••••••  (laissez vide pour conserver)" : "Collez votre clé Mistral"}
             className="w-full rounded-lg border border-surface-border bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-ink-muted/60 transition focus:border-accent-blue focus:outline-none focus:ring-2 focus:ring-accent-blue/20"
           />
-          <p className="mt-2 text-xs text-ink-muted">
-            Utilisée pour le pipeline « Mistral Large (cloud) ». Obtenir une clé :{" "}
-            <span className="font-mono">console.mistral.ai</span>.
-          </p>
 
           <div className="mt-5 flex items-center justify-end gap-2">
             {mistralKeySet && (

@@ -128,6 +128,32 @@ function stopBackend() {
   });
 }
 
+// Variante "promise" pour les chemins qui DOIVENT attendre la mort effective
+// du process (typiquement avant un autoUpdater.quitAndInstall : tant que
+// backend.exe / llama-server.exe tiennent les fichiers, l'installeur NSIS
+// reste bloqué sur l'écrasement de resources/backend/_internal/*).
+function stopBackendAndWait(timeoutMs = 6000) {
+  return new Promise((resolve) => {
+    if (!backendProc || backendProc.killed) return resolve();
+    const proc = backendProc;
+    const pid = proc.pid;
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      resolve();
+    };
+    proc.once("exit", finish);
+    treeKill(pid, "SIGKILL", (err) => {
+      if (err) console.error(`[electron] tree-kill error: ${err}`);
+    });
+    // Filet de sécurité : on n'attend jamais plus de timeoutMs, même si
+    // tree-kill échoue silencieusement. Vaut mieux une MAJ qui continue
+    // qu'une app bloquée sur le dialog "Redémarrer".
+    setTimeout(finish, timeoutMs);
+  });
+}
+
 function waitForBackend() {
   const start = Date.now();
   return new Promise((resolve, reject) => {
@@ -484,11 +510,16 @@ function setupAutoUpdate() {
             info && info.version ? info.version : ""
           } — elle s'installera au redémarrage de l'application.`,
         })
-        .then((r) => {
-          if (r.response === 0) {
-            stopBackend();
-            autoUpdater.quitAndInstall();
-          }
+        .then(async (r) => {
+          if (r.response !== 0) return;
+          // CRUCIAL : on doit attendre que backend.exe + llama-server.exe
+          // soient VRAIMENT morts avant que NSIS écrase les fichiers, sinon
+          // l'installeur reste bloqué sur "Accès refusé". L'ancienne version
+          // de ce handler appelait stopBackend() (fire-and-forget) puis
+          // quitAndInstall immédiatement → gel observé sur les postes de
+          // test.
+          await stopBackendAndWait();
+          autoUpdater.quitAndInstall();
         })
         .catch(() => {});
     });

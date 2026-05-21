@@ -44,10 +44,42 @@ export default function Recorder({
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  // Timestamp ms epoch du début d'enregistrement. Posé soit au clic
+  // « Démarrer » (=Date.now()), soit lors d'une reprise d'état après
+  // navigation (=startedAt récupéré du backend) — ce qui permet au timer
+  // d'afficher la VRAIE durée écoulée et non « 00:00 » à chaque retour.
+  const startedAtRef = useRef<number | null>(null);
+
+  // Au montage, on demande au backend s'il enregistre déjà (cas où
+  // l'utilisateur a navigué ailleurs pendant la captation puis est revenu).
+  // Si oui, on se cale sur l'état « recording » avec le bon startedAt.
+  useEffect(() => {
+    let cancel = false;
+    (async () => {
+      try {
+        const r = await fetch(apiUrl("/api/record/status"));
+        if (!r.ok || cancel) return;
+        const d = (await r.json()) as { recording: boolean; startedAt?: number };
+        if (cancel || !d.recording) return;
+        startedAtRef.current = d.startedAt ?? Date.now();
+        setDuration((Date.now() - startedAtRef.current) / 1000);
+        setState("recording");
+      } catch {
+        /* backend KO → on reste en idle, l'app affichera ses erreurs */
+      }
+    })();
+    return () => {
+      cancel = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (state === "recording") {
-      const started = Date.now();
+      // Si startedAtRef n'a pas été posé (cas standard du clic « Démarrer »
+      // qui passe par start() → c'est start() qui le pose AVANT setState),
+      // on se rabat sur maintenant pour ne pas afficher une durée négative.
+      if (startedAtRef.current === null) startedAtRef.current = Date.now();
+      const started = startedAtRef.current;
       timerRef.current = setInterval(() => {
         setDuration((Date.now() - started) / 1000);
       }, 200);
@@ -92,6 +124,7 @@ export default function Recorder({
         });
       }
 
+      startedAtRef.current = Date.now();
       setDuration(0);
       setState("recording");
     } catch (e) {
@@ -106,6 +139,7 @@ export default function Recorder({
       const r = await fetch(apiUrl("/api/record/stop"), { method: "POST" });
       if (!r.ok) throw new Error(await r.text());
       const { jobId } = (await r.json()) as { jobId: string };
+      startedAtRef.current = null;
       onJobCreated(jobId);
       setState("idle");
     } catch (e) {

@@ -292,6 +292,30 @@ function Toolbar({ editor }: { editor: Editor }) {
       </ToolBtn>
       <Sep />
       <ToolBtn
+        title="Ajouter une ligne au tableau"
+        onClick={() => editor.chain().focus().addRowAfter().run()}
+        disabled={!editor.can().addRowAfter()}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="11" rx="1" />
+          <line x1="3" y1="8.5" x2="21" y2="8.5" />
+          <line x1="12" y1="18" x2="12" y2="22" />
+          <line x1="10" y1="20" x2="14" y2="20" />
+        </svg>
+      </ToolBtn>
+      <ToolBtn
+        title="Supprimer la ligne du tableau"
+        onClick={() => editor.chain().focus().deleteRow().run()}
+        disabled={!editor.can().deleteRow()}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="11" rx="1" />
+          <line x1="3" y1="8.5" x2="21" y2="8.5" />
+          <line x1="10" y1="20" x2="14" y2="20" />
+        </svg>
+      </ToolBtn>
+      <Sep />
+      <ToolBtn
         title="Annuler"
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().undo()}

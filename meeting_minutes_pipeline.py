@@ -1346,8 +1346,8 @@ def assemble_report(sections: list[dict], exec_summary: str, source: str,
             lines.append(f"**{company}** : {', '.join(sorted(names))}\n")
         lines.append("")
 
-    # Synthèse (anciennement « Executive Summary » — libellé FR)
-    lines.append(_h("Synthèse"))
+    # Résumé (anciennement « Executive Summary » — libellé FR)
+    lines.append(_h("Résumé"))
     lines.append(exec_summary.strip() + "\n")
 
     # Sujets abordés

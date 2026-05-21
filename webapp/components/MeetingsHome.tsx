@@ -10,6 +10,7 @@ import {
   dateChip,
   fmtTime,
 } from "../lib/meetings";
+import { useRecordingStatus } from "../lib/useRecordingStatus";
 
 interface Props {
   onSelect: (item: TimelineItem) => void;
@@ -36,6 +37,10 @@ export default function MeetingsHome({ onSelect, onAdHoc }: Props) {
   const [jobs, setJobs] = useState<JobSummary[]>([]);
   const [loadingList, setLoadingList] = useState(false);
   const pollRef = useRef<NodeJS.Timeout | null>(null);
+  // ⚠ Hissé EN HAUT du composant : ce hook doit être appelé dans le même
+  // ordre à chaque render, peu importe la branche d'auth (loading /
+  // signed_out / signed_in) — sinon Rules of Hooks → crash.
+  const recording = useRecordingStatus();
 
   const refreshStatus = useCallback(async () => {
     try {
@@ -224,6 +229,10 @@ export default function MeetingsHome({ onSelect, onAdHoc }: Props) {
   // (elles disparaissent de l'Agenda et vivent dans l'historique du panneau
   // latéral — pas de doublon). On n'affiche QUE l'agenda à venir ici.
   const { upcoming } = buildTimeline(events, jobs);
+  // `recording` est déjà hissé en haut du composant (Rules of Hooks) — on
+  // ne fait ici que dériver le eventId pour le passage aux <Row>.
+  const recordingEventId =
+    recording.recording ? recording.calendar?.eventId ?? null : null;
 
   const sameDay = (d: Date) => {
     const n = new Date();
@@ -237,21 +246,21 @@ export default function MeetingsHome({ onSelect, onAdHoc }: Props) {
   const nextItems = upcoming.filter((it) => !sameDay(it.date));
 
   return (
-    <div className="mx-auto w-full max-w-2xl animate-fade-in">
+    <div className="mx-auto w-full max-w-4xl animate-fade-in">
       <header className="mb-6 flex items-end justify-between gap-4">
         <div>
           <h1 className="text-3xl font-semibold tracking-tight text-ink">
-            Réunions
+            Agenda
           </h1>
           {account && (
-            <p className="mt-1 truncate text-xs text-ink-muted">{account}</p>
+            <p className="mt-1 truncate text-[13px] text-ink-muted">{account}</p>
           )}
         </div>
-        <div className="flex items-center gap-3 text-xs">
+        <div className="flex items-center gap-4 text-sm">
           <button
             type="button"
             onClick={onAdHoc}
-            className="rounded-lg border border-surface-border bg-surface-card px-3 py-1.5 font-medium text-ink hover:border-accent-blue"
+            className="rounded-lg border border-surface-border bg-surface-card px-3.5 py-2 font-medium text-ink hover:border-accent-blue"
           >
             + Hors agenda
           </button>
@@ -278,14 +287,30 @@ export default function MeetingsHome({ onSelect, onAdHoc }: Props) {
           {todayItems.length > 0 && (
             <Section label="Aujourd'hui">
               {todayItems.map((it) => (
-                <Row key={it.key} item={it} onClick={() => onSelect(it)} />
+                <Row
+                  key={it.key}
+                  item={it}
+                  onClick={() => onSelect(it)}
+                  recording={
+                    recordingEventId !== null &&
+                    it.meeting?.id === recordingEventId
+                  }
+                />
               ))}
             </Section>
           )}
           {nextItems.length > 0 && (
             <Section label="Prochaines réunions">
               {nextItems.map((it) => (
-                <Row key={it.key} item={it} onClick={() => onSelect(it)} />
+                <Row
+                  key={it.key}
+                  item={it}
+                  onClick={() => onSelect(it)}
+                  recording={
+                    recordingEventId !== null &&
+                    it.meeting?.id === recordingEventId
+                  }
+                />
               ))}
             </Section>
           )}
@@ -295,8 +320,8 @@ export default function MeetingsHome({ onSelect, onAdHoc }: Props) {
           Aucune réunion d&apos;agenda à enregistrer aujourd&apos;hui ni dans
           les 14 prochains jours.
           <br />
-          L&apos;historique de vos réunions est dans le panneau{" "}
-          <strong>☰</strong> (en haut à gauche).
+          Vos comptes rendus déjà produits sont dans{" "}
+          <strong>« Comptes rendus »</strong> (menu de gauche).
         </Center>
       )}
     </div>
@@ -311,39 +336,59 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mb-7">
-      <h2 className="mb-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-ink-muted">
+    <section className="mb-8">
+      <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-ink-muted">
         {label}
       </h2>
-      <ul className="space-y-1.5">{children}</ul>
+      <ul className="space-y-2">{children}</ul>
     </section>
   );
 }
 
-function Row({ item, onClick }: { item: TimelineItem; onClick: () => void }) {
+function Row({
+  item,
+  onClick,
+  recording,
+}: {
+  item: TimelineItem;
+  onClick: () => void;
+  /** True quand un enregistrement est en cours pour CETTE réunion d'agenda. */
+  recording?: boolean;
+}) {
   const chip = dateChip(item.date);
   return (
     <li>
       <button
         type="button"
         onClick={onClick}
-        className="group flex w-full items-center gap-3 rounded-xl border border-transparent px-3 py-2.5 text-left transition-all duration-200 hover:border-surface-border hover:bg-surface-card/70"
+        className={`group flex w-full items-center gap-4 rounded-xl border px-3 py-3.5 text-left transition-all duration-200 ${
+          recording
+            ? "border-brand/40 bg-brand/5 hover:bg-brand/10"
+            : "border-transparent hover:border-surface-border hover:bg-surface-card/70"
+        }`}
       >
-        <div className="flex h-11 w-11 flex-shrink-0 flex-col items-center justify-center rounded-lg border border-surface-border bg-surface-card">
-          <span className="text-[9px] font-semibold uppercase tracking-wider text-brand">
+        <div className="flex h-14 w-14 flex-shrink-0 flex-col items-center justify-center rounded-lg border border-surface-border bg-surface-card">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-brand">
             {chip.month}
           </span>
-          <span className="text-base font-bold leading-none text-ink">
+          <span className="text-xl font-bold leading-none text-ink">
             {chip.day}
           </span>
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-medium text-ink">{item.title}</p>
-          <p className="mt-0.5 text-xs text-ink-muted">
+          <p className="truncate text-[15px] font-medium text-ink">{item.title}</p>
+          <p className="mt-0.5 text-[13px] text-ink-muted">
             {fmtTime(item.date)}
           </p>
         </div>
-        <StatusBadge status={item.status} />
+        {recording ? (
+          <span className="flex items-center gap-1.5 rounded-full bg-brand/15 px-2.5 py-1 text-xs font-medium text-brand">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
+            Enregistrement…
+          </span>
+        ) : (
+          <StatusBadge status={item.status} />
+        )}
       </button>
     </li>
   );
@@ -362,7 +407,7 @@ function StatusBadge({ status }: { status: TimelineItem["status"] }) {
   const s = map[status] ?? map.upcoming;
   return (
     <span
-      className={`flex-shrink-0 rounded-full px-2.5 py-1 text-[10px] font-medium ${s.cls}`}
+      className={`flex-shrink-0 rounded-full px-3 py-1.5 text-xs font-medium ${s.cls}`}
     >
       {s.label}
     </span>

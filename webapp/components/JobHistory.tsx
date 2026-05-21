@@ -26,6 +26,11 @@ interface Props {
   query: string;
   /** Jour sélectionné "YYYY-MM-DD" ou null. */
   day: string | null;
+  /** Liste à plat (page Comptes rendus) au lieu du regroupement par dossier. */
+  flat?: boolean;
+  /** En mode `flat` : `undefined` = tous, `null` = sans dossier, sinon le
+   *  nom du dossier à afficher exclusivement. */
+  folderFilter?: string | null;
 }
 
 export function jobDayKey(ms?: number): string {
@@ -47,6 +52,8 @@ export default function JobHistory({
   onDeleted,
   query,
   day,
+  flat,
+  folderFilter,
 }: Props) {
   const [confirming, setConfirming] = useState<string | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
@@ -175,6 +182,68 @@ export default function JobHistory({
     if (list.length > 0 || !filtering) {
       groups.push({ key: f, name: f, jobs: list });
     }
+  }
+
+  // Élément de ligne, partagé entre la liste à plat (page) et le
+  // regroupement par dossier (vue historique).
+  const row = (j: JobSummary) => (
+    <JobRow
+      key={j.id}
+      job={j}
+      active={j.id === selectedId}
+      folders={folders}
+      onSelect={onSelect}
+      renaming={renaming === j.id}
+      renameValue={renameValue}
+      setRenameValue={setRenameValue}
+      renameBusy={renameBusy}
+      startRename={() => {
+        setError(null);
+        setConfirming(null);
+        setRenaming(j.id);
+        setRenameValue(j.label || "");
+      }}
+      cancelRename={() => setRenaming(null)}
+      submitRename={() => submitRename(j.id)}
+      confirming={confirming === j.id}
+      deleting={deleting === j.id}
+      askDelete={() => setConfirming(j.id)}
+      cancelDelete={() => setConfirming(null)}
+      doDelete={() => handleDelete(j.id)}
+      menuOpen={movingId === j.id}
+      toggleMenu={() => setMovingId((v) => (v === j.id ? null : j.id))}
+      moveTo={(f) => moveTo(j.id, f)}
+    />
+  );
+
+  // ── Liste à plat (page « Comptes rendus ») ─────────────────────────────
+  if (flat) {
+    const flatVisible = visible.filter(
+      (j) =>
+        folderFilter === undefined ||
+        (j.folder || null) === (folderFilter ?? null),
+    );
+    return (
+      <div>
+        {error && (
+          <div className="mb-3 rounded-md border border-brand/30 bg-brand/5 px-3 py-2 text-sm text-brand">
+            {error}
+          </div>
+        )}
+        {jobs.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-surface-border px-4 py-20 text-center text-sm text-ink-muted">
+            Aucune réunion pour l&apos;instant. Lancez-en une depuis
+            <span className="font-medium text-ink"> « Nouvelle réunion »</span>.
+          </div>
+        ) : flatVisible.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-surface-border px-4 py-20 text-center text-sm text-ink-muted">
+            Aucun résultat.
+          </div>
+        ) : (
+          <ul className="space-y-1">{flatVisible.map(row)}</ul>
+        )}
+      </div>
+    );
   }
 
   return (
@@ -316,37 +385,7 @@ export default function JobHistory({
 
                 {isOpen && (
                   <ul className="space-y-0.5">
-                    {g.jobs.map((j) => (
-                      <JobRow
-                        key={j.id}
-                        job={j}
-                        active={j.id === selectedId}
-                        folders={folders}
-                        onSelect={onSelect}
-                        renaming={renaming === j.id}
-                        renameValue={renameValue}
-                        setRenameValue={setRenameValue}
-                        renameBusy={renameBusy}
-                        startRename={() => {
-                          setError(null);
-                          setConfirming(null);
-                          setRenaming(j.id);
-                          setRenameValue(j.label || "");
-                        }}
-                        cancelRename={() => setRenaming(null)}
-                        submitRename={() => submitRename(j.id)}
-                        confirming={confirming === j.id}
-                        deleting={deleting === j.id}
-                        askDelete={() => setConfirming(j.id)}
-                        cancelDelete={() => setConfirming(null)}
-                        doDelete={() => handleDelete(j.id)}
-                        menuOpen={movingId === j.id}
-                        toggleMenu={() =>
-                          setMovingId((v) => (v === j.id ? null : j.id))
-                        }
-                        moveTo={(f) => moveTo(j.id, f)}
-                      />
-                    ))}
+                    {g.jobs.map(row)}
                     {g.jobs.length === 0 && (
                       <li className="px-3 py-2 text-[11px] italic text-ink-muted/70">
                         Vide — glissez des réunions ici via « Déplacer ».
@@ -390,7 +429,7 @@ function JobRow(props: {
   return (
     <li>
       <div
-        className={`group relative flex items-center gap-1.5 rounded-lg py-2 pr-2 transition-all duration-200 ${
+        className={`group relative flex items-center gap-2.5 rounded-lg py-3 pr-2 transition-all duration-200 ${
           props.active
             ? "bg-brand/5 border-l-[3px] border-brand pl-[calc(0.75rem-3px)]"
             : "border-l-[3px] border-transparent pl-[calc(0.75rem-3px)] hover:bg-surface"
@@ -436,10 +475,10 @@ function JobRow(props: {
               <div className="flex min-w-0 flex-1 items-center gap-2.5">
                 <StatusIcon status={j.status} />
                 <div className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-medium text-ink">
+                  <span className="block truncate text-[15px] font-medium text-ink">
                     {meetingDisplayName(j.label, j.calendar?.subject, j.id.slice(0, 8))}
                   </span>
-                  <span className="mt-0.5 block truncate text-xs text-ink-muted">
+                  <span className="mt-0.5 block truncate text-[13px] text-ink-muted">
                     {formatDate(j.createdAt)} · {j.step}
                   </span>
                 </div>
@@ -578,8 +617,8 @@ function StatusIcon({ status }: { status: JobSummary["status"] }) {
 
   if (status === "done") {
     return (
-      <span title={title} aria-label={title} className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-green/15 text-accent-green">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <span title={title} aria-label={title} className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-green/15 text-accent-green">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 6 9 17 4 12" />
         </svg>
       </span>
@@ -587,8 +626,8 @@ function StatusIcon({ status }: { status: JobSummary["status"] }) {
   }
   if (status === "error") {
     return (
-      <span title={title} aria-label={title} className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <span title={title} aria-label={title} className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand/15 text-brand">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
           <line x1="18" y1="6" x2="6" y2="18" />
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
@@ -597,21 +636,21 @@ function StatusIcon({ status }: { status: JobSummary["status"] }) {
   }
   if (status === "running" || status === "queued") {
     return (
-      <span title={title} aria-label={title} className="flex h-5 w-5 shrink-0 items-center justify-center">
-        <span className="h-2.5 w-2.5 rounded-full bg-accent-blue animate-pulse" />
+      <span title={title} aria-label={title} className="flex h-6 w-6 shrink-0 items-center justify-center">
+        <span className="h-3 w-3 rounded-full bg-accent-blue animate-pulse" />
       </span>
     );
   }
   if (status === "draft") {
     return (
-      <span title={title} aria-label={title} className="flex h-5 w-5 shrink-0 items-center justify-center">
-        <span className="h-2.5 w-2.5 rounded-full" style={{ background: "rgb(var(--accent-yellow))" }} />
+      <span title={title} aria-label={title} className="flex h-6 w-6 shrink-0 items-center justify-center">
+        <span className="h-3 w-3 rounded-full" style={{ background: "rgb(var(--accent-yellow))" }} />
       </span>
     );
   }
   return (
-    <span title={title} aria-label={title} className="flex h-5 w-5 shrink-0 items-center justify-center">
-      <span className="h-2.5 w-2.5 rounded-full border border-ink-muted/60" />
+    <span title={title} aria-label={title} className="flex h-6 w-6 shrink-0 items-center justify-center">
+      <span className="h-3 w-3 rounded-full border border-ink-muted/60" />
     </span>
   );
 }

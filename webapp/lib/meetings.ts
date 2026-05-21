@@ -155,7 +155,10 @@ export function buildContexte(m: CalendarMeeting): string {
   const preview = m.preview.trim();
   if (preview) {
     lines.push("");
-    lines.push(preview.length > 1200 ? preview.slice(0, 1200) + "…" : preview);
+    // Description complète conservée : le contexte est passé tel quel au
+    // system prompt côté backend ; tronquer ici masquerait des infos utiles
+    // (agenda, sigles, liens, instructions de l'organisateur).
+    lines.push(preview);
   }
   return lines.join("\n");
 }

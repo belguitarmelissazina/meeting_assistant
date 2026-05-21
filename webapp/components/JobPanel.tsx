@@ -12,6 +12,10 @@ interface Props {
   /** Masque l'entête interne (titre/statut) quand un parent affiche déjà
    *  l'entête de la réunion (cas MeetingDetail). */
   hideHeader?: boolean;
+  /** Appelé après une suppression réussie depuis l'écran brouillon. Le
+   *  parent (MeetingDetail) doit alors décrocher son `jobId` pour réafficher
+   *  Recorder et permettre un nouvel essai. */
+  onDeleted?: () => void;
 }
 
 interface MeetingCtx {
@@ -35,7 +39,7 @@ interface JobStatus {
   context?: MeetingCtx;
 }
 
-export default function JobPanel({ jobId, hideHeader }: Props) {
+export default function JobPanel({ jobId, hideHeader, onDeleted }: Props) {
   const [job, setJob] = useState<JobStatus | null>(null);
   const [saveState, setSaveState] = useState<SaveState>({ kind: "idle" });
   // Mini-lecteur audio fixé en bas (overlay) — fermé par défaut pour que le
@@ -112,7 +116,11 @@ export default function JobPanel({ jobId, hideHeader }: Props) {
       {isDraft ? (
         <>
           {job.audioAvailable && <SlimAudio jobId={job.id} />}
-          <DraftForm jobId={job.id} />
+          <DraftForm
+            jobId={job.id}
+            initialContext={job.context}
+            onDeleted={onDeleted}
+          />
         </>
       ) : (
         <>
@@ -136,7 +144,17 @@ export default function JobPanel({ jobId, hideHeader }: Props) {
       )}
 
       {isDone && job.audioAvailable && audioOpen && (
-        <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-4">
+        // Empilé AU-DESSUS de la toolbar de l'éditeur (sticky bottom-5,
+        // ~50px de haut → on laisse ~96px sous le lecteur pour qu'on voie
+        // les 2 ensemble : on écoute pendant qu'on édite. z-40 reste au-
+        // dessus de la toolbar (z-30).
+        // `left: var(--sb-w)` aligne le lecteur sur la zone main (= même
+        // largeur que le compte rendu), sinon il resterait centré sur le
+        // viewport entier et se décalerait quand on replie la sidebar.
+        <div
+          className="pointer-events-none fixed bottom-24 right-0 z-40 flex justify-center px-4"
+          style={{ left: "var(--sb-w, 0px)" }}
+        >
           <div className="pointer-events-auto flex w-full max-w-2xl items-center gap-3 rounded-xl border border-surface-border bg-surface-card/95 px-3 py-2 shadow-2xl backdrop-blur">
             <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-accent-blue/10 text-accent-blue">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -214,6 +232,23 @@ function TopActions({
   return (
     <div className="flex items-center gap-2">
       <SaveStatusPill state={saveState} />
+      <button
+        type="button"
+        onClick={() => {
+          fetch(apiUrl(`/api/jobs/${job.id}/open-folder`), {
+            method: "POST",
+          }).catch(() => {
+            /* dossier introuvable / OS — best effort */
+          });
+        }}
+        title="Ouvrir le dossier de la réunion"
+        aria-label="Ouvrir le dossier de la réunion"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-surface-card text-ink-muted shadow-sm transition-all duration-200 hover:text-accent-blue hover:border-accent-blue hover:shadow-md"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2" />
+        </svg>
+      </button>
       {job.audioAvailable && (
         <button
           type="button"
@@ -286,13 +321,32 @@ function SlimAudio({ jobId }: { jobId: string }) {
   );
 }
 
-function DraftForm({ jobId }: { jobId: string }) {
-  // Prefill « one-shot » si l'utilisateur est venu d'une réunion du
-  // calendrier. Consommé une seule fois au montage (useState lazy init).
+function DraftForm({
+  jobId,
+  initialContext,
+  onDeleted,
+}: {
+  jobId: string;
+  /** Contexte persistant sur le job (renvoyé par /api/jobs/{id}). Sert de
+   *  fallback si le prefill « one-shot » a déjà été consommé — typiquement
+   *  quand on ferme la réunion puis qu'on la rouvre. */
+  initialContext?: MeetingCtx;
+  /** Le parent décide ce qui se passe après suppression (généralement :
+   *  remettre l'écran d'enregistrement vide pour permettre un nouvel essai). */
+  onDeleted?: () => void;
+}) {
+  // Prefill « one-shot » si l'utilisateur vient d'une réunion du calendrier
+  // (consommé une seule fois au montage, useState lazy init). Si vide, on
+  // retombe sur le contexte déjà stocké côté backend pour ce job.
   const [prefill] = useState(() => consumeCalendarPrefill());
-  const [participants, setParticipants] = useState(prefill?.participants ?? "");
-  const [entreprises, setEntreprises] = useState(prefill?.entreprises ?? "");
-  const [contexte, setContexte] = useState(prefill?.contexte ?? "");
+  const fallback = prefill ?? {
+    participants: initialContext?.participants ?? "",
+    entreprises: initialContext?.entreprises ?? "",
+    contexte: initialContext?.contexte ?? "",
+  };
+  const [participants, setParticipants] = useState(fallback.participants ?? "");
+  const [entreprises, setEntreprises] = useState(fallback.entreprises ?? "");
+  const [contexte, setContexte] = useState(fallback.contexte ?? "");
   const [llm, setLlm] = useState<"local" | "mistral">("local");
   const [mistralKeySet, setMistralKeySet] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -309,7 +363,7 @@ function DraftForm({ jobId }: { jobId: string }) {
     setError(null);
     if (llm === "mistral" && !mistralKeySet) {
       setError(
-        "Clé API Mistral requise. Ouvre les paramètres pour la renseigner, ou repasse en Local."
+        "Clé Mistral requise. Renseignez-la dans les paramètres, ou choisissez « Sur cet ordinateur »."
       );
       return;
     }
@@ -324,6 +378,25 @@ function DraftForm({ jobId }: { jobId: string }) {
     } catch (e) {
       setError(e instanceof Error ? e.message : "Erreur");
     } finally {
+      setBusy(false);
+    }
+  }
+
+  async function discard() {
+    if (!onDeleted) return;
+    const ok = window.confirm(
+      "Supprimer cet enregistrement ? L'audio et le brouillon seront effacés. " +
+        "Cette action est définitive."
+    );
+    if (!ok) return;
+    setError(null);
+    setBusy(true);
+    try {
+      const r = await fetch(apiUrl(`/api/jobs/${jobId}`), { method: "DELETE" });
+      if (!r.ok) throw new Error(await r.text());
+      onDeleted();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Erreur");
       setBusy(false);
     }
   }
@@ -393,7 +466,7 @@ function DraftForm({ jobId }: { jobId: string }) {
         </div>
       )}
 
-      <div className="mt-6 border-t border-surface-border pt-5">
+      <div className="mt-6 border-t border-surface-border pt-5 space-y-2.5">
         <button
           type="button"
           onClick={submit}
@@ -402,6 +475,16 @@ function DraftForm({ jobId }: { jobId: string }) {
         >
           {busy ? "Envoi…" : "Lancer le traitement"}
         </button>
+        {onDeleted && (
+          <button
+            type="button"
+            onClick={discard}
+            disabled={busy}
+            className="w-full rounded-lg px-3 py-2 text-sm text-ink-muted transition-colors hover:text-brand hover:bg-brand/5 disabled:opacity-50"
+          >
+            Supprimer cet enregistrement
+          </button>
+        )}
       </div>
     </div>
   );
@@ -419,21 +502,21 @@ function LlmSelector({
   return (
     <div className="rounded-lg border border-surface-border bg-surface-card p-1">
       <div className="mb-2 px-3 pt-2 text-xs font-medium text-ink-muted">
-        Moteur de compte rendu
+        Mode de génération
       </div>
       <div className="grid grid-cols-2 gap-1">
         <LlmOption
           active={value === "local"}
           onClick={() => onChange("local")}
-          title="Local"
-          subtitle="Modèle embarqué, offline"
+          title="Sur cet ordinateur"
+          subtitle="Sans connexion internet"
         />
         <LlmOption
           active={value === "mistral"}
           onClick={() => onChange("mistral")}
-          title="Mistral Large"
+          title="En ligne (Mistral)"
           subtitle={
-            mistralKeySet ? "API cloud, rapide" : "Clé API requise (paramètres)"
+            mistralKeySet ? "Plus rapide" : "Clé requise (paramètres)"
           }
           warning={value === "mistral" && !mistralKeySet}
         />

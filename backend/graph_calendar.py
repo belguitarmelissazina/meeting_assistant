@@ -306,7 +306,7 @@ def list_upcoming(days: int = 7) -> list[dict[str, Any]]:
     params = {
         "startDateTime": start_iso,
         "endDateTime": end_iso,
-        "$select": "subject,start,end,organizer,location,attendees,bodyPreview,isOnlineMeeting,onlineMeetingProvider",
+        "$select": "subject,start,end,organizer,location,attendees,body,bodyPreview,isOnlineMeeting,onlineMeetingProvider",
         "$orderby": "start/dateTime",
         "$top": 100,
     }
@@ -351,6 +351,33 @@ def list_upcoming(days: int = 7) -> list[dict[str, Any]]:
             "attendees": attendees,
             "isOnline": bool(e.get("isOnlineMeeting")),
             "onlineProvider": e.get("onlineMeetingProvider"),
-            "preview": (e.get("bodyPreview") or "").strip(),
+            "preview": _extract_body_text(e),
         })
     return out
+
+
+def _extract_body_text(event: dict[str, Any]) -> str:
+    """Récupère la description COMPLÈTE de la réunion en clair.
+
+    Graph renvoie `body` ({contentType, content}) où `content` est l'HTML
+    complet de l'invitation. `bodyPreview` (255 caractères max) est gardé en
+    fallback si `body` est absent ou que le strip HTML échoue.
+    """
+    body = event.get("body") or {}
+    raw = (body.get("content") or "").strip()
+    if not raw:
+        return (event.get("bodyPreview") or "").strip()
+    if (body.get("contentType") or "").lower() == "html":
+        import html as _html
+        import re as _re
+        # Style/script supprimés EN PREMIER (leur contenu ne doit pas fuiter
+        # dans le texte). Puis toutes les balises, puis décodage des entités.
+        cleaned = _re.sub(r"(?is)<(script|style)\b[^>]*>.*?</\1>", " ", raw)
+        cleaned = _re.sub(r"(?s)<[^>]+>", " ", cleaned)
+        cleaned = _html.unescape(cleaned)
+        # Normalisation des blancs : Outlook insère beaucoup de &nbsp; / \r\n.
+        cleaned = _re.sub(r"[ \t\xa0]+", " ", cleaned)
+        cleaned = _re.sub(r"\s*\n\s*", "\n", cleaned)
+        cleaned = _re.sub(r"\n{3,}", "\n\n", cleaned)
+        return cleaned.strip()
+    return raw
