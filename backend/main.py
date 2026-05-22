@@ -477,6 +477,13 @@ class RecordStartPayload(BaseModel):
 
 class SettingsPayload(BaseModel):
     mistralApiKey: str | None = None
+    # Comportement « fermer = quitter » (True) ou « fermer = cacher dans le
+    # tray » (False — défaut). Tray = notifications reçues même quand la
+    # fenêtre est fermée, mais l'app continue de consommer ~350 Mo RAM.
+    quitOnClose: bool | None = None
+    # Lance automatiquement l'app au démarrage Windows (Login Items API).
+    # Défaut False — c'est à l'utilisateur de choisir cette friction.
+    launchAtStartup: bool | None = None
 
 
 class RenamePayload(BaseModel):
@@ -619,6 +626,17 @@ async def _run_pipeline_locked(job: Job) -> None:
                 if raw_transcript.exists():
                     raw_transcript.unlink()
                 produced.rename(raw_transcript)
+                # Le pipeline batch produit aussi `{stem}.turns.json` (turns
+                # par locuteur avec start/end) — on le renomme en `turns.json`
+                # pour que la vue Transcript le trouve (comme le fait le
+                # LiveProcessor pour les enregistrements). Sans ça, l'audio
+                # uploadé n'aurait pas d'onglet Transcript synchro audio.
+                produced_turns = job.out_dir / f"{stem}.turns.json"
+                if produced_turns.exists():
+                    target_turns = job.out_dir / "turns.json"
+                    if target_turns.exists():
+                        target_turns.unlink()
+                    produced_turns.rename(target_turns)
         else:
             # Transcript uploadé : on saute diar/transcription et on part
             # directement du fichier déjà converti en format standard.
@@ -705,11 +723,14 @@ async def _run_pipeline_locked(job: Job) -> None:
 
 def _cleanup_intermediate_files(job: Job) -> None:
     """Ne garde dans le dossier réunion QUE : l'audio, compte_rendu.md/.docx,
-    et `.calendar_event.json` (requis pour le lien/nommage agenda). Tout le
-    reste (transcripts, *.json de diarisation, .origin.recording, métriques…)
-    est supprimé. Le `traitement_<label>.md` est ailleurs (~/.meeting_assistant/logs/)."""
+    `.calendar_event.json` (lien agenda), et les fichiers de transcript par
+    tours (transcript.txt + turns.json) qui servent l'UI « Transcript synchro
+    audio + rename speakers ». Tout le reste (transcript normalisé pour le
+    LLM, words.json, *.json diarisation, métriques…) est supprimé. Le
+    `traitement_<label>.md` est ailleurs (~/.meeting_assistant/logs/)."""
     keep = {job.audio_path.name, "compte_rendu.md", "compte_rendu.docx",
-            ".calendar_event.json"}
+            ".calendar_event.json",
+            "transcript.txt", "turns.json", "speakers.json"}
     for entry in job.out_dir.iterdir():
         if not entry.is_file() or entry.name in keep:
             continue
@@ -1044,19 +1065,26 @@ async def health() -> dict:
 
 @app.get("/api/settings")
 async def get_settings() -> dict:
-    """Expose l'état (ne renvoie JAMAIS la clé API elle-même)."""
+    """Expose l'état des préférences (ne renvoie JAMAIS la clé API en clair)."""
     s = _load_settings()
     key = (s.get("mistral_api_key") or "").strip()
-    return {"mistralKeySet": bool(key)}
+    return {
+        "mistralKeySet": bool(key),
+        # Défaut FALSE = comportement tray opt-out : fermer la fenêtre laisse
+        # l'app vivante en arrière-plan pour les notifications.
+        "quitOnClose": bool(s.get("quit_on_close", False)),
+        # Défaut FALSE = pas de friction au démarrage Windows.
+        "launchAtStartup": bool(s.get("launch_at_startup", False)),
+    }
 
 
 @app.put("/api/settings")
 async def update_settings(body: SettingsPayload) -> dict:
-    """Enregistre ou efface la clé API Mistral.
+    """Enregistre/efface chaque champ INDIVIDUELLEMENT (None = no-op).
 
-    - `mistralApiKey = "..."` → enregistre.
-    - `mistralApiKey = ""`   → efface.
-    - `mistralApiKey = None` → no-op (ne change rien).
+    - `mistralApiKey = "..."` → enregistre la clé Mistral.
+    - `mistralApiKey = ""`   → efface la clé Mistral.
+    - `quitOnClose` / `launchAtStartup` : bool → écrit le flag, None ignore.
     """
     s = _load_settings()
     if body.mistralApiKey is not None:
@@ -1065,9 +1093,17 @@ async def update_settings(body: SettingsPayload) -> dict:
             s["mistral_api_key"] = cleaned
         else:
             s.pop("mistral_api_key", None)
-        _save_settings(s)
+    if body.quitOnClose is not None:
+        s["quit_on_close"] = bool(body.quitOnClose)
+    if body.launchAtStartup is not None:
+        s["launch_at_startup"] = bool(body.launchAtStartup)
+    _save_settings(s)
     key = (s.get("mistral_api_key") or "").strip()
-    return {"mistralKeySet": bool(key)}
+    return {
+        "mistralKeySet": bool(key),
+        "quitOnClose": bool(s.get("quit_on_close", False)),
+        "launchAtStartup": bool(s.get("launch_at_startup", False)),
+    }
 
 
 # ── Calendrier Microsoft (Graph, device code flow délégué) ─────────────────
@@ -1503,6 +1539,80 @@ async def job_audio(job_id: str) -> FileResponse:
         ".flac": "audio/flac",
     }.get(suffix, "application/octet-stream")
     return FileResponse(str(job.audio_path), media_type=media, filename=job.audio_path.name)
+
+
+@app.get("/api/jobs/{job_id}/turns")
+async def job_turns(job_id: str) -> JSONResponse:
+    """Renvoie le transcript par TOURS DE PAROLE (un objet par turn, avec
+    timestamps précis + texte + label speaker) + le mapping facultatif
+    SPEAKER_XX → nom affichable (édité par l'utilisateur via PATCH).
+
+    Le frontend utilise les `start`/`end` pour synchroniser avec l'audio et
+    le mapping pour afficher les vrais noms à la place des SPEAKER_00, etc.
+    """
+    job = jobs.get(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job introuvable")
+    turns_path = job.out_dir / "turns.json"
+    if not turns_path.exists():
+        # Cas job ancien (avant garde du transcript) ou source=transcript.
+        return JSONResponse({"turns": [], "speakers": {}, "hasTurns": False})
+    import json as _json
+    try:
+        turns = _json.loads(turns_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        log.warning("Lecture turns.json échouée pour %s : %s", job_id, exc)
+        raise HTTPException(status_code=500, detail="turns.json illisible")
+    speakers_path = job.out_dir / "speakers.json"
+    speakers_map: dict = {}
+    if speakers_path.exists():
+        try:
+            speakers_map = _json.loads(speakers_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            speakers_map = {}
+    return JSONResponse({
+        "turns": turns,
+        "speakers": speakers_map,
+        "hasTurns": True,
+    })
+
+
+class SpeakersPatch(BaseModel):
+    """Mapping SPEAKER_XX → nom affichable. Une chaîne vide ou null retire
+    l'entrée (= retour au label brut SPEAKER_XX)."""
+    updates: dict[str, str | None]
+
+
+@app.patch("/api/jobs/{job_id}/speakers")
+async def job_speakers_patch(job_id: str, payload: SpeakersPatch) -> JSONResponse:
+    """Met à jour le mapping speakers.json côté backend (persistant, partagé
+    entre la vue transcript et l'éditeur s'il vient à l'utiliser). Le
+    frontend, lui, applique le mapping au rendu — turns.json reste source
+    de vérité (labels SPEAKER_XX inchangés)."""
+    job = jobs.get(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job introuvable")
+    if (job.out_dir / "turns.json").exists() is False:
+        raise HTTPException(status_code=400, detail="Pas de turns disponibles pour ce job")
+
+    import json as _json
+    speakers_path = job.out_dir / "speakers.json"
+    current: dict[str, str] = {}
+    if speakers_path.exists():
+        try:
+            current = _json.loads(speakers_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            current = {}
+
+    for label, name in payload.updates.items():
+        if name is None or not str(name).strip():
+            current.pop(label, None)
+        else:
+            current[label] = str(name).strip()
+
+    speakers_path.write_text(_json.dumps(current, ensure_ascii=False, indent=2),
+                              encoding="utf-8")
+    return JSONResponse({"speakers": current})
 
 
 @app.get("/api/jobs/{job_id}/download")

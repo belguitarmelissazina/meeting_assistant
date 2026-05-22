@@ -38,9 +38,64 @@ export default function Home() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  // ID de réunion à OUVRIR automatiquement à la prochaine arrivée des events
+  // dans MeetingsHome — posé quand l'utilisateur clique sur une notification
+  // « Réunion à HH:MM » 5 min avant son meeting. Consommé une seule fois
+  // dans MeetingsHome puis remis à null.
+  const [pendingMeetingId, setPendingMeetingId] = useState<string | null>(null);
 
   useEffect(() => {
     if (localStorage.getItem("sidebar-collapsed") === "1") setCollapsed(true);
+  }, []);
+
+  // Écoute les notifications Electron « clic sur réunion à venir » → on
+  // bascule sur Agenda et on signale à MeetingsHome quelle réunion ouvrir.
+  // MeetingsHome se charge ensuite d'attendre que ses events soient chargés
+  // puis appelle onSelect pour la bonne réunion.
+  useEffect(() => {
+    type Bridge = {
+      electronAPI?: {
+        notifications?: {
+          onOpenMeeting?: (cb: (p: { meetingId: string }) => void) => () => void;
+        };
+        tray?: {
+          onOpenJob?: (cb: (p: { jobId: string }) => void) => () => void;
+          onFirstHideHint?: (cb: () => void) => () => void;
+        };
+      };
+    };
+    const w = window as unknown as Bridge;
+    const unsub1 = w.electronAPI?.notifications?.onOpenMeeting?.((payload) => {
+      if (!payload?.meetingId) return;
+      setSelected(null);
+      setFolderFilter(undefined);
+      setNav("agenda");
+      setPendingMeetingId(payload.meetingId);
+    });
+    // Tray → open job : clic sur « Compte rendu prêt » ou auto-ouverture
+    // après stop d'enregistrement depuis le tray.
+    const unsub2 = w.electronAPI?.tray?.onOpenJob?.((payload) => {
+      if (!payload?.jobId) return;
+      setSelected(jobItem(payload.jobId));
+    });
+    // 1re fois que la fenêtre est cachée au tray → message d'information
+    // (sauf si déjà vu — flag localStorage). Évite la confusion classique
+    // « j'ai fermé l'app mais elle est encore là dans le tray ?! ».
+    const unsub3 = w.electronAPI?.tray?.onFirstHideHint?.(() => {
+      if (localStorage.getItem("tray-hide-hint-shown") === "1") return;
+      localStorage.setItem("tray-hide-hint-shown", "1");
+      // L'utilisateur ne voit pas la fenêtre (elle vient d'être cachée),
+      // donc on utilise une Notification Web pour le message.
+      try {
+        if (typeof Notification !== "undefined" && Notification.permission !== "denied") {
+          new Notification("Meeting Assistant continue en arrière-plan", {
+            body: "Vous recevrez les notifications de vos réunions. " +
+                  "Clic droit sur l'icône dans la barre des tâches pour quitter.",
+          });
+        }
+      } catch { /* permission refusée, on laisse passer */ }
+    });
+    return () => { unsub1?.(); unsub2?.(); unsub3?.(); };
   }, []);
 
   const toggleCollapsed = () =>
@@ -210,6 +265,8 @@ export default function Home() {
             <MeetingsHome
               onSelect={handleSelectItem}
               onAdHoc={handleNewMeeting}
+              pendingMeetingId={pendingMeetingId}
+              onPendingHandled={() => setPendingMeetingId(null)}
             />
           )}
         </div>

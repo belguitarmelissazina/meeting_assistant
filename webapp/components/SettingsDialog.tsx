@@ -147,8 +147,137 @@ export default function SettingsDialog({ open, onClose, onSaved }: Props) {
         <div className="my-6 border-t border-surface-border" />
 
         <CalendarSettings open={open} />
+
+        <div className="my-6 border-t border-surface-border" />
+
+        <BackgroundSettings open={open} />
       </div>
     </div>
+  );
+}
+
+/**
+ * Préférences de comportement « arrière-plan » :
+ *   - quitOnClose : si activé, fermer la fenêtre quitte vraiment l'app
+ *     (comme avant le système tray). Par défaut DÉSACTIVÉ : on garde l'app
+ *     en vie en tray pour recevoir les notifs même fenêtre fermée.
+ *   - launchAtStartup : ajoute Meeting Assistant aux apps lancées
+ *     automatiquement à l'ouverture de session Windows (paramètre Login
+ *     Item), démarré minimisé dans le tray pour ne pas s'imposer.
+ */
+function BackgroundSettings({ open }: { open: boolean }) {
+  const [quitOnClose, setQuitOnClose] = useState(false);
+  const [launchAtStartup, setLaunchAtStartup] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    setLoading(true);
+    fetch(apiUrl("/api/settings"))
+      .then((r) => r.json())
+      .then((d) => {
+        setQuitOnClose(Boolean(d?.quitOnClose));
+        setLaunchAtStartup(Boolean(d?.launchAtStartup));
+      })
+      .catch(() => setError("Impossible de charger les préférences"))
+      .finally(() => setLoading(false));
+  }, [open]);
+
+  async function update(patch: { quitOnClose?: boolean; launchAtStartup?: boolean }) {
+    setError(null);
+    // Update optimiste pour que la case bouge immédiatement même si la
+    // sauvegarde backend est lente / KO (on revert si elle échoue).
+    if (patch.quitOnClose !== undefined) setQuitOnClose(patch.quitOnClose);
+    if (patch.launchAtStartup !== undefined) setLaunchAtStartup(patch.launchAtStartup);
+    try {
+      const r = await fetch(apiUrl("/api/settings"), {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(patch),
+      });
+      if (!r.ok) throw new Error(await r.text());
+      const d = (await r.json()) as { quitOnClose: boolean; launchAtStartup: boolean };
+      setQuitOnClose(d.quitOnClose);
+      setLaunchAtStartup(d.launchAtStartup);
+      // Signale au main process pour resync du cache + (re)appliquer le
+      // flag Windows Login Item.
+      type Bridge = {
+        electronAPI?: { tray?: { notifySettingsChanged?: () => void } };
+      };
+      const w = window as unknown as Bridge;
+      w.electronAPI?.tray?.notifySettingsChanged?.();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Erreur d'enregistrement");
+      // Revert
+      if (patch.quitOnClose !== undefined) setQuitOnClose(!patch.quitOnClose);
+      if (patch.launchAtStartup !== undefined) setLaunchAtStartup(!patch.launchAtStartup);
+    }
+  }
+
+  if (loading) {
+    return <p className="text-xs text-ink-muted">Chargement des préférences…</p>;
+  }
+
+  return (
+    <section>
+      <p className="mb-3 text-sm font-semibold text-ink">Arrière-plan</p>
+      <div className="space-y-3">
+        <Toggle
+          checked={!quitOnClose}
+          onChange={(v) => update({ quitOnClose: !v })}
+          label="Continuer en arrière-plan à la fermeture"
+          desc="L'app reste dans la barre des tâches pour vous notifier des prochaines réunions (≈ 350 Mo de RAM). Décochez si vous préférez quitter complètement en fermant la fenêtre."
+        />
+        <Toggle
+          checked={launchAtStartup}
+          onChange={(v) => update({ launchAtStartup: v })}
+          label="Lancer au démarrage Windows"
+          desc="Meeting Assistant démarre automatiquement à l'ouverture de session, minimisé dans la barre des tâches. Pratique pour recevoir les rappels de réunion dès le matin."
+        />
+      </div>
+      {error && (
+        <p className="mt-3 rounded-md border border-brand/30 bg-brand/5 px-3 py-2 text-sm text-brand">
+          {error}
+        </p>
+      )}
+    </section>
+  );
+}
+
+function Toggle({
+  checked, onChange, label, desc,
+}: {
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  label: string;
+  desc: string;
+}) {
+  return (
+    <label className="flex cursor-pointer items-start gap-3">
+      <span
+        role="switch"
+        aria-checked={checked}
+        tabIndex={0}
+        onClick={() => onChange(!checked)}
+        onKeyDown={(e) => {
+          if (e.key === " " || e.key === "Enter") { e.preventDefault(); onChange(!checked); }
+        }}
+        className={`relative mt-0.5 inline-flex h-5 w-9 flex-shrink-0 items-center rounded-full transition-colors ${
+          checked ? "bg-accent-blue" : "bg-surface-border"
+        }`}
+      >
+        <span
+          className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${
+            checked ? "translate-x-[18px]" : "translate-x-0.5"
+          }`}
+        />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-sm text-ink">{label}</span>
+        <span className="mt-0.5 block text-xs text-ink-muted">{desc}</span>
+      </span>
+    </label>
   );
 }
 

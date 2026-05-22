@@ -19,4 +19,54 @@ contextBridge.exposeInMainWorld("electronAPI", {
       return () => ipcRenderer.removeListener("find:result", h);
     },
   },
+
+  // Notifications natives 5 min avant chaque réunion d'agenda. Le main
+  // process tire la notif et envoie via webContents.send l'ID de la
+  // réunion à ouvrir. Renderer s'abonne via cette API et nettoie le
+  // listener au démontage (la fonction retournée).
+  notifications: {
+    onOpenMeeting: (cb) => {
+      const h = (_e, payload) => cb(payload);
+      ipcRenderer.on("notification:open-meeting", h);
+      return () => ipcRenderer.removeListener("notification:open-meeting", h);
+    },
+  },
+
+  // System tray (mode arrière-plan).
+  //   - onOpenJob : déclenché quand l'utilisateur clique sur un item tray
+  //     qui doit ouvrir un job précis (post-stop d'un enregistrement,
+  //     notif « CR prêt »).
+  //   - onFirstHideHint : 1re fois que la fenêtre est cachée au tray,
+  //     le main demande au renderer d'afficher une popup explicative.
+  //   - notifySettingsChanged : à appeler après update des paramètres
+  //     pour que main resynchronise son cache (quitOnClose,
+  //     launchAtStartup → flag Windows Login Item).
+  tray: {
+    onOpenJob: (cb) => {
+      const h = (_e, payload) => cb(payload);
+      ipcRenderer.on("tray:open-job", h);
+      return () => ipcRenderer.removeListener("tray:open-job", h);
+    },
+    onFirstHideHint: (cb) => {
+      const h = () => cb();
+      ipcRenderer.on("tray:first-hide-hint", h);
+      return () => ipcRenderer.removeListener("tray:first-hide-hint", h);
+    },
+    notifySettingsChanged: () => ipcRenderer.send("settings:changed"),
+  },
+
+  // Popup riche du tray (Next.js route /tray-popup chargée dans une
+  // BrowserWindow borderless). Les boutons du popup délèguent toutes les
+  // actions au main process pour que celui-ci pilote uniformément :
+  // notifications natives Windows, ouverture de la fenêtre principale,
+  // gestion du flag liveReportReady, etc. (Sinon on devrait dupliquer
+  // toute cette logique côté popup ET côté menu clic-droit.)
+  trayWindow: {
+    openMainApp: (payload) =>
+      ipcRenderer.send("tray-popup:open-main-app", payload || {}),
+    quitApp: () => ipcRenderer.send("tray-popup:quit-app"),
+    startRecording: (eventId) =>
+      ipcRenderer.send("tray-popup:start-recording", { eventId: eventId || null }),
+    stopRecording: () => ipcRenderer.send("tray-popup:stop-recording"),
+  },
 });

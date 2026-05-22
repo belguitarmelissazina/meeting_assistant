@@ -9,12 +9,20 @@ import {
   buildTimeline,
   dateChip,
   fmtTime,
+  parseGraphDate,
 } from "../lib/meetings";
 import { useRecordingStatus } from "../lib/useRecordingStatus";
 
 interface Props {
   onSelect: (item: TimelineItem) => void;
   onAdHoc: () => void;
+  /** Si défini, on ouvre automatiquement la réunion correspondante dès que
+   *  la liste d'events l'a chargée (déclenché par un clic sur notification
+   *  Windows « réunion dans 5 min »). Consommé une fois. */
+  pendingMeetingId?: string | null;
+  /** Callback pour signaler au parent que pendingMeetingId a été traité,
+   *  afin qu'il le remette à null (évite de re-déclencher l'ouverture). */
+  onPendingHandled?: () => void;
 }
 
 type AuthState = "loading" | "signed_out" | "pending" | "signed_in" | "error";
@@ -28,7 +36,9 @@ interface LoginResp {
   message: string | null;
 }
 
-export default function MeetingsHome({ onSelect, onAdHoc }: Props) {
+export default function MeetingsHome({
+  onSelect, onAdHoc, pendingMeetingId, onPendingHandled,
+}: Props) {
   const [auth, setAuth] = useState<AuthState>("loading");
   const [account, setAccount] = useState<string | null>(null);
   const [login, setLogin] = useState<LoginResp | null>(null);
@@ -91,6 +101,25 @@ export default function MeetingsHome({ onSelect, onAdHoc }: Props) {
   useEffect(() => {
     if (auth === "signed_in") loadLists();
   }, [auth, loadLists]);
+
+  // Si un pendingMeetingId est posé (clic sur notification Windows), on
+  // attend que les events soient chargés puis on ouvre la réunion
+  // correspondante. Consommé une fois via onPendingHandled.
+  useEffect(() => {
+    if (!pendingMeetingId || events.length === 0) return;
+    const ev = events.find((e) => e.id === pendingMeetingId);
+    if (!ev) return;
+    const d = parseGraphDate(ev.start) ?? new Date();
+    onSelect({
+      key: `ev:${ev.id}`,
+      title: ev.subject || "(sans objet)",
+      date: d,
+      kind: "upcoming",
+      status: "upcoming",
+      meeting: ev,
+    });
+    onPendingHandled?.();
+  }, [pendingMeetingId, events, onSelect, onPendingHandled]);
 
   // Poll des jobs (statut d'un enregistrement en cours) quand connecté.
   useEffect(() => {

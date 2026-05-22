@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import JobPanel from "@/components/JobPanel";
 import Recorder from "@/components/Recorder";
 import Uploader from "@/components/Uploader";
+import TranscriptView from "@/components/TranscriptView";
 import { apiUrl } from "../lib/api";
 import {
   type TimelineItem,
@@ -35,7 +36,17 @@ interface JobMeta {
   label?: string;
   createdAt?: number;
   calendar?: JobCalendarSnapshot | null;
+  audioAvailable?: boolean;
+  /** True quand on sait que turns.json existe pour ce job (UI peut activer
+   *  l'onglet Transcript / mode côte-à-côte). Réunions anciennes : false. */
+  hasTurns?: boolean;
 }
+
+/** Onglet actif dans MeetingDetail. Le Transcript ne peut être actif que
+ *  s'il a été ouvert via le bouton « + Transcript » ; sinon on tombe sur
+ *  le rapport par défaut. */
+type ActiveTab = "report" | "transcript";
+const TRANSCRIPT_OPEN_KEY = "meeting-transcript-tab-open";
 
 export default function MeetingDetail({ item, onBack, onJobCreated, breadcrumbs }: Props) {
   // Job lié : soit déjà enregistré (item.jobId), soit créé ici via Recorder.
@@ -46,6 +57,39 @@ export default function MeetingDetail({ item, onBack, onJobCreated, breadcrumbs 
   // Vraies métadonnées du job (label, date, snapshot agenda) — l'item peut
   // être un bouchon (sélection depuis le panneau). On va chercher la source.
   const [jobMeta, setJobMeta] = useState<JobMeta | null>(null);
+
+  // Système d'onglets façon navigateur :
+  //  - Le Compte rendu est TOUJOURS présent en onglet, c'est le contenu
+  //    principal (non fermable).
+  //  - Le Transcript est OPTIONNEL : ouvert via un bouton « + Transcript »,
+  //    fermable via la croix sur l'onglet. État persisté en localStorage
+  //    pour que l'utilisatrice retrouve son layout d'une réunion à l'autre.
+  //  - L'onglet actif détermine ce qui s'affiche dans la zone principale.
+  //    Quand on ferme le Transcript actif, on retombe sur le Compte rendu.
+  const [transcriptTabOpen, setTranscriptTabOpenState] = useState(false);
+  const [activeTab, setActiveTab] = useState<ActiveTab>("report");
+  useEffect(() => {
+    if (localStorage.getItem(TRANSCRIPT_OPEN_KEY) === "1") {
+      setTranscriptTabOpenState(true);
+    }
+  }, []);
+  const openTranscriptTab = () => {
+    setTranscriptTabOpenState(true);
+    setActiveTab("transcript");
+    localStorage.setItem(TRANSCRIPT_OPEN_KEY, "1");
+  };
+  const closeTranscriptTab = () => {
+    setTranscriptTabOpenState(false);
+    setActiveTab("report");
+    localStorage.setItem(TRANSCRIPT_OPEN_KEY, "0");
+  };
+
+  // Audio partagé entre JobPanel (lecteur visible) et TranscriptView (sync).
+  // Le <audio> est mounté UNE SEULE FOIS au niveau MeetingDetail dès qu'on
+  // a un job audio dispo — comme ça la TranscriptView peut s'y accrocher
+  // (timeupdate, seek) même quand le lecteur n'est pas visuellement ouvert.
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [audioOpen, setAudioOpen] = useState(false);
 
   useEffect(() => {
     setJobId(item.jobId ?? null);
@@ -59,12 +103,25 @@ export default function MeetingDetail({ item, onBack, onJobCreated, breadcrumbs 
     let cancel = false;
     fetch(apiUrl(`/api/jobs/${jobId}`))
       .then((r) => (r.ok ? r.json() : null))
-      .then((d) => {
+      .then(async (d) => {
         if (!cancel && d) {
+          // Ping turns.json pour savoir si la vue Transcript est dispo
+          // (réunions d'avant la v0.4 → pas de turns.json conservé).
+          let hasTurns = false;
+          try {
+            const tr = await fetch(apiUrl(`/api/jobs/${jobId}/turns`));
+            if (tr.ok) {
+              const td = await tr.json();
+              hasTurns = Boolean(td?.hasTurns);
+            }
+          } catch { /* ignore */ }
+          if (cancel) return;
           setJobMeta({
             label: d.label,
             createdAt: d.createdAt,
             calendar: d.calendar ?? null,
+            audioAvailable: Boolean(d.audioAvailable),
+            hasTurns,
           });
         }
       })
@@ -190,20 +247,67 @@ export default function MeetingDetail({ item, onBack, onJobCreated, breadcrumbs 
         </div>
       )}
 
-      <div className="border-t border-surface-border pt-6">
-        {jobId ? (
-          <JobPanel
-            jobId={jobId}
-            hideHeader
-            onDeleted={() => {
-              // Suppression depuis l'écran brouillon → on décroche le job
-              // pour réafficher Recorder (et permettre un nouvel essai sans
-              // sortir de la page).
-              setJobId(null);
-              setJobMeta(null);
-              setGenerating(false);
-            }}
+      {/* Barre d'onglets — visible seulement quand le job est terminé ET
+          qu'on a un transcript par tours (vraies réunions enregistrées dans
+          l'app, pas les uploads de transcript Teams).
+          Compte rendu = toujours là ; Transcript = optionnel (bouton + pour
+          ouvrir, croix sur l'onglet pour fermer). */}
+      {jobId && jobMeta?.hasTurns && (
+        <div className="mb-4 flex items-end gap-0 border-b border-surface-border">
+          <TabPill
+            active={activeTab === "report"}
+            onClick={() => setActiveTab("report")}
+            label="Compte rendu"
           />
+          {transcriptTabOpen && (
+            <TabPill
+              active={activeTab === "transcript"}
+              onClick={() => setActiveTab("transcript")}
+              label="Transcript"
+              onClose={closeTranscriptTab}
+            />
+          )}
+          {!transcriptTabOpen && (
+            <button
+              type="button"
+              onClick={openTranscriptTab}
+              className="ml-2 mb-1 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium text-ink-muted transition-colors hover:bg-surface hover:text-ink"
+              title="Ouvrir le transcript dans un onglet"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Transcript
+            </button>
+          )}
+        </div>
+      )}
+
+      <div className={jobId && jobMeta?.hasTurns ? "" : "border-t border-surface-border pt-6"}>
+        {jobId ? (
+          activeTab === "transcript" && transcriptTabOpen && jobMeta?.hasTurns ? (
+            <TranscriptView
+              jobId={jobId}
+              attendees={attendees}
+              audioRef={audioRef}
+              onWantAudio={() => setAudioOpen(true)}
+            />
+          ) : (
+            <JobPanel
+              jobId={jobId}
+              hideHeader
+              audioRef={audioRef}
+              audioOpen={audioOpen}
+              onOpenAudio={() => setAudioOpen(true)}
+              onCloseAudio={() => setAudioOpen(false)}
+              onDeleted={() => {
+                setJobId(null);
+                setJobMeta(null);
+                setGenerating(false);
+              }}
+            />
+          )
         ) : generating ? (
           <GeneratingReport />
         ) : (
@@ -249,6 +353,132 @@ export default function MeetingDetail({ item, onBack, onJobCreated, breadcrumbs 
           </div>
         )}
       </div>
+
+      {/* Audio partagé : monté UNE FOIS pour que TranscriptView puisse s'y
+          accrocher (timeupdate, seek) même quand le lecteur n'est pas
+          visuellement ouvert. Le wrapper fixed n'est rendu que si audioOpen,
+          mais l'élément <audio> reste accessible via le ref. */}
+      {jobId && jobMeta?.audioAvailable && (
+        <SharedAudioOverlay
+          jobId={jobId}
+          audioRef={audioRef}
+          open={audioOpen}
+          onClose={() => setAudioOpen(false)}
+        />
+      )}
+    </div>
+  );
+}
+
+/** Onglet façon navigateur : pastille en haut avec une croix de fermeture
+ *  optionnelle (uniquement les onglets fermables — le Compte rendu ne l'est
+ *  pas, c'est le contenu de base). L'onglet actif a un fond plein, les
+ *  inactifs sont neutres. */
+function TabPill({
+  active, onClick, label, onClose,
+}: {
+  active: boolean;
+  onClick: () => void;
+  label: string;
+  onClose?: () => void;
+}) {
+  return (
+    <div
+      className={`flex items-center gap-1 rounded-t-lg border-b-2 px-3 py-2 transition-colors ${
+        active
+          ? "border-brand bg-surface-card text-ink shadow-sm"
+          : "border-transparent text-ink-muted hover:text-ink hover:bg-surface-card/50"
+      }`}
+    >
+      <button
+        type="button"
+        onClick={onClick}
+        className="text-sm font-medium"
+      >
+        {label}
+      </button>
+      {onClose && (
+        <button
+          type="button"
+          onClick={(e) => {
+            // Stop propagation pour ne pas activer l'onglet en même temps
+            // que la fermeture (sinon clic X = active + ferme = ré-active
+            // un autre onglet incohérent).
+            e.stopPropagation();
+            onClose();
+          }}
+          title="Fermer l'onglet"
+          aria-label="Fermer l'onglet"
+          className="ml-0.5 flex h-4 w-4 items-center justify-center rounded text-ink-muted/60 transition-colors hover:bg-brand/10 hover:text-brand"
+        >
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      )}
+    </div>
+  );
+}
+
+/** Audio HTMLElement TOUJOURS monté quand un job audio est dispo + UI
+ *  d'overlay visible seulement quand `open`. Pourquoi tout-le-temps-monté :
+ *  TranscriptView attache un listener `timeupdate` au ref pour surligner
+ *  le turn courant — il a besoin d'un élément vivant. Le `display:none`
+ *  CSS ne désactive pas l'élément, juste son rendu visuel. */
+function SharedAudioOverlay({
+  jobId, audioRef, open, onClose,
+}: {
+  jobId: string;
+  audioRef: React.RefObject<HTMLAudioElement | null>;
+  open: boolean;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="pointer-events-none fixed bottom-24 right-0 z-40 flex justify-center px-4"
+      style={{ left: "var(--sb-w, 0px)", display: open ? "flex" : "none" }}
+    >
+      <div className="pointer-events-auto flex w-full max-w-2xl items-center gap-3 rounded-xl border border-surface-border bg-surface-card/95 px-3 py-2 shadow-2xl backdrop-blur">
+        <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-accent-blue/10 text-accent-blue">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18V5l12-2v13" />
+            <circle cx="6" cy="18" r="3" />
+            <circle cx="18" cy="16" r="3" />
+          </svg>
+        </span>
+        <audio
+          ref={audioRef}
+          key={jobId}
+          controls
+          preload="metadata"
+          src={apiUrl(`/api/jobs/${jobId}/audio`)}
+          className="h-9 min-w-0 flex-1"
+        />
+        <a
+          href={apiUrl(`/api/jobs/${jobId}/audio`)}
+          download
+          title="Télécharger l'audio"
+          className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-surface hover:text-accent-blue"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+        </a>
+        <button
+          type="button"
+          onClick={onClose}
+          title="Fermer le lecteur"
+          className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-brand/10 hover:text-brand"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }
@@ -258,11 +488,18 @@ function GeneratingReport() {
     <div className="flex flex-col items-center justify-center py-20 text-center animate-fade-in">
       <span className="mb-6 h-12 w-12 animate-spin rounded-full border-[3px] border-surface-border border-t-brand" />
       <h2 className="text-xl font-semibold text-ink">
-        Génération du compte rendu…
+        Génération du compte rendu en cours
       </h2>
-      <p className="mt-2 max-w-sm text-sm text-ink-muted">
-        Finalisation de la transcription et rédaction de la synthèse. Cela
-        peut prendre quelques instants — vous pouvez patienter ici.
+      <p className="mt-3 max-w-md text-sm text-ink">
+        Vous pouvez <span className="font-semibold">réduire la fenêtre</span> —
+        une notification Windows vous préviendra dès que c&apos;est prêt.
+      </p>
+      <p className="mt-3 max-w-md text-xs text-ink-muted/80">
+        Si vous quittez l&apos;application avant la fin, l&apos;enregistrement
+        audio est conservé mais le compte rendu ne sera pas généré
+        automatiquement. Vous pourrez relancer le traitement manuellement
+        depuis <span className="font-medium text-ink">Comptes rendus</span>
+        {" "}en cliquant sur cette réunion.
       </p>
     </div>
   );

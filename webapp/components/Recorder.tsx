@@ -156,6 +156,18 @@ export default function Recorder({
     .toString()
     .padStart(2, "0");
 
+  // États « après le clic stop » : on rend un écran plein qui occupe la
+  // place du Recorder pour signaler clairement que le pipeline est en
+  // train de finaliser. AVANT, on affichait juste un petit texte
+  // « Finalisation… » dans la carte du Recorder, ce qui donnait
+  // l'impression que rien ne se passait pendant les 10-30 s que prend
+  // la finalisation backend (drain LLM live + assemblage). Ce rendu
+  // marche dans n'importe quel conteneur (OnboardingView, MeetingDetail,
+  // etc.) sans avoir à coordonner avec le parent via onStopStart.
+  if (state === "stopping" || state === "processing") {
+    return <GeneratingScreen />;
+  }
+
   return (
     <div className="space-y-5">
       <div
@@ -174,8 +186,6 @@ export default function Recorder({
             <div className="text-xs text-ink-muted transition-colors">
               {state === "idle" && "Prêt"}
               {state === "recording" && "Enregistrement en cours"}
-              {state === "stopping" && "Finalisation…"}
-              {state === "processing" && "Sauvegarde…"}
             </div>
           </div>
         </div>
@@ -188,7 +198,6 @@ export default function Recorder({
           <button
             className="btn-danger"
             onClick={stop}
-            disabled={state !== "recording"}
           >
             <span className="h-2.5 w-2.5 rounded-sm bg-white" />
             Arrêter
@@ -201,6 +210,34 @@ export default function Recorder({
           {error}
         </div>
       )}
+    </div>
+  );
+}
+
+/** Écran « Génération du compte rendu » montré entre le clic Arrêter et la
+ *  création du job côté backend. Le pipeline tourne en LOCAL sur la machine
+ *  utilisateur : selon la durée de l'enregistrement, ça peut prendre de
+ *  ~30 s (réunion 5 min) à plusieurs minutes (réunion 1 h+). Le texte invite
+ *  à réduire la fenêtre plutôt qu'à attendre — l'app reste vivante en tray
+ *  et notifie l'utilisateur quand le CR est prêt. */
+function GeneratingScreen() {
+  return (
+    <div className="flex flex-col items-center justify-center py-20 text-center animate-fade-in">
+      <span className="mb-6 h-12 w-12 animate-spin rounded-full border-[3px] border-surface-border border-t-brand" />
+      <h2 className="text-xl font-semibold text-ink">
+        Génération du compte rendu en cours
+      </h2>
+      <p className="mt-3 max-w-md text-sm text-ink">
+        Vous pouvez <span className="font-semibold">réduire la fenêtre</span> —
+        une notification Windows vous préviendra dès que c&apos;est prêt.
+      </p>
+      <p className="mt-3 max-w-md text-xs text-ink-muted/80">
+        Si vous quittez l&apos;application avant la fin, l&apos;enregistrement
+        audio est conservé mais le compte rendu ne sera pas généré
+        automatiquement. Vous pourrez relancer le traitement manuellement
+        depuis <span className="font-medium text-ink">Comptes rendus</span>
+        {" "}en cliquant sur cette réunion.
+      </p>
     </div>
   );
 }

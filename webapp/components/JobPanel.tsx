@@ -16,6 +16,14 @@ interface Props {
    *  parent (MeetingDetail) doit alors décrocher son `jobId` pour réafficher
    *  Recorder et permettre un nouvel essai. */
   onDeleted?: () => void;
+  /** AUDIO PARTAGÉ — quand fourni, le composant n'ouvre PLUS son propre
+   *  lecteur ; il délègue au parent (MeetingDetail) qui mount l'élément
+   *  <audio> partagé avec TranscriptView pour la sync timeupdate/seek.
+   *  Le bouton 🎧 appelle onOpenAudio à la place. */
+  audioRef?: React.RefObject<HTMLAudioElement | null>;
+  audioOpen?: boolean;
+  onOpenAudio?: () => void;
+  onCloseAudio?: () => void;
 }
 
 interface MeetingCtx {
@@ -39,12 +47,23 @@ interface JobStatus {
   context?: MeetingCtx;
 }
 
-export default function JobPanel({ jobId, hideHeader, onDeleted }: Props) {
+export default function JobPanel({
+  jobId, hideHeader, onDeleted,
+  audioRef, audioOpen: audioOpenProp, onOpenAudio, onCloseAudio,
+}: Props) {
   const [job, setJob] = useState<JobStatus | null>(null);
   const [saveState, setSaveState] = useState<SaveState>({ kind: "idle" });
-  // Mini-lecteur audio fixé en bas (overlay) — fermé par défaut pour que le
-  // compte rendu soit l'élément principal de la page.
-  const [audioOpen, setAudioOpen] = useState(false);
+  // Fallback local SI le parent ne fournit pas d'audio partagé (= ancien
+  // mode autonome, encore utilisé hors MeetingDetail le cas échéant).
+  const [audioOpenLocal, setAudioOpenLocal] = useState(false);
+  const audioShared = audioRef !== undefined;
+  const audioOpen = audioShared ? !!audioOpenProp : audioOpenLocal;
+  const handleOpenAudio = audioShared
+    ? (onOpenAudio ?? (() => {}))
+    : () => setAudioOpenLocal(true);
+  const handleCloseAudio = audioShared
+    ? (onCloseAudio ?? (() => {}))
+    : () => setAudioOpenLocal(false);
 
   useEffect(() => {
     if (!jobId) {
@@ -72,7 +91,7 @@ export default function JobPanel({ jobId, hideHeader, onDeleted }: Props) {
 
   useEffect(() => {
     setSaveState({ kind: "idle" });
-    setAudioOpen(false);
+    setAudioOpenLocal(false);
   }, [jobId]);
 
   if (!jobId || !job) {
@@ -90,7 +109,7 @@ export default function JobPanel({ jobId, hideHeader, onDeleted }: Props) {
             <StatusDot status={job.status} />
             <span>{isDone ? "Compte-rendu prêt" : job.step}</span>
           </p>
-          {isDone && <TopActions job={job} saveState={saveState} onPlayAudio={() => setAudioOpen(true)} />}
+          {isDone && <TopActions job={job} saveState={saveState} onPlayAudio={handleOpenAudio} />}
         </div>
       ) : (
         <header className="mb-6 flex items-start justify-between gap-6">
@@ -103,7 +122,7 @@ export default function JobPanel({ jobId, hideHeader, onDeleted }: Props) {
               <span>{isDone ? "Compte-rendu prêt" : job.step}</span>
             </p>
           </div>
-          {isDone && <TopActions job={job} saveState={saveState} onPlayAudio={() => setAudioOpen(true)} />}
+          {isDone && <TopActions job={job} saveState={saveState} onPlayAudio={handleOpenAudio} />}
         </header>
       )}
 
@@ -143,14 +162,11 @@ export default function JobPanel({ jobId, hideHeader, onDeleted }: Props) {
         </>
       )}
 
-      {isDone && job.audioAvailable && audioOpen && (
-        // Empilé AU-DESSUS de la toolbar de l'éditeur (sticky bottom-5,
-        // ~50px de haut → on laisse ~96px sous le lecteur pour qu'on voie
-        // les 2 ensemble : on écoute pendant qu'on édite. z-40 reste au-
-        // dessus de la toolbar (z-30).
-        // `left: var(--sb-w)` aligne le lecteur sur la zone main (= même
-        // largeur que le compte rendu), sinon il resterait centré sur le
-        // viewport entier et se décalerait quand on replie la sidebar.
+      {/* Overlay audio LOCAL : rendu UNIQUEMENT en mode autonome
+          (audioRef non fourni par le parent). En mode partagé avec
+          TranscriptView, c'est MeetingDetail/SharedAudioOverlay qui le
+          rend pour que le ref soit accessible aux deux vues. */}
+      {!audioShared && isDone && job.audioAvailable && audioOpen && (
         <div
           className="pointer-events-none fixed bottom-24 right-0 z-40 flex justify-center px-4"
           style={{ left: "var(--sb-w, 0px)" }}
@@ -184,7 +200,7 @@ export default function JobPanel({ jobId, hideHeader, onDeleted }: Props) {
             </a>
             <button
               type="button"
-              onClick={() => setAudioOpen(false)}
+              onClick={handleCloseAudio}
               title="Fermer le lecteur"
               className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-ink-muted transition-colors hover:bg-brand/10 hover:text-brand"
             >

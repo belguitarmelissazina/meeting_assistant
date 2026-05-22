@@ -173,11 +173,17 @@ export default function Sidebar({
 
       {/* Récentes */}
       <div className="flex-1 overflow-y-auto px-3 pb-2">
-        {!collapsed && recents.length > 0 && (
+        {!collapsed && (recording.recording || recents.length > 0) && (
           <>
             <p className="mb-1 mt-1 px-2 text-xs font-semibold uppercase tracking-wider text-ink-muted">
               Récentes
             </p>
+            {recording.recording && (
+              <RecordingRow
+                status={recording}
+                onClick={() => onResumeRecording(recording)}
+              />
+            )}
             <JobHistory
               flat
               jobs={recents}
@@ -251,6 +257,43 @@ export default function Sidebar({
 }
 
 /* ── Sous-composants ──────────────────────────────────────────────────── */
+
+function RecordingRow({
+  status,
+  onClick,
+}: {
+  status: RecordingStatus;
+  onClick: () => void;
+}) {
+  // Tick 1s pour rafraîchir le timer (sinon il sauterait par pas de 2s
+  // au rythme du polling de useRecordingStatus).
+  const [, setNow] = useState(Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const seconds = recordingElapsedSeconds(status);
+  const duration = formatRecordingDuration(seconds);
+  const title = status.calendar?.subject || "Enregistrement en cours";
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="mb-1 flex w-full items-start gap-2 rounded-md border border-brand/30 bg-brand/5 px-2 py-2 text-left transition-colors hover:bg-brand/10"
+      title="Reprendre l'enregistrement en cours"
+    >
+      <span className="mt-1 flex h-2 w-2 flex-shrink-0 items-center justify-center">
+        <span className="h-2 w-2 rounded-full bg-brand animate-pulse" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-medium text-brand">{title}</p>
+        <p className="mt-0.5 text-xs text-brand/80">
+          En cours · {duration}
+        </p>
+      </div>
+    </button>
+  );
+}
 
 function RecordingChip({
   status,
