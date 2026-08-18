@@ -20,7 +20,8 @@ _bench_results/
 _inspect_*.py
 
 # ─── Build artifacts (PyInstaller / Electron / Next.js) ─────────────────────
-build/
+build/*
+!build/backend.spec
 dist/
 release/
 *.spec.bak
@@ -30,7 +31,8 @@ webapp/node_modules/
 webapp/tsconfig.tsbuildinfo
 electron/node_modules/
 electron/dist/
-electron/build/
+electron/build/*
+!electron/build/icon.ico
 
 # ─── ML models & weights (too big for git — host elsewhere) ─────────────────
 models/
