@@ -619,12 +619,17 @@ ipcMain.on("tray-popup:quit-app", () => {
 // quelle que soit la source du déclenchement.
 ipcMain.on("tray-popup:start-recording", (_e, payload) => {
   if (trayPopupWindow && trayPopupWindow.isVisible()) trayPopupWindow.hide();
-  trayStartRecording(payload?.eventId || null);
+  trayStartRecording(payload || {});
 });
 ipcMain.on("tray-popup:stop-recording", () => {
   if (trayPopupWindow && trayPopupWindow.isVisible()) trayPopupWindow.hide();
   trayStopRecording();
 });
+
+// Fenêtre flottante « Assistant live » : ouverture/fermeture à la demande
+// (bouton du tray popup ; bouton × de la fenêtre elle-même).
+ipcMain.on("advisor:open", () => openAdvisorWindow());
+ipcMain.on("advisor:close", () => closeAdvisorWindow());
 
 // ── System tray (mode arrière-plan) ──────────────────────────────────────
 // L'app vit en tray par défaut (opt-OUT) : fermer la fenêtre cache l'app,
@@ -709,7 +714,7 @@ function buildTrayMenu() {
   } else {
     items.push({
       label: "🎙 Démarrer un enregistrement (hors agenda)",
-      click: () => trayStartRecording(null),
+      click: () => trayStartRecording({ eventId: null }),
     });
     // Si une réunion d'agenda commence dans <15 min, raccourci dédié pour
     // la lancer en 1 clic avec ses participants/contexte pré-câblés.
@@ -720,7 +725,7 @@ function buildTrayMenu() {
       const mm = String(startD.getMinutes()).padStart(2, "0");
       items.push({
         label: `⏭ Démarrer pour « ${u.subject} » (${hh}:${mm})`,
-        click: () => trayStartRecording(u.id),
+        click: () => trayStartRecording({ eventId: u.id }),
       });
     }
     items.push({ type: "separator" });
@@ -774,6 +779,10 @@ function teardownTray() {
     trayPopupWindow.destroy();
   }
   trayPopupWindow = null;
+  if (advisorWindow && !advisorWindow.isDestroyed()) {
+    advisorWindow.destroy();
+  }
+  advisorWindow = null;
   if (tray) tray.destroy();
   tray = null;
 }
@@ -872,6 +881,82 @@ function showMainWindow() {
   }
 }
 
+// ── Fenêtre flottante « Assistant live » ──────────────────────────────────
+// Always-on-top, sans bordure, streame les suggestions Mistral. Ouverte/fermée
+// AUTOMATIQUEMENT selon /api/record/status (advisor actif) → indépendante de la
+// source de l'enregistrement (tray OU app principale).
+let advisorWindow = null;
+// Ouverture AUTO une seule fois par session ; ensuite fermeture/ré-ouverture
+// 100 % manuelles (pas de ré-ouverture ni de fermeture auto intempestive).
+let _advisorAutoOpened = false;
+const ADVISOR_W = 360;
+const ADVISOR_H = 460;
+
+function createAdvisorWindow() {
+  if (advisorWindow && !advisorWindow.isDestroyed()) return advisorWindow;
+  const r = resolveResources();
+  advisorWindow = new BrowserWindow({
+    width: ADVISOR_W,
+    height: ADVISOR_H,
+    show: false,
+    frame: false,
+    resizable: true,
+    minimizable: false,
+    maximizable: false,
+    fullscreenable: false,
+    skipTaskbar: true,
+    alwaysOnTop: true,
+    movable: true,
+    // Fond aligné sur le thème de l'app (clair/sombre selon la préférence
+    // système, comme le splash et globals.css).
+    backgroundColor: nativeTheme.shouldUseDarkColors ? "#121418" : "#FBF7F3",
+    title: "Assistant live",
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: true,
+    },
+  });
+  advisorWindow.setMenuBarVisibility(false);
+  // Reste au-dessus même d'une visio en plein écran (Teams/Meet).
+  advisorWindow.setAlwaysOnTop(true, "screen-saver");
+  // Légèrement transparente (on voit un peu à travers) sans casser les clics
+  // — setOpacity marche sous Windows, contrairement à transparent:true qui
+  // casse la réception des clics dans le webview.
+  advisorWindow.setOpacity(0.92);
+  if (isDev && process.env.ELECTRON_DEV_URL) {
+    advisorWindow.loadURL(`${process.env.ELECTRON_DEV_URL}/live-advisor`);
+  } else {
+    advisorWindow.loadFile(path.join(r.webappOut, "live-advisor.html"));
+  }
+  advisorWindow.on("closed", () => { advisorWindow = null; });
+  return advisorWindow;
+}
+
+function positionAdvisorWindow() {
+  if (!advisorWindow || advisorWindow.isDestroyed()) return;
+  const { screen } = require("electron");
+  const wa = screen.getPrimaryDisplay().workArea;
+  const x = wa.x + wa.width - ADVISOR_W - 16;
+  const y = wa.y + 16;
+  advisorWindow.setPosition(x, y, false);
+}
+
+function openAdvisorWindow() {
+  const w = createAdvisorWindow();
+  if (!w.isVisible()) {
+    positionAdvisorWindow();
+    w.showInactive();  // ne vole PAS le focus (l'utilisateur est en réunion)
+  }
+}
+
+function closeAdvisorWindow() {
+  if (advisorWindow && !advisorWindow.isDestroyed() && advisorWindow.isVisible()) {
+    advisorWindow.hide();
+  }
+}
+
 async function refreshTrayState() {
   // (a) état enregistrement
   let changed = false;
@@ -890,6 +975,16 @@ async function refreshTrayState() {
       // On ne notifie que si l'enregistrement vient d'une réunion d'agenda
       // avec un end time futur — un hors-agenda n'a pas de fin connue.
       scheduleEndOfMeetingReminder();
+
+      // Fenêtre flottante « Assistant live » : ouverte AUTOMATIQUEMENT une seule
+      // fois quand l'advisor démarre. Ensuite l'utilisateur la ferme/rouvre à la
+      // main (bouton × de la fenêtre + bouton du tray) — aucune fermeture ni
+      // ré-ouverture automatique.
+      if (d.recording && d.advisor) {
+        if (!_advisorAutoOpened) { openAdvisorWindow(); _advisorAutoOpened = true; }
+      } else {
+        _advisorAutoOpened = false;  // fin de session → réarme l'auto-open
+      }
     }
   } catch { /* backend KO */ }
 
@@ -943,10 +1038,16 @@ function makeTrayIcon(recording) {
   return _baseTrayImageCache;
 }
 
-async function trayStartRecording(eventId) {
+async function trayStartRecording(opts) {
+  // opts = { eventId, enableLiveAdvisor, objectif }. Le LLM LOCAL n'est plus
+  // démarré depuis le tray (llama-server lourd) ; l'assistant live = API Mistral.
+  opts = opts || {};
+  const eventId = opts.eventId || null;
+  const advisor = !!opts.enableLiveAdvisor;
+  const objectif = opts.objectif || "";
   // Si on lance depuis une réunion d'agenda, on rapatrie son contexte
   // (participants/sujet) pour que le pipeline ait les bons noms.
-  let payload = { enableLiveLlm: true };
+  let payload = { enableLiveLlm: false, enableLiveAdvisor: advisor, objectif };
   if (eventId) {
     try {
       const r = await fetch(`${BACKEND_URL}/api/calendar/upcoming?days=1`);
@@ -955,7 +1056,9 @@ async function trayStartRecording(eventId) {
         const m = (d.meetings || []).find((mm) => mm.id === eventId);
         if (m) {
           payload = {
-            enableLiveLlm: true,
+            enableLiveLlm: false,
+            enableLiveAdvisor: advisor,
+            objectif,
             participants: (m.attendees || [])
               .map((a) => a.name)
               .filter(Boolean)

@@ -1,0 +1,16 @@
+{
+  "sections": [
+    {
+      "titre": "Expertises des participants et cas d'usage initiaux",
+      "chunk_ids": [
+        0,
+        2
+      ],
+      "brief": {
+        "couvre": "Les expertises des participants en IA g\u00e9n\u00e9rative et assistants conversationnels, ainsi que les premiers cas d'usage explor\u00e9s (automatisation de r\u00e9daction de rapports, synth\u00e8se de donn\u00e9es, orchestration via MCP, extraction d'informations structur\u00e9es, conformit\u00e9 documentaire, automatisation de simulations, agents de planification, outils de d\u00e9tection de fraude). Inclut \u00e9galement les \u00e9changes sur les besoins en MCP/NLP et les propositions d'ateliers design pour prioriser ces cas.",
+        "ne_couvre_pas": "Les d\u00e9tails techniques des outils ou pipelines sp\u00e9cifiques (d\u00e9j\u00e0 abord\u00e9s dans d'autres sections), les d\u00e9cisions finales ou validations de projets, ou les aspects de souverainet\u00e9 des outils (hors du cadre de cette section th\u00e9matique)."
+      }
+    }
+  ],
+  "raw": "{\n  \"sections\": [\n    {\n    \"titre\": \"Expertises des participants et cas d'usage initiaux\",\n    \"chunk_ids\": [0, 2],\n    \"brief\": {\n      \"couvre\": \"Les expertises des participants en IA g\u00e9n\u00e9rative et assistants conversationnels, ainsi que les premiers cas d'usage explor\u00e9s (automatisation de r\u00e9daction de rapports, synth\u00e8se de donn\u00e9es, orchestration via MCP, extraction d'informations structur\u00e9es, conformit\u00e9 documentaire, automatisation de simulations, agents de planification, outils de d\u00e9tection de fraude). Inclut \u00e9galement les \u00e9changes sur les besoins en MCP/NLP et les propositions d'ateliers design pour prioriser ces cas.\",\n      \"ne_couvre_pas\": \"Les d\u00e9tails techniques des outils ou pipelines sp\u00e9cifiques (d\u00e9j\u00e0 abord\u00e9s dans d'autres sections), les d\u00e9cisions finales ou validations de projets, ou les aspects de souverainet\u00e9 des outils (hors du cadre de cette section th\u00e9matique).\"\n    }\n  }\n  ]\n}"
+}

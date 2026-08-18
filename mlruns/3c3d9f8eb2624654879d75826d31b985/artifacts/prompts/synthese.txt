@@ -1,0 +1,11 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis.
+---
+Participants (vérité) : {participants}
+
+Résumés des passages :
+{memoire}
+
+Produis :
+{{"type": "type de réunion (ex: prise de contact, revue projet...)",
+  "objectif": "1-2 phrases : ce que la réunion cherchait à accomplir",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}}

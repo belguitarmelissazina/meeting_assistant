@@ -1,0 +1,68 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien.
+
+Extrait :
+[SPEAKER_01]: synthèses et même augmenter les synthèses et faire des propositions plus complètes et mieuxadapter à notre.
+[SPEAKER_01]: contexte
+[SPEAKER_00]: C’est aussi pour cloisonner c’est-à-dire que si onutilise cetoutil par exemple au sein deRTE c’est pour que ça reste côtéRTE et que ce ne soit pas finalement côté gaillé donc il y a tout cet aspect aussi on cherche à avoir une souveraineté qui soitliée à l’outil et à l’environnement dans lequel
+[SPEAKER_00]: l’outil.
+[SPEAKER_00]: estutilisé
+[SPEAKER_01]: Donc pour les deux missionsorchestration au sein de sur lesquelles j’ai travaillé ces deux cas d’usage-là sinon on a unautre projet qui est en courségalement qui est unagent de planification de pok et donc on n’est pas sur de l’orchestration parce que ça se fait autobre l’accès à unoutil qui va
+[SPEAKER_01]: faire de lawebSir tu pourrais récupérer de la bibliographie à partir d’un sujet donné et de proposer uneodmap pour mettre en place un projet donné se fait automatiquement pour l’instant on n’a pas encoreimplémenté de, MCP mais àterme l’idée ça serait d’avoir unagent qui peut où on peututiliser
+[SPEAKER_01]: plusieursoutils donc dans un premier temps faire de la bibliographie grâce à cetoutil-là mais aussi avoiraccès à plusieursoutils de simulation pour pouvoir mettre en place l’époque justement sur lesquelles on veut.
+[SPEAKER_01]: travailler Donc l’idée c’est de vraiment pouvoir avoir une pipeline un peu un twend qui propose un poc minimal sur un sujet donné on fait beaucoup de hackaton par exemple au sein deID et ça nous permettrait d’aller plus vite sur ce genre de.
+[SPEAKER_01]: sujet-là
+[SPEAKER_00]: Donc, là c’est aussi une aide pour avoir un côté démonstrateur donc enallant chercher assez rapidement tout ce qui est état de l’art comprendre finalement comment des problématiques peuvent être résolues en étant tout dettes sur la partie recherche et développement en se basant sur duRKEVX par
+[SPEAKER_00]: exemple ou d’autres types de sources qui permettent d’avoir ces nouvelles tendances et potentiellement d’arriver à en faire un pox c’est-à-dire que lesagents codent et puissent avoir uneffet mêmeQuickanderty mais apporter cette démonstration et ensuite évidemment c’est de faire l’ingénierie
+[SPEAKER_00]: logicielle qui va..
+[SPEAKER_00]: derrièreOkEst-ce que vous avez des questions par rapport à ça ou Maya je crois que tu avais encore une ou deux un ou deux projets à?
+[SPEAKER_00]: présenter Il en
+[SPEAKER_01]: rester un, projet je n’ai pas vomis tous les projets sur lesquels j’allais travaillé mais il me restait un projet sur lequel j’avais travaillé pour le coup avant de rejoindreYéley mais qui est toujours sûr de lier générative donc j’ai ajouté ce projet-là parce qu’au coup c’est un projet quiétait
+[SPEAKER_01]: hébergé donc en prem et où j’ai travaillé sur l’objectif du projetétait de pouvoirextraire des informations à partir de documents scannésadministocumentsadministratifs scannés de pouvoir enextraire donc par exemple des salaires nets brut total de les classifier le métier de la, personne etc et
+[SPEAKER_01]: d’avoir unoutilVLM qui puisse nous dire si estimer un pourcentage de conformité du.
+[SPEAKER_01]: document Donc ici l’idée c’est par exemple d’extraire le salaire et le métier de la personne et de regarder par rapport à tous les documents qu’on a déjà sur lesquels on a déjà travaillé si le salaire par rapport au métier est tout le temps dans une intervalle de confiance donc ça nous donne une
+[SPEAKER_01]: notion de conformité dans le.
+[SPEAKER_01]: document C’est unoutil de détection de froide et donc ici j’avais travaillé sur toute la partie prétraitement des documents qui étaient quand même assez prenantes mais la partieégalement la partie donc apprentissage et fin une journée du modèle du visuo lingo du modèle donc ici je vais travailler
+[SPEAKER_01]: sur leFining deQuendInfibeVL et donc en récupérant la sortie structurée de toutes les informations qu’on voulaitextraire et ensuite sur la partie contrôle d’anomalie et aussi sur le déploiement du modèle avecVLM etUVCorn et sur un Dashboard donc qui permettait de monitorer toute cette chaîne de
+[SPEAKER_01]: traitement-là et les résultats qu’onobtenait en prod pour pouvoir détecter des drifts par exemple en performance donc c’est un projet que j’ai cité parce qu’il sort un peu du lot de ce qu’on a cité des projets que je citais avant dix-huitans parce que ici c’est un modèle qui est hébergé en local et
+[SPEAKER_01]: c’est aussi un modèle il y aeu un travail de file chauni donc pour dire que il y a peut-être des projets qui peuvent nécessiter que je filtonine sur lesquels on peutégalement intervenir.
+[SPEAKER_01]: chezYelVoilà et ici enfin le finang c’était par rapport à la qualité des données enentrée mais aussi parce que les documents étaient souvent rédigés enarabe donc ça le filetooningétait assezadéquat pour ce cas.
+[SPEAKER_00]: d’usage-làEst-ce que vous avez des questions?,
+[SPEAKER_02]: ouiOui pardon là sur le scan c’est tu l’as peut-être dit vous l’a peut-être dit et pardon c’était manuscrit ou pas.
+[SPEAKER_01]: lesentrées Il pouvait avoir des documents manuscrits.
+[SPEAKER_01]: oui, D’accord c’était assez horigène que j’avais unagent qui faisait d’abord la classification en manuscrit ou rédigeait donc en non manuscrit et ensuite unagent quivenait faire la classification sur le type de document et il en avait certains cas où on avait des modèles qui défunt une journée
+[SPEAKER_01]: spécialement pour ces cas-là d’autres cas où un coin tout pointfive poitrand et non fineétait.
+[SPEAKER_01]: suffisant Mais on avait donc les deux.
+[SPEAKER_01]: possibilitésEst-ce
+[SPEAKER_00]: que ça vous inspire certaines choses par rapport à des cas d’usage donc peut-être que le texte n’est pas trop votre sujet à part pour les rapports côté actif peut-être ou les synthèses à générer est-ce que ça vous inspire quelque chose est-ce que vous vouliez partager les cas d’usage qu’on pourrait
+[SPEAKER_00]: peut-êtreessayer de réfléchir et de rebondir sur notre vision pour vous la?
+[SPEAKER_02]: partager Alorseffectivement c’est pour ça qu’on a cet échange-là donceffectivement on est bien sur le même type de cas d’usage après là nos vues de ce que je vois c’est vrai qu’on est peut-être pluseffectivement sur des choses assezorientées parce que alors je parlais un peu de la,
+[SPEAKER_02]: partieorchestration etc parce que va être nous qui peut nous intéresser ça peut être de travailler peut-être plus sur la partie MCP en tant que.
+[SPEAKER_02]: telle, Là c’est les travaux à s’orienterNLP alors encore une, fois ce n’est pas le premiertruc auquel j’avais pensé par rapport au MCP mais c’est aussi les cas d’usage qu’on a comme je le disais le fait de pouvoir synthétiser les choses ou le fait de justement de synthétiser des sources de données
+[SPEAKER_02]: assez disparates n’importe quoi des blocs d’alarme des messages ou des petites choses assez fragmentées puis Derruel estallait synthétiser donc ça correspondait à ce qui a été fait.
+[SPEAKER_02]: ici Je parlais là de l’aspect manuscrit parce que mon sais aussi des choses qu’on regarde même si on a déjà des travaux en cours là-dessus donc mais peut-être dans un temps un peu plus moyenterme on va dire peut-êtrearriver à continuer sur ces questions-là de texte.
+[SPEAKER_02]: manuscritVoilà je vois le coheneffectivement c’est ce qu’on avait vu là de potentialité pour les notes manuscrits de dispatcher en fait c’est quelusage c’est un périle ce quiressentait un peu notre beichman donc c’est pour ça que je le voilà et ça me fait.
+[SPEAKER_02]: penserVoilà donc ça voudrait que là de ce que je vois c’est que ça m’évoque plus un travail assez focalisé enNLP encore une, fois c’est aussi des choses qu’on a peut-être moins MCP, voilà c’est un petit retour comme ça à chaud parce qu’après encore une, fois c’est vrai que sur, leNCP il y a la
+[SPEAKER_02]: question du LLM mais finalement il y a aussi la question du serveur MCP en tant que.
+[SPEAKER_02]: tel Je pense le fait la capacité finalement de dire on a desoutils d’études qui peuvent être voilà assez complexes donc commentarriver à faire cette interaction à.
+[SPEAKER_02]: l’élèmeVoilà c’est un premier retour à chaud donc moi je vois des connexions avec certains cas d’usage qu’on a peut-être moins sur la MCP mais voilà comme ça à chaud ça reste.
+[SPEAKER_02]: pertinent
+[SPEAKER_01]: Mais je vous rejoins aussi sur le MCP ça a faitégalement partie de notre feuille de route entermes justement d’avoir des serveurs MCP où on peut directement se brancher sur desoutils de simulation justement l’idée du poc de l’outil qui puisse perdu un.
+[SPEAKER_01]: pocNoën L’idée n’est pas uniquement d’avoir une proposition d’un plan de travail mais plutôt d’appliquer par la suite le plan de travail donc de prendre le plan de travail qui est généré par le premieragent comme des directives et d’aller chercher dans via un MCP dans lesoutils internes qu’on a ou
+[SPEAKER_01]: lesoutils de simulation quiexistent de récupérer le bonoutil et de faire la simulation avec les données quiont été proposées par le premieragent donc c’est complètement dans notre feuille de.
+[SPEAKER_02]: routeégalement Mais non mais je réagissaiseffectivement plus sur la dans l’immédiat encore une fois à chose sur les travaux que je voyais aprèseux je comprends si vous avez ça dans votre.
+[SPEAKER_00]: patrie Si pour ça qu’on avait évoqué avecGérald puisque sur la partie rentabilité des moyens de production en, fait on aeu un scope qui a été ciblé sur les moyens de production mais finalement on a une matrice en attente avec un certain nombre d’études à dérouler et donc l’idée c’était aussi
+[SPEAKER_00]: d’avoir finalement ce MCP qui puisse préparer toutes les, simulations lesorchestrer et brancher derrière l’outil de génération de rapports et c’est aussi ce qu’on avait en tête qui pouvait potentiellement intéresser, dèse c’est-à-dire qu’il y a le côté finalement pré-rapport puisque de toute façon
+[SPEAKER_00]: il faut toujours qu’il soit, relu ça passe devant des, comités mais ça pourrait aussi faire toute cette partieamont qui est de préparer les, scénarios les, études de les, lancer de faire uncheckpoint sur est-ce que finalement l’étude est équilibrée d’avoir un contrôle humain pour dire ce qu’il
+[SPEAKER_00]: faut, modifier voire potentiellement unagent quiarrive à le modifier et de continuer finalement à aider cette partie lancement des simulations deNT et que l’humain puisse derrière avoir la valeur.
+[SPEAKER_00]: ajoutée L’étude on sait qu’il y a les, robustes on a l’étude de sensibilité qui a été, faite on a les sorties, d’analyse on a les premiers, résultats on a finalement un, pré-rapport on n’a plus qu’à travailler et donner la bonne direction pour finalement le BP ou le futur.,
+[SPEAKER_02]: énergétiqueOuieffectivement c’est intéressant oui cetteorchestration d’études donc nous en tout, cas alors évidemment le contexte n’est pas le dumentaire donc il y a d’autres types d’outils mais on sera bien un peu sur ce type de choses-là c’est-à-dire savoir naviguer entre des, hypothèses etc
+[SPEAKER_02]: parce que c’est la problématique qu’on peut avoir souvent en temps réel donc récupérer des hypothèses un petit peu à droite à gauche parce que passer déjà récupérer les données d’entrée de l’étude, consommation, production, programmation machin et échange sur chacune de ces choses-làarriver à se
+[SPEAKER_02]: dire des stratégies un petit peu d’hypothèse de scénario et puis derrièrevenir jongler entre un simulateur unoutil, d’études unoutil de, visualisation voilà ce genre de.
+[SPEAKER_02]: choses Donc vous voyez çaressemble un petit peu à ce que vous évoquez sur des échanges différentes mais çaressemble un petit peu à., çaOk bon enfin en tout cas moi j’ai une bonne vision donc c’est vrai que sur le comme disait on aura peut-être plus parlé de la partieNP mais encore une fois qui est
+[SPEAKER_02]: aussi très intéressante pour nous et aussi de ce que vous avez vu dans le futur sur la MCP donc en tout cas moi de mon point de, vue j’ai une bonne vision et puis voilà on peut alorseffectivement vous avez travaillé avec le géral qui est pas très loin de nos.
+[SPEAKER_02]: bureauxVoilà donc très.
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"— si absent", "echeance":"— si absente"}]}

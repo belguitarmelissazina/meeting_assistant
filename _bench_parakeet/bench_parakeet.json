@@ -1,0 +1,2124 @@
+{
+  "stats": {
+    "audio_duration_s": 3286.4,
+    "wall_time_s": 205.3,
+    "decode_time_s": 176.9,
+    "rtf_wall": 0.062,
+    "n_segments": 422,
+    "n_words": 6239,
+    "model_load_s": 2.3,
+    "threads": 4
+  },
+  "segments": [
+    {
+      "start": 7.4,
+      "end": 8.56,
+      "text": "Bonjour Nordine."
+    },
+    {
+      "start": 12.87,
+      "end": 16.18,
+      "text": "Et voici Mathieu, tout le monde est là. Bonjour à tous."
+    },
+    {
+      "start": 17.7,
+      "end": 28.27,
+      "text": "Ce que je vous propose c'est un petit tour de table parce que moi je ne connais pas tout le monde. Je peux commencer si vous voulez."
+    },
+    {
+      "start": 28.81,
+      "end": 57.21,
+      "text": "Donc moi c'est Jérôme Massé, je suis expert Data IA, manager de la pratique Data IA au sein de Y des Consulting. Et donc je par exemple travaille avec Maya sur les sujets de l'IA générative. Je travaille aussi avec Dena côté R<unk>D sur la feuille de route équilibre, enfin gouvernance et régulation sur un projet d'équilibre offre-demande et la rentabilité des moyens de base."
+    },
+    {
+      "start": 57.29,
+      "end": 63.31,
+      "text": "Et également côté décoffert sur des analyses plutôt orientées métiers."
+    },
+    {
+      "start": 67.72,
+      "end": 86.93,
+      "text": "Merci Gér. Confirmée chez I travail principally on the project Dia Generation, en moderne and project that I'm on chez RTE with Dana and German."
+    },
+    {
+      "start": 87.56,
+      "end": 91.12,
+      "text": "Et um donc je suis docteur en"
+    },
+    {
+      "start": 91.81,
+      "end": 94.58,
+      "text": "Mon deep learning, j'ai fait un doctorat en traitement informatique des langues."
+    },
+    {
+      "start": 95.17,
+      "end": 101.71,
+      "text": "Et um je rejoins l'élé en septembre, donc voilà, je je commence cette émission en ce sens là."
+    },
+    {
+      "start": 105.73,
+      "end": 107.18,
+      "text": "Je vous laisse vous présenter."
+    },
+    {
+      "start": 110.85,
+      "end": 120.78,
+      "text": "Allez, je commence. Donc Bruno Le Métaillier, donc je suis à la RD et je pilote la feuille de route Smart Cockpit Interactive."
+    },
+    {
+      "start": 121.22,
+      "end": 126.67,
+      "text": "Uh the assistants. Uh."
+    },
+    {
+      "start": 129.22,
+      "end": 139.63,
+      "text": "Mathieu Sartre, Monsieur L R D aussi D R T. Uh La Thematic Assistant Bruno, it's a dizain of one."
+    },
+    {
+      "start": 140.1,
+      "end": 142.0,
+      "text": "Qu'elle évolue, qu'on l'a fait mûrir."
+    },
+    {
+      "start": 142.5,
+      "end": 144.21,
+      "text": "Et moi je travaille dessus depuis tout ce temps là."
+    },
+    {
+      "start": 145.13,
+      "end": 145.87,
+      "text": "Yeah."
+    },
+    {
+      "start": 149.57,
+      "end": 158.54,
+      "text": "Dans Dinaka, je suis aussi de la RID. Uh she travaille sur des thématiques d'implémentation des réseaux de neurones pour des cosystèmes."
+    },
+    {
+      "start": 160.04,
+      "end": 160.53,
+      "text": "But"
+    },
+    {
+      "start": 162.89,
+      "end": 171.7,
+      "text": "Mais Jérôme Picot, moi je suis plus à la RD, j'y étais, mais je ne suis plus. Je suis dans une direction qui s'appelle maintenant..."
+    },
+    {
+      "start": 172.29,
+      "end": 174.58,
+      "text": "uh intelligence artificielle et innovation."
+    },
+    {
+      "start": 175.21,
+      "end": 180.18,
+      "text": "Et je travaille sur des sujets principalement diagénérates."
+    },
+    {
+      "start": 180.61,
+      "end": 182.99,
+      "text": "tour des LM, MCP, etc."
+    },
+    {
+      "start": 185.86,
+      "end": 191.18,
+      "text": "Très bien, est-ce que vous voulez que je présente d'autres sociétés ou il y a pas besoin ?"
+    },
+    {
+      "start": 207.49,
+      "end": 208.62,
+      "text": "Toutes vos collègues."
+    },
+    {
+      "start": 210.18,
+      "end": 217.33,
+      "text": "Et plus sur des aspects. Enfin moins recherche en tout cas. Donc voilà, je connais un petit peu."
+    },
+    {
+      "start": 234.02,
+      "end": 235.38,
+      "text": "J'time vous connaître un peu pas."
+    },
+    {
+      "start": 237.0,
+      "end": 237.49,
+      "text": "Oh shit."
+    },
+    {
+      "start": 238.21,
+      "end": 241.26,
+      "text": "Ok, donc on peut zapper oui ou non ?"
+    },
+    {
+      "start": 241.77,
+      "end": 242.19,
+      "text": "Landine?"
+    },
+    {
+      "start": 243.91,
+      "end": 245.84,
+      "text": "Oui, c'est bon, c'est bon."
+    },
+    {
+      "start": 246.69,
+      "end": 260.37,
+      "text": "Donc ce que je vous propose, c'est que vous discutiez un petit peu justement sur vos besoins sur l'IA générative et qu'on puisse un petit peu comprendre vos besoins, vos attentes et puis..."
+    },
+    {
+      "start": 260.9,
+      "end": 262.48,
+      "text": "Puis voir comment on pourrait..."
+    },
+    {
+      "start": 263.69,
+      "end": 265.26,
+      "text": "potentiellement travailler ensemble."
+    },
+    {
+      "start": 272.42,
+      "end": 277.39,
+      "text": "Oui alors peut-être euh je lance donc en contexte euh"
+    },
+    {
+      "start": 278.05,
+      "end": 282.64,
+      "text": "Euh donc nous effectivement les sujets"
+    },
+    {
+      "start": 283.49,
+      "end": 289.58,
+      "text": "Alors je parle sur la partie assistante, puisque dans cette table, on a effectivement Jérôme qui reprendront la partie."
+    },
+    {
+      "start": 291.05,
+      "end": 305.49,
+      "text": "Disciplinary on the IA et NLP, but côté RD on the part assistant, but made in application a bit of that and recherche a little bit on the question plus the interaction."
+    },
+    {
+      "start": 306.34,
+      "end": 317.68,
+      "text": "On s'interesse uh de plus en plus à toute faible avec le LP et puis plus recent aussi sur ce possible. Alors nous en fait ce qu'il nous interesse ça va être"
+    },
+    {
+      "start": 318.21,
+      "end": 319.76,
+      "text": "Une fois c'est question de"
+    },
+    {
+      "start": 320.29,
+      "end": 321.46,
+      "text": "Un peu uh"
+    },
+    {
+      "start": 321.93,
+      "end": 331.41,
+      "text": "l'interface interaction entre le l'opérateur uh and his outils. Le MCP c'est"
+    },
+    {
+      "start": 331.85,
+      "end": 335.92,
+      "text": "une promesse en tout cas à ce stade pour développer des"
+    },
+    {
+      "start": 336.33,
+      "end": 337.04,
+      "text": "D"
+    },
+    {
+      "start": 337.61,
+      "end": 339.89,
+      "text": "Mon interface quasi conversationnelle."
+    },
+    {
+      "start": 340.26,
+      "end": 342.86,
+      "text": "et qui permettent"
+    },
+    {
+      "start": 365.57,
+      "end": 369.39,
+      "text": "Là comme ça on n'a pas à date un aujourd'hui de"
+    },
+    {
+      "start": 369.8,
+      "end": 372.11,
+      "text": "ou quoi claire à proposer."
+    },
+    {
+      "start": 372.52,
+      "end": 401.98,
+      "text": "Uh the button for me is Nordin's context and you've got these suit. For the site eventually, and in the effectively with a cadre, it's not."
+    },
+    {
+      "start": 403.33,
+      "end": 407.5,
+      "text": "plus un peu de la de la prise de contact, en tout cas en tout cas à mon à mon niveau."
+    },
+    {
+      "start": 409.73,
+      "end": 414.38,
+      "text": "Je peux vous présenter si vous voulez justement les projets sur lesquels j'ai travaillé."
+    },
+    {
+      "start": 414.95,
+      "end": 418.45,
+      "text": "Je vais j'ai pas maintenant pour partager mon écran. Oui."
+    },
+    {
+      "start": 419.33,
+      "end": 420.62,
+      "text": "Uh"
+    },
+    {
+      "start": 421.25,
+      "end": 425.26,
+      "text": "Oui, parce que c'est des actifs. Je sais plus qui c'est qui a envoyé la R."
+    },
+    {
+      "start": 433.19,
+      "end": 433.9,
+      "text": "Merci."
+    },
+    {
+      "start": 439.33,
+      "end": 448.91,
+      "text": "Okay, présent un peu les projets IA génératif sur lesquels on travaille de manière générale chez E."
+    },
+    {
+      "start": 449.61,
+      "end": 451.09,
+      "text": "J'ai j'ai travaillé."
+    },
+    {
+      "start": 451.46,
+      "end": 457.26,
+      "text": "Et uh sur d'autres missions aussi que j'ai faites avant de rejoindre les éléments pour vous pour vous présenter un peu"
+    },
+    {
+      "start": 457.64,
+      "end": 463.41,
+      "text": "les compétences qu'on a chez sur des uh des use case comme cela donc diagonal d'une"
+    },
+    {
+      "start": 464.17,
+      "end": 471.18,
+      "text": "Pour commencer le positionnement en tout cas global que j'ai adopté depuis que j'ai rejoint Yalay ces derniers temps aussi sur"
+    },
+    {
+      "start": 471.65,
+      "end": 474.19,
+      "text": "sur les projets diagénératives que"
+    },
+    {
+      "start": 475.01,
+      "end": 487.79,
+      "text": "Sur laquelle je suis intervenue, c'était globalement de transformer des contenus, donc des documents complexes et hétérogènes, en général multimodal, en sorties actionnables, soit"
+    },
+    {
+      "start": 488.17,
+      "end": 490.86,
+      "text": "extraire de l'information pertinente pour"
+    },
+    {
+      "start": 491.46,
+      "end": 497.71,
+      "text": "uh pour faciliter de la prise de décision ou créer des fiches de synthèse à partir de documents hétérogènes."
+    },
+    {
+      "start": 498.18,
+      "end": 500.5,
+      "text": "Donc j'ai aussi um une um"
+    },
+    {
+      "start": 501.06,
+      "end": 504.69,
+      "text": "Il y a toujours un volet d'industrialisation, on va dire, où..."
+    },
+    {
+      "start": 505.09,
+      "end": 513.65,
+      "text": "Je garde une notion de versioning et une notion de monitoring aussi, donc sur les projets qu'on fait au sein de Yele et sur les missions que j'ai faites auparavant."
+    },
+    {
+      "start": 514.18,
+      "end": 519.34,
+      "text": "Donc en termes de compétences, on va toujours être sur du multimodal. J'ai travaillé sur des..."
+    },
+    {
+      "start": 519.88,
+      "end": 526.7,
+      "text": "des modèles ébergés localement donc j'ai directement fait du fine tuning sur des modèles diagénératifs type"
+    },
+    {
+      "start": 527.08,
+      "end": 533.87,
+      "text": "Point file, enormously traitement, but that's necessary."
+    },
+    {
+      "start": 534.25,
+      "end": 536.43,
+      "text": "des l'utilisation des PI"
+    },
+    {
+      "start": 537.06,
+      "end": 540.24,
+      "text": "Mistral, c'est ce qu'on utilise aujourd'hui chez chez Yale."
+    },
+    {
+      "start": 540.84,
+      "end": 548.98,
+      "text": "et donc avec des dégâts d'usage qui ont nécessité de faire du rag, donc du ranking, du re ranking et de de la vectorisation."
+    },
+    {
+      "start": 549.38,
+      "end": 557.42,
+      "text": "Des notions d'orchestration aussi, donc on a des chez Ella on a des projets où on en est plus sur du N middle, d'autres où on fait du MCP."
+    },
+    {
+      "start": 557.93,
+      "end": 568.3,
+      "text": "Et en termes de déploiement, j'ai travaillé sur des des outils comme VLLM ou Vigorne pour déployer des modèles, les modèles que j'ai préentraînés."
+    },
+    {
+      "start": 568.68,
+      "end": 574.83,
+      "text": "Et uh du streamlit également pour de la livraison de Pock au sein de Y."
+    },
+    {
+      "start": 576.13,
+      "end": 578.9,
+      "text": "Je vais commencer par vous présenter le projet."
+    },
+    {
+      "start": 579.62,
+      "end": 581.78,
+      "text": "que j'ai fait au sein de RTE."
+    },
+    {
+      "start": 586.73,
+      "end": 597.74,
+      "text": "Donc pour le projet que j'ai fait au sein de la de l'équipe équilibre offre et demande de RTE, le sujet était de pouvoir générer des études EOD, rentabilité, des moyens de production."
+    },
+    {
+      "start": 598.12,
+      "end": 606.29,
+      "text": "Donc le contexte c'est que l'équipe se charge de reprendre un peu les bilans prévisionnels ou de les prendre comme référentiel, comme contexte."
+    },
+    {
+      "start": 606.66,
+      "end": 630.58,
+      "text": "We analyze the sensibility of these attitudes to work with their results. A mouth that are developed in the equipe that's L Power, it's a mouth that resemble a little bit to Antares, but that's"
+    },
+    {
+      "start": 631.08,
+      "end": 641.62,
+      "text": "reprend the notions of rentability on the retro pas for Interesse."
+    },
+    {
+      "start": 642.02,
+      "end": 644.94,
+      "text": "Ensuite, à la suite de ces études là, donc les..."
+    },
+    {
+      "start": 645.7,
+      "end": 646.64,
+      "text": "Les membres de l'équipe."
+    },
+    {
+      "start": 647.27,
+      "end": 658.35,
+      "text": "créer des fichi bppt, ils vont stocker les résultats dans des fichiers ppd. Donc ces fichiers là vont contenir notamment en majeure partie des graphiques, donc on est sur des données qui sont hétérogènes parce qu'on a une"
+    },
+    {
+      "start": 659.49,
+      "end": 661.74,
+      "text": "D'image, très peu de très peu de texte."
+    },
+    {
+      "start": 662.25,
+      "end": 669.74,
+      "text": "Et l'idée c'est de pouvoir par la suite par filière rédiger un rapport complet, rédiger un rapport qui soit exhaustif sur toutes les filières."
+    },
+    {
+      "start": 670.31,
+      "end": 676.59,
+      "text": "Donc c'est à ce niveau là, donc au niveau de la rédaction du rapport complet à partir des fichiers PPT."
+    },
+    {
+      "start": 676.97,
+      "end": 680.98,
+      "text": "que moi je suis intervenue pour automatiser justement ce travail là."
+    },
+    {
+      "start": 682.18,
+      "end": 692.72,
+      "text": "Donc ici on est partie d'une structure de rapport can I discuter pendant la mission. On s'est mis d'accord sur une structure and"
+    },
+    {
+      "start": 693.13,
+      "end": 702.42,
+      "text": "chain de treatment automatisate so the objective is to accelerate the production of rapport sans degrading the rigueur, but that's the premier."
+    },
+    {
+      "start": 702.79,
+      "end": 704.24,
+      "text": "et de pouvoir"
+    },
+    {
+      "start": 704.71,
+      "end": 730.2,
+      "text": "On this, the affirmations that are generated by my outfit on the rapport, they cried on the figure or the text that are directly in the fish PPT, to standardizing the structures on the section on the préalable, and to permit also a boucle of correction, because the idea is to produce an outline, to do action to members of the equipe."
+    },
+    {
+      "start": 730.28,
+      "end": 741.94,
+      "text": "cet outil là, donc d'avoir une interface dédiée, et qu'ils puissent eux-mêmes par la suite itérer sur le rapport qui est rédigé pour le corriger avec des commentaires qu'ils peuvent mettre sur chacune des sections générées."
+    },
+    {
+      "start": 742.47,
+      "end": 745.78,
+      "text": "Donc les entrées de mon modèle ou de mon outil."
+    },
+    {
+      "start": 746.25,
+      "end": 749.9,
+      "text": "Ah c'est ça va être les fichiers PPT, donc ça c'est la source."
+    },
+    {
+      "start": 750.34,
+      "end": 752.91,
+      "text": "principal et nécessaire pour générer le rapport."
+    },
+    {
+      "start": 766.21,
+      "end": 779.95,
+      "text": "He said enregistried in time to repeat the fish BPD on the slide. He said enregistried in time to present."
+    },
+    {
+      "start": 780.39,
+      "end": 791.09,
+      "text": "transformer en fichier TXT et ensuite on peut mettre en entrée cette transcription vocale là, en entrée de l'outil pour ajouter un contexte supplémentaire."
+    },
+    {
+      "start": 792.04,
+      "end": 799.44,
+      "text": "Et donc par la suite la sortie de l'outil ça va être le rapport final donc en markdown et exportable en kicks."
+    },
+    {
+      "start": 799.81,
+      "end": 805.42,
+      "text": "avec donc sur l'interface une possibilité de corriger, enfin une boucle de correction."
+    },
+    {
+      "start": 805.89,
+      "end": 824.5,
+      "text": "The premiere brick is a pipeline agenti, but we've got the agents that are searching of chacune destapes."
+    },
+    {
+      "start": 824.87,
+      "end": 842.45,
+      "text": "At that time I produce the artifacts that I stock for them reprint by the suit, if I'm correct at the sort of attack, modify, it is possible to modify directly the artifact for directly modified the."
+    },
+    {
+      "start": 843.17,
+      "end": 848.05,
+      "text": "corriger les résultats de l'étape suivante, ça nous permet d'avoir du versionning pour en POC."
+    },
+    {
+      "start": 848.58,
+      "end": 850.99,
+      "text": "Euh qu'on peut par la suite"
+    },
+    {
+      "start": 851.49,
+      "end": 855.98,
+      "text": "développer encore plus pour avoir une un réversionn directement sur l'interface."
+    },
+    {
+      "start": 856.39,
+      "end": 863.7,
+      "text": "Donc la première étape c'est qui est très importante c'est de prendre le le fichier PPT de le traiter comme des figures."
+    },
+    {
+      "start": 864.07,
+      "end": 880.05,
+      "text": "and analyze slide by slide of PPT, but to create a description as exhaustive of the slide container in the PPT, with a classification which will permit to whether the slide is a slide analytic."
+    },
+    {
+      "start": 880.45,
+      "end": 886.77,
+      "text": "Et euh le contenu du slide détaillé donc avec du de l'OCR pour pouvoir en extraire tout"
+    },
+    {
+      "start": 887.21,
+      "end": 892.14,
+      "text": "tout le texte et une analyse complète de du contenu et des graphiques s'il y en a."
+    },
+    {
+      "start": 893.19,
+      "end": 895.86,
+      "text": "Avec donc aussi une une notion de"
+    },
+    {
+      "start": 896.42,
+      "end": 902.9,
+      "text": "uh contiene the slide, une analyse de ce que contient le slide."
+    },
+    {
+      "start": 903.27,
+      "end": 907.54,
+      "text": "On a un agent qui prend le l'image en rentrée et qui nous sort une description en sortie."
+    },
+    {
+      "start": 907.97,
+      "end": 913.81,
+      "text": "Ensuite à chaque à chaque étape donc je garde l'historique de ce qui est ce qui est sorti de l'étape précédente."
+    },
+    {
+      "start": 914.21,
+      "end": 917.71,
+      "text": "La deuxième étape va reprendre justement ces descriptions de Snide là."
+    },
+    {
+      "start": 918.28,
+      "end": 931.86,
+      "text": "for an assignment of snipe all section. Come on, the rapport we have two sections different. So the point of this brick is to say"
+    },
+    {
+      "start": 932.26,
+      "end": 942.64,
+      "text": "Tell slide devrait appartenir to telle section and descriptive of telle section, and devrait être cités or mentioned in telle section, ou du moins qu'il devrait venir enrichir la rédaction de cette section."
+    },
+    {
+      "start": 943.69,
+      "end": 952.91,
+      "text": "C'est une étape que j'ai ajoutée car elle nous permet justement de ne pas voir apparaître des slides annexes en introduction ou autre."
+    },
+    {
+      "start": 953.61,
+      "end": 979.42,
+      "text": "And the idea of the thing. But the report a little."
+    },
+    {
+      "start": 979.75,
+      "end": 982.0,
+      "text": "En tout cas au niveau général et que"
+    },
+    {
+      "start": 982.66,
+      "end": 992.21,
+      "text": "Don't a été capable de vraiment défier une structure assez assez fixe et du coup mon a sous-question c'était le"
+    },
+    {
+      "start": 992.68,
+      "end": 1013.55,
+      "text": "Is a plus in detail the structure."
+    },
+    {
+      "start": 1014.34,
+      "end": 1018.16,
+      "text": "X euh et associé à ça ben travail enfin"
+    },
+    {
+      "start": 1018.53,
+      "end": 1022.29,
+      "text": "Description un peu plus détaillée justement pour l'idée, les modèles pour qu'il y ait les agents. Est-ce qu'il y a un travail dessus ?"
+    },
+    {
+      "start": 1023.21,
+      "end": 1029.78,
+      "text": "Oui, euh on a établi donc on a déjà les les descriptions des des différentes fictions, par exemple hypothèses de groupe."
+    },
+    {
+      "start": 1030.15,
+      "end": 1033.87,
+      "text": "J'ai travaillé avec des notes dans les de des descriptions qui soient assez"
+    },
+    {
+      "start": 1034.47,
+      "end": 1041.17,
+      "text": "asse exhaustive, assez court aussi, pour que ça ne vienne pas trop prendre de place dans la"
+    },
+    {
+      "start": 1042.47,
+      "end": 1051.38,
+      "text": "the fenêtre the context but the description for children and the phase of the selection and the assignment the slide of section."
+    },
+    {
+      "start": 1052.33,
+      "end": 1054.77,
+      "text": "En plus d'avoir des règles un peu..."
+    },
+    {
+      "start": 1055.27,
+      "end": 1065.17,
+      "text": "uh surcours de règles or example j'ai une section qui contient la comparaison des um des études entre France and other pays in Europe."
+    },
+    {
+      "start": 1065.99,
+      "end": 1069.52,
+      "text": "Et on s'était dit que par exemple les graphies qu'il venait d'écrire..."
+    },
+    {
+      "start": 1069.96,
+      "end": 1088.3,
+      "text": "It was via the derse where we compare the result of France versus other people. And we have regards like that."
+    },
+    {
+      "start": 1088.93,
+      "end": 1106.19,
+      "text": "And if it's another people who France on the phase assignment, she assigned automatically in the dark section, France Venezuelan, plutôt que hypotheses."
+    },
+    {
+      "start": 1106.98,
+      "end": 1111.18,
+      "text": "Je vais compléter un peu."
+    },
+    {
+      "start": 1111.78,
+      "end": 1112.69,
+      "text": "That's new."
+    },
+    {
+      "start": 1113.32,
+      "end": 1120.4,
+      "text": "Donc en fait la partie sélection et assignation, on peut apparenter ça de la catégorisation et donc savoir..."
+    },
+    {
+      "start": 1120.84,
+      "end": 1135.66,
+      "text": "dans quel vraiment chapitre ça doit aller, et les chapitres ont une structure identique. Donc en fait on a comme si on avait deux templates finalement, un template de ce que va contenir chaque chapitre et un template des catégories finalement à assigner."
+    },
+    {
+      "start": 1136.58,
+      "end": 1139.7,
+      "text": "et pour aller aussi pour"
+    },
+    {
+      "start": 1140.2,
+      "end": 1152.88,
+      "text": "Sur le côté interface, on a cherché quelque chose de très simple, ça a été un POC, c'est vraiment pour démontrer que l'IA peut apporter de la valeur sur la génération de rapport. Et on a fait ça en 25 jours."
+    },
+    {
+      "start": 1155.72,
+      "end": 1160.94,
+      "text": "Incluant les ateliers en amont, donc c'est vraiment quelque chose qui a été..."
+    },
+    {
+      "start": 1161.41,
+      "end": 1171.15,
+      "text": "réalisé rapidement on a un rex aussi sur ce qui fonctionne les les suites à donner et donc là on est plutôt en"
+    },
+    {
+      "start": 1171.62,
+      "end": 1177.94,
+      "text": "en utilisation pour continuer à rédiger le rapport, l'humain passe derrière évidemment puisque ça reste un POC."
+    },
+    {
+      "start": 1179.17,
+      "end": 1191.09,
+      "text": "Et on va itérer avec Gérald pour savoir s'il y a des suites ou pas sur cette généralisation de rapport qui pourrait également intéresser Diaz, pas que le côté R et D."
+    },
+    {
+      "start": 1195.08,
+      "end": 1195.86,
+      "text": "Yeah."
+    },
+    {
+      "start": 1196.29,
+      "end": 1199.06,
+      "text": "Tu veux peut-être parler de la partie suivante, oui."
+    },
+    {
+      "start": 1200.17,
+      "end": 1200.59,
+      "text": "Vas-y."
+    },
+    {
+      "start": 1201.41,
+      "end": 1202.8,
+      "text": "Wish"
+    },
+    {
+      "start": 1203.27,
+      "end": 1217.46,
+      "text": "Um aussi for a judiciante detail sur l'assignation, on plus the um the information on the sur les um the different sections, the description des section on that part"
+    },
+    {
+      "start": 1217.86,
+      "end": 1233.39,
+      "text": "the global where we concentrate on one section at a few, but we have a global to two slides. It's very important and the fact that recuperating the slides that represent"
+    },
+    {
+      "start": 1251.43,
+      "end": 1255.66,
+      "text": "des des figures et des slides et un une bonne assignation aux bonnes sections."
+    },
+    {
+      "start": 1256.45,
+      "end": 1265.14,
+      "text": "And ensuite l'étape d'après qui est celle de la rédaction. Ici la rédaction feu section par section."
+    },
+    {
+      "start": 1265.51,
+      "end": 1267.66,
+      "text": "Enfin chacune des sections séparément."
+    },
+    {
+      "start": 1268.26,
+      "end": 1279.47,
+      "text": "And after the assignment. We section by section. In the time I read the bullet points, I concentrate on the front."
+    },
+    {
+      "start": 1279.85,
+      "end": 1288.62,
+      "text": "sur la forme. Une fois les bullet points produits, je les reprends pouvoir réduire la prose, donc ajouter des..."
+    },
+    {
+      "start": 1289.09,
+      "end": 1292.82,
+      "text": "créer un texte qui qui soit plus lisible et"
+    },
+    {
+      "start": 1293.32,
+      "end": 1310.51,
+      "text": "and the form of value to separate the font and the form on the red action and facilities also the correction because it's simple to correct the bullet points if you swear to"
+    },
+    {
+      "start": 1310.95,
+      "end": 1312.27,
+      "text": "De corriger le"
+    },
+    {
+      "start": 1313.03,
+      "end": 1314.58,
+      "text": "on text complete."
+    },
+    {
+      "start": 1315.33,
+      "end": 1322.0,
+      "text": "Donc ici la le fait de rédiger section par section aide également au niveau de la boucle de correction."
+    },
+    {
+      "start": 1322.63,
+      "end": 1331.28,
+      "text": "After the redaction pass on intégration."
+    },
+    {
+      "start": 1331.65,
+      "end": 1335.44,
+      "text": "et enlever tout ce qui est redondance et incohérence entre les différentes sections."
+    },
+    {
+      "start": 1335.97,
+      "end": 1347.18,
+      "text": "Et à la fin j'ai une boucle de correction qui permet d'itérer au niveau des sections. Ici on prend les artefacts bullet points qui sont la sortie de la briquer d'action."
+    },
+    {
+      "start": 1347.81,
+      "end": 1351.5,
+      "text": "Si on veut corriger par exemple une sélection donnée ici dans le"
+    },
+    {
+      "start": 1363.27,
+      "end": 1371.76,
+      "text": "Concernant la section in question won't envoy an agent key charge of re la section in function the"
+    },
+    {
+      "start": 1372.2,
+      "end": 1373.49,
+      "text": "des commentaires qui ont été émis."
+    },
+    {
+      "start": 1373.86,
+      "end": 1377.55,
+      "text": "Ça permet d'avoir une boucle de correction un peu minimale."
+    },
+    {
+      "start": 1378.05,
+      "end": 1380.56,
+      "text": "qu'on a réussi à réaliser en cinq semaines."
+    },
+    {
+      "start": 1380.97,
+      "end": 1386.22,
+      "text": "qu'on peut pousser par la suite plus loin avec une notion de correction plus globale."
+    },
+    {
+      "start": 1388.13,
+      "end": 1390.83,
+      "text": "Je ne sais pas si vous avez des questions à ce niveau là."
+    },
+    {
+      "start": 1392.55,
+      "end": 1398.22,
+      "text": "Moi j'ai une petite question. En fait il y a quand même la contrainte d'avoir un time plate ou fin."
+    },
+    {
+      "start": 1399.11,
+      "end": 1400.34,
+      "text": "Au début."
+    },
+    {
+      "start": 1400.9,
+      "end": 1415.54,
+      "text": "Uh admitting that on template, but three or two of presentation, is adapted facility, we integrated an agent."
+    },
+    {
+      "start": 1415.91,
+      "end": 1419.06,
+      "text": "Qui va faire la sélection des tablettes pour faire la suite ou"
+    },
+    {
+      "start": 1420.36,
+      "end": 1427.44,
+      "text": "Je pense que ça peut s'intégrer assez facilement. Le besoin d'avoir un template ici était plus un besoin métier."
+    },
+    {
+      "start": 1428.07,
+      "end": 1439.86,
+      "text": "vu que le rapport final doit être structuré, donc c'est un besoin de métier de rédiger des rapports qui soient structurés avec un template assez précis. On pouvait pas vraiment sortir de"
+    },
+    {
+      "start": 1440.39,
+      "end": 1441.55,
+      "text": "de ce cadre là."
+    },
+    {
+      "start": 1442.41,
+      "end": 1448.53,
+      "text": "Mais l'outil en lui même peut être adapté à une utilisation en sans template."
+    },
+    {
+      "start": 1448.93,
+      "end": 1456.05,
+      "text": "Si bon au lieu de rédiger plusieurs sections, on rédigerait une seule, mais avec des directives de de ton et de de contenu."
+    },
+    {
+      "start": 1457.19,
+      "end": 1460.27,
+      "text": "Oui,"
+    },
+    {
+      "start": 1465.35,
+      "end": 1474.67,
+      "text": "Si je reviens, l'hypothèse d'un agent avec différents différents templates pourrait aussi fonctionner en fait."
+    },
+    {
+      "start": 1475.08,
+      "end": 1489.62,
+      "text": "Je pense que l'outil tel qu'on l'a pensé, en fait, il prend un template, donc on peut le faire tourner plusieurs fois. Mais avoir multiples sorties, c'est soit une petite adaptation, soit finalement un..."
+    },
+    {
+      "start": 1490.09,
+      "end": 1492.34,
+      "text": "un agent qui permettrait de"
+    },
+    {
+      "start": 1492.97,
+      "end": 1501.55,
+      "text": "d'orienter la sélection des chapitres, la signation et le contenu de chaque chapitre. Donc les deux approches peuvent se faire."
+    },
+    {
+      "start": 1509.25,
+      "end": 1516.85,
+      "text": "Donc d'un point de vue robustesse, même si on était sur sur une mission assez courte et que le but était plus de faire un POC."
+    },
+    {
+      "start": 1517.25,
+      "end": 1525.26,
+      "text": "for how to do that redaction. It's kind of important to have certain notion of robustness."
+    },
+    {
+      "start": 1525.64,
+      "end": 1534.86,
+      "text": "I see par exemple le fait de prendre en considération la structure finale and séparer la rédaction en sections nous permet d'avoir une meilleure..."
+    },
+    {
+      "start": 1535.33,
+      "end": 1551.34,
+      "text": "a gestion of error that arrive and the fact that the assignment of slide per section permit have also a certain traceability for an error on section and correct."
+    },
+    {
+      "start": 1551.75,
+      "end": 1553.81,
+      "text": "assez rapidement c'est en"
+    },
+    {
+      "start": 1554.57,
+      "end": 1563.06,
+      "text": "J'ai je ten j'ai tenu à implémenter des gardefou comme cela pour pouvoir avoir des notions de robustesse même sur ce boc là."
+    },
+    {
+      "start": 1563.85,
+      "end": 1572.91,
+      "text": "Et donc le fait d'avoir aussi des artefacts à la sortie de chacune des briques permet très facilement de de tracer donc de"
+    },
+    {
+      "start": 1582.41,
+      "end": 1591.41,
+      "text": "Et donc ça m'a énormément aidée également pendant le la réalisation de l'outil et pendant en iterant sur les prantes et en itérant aussi sur l'architecture d'avoir ces..."
+    },
+    {
+      "start": 1591.81,
+      "end": 1596.53,
+      "text": "ces artefacts en intermédiaire là, mais ça permet aussi pour"
+    },
+    {
+      "start": 1615.33,
+      "end": 1621.33,
+      "text": "avoir une validation humaine à chacun des niveaux pour avoir un résultat final qui soit"
+    },
+    {
+      "start": 1640.26,
+      "end": 1645.74,
+      "text": "Et donc au final avec un export de kicks qui est reproductible."
+    },
+    {
+      "start": 1646.85,
+      "end": 1663.95,
+      "text": "On the Rex, but certain limits that have been mentioned on the mission, but scope but important to guard on that."
+    },
+    {
+      "start": 1664.36,
+      "end": 1670.7,
+      "text": "chiffrer sur les valeurs qu'on dont on faisait l'extraction à partir des des graphiques."
+    },
+    {
+      "start": 1671.27,
+      "end": 1676.34,
+      "text": "C'était hors scope, l'idée n'était pas de de faire ça dans cette première itération là."
+    },
+    {
+      "start": 1676.71,
+      "end": 1687.54,
+      "text": "But it's a change that we have anti hallucination or verifying the interval of confiance the different values that are extraited."
+    },
+    {
+      "start": 1688.9,
+      "end": 1706.22,
+      "text": "We could not at this point also in this iteration, we have reconstruction brut, we have at this point the Excel, but the scope of my mission to reconstruct the graphics at this brutal."
+    },
+    {
+      "start": 1706.69,
+      "end": 1722.83,
+      "text": "Et le fait que la correction pour l'instant se fasse au niveau des sections et on a un niveau macro, donc on peut pas imposer un ton global sur tour le rapport or donner un commentaire global tour. It's just a commentaire on niveau des sections for l'instant, but it's implementing également."
+    },
+    {
+      "start": 1724.26,
+      "end": 1731.92,
+      "text": "Donc voilà pour ce premier projet, enfin pour ce projet qui a été fait avec RTE et l'équipe EOD."
+    },
+    {
+      "start": 1733.57,
+      "end": 1742.48,
+      "text": "I say we have any questions at this niveau line. Sinon I pass a la presentation des de quelques other projects the presentation un peu macro de project sur lesquels j'ai travaillé."
+    },
+    {
+      "start": 1744.13,
+      "end": 1753.14,
+      "text": "J euh juste peut-être désolé pour le rappel, donc la durée c'était euh j'ai compris pas c'était quelques mois, si ça c'était de entre septembre et"
+    },
+    {
+      "start": 1753.51,
+      "end": 1756.37,
+      "text": "Il n'y a pas longtemps, un peu, c'est tout ça. C'est vingt cinq semaines. Cinq semaines."
+    },
+    {
+      "start": 1757.09,
+      "end": 1766.16,
+      "text": "Ah oui, vingt jours, c'est ce que tu disais vingt cinq jours. Pardon, j'avais retenu sept ans."
+    },
+    {
+      "start": 1767.33,
+      "end": 1768.14,
+      "text": "Okay, that's."
+    },
+    {
+      "start": 1771.94,
+      "end": 1776.14,
+      "text": "Après oui, effectivement, sur les questions donc euh..."
+    },
+    {
+      "start": 1776.93,
+      "end": 1785.55,
+      "text": "Donc là effectivement on est peut-être c'est d'autres cas d'usage qui aussi peuvent nous intéresser, c'est plus la partie effectivement"
+    },
+    {
+      "start": 1786.02,
+      "end": 1787.22,
+      "text": "Un peu synthèse générative."
+    },
+    {
+      "start": 1787.81,
+      "end": 1794.83,
+      "text": "Donc ça c'est vrai que nous on peut avoir aussi des cas d'usage là-dessus, à savoir la capacité de"
+    },
+    {
+      "start": 1798.15,
+      "end": 1800.56,
+      "text": "Euh voilà, prendre des sources de données hétérogènes."
+    },
+    {
+      "start": 1801.61,
+      "end": 1806.32,
+      "text": "etc, peut-être pour les aider à synthé des choses, des rapports d'événements par exemple, ce genre de choses."
+    },
+    {
+      "start": 1807.69,
+      "end": 1813.97,
+      "text": "Il y a toujours cette question de synthèse, c'est un peu dans les deux sens, il y a le tout à l'heure je parlais de trans entrant"
+    },
+    {
+      "start": 1814.44,
+      "end": 1816.02,
+      "text": "Uh donc le le"
+    },
+    {
+      "start": 1817.25,
+      "end": 1840.14,
+      "text": "And sort of that question of synthesis of events, synthesis of donation. So I'm thinking that you'll have and my question on the song, to keep MCP, is the object of this trao."
+    },
+    {
+      "start": 1840.71,
+      "end": 1841.55,
+      "text": "That was it, too."
+    },
+    {
+      "start": 1842.12,
+      "end": 1843.09,
+      "text": "L'occasion de"
+    },
+    {
+      "start": 1843.91,
+      "end": 1849.55,
+      "text": "De travailler donc plus dans un dans une optique un petit peu orchestration, quoi, avec plusieurs plusieurs briques."
+    },
+    {
+      "start": 1850.21,
+      "end": 1856.69,
+      "text": "Uh ici je peux peut-être aller sur l'autre projet qu'on a fait en antenne."
+    },
+    {
+      "start": 1857.48,
+      "end": 1862.35,
+      "text": "Donc le premier projet c'est un outil de rédaction à eau."
+    },
+    {
+      "start": 1862.85,
+      "end": 1873.78,
+      "text": "the coup on fait de l'orchestration mais on est plus sur N8N but sur du MCB on a de plusieurs agents qui sont basés sur des rugs qui"
+    },
+    {
+      "start": 1874.25,
+      "end": 1876.82,
+      "text": "qui sont spécialisés donc soit dans"
+    },
+    {
+      "start": 1877.67,
+      "end": 1878.67,
+      "text": "Agent C V."
+    },
+    {
+      "start": 1879.14,
+      "end": 1882.38,
+      "text": "Enfin l'objectif final c'est de d'assister"
+    },
+    {
+      "start": 1882.82,
+      "end": 1887.06,
+      "text": "à les collaborateurs dans la rédaction de réponse aux appels d'offres."
+    },
+    {
+      "start": 1887.46,
+      "end": 1892.78,
+      "text": "On a développé plusieurs modèles qui sont des modèles au final des ânes des agents également, donc des raques."
+    },
+    {
+      "start": 1893.35,
+      "end": 1898.96,
+      "text": "On a un rat qui est fait sur les CV interne yellé, un rat qui est fait sur les références."
+    },
+    {
+      "start": 1899.56,
+      "end": 1908.82,
+      "text": "And also I'm an out of"
+    },
+    {
+      "start": 1909.48,
+      "end": 1912.78,
+      "text": "modulaire où on peut faire appel à chacun de ces outils là."
+    },
+    {
+      "start": 1913.19,
+      "end": 1917.58,
+      "text": "Uh si on veut récupérer par exemple enfin ou mettre en entrée un une réponse"
+    },
+    {
+      "start": 1917.99,
+      "end": 1924.66,
+      "text": "un appel d'offres et demander à l'outil de nous générer enfin de nous donner la liste de CV"
+    },
+    {
+      "start": 1925.48,
+      "end": 1931.79,
+      "text": "des CV intéressants pour cette appel d'offres là, la liste de références qui pourraient être intéressants pour cette"
+    },
+    {
+      "start": 1932.33,
+      "end": 1935.92,
+      "text": "C'est à eau ou de rédiger le contexte et la méthode."
+    },
+    {
+      "start": 1936.58,
+      "end": 1944.5,
+      "text": "Donc ici on est sur du N8N avec plusieurs outils qui peuvent être questionnés avec une orchestration N8N."
+    },
+    {
+      "start": 1945.45,
+      "end": 1955.95,
+      "text": "Ensuite, on a également un autre projet, enfin c'est un projet sur lequel je suis en train de travailler actuellement, qui est un outil de génération de résumé de réunion."
+    },
+    {
+      "start": 1956.33,
+      "end": 1958.77,
+      "text": "Ou je... Donc là j'en suis..."
+    },
+    {
+      "start": 1959.37,
+      "end": 1966.22,
+      "text": "debut de l'implémentation de l'outil. Lobjectif final is to pouvoir"
+    },
+    {
+      "start": 1966.6,
+      "end": 1968.34,
+      "text": "A partir donc de"
+    },
+    {
+      "start": 1968.97,
+      "end": 1993.07,
+      "text": "For instance, where I'm with an MCP put appear to be developed on internally, or these API. For instance, I'm not developing on intern."
+    },
+    {
+      "start": 1993.48,
+      "end": 1997.14,
+      "text": "des notes de de réunion et générer en"
+    },
+    {
+      "start": 1997.73,
+      "end": 2022.84,
+      "text": "synthesis or an out of permit to export the not the synthesis that are generated. Once the idea is to augment our list of outside orchestration by an MCP, not only on a possibility of enregistrement vocal reunion or"
+    },
+    {
+      "start": 2023.43,
+      "end": 2031.41,
+      "text": "ou une possibilité de créer de générer des mind de map, par exemple. On fait ça avec l'interface LLM qui servirait de"
+    },
+    {
+      "start": 2031.97,
+      "end": 2032.5,
+      "text": "Yeah."
+    },
+    {
+      "start": 2033.73,
+      "end": 2049.17,
+      "text": "et qui va servir de client avec un accès global aux outils qu'on est en train de construire petit à petit toujours autour de ce cas d'usage là qui est de d'augmenter les consultants et d'automatiser la génération de synthèse et"
+    },
+    {
+      "start": 2049.64,
+      "end": 2053.49,
+      "text": "de la compréhension de manière générale des réunions qu'on vit."
+    },
+    {
+      "start": 2054.34,
+      "end": 2055.41,
+      "text": "Okay."
+    },
+    {
+      "start": 2056.26,
+      "end": 2063.15,
+      "text": "Pardon, uh du coup ça c'est un travail que vous faites pour entre guillemets gagner en souveraineté par rapport à l'opposition de"
+    },
+    {
+      "start": 2063.59,
+      "end": 2076.66,
+      "text": "Uh là par exemple ça fait penser à notre boucalem typiquement uh marché c'est pour gagner en souveraineté on va dire au sein de au sein de Lé sur le sur des notions de confidentiality"
+    },
+    {
+      "start": 2077.22,
+      "end": 2086.29,
+      "text": "Garner en précision aussi parce que à terme on voudrait avoir le LMR directement sur des données open data."
+    },
+    {
+      "start": 2086.69,
+      "end": 2096.62,
+      "text": "énergie donc avoir un agent qui sont vraiment spécialisés dans nos sujets à nous et qui puissent générer des synthèses et même augmenter les synthèses et faire des propositions"
+    },
+    {
+      "start": 2097.38,
+      "end": 2098.03,
+      "text": "Complet."
+    },
+    {
+      "start": 2099.05,
+      "end": 2100.66,
+      "text": "Et mieux adapté à notre contexte."
+    },
+    {
+      "start": 2101.16,
+      "end": 2123.02,
+      "text": "C'est aussi pour cloisonner, c'est-à-dire que si on utilise cet outil, par exemple, au sein de RTE, c'est pour que ça reste côté RTE et que ce ne soit pas finalement côté Yellé. Donc il y a tout cet aspect aussi où on cherche à avoir une souveraineté qui soit liée à l'outil et à l'environnement dans lequel l'outil est utilisé."
+    },
+    {
+      "start": 2128.74,
+      "end": 2145.3,
+      "text": "Now for the mission orchestration of Yene on the card usage l. Sinon on another project that's in court again, which is an agent de planification of book, and"
+    },
+    {
+      "start": 2145.93,
+      "end": 2154.58,
+      "text": "On n'est pas sur de l'orchestration parce que c'est autant l'accès au T qui va faire de la web search pour récupérer de la bibliographie."
+    },
+    {
+      "start": 2155.05,
+      "end": 2158.96,
+      "text": "à partir d'un sujet donné et de proposer des"
+    },
+    {
+      "start": 2159.69,
+      "end": 2166.29,
+      "text": "une roadmap pour mettre en place un projet donné se fait automatiquement. Pour l'instant on n'a pas encore implémenté de MCP."
+    },
+    {
+      "start": 2166.76,
+      "end": 2170.35,
+      "text": "Mais à terme l'idée ce serait d'avoir un agent qui peut"
+    },
+    {
+      "start": 2170.89,
+      "end": 2174.58,
+      "text": "ou on peut utiliser plusieurs outils, donc dans un premier temps."
+    },
+    {
+      "start": 2174.95,
+      "end": 2183.73,
+      "text": "faire de la de la bibliographie grâce à cet outil là mais aussi avoir accès à plusieurs outils de simulation."
+    },
+    {
+      "start": 2184.42,
+      "end": 2205.01,
+      "text": "for the we can travel. The idea is to have a pipeline a little on end to end which proposes a minimal to a day. We have a hackathon, for example in the ED, so we're getting a little bit on this"
+    },
+    {
+      "start": 2205.7,
+      "end": 2206.83,
+      "text": "de ce sujet là."
+    },
+    {
+      "start": 2209.51,
+      "end": 2221.94,
+      "text": "Donc là c'est aussi une aide pour avoir un côté démonstrateur, donc en allant cherchant à chercher assez rapidement tout ce qui est état de l'art, comprendre finalement."
+    },
+    {
+      "start": 2222.6,
+      "end": 2229.58,
+      "text": "comment des problématiques peuvent être résolues en étant up to date sur la partie recherche et développement."
+    },
+    {
+      "start": 2230.05,
+      "end": 2236.11,
+      "text": "en en se basant sur du Archiv X par exemple ou d'autres types de sources"
+    },
+    {
+      "start": 2236.49,
+      "end": 2239.06,
+      "text": "qui permettent d'avoir ces ces nouvelles tendances."
+    },
+    {
+      "start": 2239.49,
+      "end": 2252.56,
+      "text": "et potentiellement d'arriver à en faire un POC, c'est-à-dire que les agents codent et puissent avoir un effet même Quick and Dirty, mais apporter cette démonstration."
+    },
+    {
+      "start": 2252.97,
+      "end": 2256.62,
+      "text": "Et ensuite, évidemment, c'est de faire l'ingénierie logicielle qui va derrière."
+    },
+    {
+      "start": 2262.41,
+      "end": 2262.8,
+      "text": "Okay."
+    },
+    {
+      "start": 2263.37,
+      "end": 2264.3,
+      "text": "Yeah."
+    },
+    {
+      "start": 2267.65,
+      "end": 2272.34,
+      "text": "Est-ce que vous avez des questions par rapport à ça ? Ou Maya, je crois que tu avais encore..."
+    },
+    {
+      "start": 2272.74,
+      "end": 2273.78,
+      "text": "Une ou deux."
+    },
+    {
+      "start": 2274.34,
+      "end": 2276.05,
+      "text": "Un ou deux projets à présenter."
+    },
+    {
+      "start": 2278.02,
+      "end": 2283.95,
+      "text": "Il me restait un projet. Je n'ai pas mis tous les projets sur lesquels j'ai travaillé, mais il me restait."
+    },
+    {
+      "start": 2284.77,
+      "end": 2291.18,
+      "text": "Un projet sur lequel j'avais travaillé pour le coup avant de rejoindre Yélé, mais qui est toujours sur de..."
+    },
+    {
+      "start": 2291.75,
+      "end": 2295.57,
+      "text": "de bien générative donc j'ai ajouté ce projet là parce que"
+    },
+    {
+      "start": 2296.07,
+      "end": 2298.13,
+      "text": "Uh pour le coup c'est un"
+    },
+    {
+      "start": 2298.5,
+      "end": 2302.26,
+      "text": "C'est un projet qui était hébergé donc en en crème."
+    },
+    {
+      "start": 2302.89,
+      "end": 2309.97,
+      "text": "et où j'ai travaillé sur le l'objectif du projet était de pouvoir extraire des informations à partir de"
+    },
+    {
+      "start": 2310.44,
+      "end": 2314.9,
+      "text": "de documents scannés administr de documents administratifs scannés."
+    },
+    {
+      "start": 2315.33,
+      "end": 2326.9,
+      "text": "And there's an out of VLLM that"
+    },
+    {
+      "start": 2327.88,
+      "end": 2332.66,
+      "text": "Ah nous dire si enfin estimé nous un pourcentage de conformité du document."
+    },
+    {
+      "start": 2333.03,
+      "end": 2353.81,
+      "text": "The idea is for example to extract the salary and the person and regard to all the documents on the which we have traveled."
+    },
+    {
+      "start": 2354.76,
+      "end": 2364.66,
+      "text": "And uh part of pre-traitement of documents a as prenant, but the part"
+    },
+    {
+      "start": 2365.13,
+      "end": 2370.1,
+      "text": "également la partie donc apprentissage et fine tuning du modèle"
+    },
+    {
+      "start": 2370.47,
+      "end": 2376.78,
+      "text": "uh visual you visual language modeling the Quen two point five VL."
+    },
+    {
+      "start": 2377.48,
+      "end": 2388.08,
+      "text": "and récupérant the sort of structural information that we extract."
+    },
+    {
+      "start": 2388.49,
+      "end": 2392.21,
+      "text": "le déploiement du modèle avec VLLM et UV Corn."
+    },
+    {
+      "start": 2392.71,
+      "end": 2405.81,
+      "text": "et sur un dashboard donc qui permettait de monitorer toute cette chaîne de traitement là et les résultats qu'on obtenait en prod pouvoir détecter des drift par exemple en performance."
+    },
+    {
+      "start": 2406.28,
+      "end": 2414.0,
+      "text": "C'est un projet que j'ai cité parce qu'ils sont un peu du lot de ce qu'on a cité des projets que je j'ai cité avant."
+    },
+    {
+      "start": 2414.41,
+      "end": 2419.15,
+      "text": "parce que ici c'est un modèle qui est qui est hébergé en local."
+    },
+    {
+      "start": 2419.56,
+      "end": 2431.73,
+      "text": "And fine tuning, for the project that's necessary to fine tuning, sur lequel on the intervenir chez"
+    },
+    {
+      "start": 2434.34,
+      "end": 2437.71,
+      "text": "Et si enfin le fine tuning c'était par rapport à"
+    },
+    {
+      "start": 2438.41,
+      "end": 2444.3,
+      "text": "à la qualité des données en entrée, mais aussi parce que les documents étaient souvent rédigés en arabe, donc ça"
+    },
+    {
+      "start": 2445.0,
+      "end": 2448.37,
+      "text": "Le find est assez adéquate pour ce cas d'usage là."
+    },
+    {
+      "start": 2456.23,
+      "end": 2458.03,
+      "text": "Vous avez des questions."
+    },
+    {
+      "start": 2460.39,
+      "end": 2464.59,
+      "text": "Uh oui pardon. Um scan c'est"
+    },
+    {
+      "start": 2465.13,
+      "end": 2470.45,
+      "text": "Tu l'as peut-être dit, vous l'avez peut-être déjà dit, pardon, c'est c'était manuscrit ou pas les entrées ?"
+    },
+    {
+      "start": 2471.94,
+      "end": 2475.7,
+      "text": "Il pouvait avoir des documents manuscrits, oui."
+    },
+    {
+      "start": 2476.2,
+      "end": 2479.15,
+      "text": "D'accord."
+    },
+    {
+      "start": 2479.75,
+      "end": 2483.02,
+      "text": "Enfin on a j'avais un agent qui faisait d'abord la classification."
+    },
+    {
+      "start": 2483.49,
+      "end": 2492.46,
+      "text": "on manuscript or non manuscript, and an agent who had the classification on the type of documents."
+    },
+    {
+      "start": 2492.87,
+      "end": 2498.99,
+      "text": "Et on avait certains cas où enfin on avait des des modèles qui étaient failli journée spécialement pour ces gars là."
+    },
+    {
+      "start": 2499.4,
+      "end": 2501.01,
+      "text": "D'autres cas où on coin."
+    },
+    {
+      "start": 2501.57,
+      "end": 2503.18,
+      "text": "Two point five uh file."
+    },
+    {
+      "start": 2503.56,
+      "end": 2504.02,
+      "text": "Um"
+    },
+    {
+      "start": 2504.61,
+      "end": 2506.8,
+      "text": "et non faire une journée était suffisante."
+    },
+    {
+      "start": 2507.75,
+      "end": 2509.78,
+      "text": "Mais on avait les donc les deux possibilités."
+    },
+    {
+      "start": 2520.42,
+      "end": 2530.67,
+      "text": "Est-ce que ça vous inspire certaines choses par rapport à des cas d'usage ? Donc peut-être que le texte est pas trop votre sujet à part pour les rapports côté."
+    },
+    {
+      "start": 2531.78,
+      "end": 2535.06,
+      "text": "Euh côté actif peut-être."
+    },
+    {
+      "start": 2535.46,
+      "end": 2537.39,
+      "text": "ou les synthèses à générer."
+    },
+    {
+      "start": 2538.21,
+      "end": 2540.62,
+      "text": "que ça vous inspire quelque chose"
+    },
+    {
+      "start": 2541.51,
+      "end": 2546.54,
+      "text": "que vous vouliez partager des cas d'usage qu'on pourrait peut-être essayer de réfléchir et..."
+    },
+    {
+      "start": 2547.05,
+      "end": 2551.28,
+      "text": "et de rebondir sur notre vision pour vous la partager."
+    },
+    {
+      "start": 2556.58,
+      "end": 2560.91,
+      "text": "Um Al effectivement"
+    },
+    {
+      "start": 2561.29,
+      "end": 2579.7,
+      "text": "Après là au script on est peut-être plus effectivement sur uh the shows uh as oriented um parler un peu la partie orchestration etc parce que"
+    },
+    {
+      "start": 2580.17,
+      "end": 2585.62,
+      "text": "Nous qui peut nous intéresser, ça peut être de travailler peut être plus sur la partie MCP en tant que telle."
+    },
+    {
+      "start": 2586.09,
+      "end": 2587.02,
+      "text": "Um"
+    },
+    {
+      "start": 2587.46,
+      "end": 2599.18,
+      "text": "Là c'est les travaux assez orientés NLP, alors encore une fois c'est pas le premier truc auquel j'avais pensé par Pro M Cp, mais c'est aussi des cas d'usage qu'on a, comme je disais, le fait de pouvoir synthétiser les choses ou le fait de"
+    },
+    {
+      "start": 2599.62,
+      "end": 2602.7,
+      "text": "Je te synthétiser des sources de données"
+    },
+    {
+      "start": 2603.56,
+      "end": 2604.78,
+      "text": "Assez disparate ou"
+    },
+    {
+      "start": 2605.41,
+      "end": 2607.22,
+      "text": "Des blocs d'alarme, des"
+    },
+    {
+      "start": 2607.97,
+      "end": 2609.01,
+      "text": "And then"
+    },
+    {
+      "start": 2609.7,
+      "end": 2623.28,
+      "text": "There are information as fragments, and synthesis, but that's corresponding to what I feel."
+    },
+    {
+      "start": 2624.26,
+      "end": 2628.3,
+      "text": "Il y a déjà des travaux en cours là dessus, donc mais peut-être dans un"
+    },
+    {
+      "start": 2628.71,
+      "end": 2629.65,
+      "text": "Dans un temps un peu."
+    },
+    {
+      "start": 2643.17,
+      "end": 2648.46,
+      "text": "Potentialité pour les notes manuscrits de dispatcher en fait."
+    },
+    {
+      "start": 2656.23,
+      "end": 2664.91,
+      "text": "Là de ce que je vois, c'est vrai que ça m'évoque plus un travail assez focalisé à N LP, encore une fois c'est aussi des choses qu'on a, peut-être moins MCP, voilà, c'est un petit retour comme ça à chaud."
+    },
+    {
+      "start": 2665.57,
+      "end": 2669.04,
+      "text": "Euh parce qu'après encore une fois que sur le NCP on"
+    },
+    {
+      "start": 2669.54,
+      "end": 2682.58,
+      "text": "Uh yeah Like the question of server MCP in the capacity final to say we have these out of complex, comment arrive to"
+    },
+    {
+      "start": 2683.08,
+      "end": 2685.04,
+      "text": "uh cette interaction à l'élève."
+    },
+    {
+      "start": 2685.57,
+      "end": 2688.56,
+      "text": "Euh. Voilà, c'est un premier retour à chaud, donc euh..."
+    },
+    {
+      "start": 2689.45,
+      "end": 2695.15,
+      "text": "Moi je vois des des connexions avec certains cas d'usage qu'on a, uh peut-être moins sur la MCP, mais"
+    },
+    {
+      "start": 2696.13,
+      "end": 2697.07,
+      "text": "Comme ça show."
+    },
+    {
+      "start": 2697.86,
+      "end": 2698.86,
+      "text": "So I still"
+    },
+    {
+      "start": 2699.62,
+      "end": 2700.08,
+      "text": "That's not."
+    },
+    {
+      "start": 2702.34,
+      "end": 2708.94,
+      "text": "Mais le vous rejoint aussi sur le MCP, ça fait également partie de votre feuille de route en termes de"
+    },
+    {
+      "start": 2709.54,
+      "end": 2716.66,
+      "text": "Justement d d'avoir des serveurs MCP ou on peut directement se brancher sur des outils de simulation. Justement le l'idée de"
+    },
+    {
+      "start": 2717.19,
+      "end": 2722.86,
+      "text": "de du poc de l'outil qui puisse faire du un un poc euh end to end."
+    },
+    {
+      "start": 2723.33,
+      "end": 2727.34,
+      "text": "L'idée n'est pas uniquement d'avoir une proposition de"
+    },
+    {
+      "start": 2728.29,
+      "end": 2733.2,
+      "text": "d'un plan de travail, mais plutôt d'appliquer par la suite le plan de travail, donc de prendre..."
+    },
+    {
+      "start": 2733.64,
+      "end": 2744.62,
+      "text": "le plan de travail qui est généré par le premier agent comme des directives et d'aller chercher dans via MCP dans les outils en internes qu'on a ou les outils qui de simulation qui existent."
+    },
+    {
+      "start": 2745.09,
+      "end": 2749.87,
+      "text": "de récupérer le bon outil et de faire la simulation avec les données qui ont été proposées par le premier agent."
+    },
+    {
+      "start": 2750.47,
+      "end": 2753.74,
+      "text": "Donc c'est complètement dans notre famille de route également."
+    },
+    {
+      "start": 2754.53,
+      "end": 2756.59,
+      "text": "Oui,"
+    },
+    {
+      "start": 2757.06,
+      "end": 2757.52,
+      "text": "Mm-hmm."
+    },
+    {
+      "start": 2759.4,
+      "end": 2767.31,
+      "text": "Oui non mais je je réagis effectivement plus sur le là dans l'immédiat encore une fois la chose sur le travaux que je voyais après oui je"
+    },
+    {
+      "start": 2768.2,
+      "end": 2770.8,
+      "text": "Vous avez ça dans votre"
+    },
+    {
+      "start": 2771.62,
+      "end": 2777.87,
+      "text": "C'est aussi une chose qu'on avait évoquée avec Gérald, puisque sur la partie..."
+    },
+    {
+      "start": 2778.37,
+      "end": 2800.88,
+      "text": "rentabilité des moyens de production en fait, on a eu un scope qui a été ciblé sur les moyens de production, mais finalement on a une matrice en attente avec un certain nombre d'études à dérouler, et donc l'idée c'était aussi d'avoir finalement ce MCP qui puisse préparer toutes les simulations, les orchestrer et brancher derrière l'outil de génération de rapports."
+    },
+    {
+      "start": 2801.57,
+      "end": 2830.43,
+      "text": "and having en tête that potentially intéresser Diaz, y'all côté final pré-rapport, de toute façon it's so revue, ça pass devant des committees, but that part amont preparing the scenarios, the études, to lancers, to make a checkpoint on is the équilibrée."
+    },
+    {
+      "start": 2830.73,
+      "end": 2837.62,
+      "text": "d'avoir un contrôle humain pour dire ce qu'il faut modifier, voire potentiellement un agent qui arrive à le modifier."
+    },
+    {
+      "start": 2838.02,
+      "end": 2841.78,
+      "text": "et de continuer finalement à aider cette partie"
+    },
+    {
+      "start": 2842.15,
+      "end": 2845.3,
+      "text": "lancement des simulations de end to end."
+    },
+    {
+      "start": 2845.7,
+      "end": 2859.44,
+      "text": "et que l'humain puisse derrière avoir la valeur ajoutée, l'étude, on sait qu'elle est robuste, on a l'étude de sensibilité qui a été faite, on a les sorties d'analyse, on a les premiers résultats, on a finalement un pré-rapport."
+    },
+    {
+      "start": 2859.85,
+      "end": 2865.52,
+      "text": "on n'a plus qu'à travailler et donner la bonne direction pour finalement le BP ou le futur énergétique."
+    },
+    {
+      "start": 2868.36,
+      "end": 2885.94,
+      "text": "Oui, bah effectivement, oui, uh cette orchestration de d'études. Alors, évidemment le contexte n'est pas le document, donc il y a des..."
+    },
+    {
+      "start": 2886.57,
+      "end": 2892.56,
+      "text": "savoir naviguer entre des hypothèses, etc. Parce que c'est la problématique qu'on peut avoir souvent en réel."
+    },
+    {
+      "start": 2893.45,
+      "end": 2898.45,
+      "text": "Euh récupérer des hypothèses un petit peu à droite à gauche Euh parce que bah c'est euh..."
+    },
+    {
+      "start": 2899.24,
+      "end": 2902.03,
+      "text": "Déjà récupérer les données d'entrée de l'étude."
+    },
+    {
+      "start": 2902.47,
+      "end": 2906.67,
+      "text": "consommation, production, programmation, machine et change."
+    },
+    {
+      "start": 2907.3,
+      "end": 2912.91,
+      "text": "sur chacune de ces choses là, des stratégies un petit peu de d'hypothèses, de scénario."
+    },
+    {
+      "start": 2913.29,
+      "end": 2916.4,
+      "text": "Et puis bah derrière, venir un jongler entre..."
+    },
+    {
+      "start": 2916.87,
+      "end": 2918.96,
+      "text": "Un simulateur"
+    },
+    {
+      "start": 2919.43,
+      "end": 2928.34,
+      "text": "an out of visualization, well, the things. So a little we've looked for these changes different, but"
+    },
+    {
+      "start": 2929.13,
+      "end": 2931.09,
+      "text": "Yeah, so it's also pressed out."
+    },
+    {
+      "start": 2934.95,
+      "end": 2937.78,
+      "text": "Euh... Ok, enfin en tout cas moi je je..."
+    },
+    {
+      "start": 2938.92,
+      "end": 2952.78,
+      "text": "J'ai une vision, donc c'est vrai que sur le plus parler de la partie la partie NPB on the fois qui est aussi intéressant for me and the future MCP."
+    },
+    {
+      "start": 2953.41,
+      "end": 2956.56,
+      "text": "J'ai une bonne bonne vision et puis bah voilà en plus."
+    },
+    {
+      "start": 2957.35,
+      "end": 2957.97,
+      "text": "You want"
+    },
+    {
+      "start": 2959.17,
+      "end": 2966.8,
+      "text": "J'avais travaillé avec Gérald qui qui pas très loin de nos bureaux. Voilà, donc..."
+    },
+    {
+      "start": 2969.45,
+      "end": 2972.62,
+      "text": "Voilà, pour moi c'est bon, j'avais à peu près."
+    },
+    {
+      "start": 2973.41,
+      "end": 2974.54,
+      "text": "On sait mes questions éventuelles."
+    },
+    {
+      "start": 2975.56,
+      "end": 2986.48,
+      "text": "Très bien. Est-ce que vous voulez qu'on fasse une petite réflexion sur un cas d'usage un peu plus orienté, sur par exemple..."
+    },
+    {
+      "start": 2986.89,
+      "end": 2989.3,
+      "text": "Euh le MCP euh votre"
+    },
+    {
+      "start": 2990.6,
+      "end": 2999.79,
+      "text": "Si vous présentez finalement le cas d'usage dans lequel vous voulez intégrer un MCP, on pourrait peut-être y réfléchir de notre côté et présenter notre vision."
+    },
+    {
+      "start": 3000.45,
+      "end": 3006.16,
+      "text": "potentiellement avoir un second échange ou est-ce que finalement vous préférez que"
+    },
+    {
+      "start": 3006.6,
+      "end": 3008.82,
+      "text": "on se reface à un point"
+    },
+    {
+      "start": 3009.32,
+      "end": 3015.06,
+      "text": "sur nos avancées sur nos travaux et qu'on vous représente ce que l'on peut faire côté MCP."
+    },
+    {
+      "start": 3017.03,
+      "end": 3022.03,
+      "text": "Um Al plusieurs possibilités."
+    },
+    {
+      "start": 3023.05,
+      "end": 3028.46,
+      "text": "On réfléchira comme je dis donc le MCP, mais il y en a d'autres aussi donc à voir."
+    },
+    {
+      "start": 3029.0,
+      "end": 3030.58,
+      "text": "Um"
+    },
+    {
+      "start": 3033.13,
+      "end": 3035.57,
+      "text": "Alors je réfléchis un peu tôt, mais"
+    },
+    {
+      "start": 3036.49,
+      "end": 3043.95,
+      "text": "Moi je pense que nous on peut quand je disais on n'a pas là comme ça d'idée de besoins encore clair."
+    },
+    {
+      "start": 3045.29,
+      "end": 3057.17,
+      "text": "Donc uh peut-être au regard de ce qu'on a vu aujourd'hui, ou qu'on simplement qu'on regarde et qu'on tienne tout simplement informé si jamais chose de plus précis dégage que ce soit"
+    },
+    {
+      "start": 3057.57,
+      "end": 3071.31,
+      "text": "MCP ou plus CNP, voilà. Après sur la sur l'avancée de vos travaux, it's interesting about a focus MCP. Même si là pour être transparent sur le MCP on va..."
+    },
+    {
+      "start": 3071.75,
+      "end": 3072.3,
+      "text": "Yeah."
+    },
+    {
+      "start": 3086.79,
+      "end": 3099.92,
+      "text": "Well, attention to the problem, we're going to simply versus if you a plus précis, for eviting on discute, but it's not fortable not plus, since uh"
+    },
+    {
+      "start": 3100.29,
+      "end": 3102.48,
+      "text": "De quoi concrétiser bon autant qu'on."
+    },
+    {
+      "start": 3103.65,
+      "end": 3106.61,
+      "text": "En attendant. Moi j'attends ça."
+    },
+    {
+      "start": 3106.98,
+      "end": 3107.76,
+      "text": "à partir là-dessus."
+    },
+    {
+      "start": 3108.2,
+      "end": 3108.85,
+      "text": "Yeah."
+    },
+    {
+      "start": 3109.83,
+      "end": 3110.48,
+      "text": "Que well."
+    },
+    {
+      "start": 3111.3,
+      "end": 3114.19,
+      "text": "Nou contact on."
+    },
+    {
+      "start": 3114.57,
+      "end": 3115.82,
+      "text": "On revient vers vous."
+    },
+    {
+      "start": 3116.26,
+      "end": 3119.47,
+      "text": "Que voilà, ce qui a été présenté, ça rentre ça pourrait rentrer au"
+    },
+    {
+      "start": 3119.94,
+      "end": 3122.29,
+      "text": "Après avoir"
+    },
+    {
+      "start": 3122.82,
+      "end": 3124.24,
+      "text": "Dans l'agenda et dans le"
+    },
+    {
+      "start": 3124.97,
+      "end": 3128.78,
+      "text": "dans l'ordonnancement et tout ça des projets qu'on mène."
+    },
+    {
+      "start": 3129.29,
+      "end": 3131.63,
+      "text": "Parce que si pour faire avancer tous ces projets-là."
+    },
+    {
+      "start": 3132.01,
+      "end": 3157.12,
+      "text": "If we men switch dispo, we'll travel with the operators also, but that's a particularity, so we have a few trembling on the fact that the operators are in quantity finished, I'm not their time and disposition to court, but we're not troops on the shows, if uh solicit en tant que partenaire extra. Well, the context."
+    },
+    {
+      "start": 3158.98,
+      "end": 3165.74,
+      "text": "Alors j'inform aussi à vous donner je pense que c'est peut-être intéressant."
+    },
+    {
+      "start": 3166.12,
+      "end": 3171.76,
+      "text": "Nous, côté Yélé, on travaille aussi avec de l'UI UX Design."
+    },
+    {
+      "start": 3172.2,
+      "end": 3175.31,
+      "text": "Et donc on est en contact avec euh..."
+    },
+    {
+      "start": 3175.69,
+      "end": 3183.98,
+      "text": "certains cabinets et on a discuté avec Olivier Mazeroll pour justement mettre un petit peu ce type de"
+    },
+    {
+      "start": 3184.42,
+      "end": 3190.51,
+      "text": "nouvelle UX, nouvelle UI pour la Control Room du futur. Donc ça peut être aussi des choses..."
+    },
+    {
+      "start": 3190.92,
+      "end": 3193.2,
+      "text": "qu'on pourrait envisager"
+    },
+    {
+      "start": 3193.67,
+      "end": 3210.13,
+      "text": "Well, it's simply an information. And deuxièmement, plutôt une proposition, si vous voulez, peut-être qu'on fasse un atelier purement design, where on pourrait réfléchir à des cas d'usage, les prioriser, etc. It's also..."
+    },
+    {
+      "start": 3210.53,
+      "end": 3212.88,
+      "text": "qui nous ferait plaisir."
+    },
+    {
+      "start": 3213.48,
+      "end": 3219.38,
+      "text": "pourrait peut-être aboutir sur vous une vision, nous un partage et après on verra."
+    },
+    {
+      "start": 3222.79,
+      "end": 3224.24,
+      "text": "Um"
+    },
+    {
+      "start": 3224.71,
+      "end": 3227.34,
+      "text": "Ok, ben je je note le point."
+    },
+    {
+      "start": 3228.07,
+      "end": 3229.1,
+      "text": "But for"
+    },
+    {
+      "start": 3230.02,
+      "end": 3238.96,
+      "text": "Là comme ça je peux pas vous dire je peux pas vous dire oui je comprends l'intérêt du point de la"
+    },
+    {
+      "start": 3239.4,
+      "end": 3250.13,
+      "text": "Wait, d'accord, that's we're interesting we had discussed the part of the Olivier. Uh well, he had party."
+    },
+    {
+      "start": 3251.17,
+      "end": 3255.86,
+      "text": "aussi bien voire mieux que moi. Très bien, très bien, c'est bien en tout cas."
+    },
+    {
+      "start": 3257.32,
+      "end": 3258.16,
+      "text": "Eh bien..."
+    },
+    {
+      "start": 3258.79,
+      "end": 3261.74,
+      "text": "Merci beaucoup, à moins que d'autres personnes veillent."
+    },
+    {
+      "start": 3263.01,
+      "end": 3264.72,
+      "text": "aussi s'exprimer ou"
+    },
+    {
+      "start": 3266.79,
+      "end": 3267.22,
+      "text": "No."
+    },
+    {
+      "start": 3268.55,
+      "end": 3269.81,
+      "text": "Très bien, merci beaucoup."
+    },
+    {
+      "start": 3271.01,
+      "end": 3272.18,
+      "text": "Très bonne après-midi."
+    },
+    {
+      "start": 3272.61,
+      "end": 3275.34,
+      "text": "Au."
+    }
+  ]
+}

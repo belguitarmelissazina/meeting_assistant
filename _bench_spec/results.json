@@ -1,0 +1,90 @@
+{
+  "chunk_id": 4,
+  "prompt_chars": 14631,
+  "draft_params": {
+    "draft_max": 16,
+    "draft_min": 4,
+    "draft_p_min": 0.8
+  },
+  "results": [
+    {
+      "label": "A_baseline_ministral3b",
+      "model": "mistralai_Ministral-3-3B-Instruct-2512-Q4_K_M.gguf",
+      "draft": null,
+      "startup_s": 6.8,
+      "wall_s": 268.0,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 3747,
+        "prompt_ms": 237677.293,
+        "prompt_per_token_ms": 63.431356551908195,
+        "prompt_per_second": 15.765073527659203,
+        "predicted_n": 146,
+        "predicted_ms": 30312.366,
+        "predicted_per_token_ms": 207.61894520547946,
+        "predicted_per_second": 4.81651613734144
+      },
+      "prefill_tps": 15.765073527659203,
+      "decode_tps": 4.81651613734144,
+      "n_prompt_tokens": 3747,
+      "n_predicted_tokens": 146,
+      "acceptance": {},
+      "content": "L’équipe a développé un projet visant à automatiser la rédaction de rapports détaillés sur la rentabilité des moyens de production, en s’appuyant initialement sur des outils internes comme Power. L’objectif était d’accélérer la production tout en préservant l’exactitude des affirmations et en ancrant systématiquement chaque donnée dans les supports visuels originaux (fichiers PPT) ou leurs descriptions associées."
+    },
+    {
+      "label": "B_target_seul",
+      "model": "Qwen2.5-7B-Instruct-Q4_K_M.gguf",
+      "draft": null,
+      "startup_s": 12.2,
+      "wall_s": 426.0,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 4098,
+        "prompt_ms": 370202.405,
+        "prompt_per_token_ms": 90.3373365056125,
+        "prompt_per_second": 11.069620144688146,
+        "predicted_n": 209,
+        "predicted_ms": 55745.859,
+        "predicted_per_token_ms": 266.7265980861244,
+        "predicted_per_second": 3.7491574037813282
+      },
+      "prefill_tps": 11.069620144688146,
+      "decode_tps": 3.7491574037813282,
+      "n_prompt_tokens": 4098,
+      "n_predicted_tokens": 209,
+      "acceptance": {},
+      "content": "La réunion portait sur l'automatisation de la rédaction de rapports pour une équipe travaillant sur les études de rentabilité des moyens de production. Maya Sahraoui a initié ce projet au sein de l'équipe Équilibre offre et demande, visant à générer des rapports exhaustifs couvrant toutes les filières d'activité. Les entrées principales du modèle sont constituées de fichiers PowerPoint contenant principalement des graphiques et peu de textes. Pour automatiser la rédaction, Maya a mis en place un pipeline composé de cinq étapes : l'analyse des slides pour créer des descriptions détaillées, l'assignation des slides aux sections du rapport, la rédaction section par section, l'intégration finale et une boucle de correction. Chaque étape est suivie d'un artefact stocké pour permettre des modifications ultérieures si nécessaire."
+    },
+    {
+      "label": "C_target_plus_draft",
+      "model": "Qwen2.5-7B-Instruct-Q4_K_M.gguf",
+      "draft": "Qwen2.5-0.5B-Instruct.Q4_K_M.gguf",
+      "startup_s": 8.8,
+      "wall_s": 472.0,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 4098,
+        "prompt_ms": 374093.397,
+        "prompt_per_token_ms": 91.28682210834553,
+        "prompt_per_second": 10.954483647301586,
+        "predicted_n": 196,
+        "predicted_ms": 97896.058,
+        "predicted_per_token_ms": 499.46968367346943,
+        "predicted_per_second": 2.002123517578205,
+        "draft_n": 95,
+        "draft_n_accepted": 61
+      },
+      "prefill_tps": 10.954483647301586,
+      "decode_tps": 2.002123517578205,
+      "n_prompt_tokens": 4098,
+      "n_predicted_tokens": 196,
+      "acceptance": {
+        "tokens_generated_by_draft": 95,
+        "tokens_accepted": 61,
+        "acceptance_rate": 0.6421,
+        "source": "timings"
+      },
+      "content": "La réunion portait sur l'automatisation de la rédaction de rapports pour l'équipe équilibreoffre et demande. Maya Sahraoui a expliqué que le projet visait à générer des études de rentabilité des moyens de production, en utilisant un outil interne nommé Power qui s'apparente à Antares mais avec une approche plus spécifique aux notions de rentabilité. Les résultats de ces études sont stockés dans des fichiers PPT contenant principalement des graphiques et peu de textes. L'objectif était d'automatiser la rédaction du rapport complet à partir de ces fichiers, en s'appuyant sur une structure préétablie pour assurer la rigueur tout en accélérant la production."
+    }
+  ]
+}

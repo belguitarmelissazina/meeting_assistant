@@ -1,0 +1,98 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien.
+
+Extrait :
+[SPEAKER_02]: justement d’appeler les servicesadéquats ou de dorstrer un petit peu des différentes.
+[SPEAKER_02]: briquesVoilà donc des briques de, calcul, d’études d’études, réseaux.
+[SPEAKER_02]: etcVoilà donc c’est des choses qu’on.
+[SPEAKER_02]: souhaiteexplorerVoilà donceffectivement là comme ça on n’a pas à date aujourd’hui de mission ou quoi claire à.
+[SPEAKER_02]: proposer Je pense que le but en tout cas pour moi c’étaiteffectivement Dandine nous a indiqué que Mike t’avaiseu l’occasion de travailler dans un contexte et que tu connaissais ces sujets-là donc voilà ça nous permet à ce stade en tout cas de voilà de faire connaissance de voir un peu peut-être
+[SPEAKER_02]: l’onctions que tu as pu faire ou ce qu’on pourrait faire voilà comme ça on a un peu ça en tête pour la suite éventuellement et en tout cas aujourd’hui on revient paseffectivement avec untruc, cadré un besoin où, voilà c’est plus un peu de la prise de contact en tout cas en tout cas à mon.
+[SPEAKER_01]: niveau Donc je peux vous présenter si vous voulez justement les projets sur lesquels j’ai travaillé donc je n’ai pas la manque pour
+[SPEAKER_02]: partager.
+[SPEAKER_02]: monécranEffectivement c’est.
+[SPEAKER_02]: désactivé Je sais plus qui sait qu’a envoyé la.
+[SPEAKER_02]: réunion Je ne sais peut-être toi non c’est unte paraisser les activer par défaut sur la.
+[SPEAKER_01]: Toy..
+[SPEAKER_01]: MerciNon Donc je vais vous présenter un peu les projetsira génératifs sur lesquels on travaille de manière générale chezEly je vais me concentrer sur lesquels moi j’ai travaillé et sur d’autres missions aussi que j’ai faites avant de rejoindreYéley donc pour vous présenter un peu les compétences
+[SPEAKER_01]: qu’on a chez sur desuskes comme cela donc.
+[SPEAKER_01]: d’IHM Pas pour commencer le positionnement en tout cas global que j’aiadopté depuis que j’ai rejointYaley ces derniers temps aussi sur les projets dia génératives que sur lesquels je suis, intervenu c’était globalement de transformer des contenus donc des documents complexes et hétérogènes en
+[SPEAKER_01]: général multimodal en sortie actionnable donc ça peut être soitextraire de réinformation pertinentes pour faciliter de la prise de décision ou créer des fiches de synthèse à partir de documents hétérogènes donc j’ai aussi il y a toujours un volet un peu d’industrialisation on va dire où je garde
+[SPEAKER_01]: une notion deversionine et une notion de monitoring aussi donc sur les projets qu’on fait au sein de l’IAE et sur les mission que j’ai faite auparavant donc entermes de compétences on va toujours être sur du, multimodèle j’ai travaillé sur des modèles hébergés localement donc où j’ai directement
+[SPEAKER_01]: fait du fine toiling sur des modèles dit à génératifs.
+[SPEAKER_01]: typeQNTubinefiel énormément de prétraitements donc ça c’est nécessaire et aussi donc l’utilisation des pia type mistral c’est ce qu’onutilise aujourd’hui chezYannay et donc avec des gains d’usage quiont nécessité de faire du rag donc du ranking duray ranking et de la.
+[SPEAKER_01]: vectorisation Des notions d’orchestration aussi donc on a chez elle on a des projets où on en est plus sur, duNUN d’autres où on fait du MCP et entermes de déploiement j’ai travaillé sur desoutils commeVLHRM ouVicorne pour déployer des, modèles des modèles que j’ai pré-entraînés et du
+[SPEAKER_01]: streaminatégalement pour de la livraison de poktand.
+[SPEAKER_01]: yaller Donc je vais commencer par vous présenter le projet que j’ai fait au sein.
+[SPEAKER_01]: deRTE Je pense que ça.
+[SPEAKER_01]: bloque C’est.
+[SPEAKER_01]: bon Donc pour le projet que j’ai fait au sein de l’équipe équilibreoffre et demande, deRTE le sujetétait de pouvoir générer des étudesEOD rentabilité des moyens de.
+[SPEAKER_01]: production Donc le contexte c’est que l’équipe se charge de reprendre un peu les bilans prévisionnels ou de les prendre comme référentiel comme contexte de faire des études où on prend en considération des notions donc de rentabilité donc on décline des, hypothèses on a des, scénarios onanalyse la
+[SPEAKER_01]: sensibilité de toutes ces études-là pour sortir avec des résultats donc il y a des stimulations qui sont faites avec unoutil qui est développé au sein de l’équipe qui s’appelle Power donc c’est unoutil quiressemble un peu à Antares mais qui reprend des notions de rentabilité qu’on ne retrouve pas
+[SPEAKER_01]: forcément surInternet donc si l’idée c’est vraiment de faire desanalyses de rentabilité des moyens de production ensuite à la suite de ces études-là donc les membres de l’équipe vont créer des fichiersVPT ils vont stocker les résultats dans des fichiers.
+[SPEAKER_01]: PPDT Donc ces fichiers-là vont contenir notamment en majeure partie des graphiques donc on est sur des données qui sont hétérogènes parce qu’on a énormément d’images très peu de textes et l’idée c’est de pouvoir par la suite par filière rédiger un rapport complet rédiger un rapport qui
+[SPEAKER_01]: soitexhaustif sur toutes les.
+[SPEAKER_01]: filières Donc c’est à ce niveau-là donc au niveau de la rédaction du rapport complet à partir des fichiers PPT que moi je suis intervenu pour automatiser justement ce.
+[SPEAKER_01]: travail-là Donc ici on est parti d’une structure de rapport qu’on a dû discuter pendant ma, mission on s’est mis d’accord sur une structure du rapport et j’ai établi donc une chaîne de traitement pour pouvoir automatiser.
+[SPEAKER_01]: ça Donc l’objectifétait d’accélérer la production du rapport sans en dégrader larigueur donc ça c’est l’enjeu premier et de pouvoir en faisant çaancrer chacune des affirmations qui sont générées par monoutil dans le rapport lesancrées dans des figures où des textes y sont directement cidés dans les
+[SPEAKER_01]: fichiers PPT de standardiser la structure sur des sections sur lesquelles on s’était mis d’accord au préalable et de permettre aussi une boucle de correction parce que l’idée c’est de produire unoutil de donneraccèsaux membres de l’équipe à cetoutil-là donc d’avoir une interface dédiée et qu’ils
+[SPEAKER_01]: puissenteux-mêmes par la suiteitérer sur le rapport qui est rédigé pour le corriger avec des commentaires qui peuvent mettre sur chacune des sections.
+[SPEAKER_01]: générées Donc lesentrées de mon modèle ou de, monoutil ça va être les fichiers PPT donc ça c’est la source principale et nécessaire pour générer le.
+[SPEAKER_01]: rapport On aégalement ajouter uneoption d’ajouter une transcription vocale sousformat TXT donc ici c’est un test qu’on avait fait avec général, oui il avait repris des rapports et c’était enregistré en train il avait repris des fichiers PPD donc des, slides il s’était enregistré en train de les
+[SPEAKER_01]: présenter quand on a appris cet enregistrement-là qu’on a avec un modèle de Spitch tout texte transformé en fichier TXT et ensuite on peut mettre enentrée donc cette transcription vocale-là enentrée de l’outil pour ajouter un contexte.
+[SPEAKER_01]: supplémentaire Et donc par la suite la sortie de l’outil ça va être le rapport final donc en marque doune etexportable en DOK avec donc sur l’interface une possibilité de corriger une boucle de.
+[SPEAKER_01]: correction Donc ça c’était un peu la vision macro de ce que j’ai fait si je veux entrer un peu plus dans le, détail j’ai fait une pipeline sur cinq briques donc la première brique si c’est une pipelineadjentique donc je vais avoir desagents qui vont se charger de chacune des étapes à chaque, étape
+[SPEAKER_01]: je vais produire desartefacts que je stocke pour pouvoir les reprendre par la suite si on veut corriger à la sortie de chacune des étapes modifier quelque chose il est possible de modifier directement l’artefact pour que ça vienne directement modifier les corriger les résultats de l’étape suivante
+[SPEAKER_01]: ça nous permet d’avoir duversionning pour un poc qu’on peut donc par la suite développer encore plus pour avoir un vraiversionning directement sur.
+[SPEAKER_01]: l’interface Donc la première, étape c’est qui est trèsimportante c’est de prendre le fichier PPT de le traiter comme des figures et d’avoir uneanalyselight par slide du PPT donc de créer des descriptions qui soient assezexhaustives de chacun des slides contenus dans le PPT avec une classification
+[SPEAKER_01]: qui va me permettre de dire si ce slide est un snightanalytique et le contenu du slide détaillé donc avec de l’OCR pour pouvoir enextraire tout le texte et uneanalyse complète du contenu des graphiques s’il y en a avec donc aussi une notion de ce que contient le slide uneanalyse de ce que contient
+[SPEAKER_01]: le slide donc tout ça est fait par pendant unagent qui prend l’image enentrée et qui nous sort une description en.
+[SPEAKER_01]: sortie Ensuite à chaque étape donc je garde l’historique de ce qui est sorti de l’étape précédente donc la deuxième étape va reprendre justement ces descriptions de snigh-là pour pouvoir faire un assignement des slidestections donc comme je l’avais dit au niveau du rapport nous avions choisi
+[SPEAKER_01]: d’avoir quatre sections différentes donc ici le but de cette brique c’est de pouvoir dire que telle slide devrait appartenir à une telle section et descriptive de telle section et donc qu’il devrait être cité oumentionné dans telle section ou du moins qu’il devraitvenir enrichir la rédaction de
+[SPEAKER_01]: cette.
+[SPEAKER_01]: section-là C’est une étape que j’ai ajoutée car elle nous permet justement de ne pas voir apparaître des slidesannexes en introduction.
+[SPEAKER_01]: ouautres Et l’idée de faire, oui
+[SPEAKER_02]: pardoniste pour mon rang donc en fait les sections donc on est bien sur les sections qui sont prédéfinies en fait dans une structure de rapport donc ces choses qui sont fixées alors j’avoue que je vois à peu près le sujet alors je suis pas dans la partieEd là à fond donc j’ai pas forcément letruc
+[SPEAKER_02]: en, tête mais voilà c’est des rapports un petit peu types en tout cas au niveau géral que dont il a été capable de vraiment défier une structure assez fine sa vie et du coup et du coup ma sous-crétion c’était pas le est-ce que par exemple pour que le modèle fonctionne bien est-ce qu’il y aeu un
+[SPEAKER_02]: travail justement pour décrire un petit peu plus en détail la structure c’est-à-dire la structure si moi ça me fait juste penser à un sommaire en fait donc c’est sommaire du coup est-ce qu’il y aeu un travail pouraller un petit peu de là c’est-à-dire de dire voilà letruc trois point cinq il
+[SPEAKER_02]: s’appelleX et associé à ça un travail description un peu plus détaillée justement pour aider les modèles pour lesagents parce qu’il y avait un
+[SPEAKER_01]: travail?, là-dessusOui on a établi donc on a déjà les descriptions des différentes sections par exemple l’hypothèse d’un.
+[SPEAKER_01]: coupJ’ai travaillé avec des notes des descriptions qui soient, assezexhaustives assez courtes aussi pour que ça ne vienne pas trop prendre de place dans la fenêtre de contexte mais on avait des descriptions pour chacune des sections à laphase de la sélection et la signation des slidesaux sections
+[SPEAKER_01]: en plus d’avoir des règles un peu une surcousse de règles où par exemple j’ai une section qui contient la comparaison des études entreFrance et d’autres pays enEurope et on s’était dit que par exemple les graphiques quivenaient d’écrire des résultats qui avaient été faits desanalyses qui avaient
+[SPEAKER_01]: été faites sur d’autres pays que laFrance ne devrait pas apparaître en introduction ou dans la section hypothèse de coût que ça serait plusvers la dernière section on compare les résultatsFranceVS et d’autres pays maintenant qu’on avait des règles comme ça où dans laphase compréhension et,
+[SPEAKER_01]: description j’allais récupérer l’information de quel paysétait traité dans ce slic-là et si c’était unautre pays que laFrance dans laphase assignement j’assignais automatiquement à la dernière section donc qui estFrance BSautre pays plutôt que hypothèse de.
+[SPEAKER_00]: coûtJ’ai complété donc on avait une
+[SPEAKER_01]: description des hypothèses plus des règles d’assignement.
+[SPEAKER_01]: oui
+[SPEAKER_00]: Donc en, fait la partie sélection y assignation on peut apparenter ça de la catégorisation et donc savoir dans quel vraiment chapitre ça doitaller et les chapitresont une structureidentique donc en fait on a comme si on avait deuxtemplates finalement untemplate de ce que va contenir chaque chapitre
+[SPEAKER_00]: et untemplate des catégories finalement à signer et pouraller aussi pour le côté interface on a cherché quelque chose de très simple ça a été un, poc c’est vraiment pour démontrer que l’IA peut apporter de la valeur sur la génération de rapports et on a fait ça en vingt-cinq., joursOui incluant les
+[SPEAKER_00]: ateliers enamont donc c’est vraiment quelque chose qui a été réalisé rapidement on a un rex aussi sur ce qui fonctionne les suites à donner et donc là on est plutôt enutilisation pour continuer à rédiger le, rapport l’humain passe derrière évidemment puisque ça reste un poc et on vaitérer
+[SPEAKER_00]: avecGérald pour savoir s’il y a des suites ou pas sur cette généralisation de rapports qui pourraitégalement intéresser dièse pas que le.
+[SPEAKER_00]: côtéRD Tu veux peut-être parler de la partie suivante.
+[SPEAKER_01]: oui., BasileOui.
+[SPEAKER_01]: oui Aussi pour ajouter un détail sur l’assignation donc en plus des informations un peu métier sur les différentes sections et les descriptions des.
+[SPEAKER_01]: sectionsJ’avaiségalement donc cette partie là c’est la partie la plus globale où on ne se concentre pas sur une section à la, fois mais on a où on a une vue globale sur tous les slides donc ici par exemple c’était trèsimportant et ça a ajouté beaucoup de valeur le fait de récupérer les slides qui
+[SPEAKER_01]: représentaient en début de section au niveau donc du PPT pour avoir une notion de structure globale et ne pas assigner des slides de résultats dans l’introduction par.
+[SPEAKER_01]: exemple Donc il y avait beaucoup de nuances à prendre en considération pour avoir une bonne classification des figures et des slides et une bonne assignationaux bonnes sections et ensuite donc l’étape d’après qui est celle de la rédaction ici la rédaction se fait section par section donc je vais
+[SPEAKER_01]: avoir unagent qui va rédiger une section enfin chacune des sections séparément et ici donc ça vient après, l’assignation on rédige section par section dans un premier temps je rédige uniquement au niveau des bullets points donc je me concentre plus sur le fond que sur laforme et une fois le
+[SPEAKER_01]: bulletpoint se, produit je les reprends pour pouvoir rédiger la prose donc ajouter un texte qui soit plus lisible et où on ajoute plus d’informes donc ici j’ai apporté énormément de valeurégalement de pouvoir séparer le front de laforme au niveau de la rédaction et ça facilite aussi la correction
+[SPEAKER_01]: puisque c’est plus simple de pouvoir corriger les bonnet Points si on le souhaite plutôt que de corriger un texte.
+[SPEAKER_01]: complet Donc ici le fait de rédiger section par section aideégalement au niveau de la boucle de.
+[SPEAKER_01]: correction Après la rédaction on passe en intégration, d’intégration c’est le fait de regrouper toutes les sections entre.
+[SPEAKER_01]: ellesJ’ai un dernieragent qui vavenir redire le rapport et enlever tout ce qui est redondance et incohérence entre les différentes sections et à la, fin j’ai une boucle de correction qui permet d’itérer au niveau des sections donc ici on prend, lesartefacts les bold Trince quiont été la sortie de
+[SPEAKER_01]: la brique d’action et si on veut corriger par exemple une sélection donnée ici dans l’outil on peut sélectionner une section ajouter un commentaire et ça va directement donc prendre le commentaire et l’artefact donc les bulletchpoints concernant la section en question vont être envoyés à unagent
+[SPEAKER_01]: qui se chargera de rediger la section en fonction des commentaires quiont été.
+[SPEAKER_01]: émis Donc ça permet d’avoir une boucle de correction un peu minimale qu’on a réussi à réaliser en cinq semaines qu’on peut pousser par la suite plus loin avec une notion de correction plus.
+[SPEAKER_01]: globale Donc je ne sais pas si vous avez des questions à ce.
+[SPEAKER_02]: niveau-là Moi j’ai une petite question en fait il y a quand même la contrainte d’avoir untemplate au début siadmettons qu’on n’a pas untemplate mais peut-être trois ou quatre
+[SPEAKER_00]: façons de faire
+[SPEAKER_02]: des présentations est-ce que en fait voilà ce que vous avez fait peut s’adapter facilement où il faut intégrer
+[SPEAKER_00]: unagent
+[SPEAKER_02]: qui va faire la sélection destemplates pour faire la suite
+[SPEAKER_01]: au je pense que ça peut s’intégrer assez facilement le besoin d’avoir untemplate iciétait plus un besoin métier a vu que le rapport final doit être structuré donc c’était un besoin métier de rédiger des rapports qui soient structurés avec untemplate assez précis on ne pouvait pas vraiment sortir de
+[SPEAKER_01]: ce, cadre-là mais l’outil en lui-même peut êtreadapté à uneutilisation sanstemplate au lieu de rédiger plusieurs, sections on rédigerait une seule mais avec des directives de temps et de.
+[SPEAKER_01]: contenu Si je comprends bien la.
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"— si absent", "echeance":"— si absente"}]}

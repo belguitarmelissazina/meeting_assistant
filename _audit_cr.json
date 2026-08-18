@@ -1,0 +1,426 @@
+{
+  "audits": [
+    {
+      "version": "V8 (Ministral 3B)",
+      "resume_global": "Version nettement plus faible que le gold Mistral. Elle multiplie les hallucinations sémantiques majeures (MCP redéfini en \"Modèle Conversational Platform\" / \"Modèle Conversationnel Platform\", outil \"Power\" inventé, \"EMCP\" repris à tort), réattribue des rôles à de mauvaises personnes (Nourredine HENKA présenté comme expert Data-IA manager alors que c'est Jérôme MASSET ; Jérôme PICAULT présenté comme responsable Smart Cockpit alors que c'est Bruno LEMETAYER), et invente des éléments de plan d'action (mention de Gérald, responsable Jérôme PICAULT) non étayés. Plusieurs sections de fond du gold (projet d'extraction VLM de documents administratifs, agent de planification de PoC, fine-tuning, déploiement VLM/UVCorn, dashboard de monitoring) sont totalement absentes. Le type de réunion (\"revue projet\") est lui aussi erroné : c'est une prise de contact.",
+      "problemes": [
+        {
+          "section": "1. Présentation des participants",
+          "extrait": "Nourredine HENKA, expert Data-IA manager chez Élé Consulting, a présenté son expertise en gestion de la pratique Data-IA, incluant des collaborations avec Maya SAHRAOUI",
+          "type": "attribution_erronee",
+          "explication": "Le rôle d'expert Data-IA manager au sein d'Élé Consulting, travaillant avec Maya SAHRAOUI sur l'IA générative, est attribué à Nourredine HENKA. Dans le transcript c'est l'orateur d'ouverture (Jérôme MASSET) qui se présente ainsi.",
+          "reference": "Transcript ligne 5 : 'moi c'est j'ai, remassé je suis expert dataIa manager de la pratice DataIa au sein de l'élé consulting et donc par exemple travaille avec Maya'. Le gold Mistral l'attribue correctement à 'Jérôme MASSET ... expert Data IA et manager de la practice Data IA au sein d'ELEY Consulting'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "1. Présentation des participants",
+          "extrait": "Jérôme PICAULT, responsable de la feuille de route Smart Cockpit à la direction Intelligence Artificielle et Innovation, a détaillé son rôle central dans l'interaction opérateur-assistants, en insistant sur l'évolution historique des assistants pour la conduite depuis plus d'une décennie.",
+          "type": "attribution_erronee",
+          "explication": "Le pilotage de la feuille de route Smart Cockpit est attribué à Jérôme PICAULT. En réalité c'est Bruno LEMETAYER qui pilote Smart Cockpit, et l'évolution des assistants 'depuis une dizaine d'années' est évoquée par Matthieu DUSSARTRE. Jérôme PICAULT, lui, est à la direction IA et innovation et travaille sur LLM/MCP.",
+          "reference": "Transcript l.13-15 (SPEAKER_02) : 'Bruno le méthélier ... je pilote la feuille de route Smart Cockpit interactif' et 'la thématique assistant ... ça fait une dizaine d'années'. Gold Mistral : 'Bruno LEMETAYER ... pilote la feuille de route Smart Cockpit interactif' et 'Jérôme PICAULT travaille au sein de la direction intelligence artificielle ... autour des LLM et MCP'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "1. Présentation des participants",
+          "extrait": "Maya SAHRAOUI, consultante confirmée chez IVB",
+          "type": "imprecision",
+          "explication": "Le nom de société est rendu 'IVB' (artefact de transcription). Le gold le normalise en 'ELYE'. Reprendre 'IVB' tel quel laisse une référence d'entreprise erronée/inintelligible.",
+          "reference": "Transcript l.8 : 'consultante confirmée, chezIVB'. Mais l'entité réelle est ELEY/ELYE (cf. l.51 'chezEly', l.53 'YaIey'). Gold : 'consultante confirmée chez ELYE'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "mistral_aussi_discutable",
+          "gravite": "basse"
+        },
+        {
+          "section": "1. Présentation / Bruno LEMETAYER",
+          "extrait": "Bruno LEMETAYER, en poste à la direction RD, a souligné son expérience pluriannuelle dans la thématique des assistants interactifs, tout en reconnaissant des lacunes concrètes sur les activités métiers spécifiques du groupe.",
+          "type": "attribution_erronee",
+          "explication": "L'expérience pluriannuelle sur les assistants et l'aveu de 'connaître moins vos activités' proviennent en réalité des interventions RD/exploitation (Matthieu DUSSARTRE / un autre intervenant SPEAKER_02), pas spécifiquement de Bruno LEMETAYER qui se présente surtout comme pilote Smart Cockpit. V8 brouille les rôles entre Bruno et Matthieu.",
+          "reference": "Transcript l.15 (Matthieu) 'ça fait une dizaine d'années ... je travaille dessus depuis tout ce temps' et l.30 'Je connais moins effectivement vos activités là-dessus'. Gold sépare bien Bruno (Smart Cockpit) et Matthieu (plusieurs années sur les assistants).",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "En-tête (Type de réunion)",
+          "extrait": "_Type de reunion_ : **revue projet**",
+          "type": "imprecision",
+          "explication": "Le type de réunion est qualifié de 'revue projet'. Or il s'agit clairement d'une prise de contact / tour de table exploratoire ('faire connaissance', 'prise de contact').",
+          "reference": "Transcript l.4 'un petit tour de table parce que moi je ne connais pas tout le monde' ; l.44 'c'est plus un peu de la prise de contact'. Gold : 'Type de reunion : prise de contact'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "Objectif / 2. Besoins métiers / 4. Rôle du MCP",
+          "extrait": "le rôle spécifique du Modèle Conversational Platform (MCP) pour RTE",
+          "type": "hallucination",
+          "explication": "V8 invente une définition erronée de l'acronyme MCP ('Modèle Conversational Platform', et ailleurs 'Modèle Conversationnel Platform'). MCP n'est jamais développé ni redéfini ainsi dans le transcript ; il s'agit du protocole MCP (Model Context Protocol) utilisé pour l'orchestration d'outils. Le gold ne commet pas cette erreur.",
+          "reference": "Transcript : MCP toujours cité comme acronyme lié à LLM/orchestration d'outils (l.26 'LLM, MCP', l.37-38 'ce qu'il est possible de faire avec le MCP ... appeler les services adéquats ou de d'orchestrer'). Aucune définition 'Conversational Platform'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "3. Avancement des projets d'automatisation",
+          "extrait": "L'équipe utilisait déjà un outil interne nommé Power pour analyser ces données, mais les résultats étaient stockés sous forme de fichiers PPT",
+          "type": "imprecision",
+          "explication": "V8 décrit 'Power' comme un outil d'analyse mais en réalité Power est l'outil de simulation (proche d'Antares) intégrant des notions de rentabilité ; c'est lui qui produit les résultats simulés, qui sont ensuite mis en PPT. La formulation 'pour analyser ces données' inverse le rôle. Le gold n'attribue pas ce raccourci (il ne nomme pas Power mais décrit correctement la chaîne).",
+          "reference": "Transcript l.65 : 'il y a des stimulations qui sont faites avec un outil qui est développé au sein de l'équipe qui s'appelle Power donc c'est un outil qui ressemble un peu à Antares mais qui reprend des notions de rentabilité'. C'est un simulateur, pas un simple analyseur de données.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "mistral_aussi_discutable",
+          "gravite": "basse"
+        },
+        {
+          "section": "5. Pistes pour prioriser les cas d'usage / 2. Besoins métiers",
+          "extrait": "en s'appuyant notamment sur l'exemple concret de l'EMCP",
+          "type": "hallucination",
+          "explication": "'EMCP' est un artefact de transcription ('à l'EMCP' = 'à l'MCP') que V8 reprend comme un objet/exemple concret distinct. Il n'existe aucune entité 'EMCP'. Le gold ne reprend pas cet artefact.",
+          "reference": "Transcript l.240 : 'sur le cas d'usage que l'on réfléchirait comme je faisais donc à l'EMCP' = simplement 'à l'MCP'. Pas d'entité EMCP réelle.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "Contenu manquant (sections entières)",
+          "extrait": "(absent)",
+          "type": "contenu_manquant",
+          "explication": "Le projet d'extraction d'informations sur documents administratifs scannés/manuscrits (salaires, métiers, % de conformité, détection de fraude/FdR, fine-tuning du modèle Qwen2-VL, prétraitement, contenus en arabe, déploiement VLM + Uvicorn, dashboard de monitoring des drifts) est totalement absent de V8, alors qu'il occupe une large part de la réunion et figure dans le gold (points sur VLM, FdR, QuendInfibeVL, UVCorn, dashboard).",
+          "reference": "Transcript l.191-200 (description complète du projet documents administratifs, VLM, fine-tuning, arabe, déploiement, dashboard). Gold §2 : points sur extraction documents scannés, VLM, fine-tuning QuendInfibeVL, VLM/UVCorn, dashboard.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "Contenu manquant",
+          "extrait": "(absent)",
+          "type": "contenu_manquant",
+          "explication": "L'agent de planification de PoC (web search pour récupérer une bibliographie à partir d'un sujet, proposition d'une roadmap, intégration future d'un MCP pour accéder à des outils de simulation, accélération des hackathons/démonstrateurs) est absent de V8 alors qu'il est présent dans le gold et longuement décrit dans le transcript.",
+          "reference": "Transcript l.181-188. Gold §2 : 'Un projet en cours concerne un agent de planification de PoC, capable de récupérer des bibliographies ... proposer une roadmap ... s'appuyant sur des outils de simulation' et 'intégrer un MCP ... accélérer la réalisation de hackathons'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "Contenu manquant",
+          "extrait": "(absent)",
+          "type": "contenu_manquant",
+          "explication": "L'outil interne de rédaction de réponses aux appels d'offres orchestré via N8N (agents/racks spécialisés : CV, références, réponses AO) n'est pas décrit dans V8, alors qu'il est dans le gold et le transcript et illustre une orchestration non-MCP (N8N).",
+          "reference": "Transcript l.163-167. Gold mentionne l'orchestration N8N vs MCP au §1 de Maya implicitement et dans les cas d'usage.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "Contenu manquant (souveraineté / cloisonnement)",
+          "extrait": "(absent ou trop vague)",
+          "type": "contenu_manquant",
+          "explication": "L'enjeu de souveraineté/confidentialité et de cloisonnement des données par entité (si l'outil est utilisé côté RTE, ça reste côté RTE et pas côté Galet) n'est repris que de façon allusive dans l'objectif de V8 sans être explicité, alors que le gold en fait un point dédié et clair.",
+          "reference": "Transcript l.174-180 (souveraineté, confidentialité, cloisonnement côté RTE). Gold §2 premier point : 'attention portée sur la souveraineté des données et leur cloisonnement selon l'entité utilisatrice (exemple : côté RTE)'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "6. Plan d'action (ligne 1)",
+          "extrait": "Évaluer les suites pour la généralisation de l'outil de génération de rapports en dehors du contexte RTE, en concertation avec Gérald pour évaluer son intérêt pour d'autres équipes ou filières.",
+          "type": "action_inexacte",
+          "explication": "L'action de généralisation avec Gérald est plausible sur le fond (le transcript évoque d'itérer avec Gérald), mais elle est présentée comme une action décidée du plan d'action. Or aucune action formelle n'a été retenue ('on revient pas avec un truc cadré', 'aucune décision formelle'). Le gold, plus prudent, ne liste que deux actions génériques (revenir avec des besoins précis ; atelier design) et n'inscrit pas la généralisation Gérald comme action arrêtée.",
+          "reference": "Transcript l.103-104 'on va itérer avec Gérald pour savoir s'il y a des suites ou pas' (conditionnel, pas une action engagée). Gold Plan d'action : seulement 2 actions, sans Gérald.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "mistral_aussi_discutable",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "6. Plan d'action (ligne 2)",
+          "extrait": "Tenir informé des besoins précis émergents concernant le MCP ou d'autres cas d'usage liés au NLP afin d'éviter une discussion sans fondement, sous l'égide de Jérôme PICAULT. | Jérôme PICAULT",
+          "type": "attribution_erronee",
+          "explication": "L'action 'tenir informé / revenir si un besoin précis se dégage' est attribuée comme responsable à Jérôme PICAULT. Dans le transcript, cet engagement est exprimé par le ou les intervenants côté RD/RTE (SPEAKER_02, c'est-à-dire Matthieu/Bruno), pas par Jérôme PICAULT identifié nommément, et surtout pas avec un responsable désigné. Le gold laisse le responsable vide ('—').",
+          "reference": "Transcript l.242-246 (SPEAKER_02) : 'il faut tout simplement qu'on regarde et puis qu'on tienne tout simplement informer si jamais il y a quelque chose de plus précis ... que ce soit MCP ou plus NLP'. Aucune désignation de Jérôme PICAULT comme responsable. Gold : responsable '—'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "6. Plan d'action (ligne 3)",
+          "extrait": "Revoir les travaux sur la partie MCP et partager leur vision pour un éventuel second échange si nécessaire.",
+          "type": "action_inexacte",
+          "explication": "Cette action est globalement fidèle (un second échange / partage des avancées MCP a bien été évoqué), mais elle double partiellement la ligne 2 et la formulation 'revoir les travaux ... partager leur vision' attribue l'initiative côté Yele alors que c'est plutôt une proposition réciproque restée ouverte. Redondance/imprécision par rapport au gold qui ne retient que 'partager les avancées pour alimenter une réflexion'.",
+          "reference": "Transcript l.238-243 : proposition de re-point/second échange laissée ouverte, sans engagement ferme. Gold §3 : 'partager les avancées des travaux pour alimenter une réflexion collective'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "indetermine",
+          "gravite": "basse"
+        },
+        {
+          "section": "Plan d'action (manquant) / 5. Pistes UX",
+          "extrait": "(atelier design présent en §5 mais absent du tableau du plan d'action)",
+          "type": "contenu_manquant",
+          "explication": "La proposition d'organiser un atelier purement design pour prioriser des cas d'usage (avec Olivier Maserol / cabinets UX) est un engagement clé de fin de réunion. Le gold en fait l'action n°2 de son plan d'action. V8 l'évoque dans le corps mais ne la fait pas figurer comme action dans son tableau, et n'en cite pas clairement Olivier Maserol.",
+          "reference": "Transcript l.251-254 : 'on travaille aussi avec de l'UX design ... discuté avec Olivier Maserol ... un atelier purement design où on pourrait réfléchir à des cas d'usage les prioriser'. Gold Plan d'action ligne 2 : 'Organiser un atelier purement design pour réfléchir à des cas d'usage et les prioriser.'",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "2. Besoins métiers / 4. Rôle du MCP",
+          "extrait": "La gestion des documents manuscrits constitue un cas d'usage prioritaire, où le MCP permettrait de dispatcher et d'intégrer ces données brutes avant leur traitement par des outils NLP dédiés.",
+          "type": "decision_inexacte",
+          "explication": "V8 présente la gestion des documents manuscrits comme un 'cas d'usage prioritaire' lié au MCP. Dans le transcript, l'intervenant RD dit au contraire que c'est un sujet de moyen terme ('peut-être dans un temps un peu plus moyen terme') et qu'il relève plutôt du NLP que du MCP. V8 surévalue la priorité et lie à tort le manuscrit au MCP.",
+          "reference": "Transcript l.214-216 : 'peut-être dans un temps un peu plus moyen terme ... ça m'évoque plus un travail assez focalisé en NLP ... c'est aussi des choses qu'on a peut-être moins MCP'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "Objectif",
+          "extrait": "Évaluer les besoins métiers liés à la feuille de route Smart Cockpit pour optimiser les interactions opérateur-assistants",
+          "type": "imprecision",
+          "explication": "L'objectif de V8 recentre toute la réunion sur Smart Cockpit et l'optimisation opérateur-assistants, ce qui correspond surtout au cas d'usage côté RD. Or l'objectif réel de la réunion est plus large : partage d'expériences/besoins IA générative et identification de recoupements pour collaborations futures. V8 réduit la portée.",
+          "reference": "Transcript l.33 : 'que vous discutiez ... sur vos besoins sur l'IA générative ... voir comment on pourrait potentiellement travailler ensemble'. Gold Objectif : 'Permettre aux participants de partager leurs expériences et besoins en matière d'IA générative ... identifiant des recoupements potentiels pour des collaborations futures.'",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "4. Rôle du MCP / 2. Besoins métiers",
+          "extrait": "le MCP pourrait préparer automatiquement des pré-rapports en tant qu'interface intermédiaire : il structurerait les scénarios générés par un agent, relierait ces données aux outils de simulation existants et permettrait une validation itérative avant finalisation par l'humain.",
+          "type": "doublon_ou_redondance",
+          "explication": "Le contenu sur le pré-rapport, l'orchestration de simulations et la validation humaine est correct sur le fond mais répété de manière quasi identique entre les §2 et §4 (et la synthèse), produisant une forte redondance que le gold évite en regroupant l'idée en un ou deux points.",
+          "reference": "Comparer §2 (puces 'préparation automatisée de pré-rapports', 'orchestrer l'exécution de simulations') et §4 (puces 2 et 3) : même idée dédoublée. Gold §2 : idée présentée une fois (puces sur orchestration MCP et pré-rapport).",
+          "verifie_sur_transcript": false,
+          "verdict_transcript": "indetermine",
+          "gravite": "basse"
+        },
+        {
+          "section": "1. Présentation des participants",
+          "extrait": "Il a également précisé travailler sur les réseaux de neurons pour l'écosystème RTE et évoqué une expertise croisée avec des collègues sur un modèle spécifique de gestion des congestions.",
+          "type": "attribution_erronee",
+          "explication": "Le travail sur les réseaux de neurones pour l'écosystème RTE et la référence au 'modèle de gestion des congestions' sont attribués à Jérôme PICAULT. Dans le transcript, le travail sur les réseaux de neurones est annoncé par un intervenant RD (SPEAKER_02, 'la ridée ... implémentation des réseaux de neurones'), et le 'modèle pour la gestion des congestions' est mentionné par un autre intervenant SPEAKER_02 évoquant des collègues. Le regroupement de tout cela sous Jérôme PICAULT est erroné.",
+          "reference": "Transcript l.18-19 (SPEAKER_02) 'je travaille sur des thématiques d'implémentation des réseaux de neurones pour l'écosystème' ; l.30 (SPEAKER_02) 'un modèle que vous avez développé pour la gestion des congestions'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "Synthese / corps",
+          "extrait": "Modèle Conversational Platform",
+          "type": "hallucination",
+          "explication": "Au-delà de la définition fausse de l'acronyme déjà signalée, V8 oscille entre 'Modèle Conversational Platform' et 'MCP (assistant métier)' (titre du plan d'action), ajoutant une seconde glose inventée ('assistant métier') tout aussi infondée. Incohérence interne sur la nature même du MCP.",
+          "reference": "Transcript : MCP = protocole/serveur d'orchestration d'outils (l.217 'la question du serveur MCP en tant que tel'). Ni 'Conversational Platform' ni 'assistant métier' n'apparaissent comme définition.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        }
+      ]
+    },
+    {
+      "version": "V9 (hybride 7B+3B)",
+      "resume_global": "Cette version V9 est nettement moins fiable que le gold Mistral. Elle commet des erreurs d'attribution graves et systématiques : elle inverse les rôles de Bruno LEMETAYER et de Jérôme MASSET, attribue à Jérôme PICAULT tout le projet d'IA générative et le projet documents administratifs qui appartiennent en réalité à Maya SAHRAOUI, et fait de Jérôme MASSET le pilote du Smart Cockpit (qui est Bruno LEMETAYER). Le transcript confirme la quasi-totalité de ces erreurs. La structure est plus détaillée que Mistral mais cette richesse est gâchée par des attributions fausses, plusieurs hallucinations factuelles et un plan d'action partiellement inventé.",
+      "problemes": [
+        {
+          "section": "1. Prise de contact : présentation des participants et attentes",
+          "extrait": "Bruno LEMETAYER, expert data et manager de la pratique IA chez Élé Consulting, a présenté son rôle dans des projets transversaux incluant l'équilibre offre-demande et les analyses métiers.",
+          "type": "attribution_erronee",
+          "explication": "V9 attribue à Bruno LEMETAYER la présentation de Jérôme MASSET. Or c'est SPEAKER_00 (Jérôme MASSET) qui dit être expert data IA, manager de la practice Data IA chez Elé Consulting, et qui parle d'équilibre offre-demande, gouvernance, rentabilité des moyens de base et analyses métiers. Bruno LEMETAYER (SPEAKER_02) est à la R&D de RTE et pilote le Smart Cockpit.",
+          "reference": "Transcript SPEAKER_00 : 'moi c'est j'ai remassé je suis expert data Ia manager de la pratice DataIa au sein de l'élé consulting et donc par exemple travaille avec Maya... je travaille aussi avec Della côté RD sur la feuille de route équilibre gouvernance et régulation sur un projet d'équilibre offre demande... et également côté décoffert sur des analyses plutôt orientées métiers'. Le gold Mistral attribue correctement ces propos à Jérôme MASSET.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "1. Prise de contact : présentation des participants et attentes",
+          "extrait": "Il a souligné son implication sur les assistants pour les opérateurs en conduite, ainsi que sur l'implémentation de réseaux de neurones pour l'écosystème RTE.",
+          "type": "attribution_erronee",
+          "explication": "Ces deux éléments sont attribués par V9 à Bruno LEMETAYER alors qu'ils relèvent de personnes distinctes. Les assistants pour opérateurs en conduite = Bruno LEMETAYER (pilote Smart Cockpit), mais l'implémentation des réseaux de neurones pour l'écosystème RTE = Matthieu DUSSARTRE / Nourredine. V9 amalgame tout sous Bruno et l'a déjà mal identifié comme l'expert data.",
+          "reference": "Transcript SPEAKER_02 : 'Bruno le méthélier... je pilote la feuille de route Smart Cockpit interactif... on travaille sur les assistants en particulier pour les opérateurs en salle de conduite'. Puis 'je travaille sur des thématiques d'implémentation des réseaux de neurones pour l'écosystème' (autre locuteur, Nourredine). Mistral sépare correctement : Bruno = Smart Cockpit, Matthieu = assistants + réseaux de neurones.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "1. Prise de contact : présentation des participants et attentes",
+          "extrait": "Jérôme MASSET, pilote de la feuille de route Smart Cockpit à la R&D RTE, a détaillé les besoins spécifiques liés aux assistants interactifs pour les opérateurs",
+          "type": "attribution_erronee",
+          "explication": "Erreur miroir de la précédente : V9 fait de Jérôme MASSET le pilote du Smart Cockpit à la R&D RTE. C'est faux : le pilote du Smart Cockpit est Bruno LEMETAYER. Jérôme MASSET est consultant/manager chez Elé Consulting, pas à la R&D RTE.",
+          "reference": "Transcript SPEAKER_02 : 'Bruno le méthélier donc je suis à la RD et je pilote la feuille de route Smart Cockpit interactif'. Mistral attribue bien le Smart Cockpit à Bruno LEMETAYER.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "2. Expertises en IA générative et assistants interactifs",
+          "extrait": "Dans ce échange, Jérôme PICAULT partage les compétences techniques et méthodologiques développées dans l'industrialisation de projets d'IA générative chez Ely... Jérôme PICAULT a travaillé à transformer des contenus complexes et hétérogènes en formats actionnables",
+          "type": "attribution_erronee",
+          "explication": "Toute la section 2 attribue à Jérôme PICAULT la présentation des compétences IA générative (multimodalité, fine-tuning, RAG, mistral, VLM/Vicorne, streaming). Or c'est Maya SAHRAOUI (SPEAKER_01) qui présente ces compétences. Jérôme PICAULT (un des intervenants SPEAKER_02) est côté RTE direction IA et innovation, il ne présente pas les compétences d'Ely.",
+          "reference": "Transcript SPEAKER_01 (Maya) : 'je vais vous présenter un peu les projets ira génératifs sur lesquels on travaille de manière générale chez Ely... transformer des contenus donc des documents complexes et hétérogènes... fait du fine toiling... l'utilisation des pia type mistral... du rag donc du ranking... outils comme VLHRM ou Vicorne'. Mistral n'attribue pas cette présentation à PICAULT ; c'est Maya.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "haute"
+        },
+        {
+          "section": "5. Solutions pour l'analyse de documents administratifs via IA locale",
+          "extrait": "Maya SAHRAOUI a évoqué un projet spécifique visant à extraire des informations structurées — comme des salaires nets, brut ou totaux et des métiers — à partir de documents scannés.",
+          "type": "autre",
+          "explication": "Ici V9 attribue correctement le projet documents administratifs à Maya SAHRAOUI (contrairement à la section 2). C'est cohérent avec le transcript. À noter pour ne pas pénaliser : cette attribution-là est juste. Le problème est l'incohérence interne : compétences VLM/fine-tuning attribuées à PICAULT en section 2 mais le projet VLM lui-même attribué à Maya en section 5.",
+          "reference": "Transcript SPEAKER_01 (Maya) : 'l'objectif du projet était de pouvoir extraire des informations à partir de documents scannés administratifs... salaires nets brut total... le métier de la personne'. Mistral attribue aussi ce projet à Maya.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "mistral_aussi_discutable",
+          "gravite": "basse"
+        },
+        {
+          "section": "2. Expertises en IA générative et assistants interactifs",
+          "extrait": "en réalisant du *fine-tuning* sur des architectures génériques comme QNTubine",
+          "type": "imprecision",
+          "explication": "Le nom du modèle est mal transcrit/restitué ('QNTubine'). Le transcript dit 'QNTubinefiel' (probablement Qwen2-VL ou un modèle similaire), et plus loin 'QuendInfibeVL' (Qwen-InternVL ?). Ces noms sont déformés. Mistral écrit 'QuendInfibeVL' dans la section documents administratifs. V9 utilise un nom encore différent dans une mauvaise section.",
+          "reference": "Transcript : 'fait du fine toiling sur des modèles dit à génératifs type QNTubinefiel' et 'leFining deQuendInfibeVL'. Imprécision présente dans les deux CR, mais V9 la place dans une section mal attribuée.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "mistral_aussi_discutable",
+          "gravite": "basse"
+        },
+        {
+          "section": "1. Prise de contact : présentation des participants et attentes",
+          "extrait": "Maya SAHRAOUI, consultante confirmée chez IVB et docteure en traitement automatique des langues",
+          "type": "imprecision",
+          "explication": "'IVB' est une déformation. Le transcript dit 'chez IVB' (SPEAKER_01) mais l'entreprise réelle est Elé/Yélé Consulting (Maya dit ailleurs 'chez Ely', 'Yéley'). Mistral écrit 'chez ELYE'. Les deux sont imprécis mais 'IVB' est plus éloigné du nom réel.",
+          "reference": "Transcript SPEAKER_01 : 'je suis consultante confirmée chez IVB je travaille principalement sur des projets d'IA génératifs'. Plus loin elle dit 'chez Ely' et 'Yéley'. Mistral : 'consultante confirmée chez ELYE'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "mistral_aussi_discutable",
+          "gravite": "basse"
+        },
+        {
+          "section": "1. Prise de contact : présentation des participants et attentes",
+          "extrait": "avant son arrivée au sein de cette organisation en septembre dernier",
+          "type": "imprecision",
+          "explication": "V9 dit que Maya est arrivée 'au sein de cette organisation' (laissant entendre RTE) en septembre. Le transcript indique qu'elle a rejoint Yélé/Ely il y a deux ans en septembre, et a mené des missions chez RTE. La formulation V9 prête à confusion sur quelle organisation elle a rejointe.",
+          "reference": "Transcript SPEAKER_01 : 'je rejoins il y a deux en septembre' et 'avant de rejoindre Yéley'. Mistral ne mentionne pas cette date d'arrivée, évitant l'ambiguïté.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "Objectif / en-tête",
+          "extrait": "Nourredine HENKA",
+          "type": "imprecision",
+          "explication": "Nourredine est listé dans les participants mais le transcript ne donne jamais son nom de famille clairement ('Nordine', 'Dinka', 'Dandine', 'Nordine'). 'HENKA' est repris tel quel des deux CR ; ce n'est pas un écart propre à V9 mais une donnée non vérifiable dans le transcript.",
+          "reference": "Transcript : 'Bonjour Nordine', 'Dans, Dinka', 'Dandine'. Nom de famille jamais explicite. Mistral liste aussi 'Nourredine HENKA'.",
+          "verifie_sur_transcript": false,
+          "verdict_transcript": "indetermine",
+          "gravite": "basse"
+        },
+        {
+          "section": "4. Orchestration et gestion des systèmes génératifs (N8N, MCP)",
+          "extrait": "le modèle de contrôle des processus (MCP)",
+          "type": "hallucination",
+          "explication": "V9 (en section 1) glose 'MCP' par 'modèle de contrôle des processus' et ailleurs 'modèle conversationnel (MCP)'. Ces expansions sont inventées : MCP désigne ici Model Context Protocol (protocole d'orchestration d'outils pour LLM). Le transcript ne définit jamais MCP et n'emploie aucune de ces gloses. C'est une hallucination/sur-interprétation.",
+          "reference": "Transcript : MCP est employé sans définition ('le MCP c'est une promesse... pour développer des mode interface quasi conversationnel... d'appeler les services adéquats'). Aucune glose 'contrôle des processus' ni 'modèle conversationnel'. Mistral n'invente aucune définition de MCP.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "6. Pistes explorées et prochaines étapes (MCP, UX design)",
+          "extrait": "l'exploration du modèle conversationnel (MCP)",
+          "type": "hallucination",
+          "explication": "Deuxième glose inventée et contradictoire avec celle de la section 4 ('modèle de contrôle des processus'). V9 propose deux définitions différentes et erronées de MCP, ce qui trahit une incompréhension du terme.",
+          "reference": "Transcript : MCP non défini. Mistral garde 'MCP' sans glose erronée.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "7. Plan d'action",
+          "extrait": "| 2 | Tenir informé sur les besoins émergents en matière de systèmes génératifs (MCP ou NLP)... | Jérôme PICAULT | — |",
+          "type": "action_inexacte",
+          "explication": "V9 attribue cette action à Jérôme PICAULT comme responsable. Or dans le transcript c'est SPEAKER_02 (côté RTE, possiblement Bruno/Matthieu/Picault mêlés) qui dit que c'est EUX (RTE) qui tiendront informé / reviendront vers Elé. L'attribution nominative à PICAULT n'est pas étayée. Mistral laisse le responsable vide ('—'), ce qui est plus prudent et correct.",
+          "reference": "Transcript SPEAKER_02 : 'il faut tout simplement qu'on regarde et puis qu'on tienne tout simplement informer si jamais il y a quelque chose de plus précis... on revient tout simplement vers vous si on a quelque chose d'un peu plus précis'. C'est le groupe RTE, pas nommément Picault. Mistral : responsable '—'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "7. Plan d'action",
+          "extrait": "| 1 | Évaluer les modalités de généralisation de l'outil de génération de rapports au-delà du contexte RTE et discuter avec les parties prenantes concernées pour identifier des pistes concrètes d'adaptation | — | — |",
+          "type": "action_inexacte",
+          "explication": "Cette action sur la 'généralisation de l'outil de génération de rapports au-delà du contexte RTE' surinterprète le transcript. Jérôme MASSET dit seulement qu'il va itérer avec Gérald pour voir s'il y a des suites et que ça pourrait intéresser au-delà de la R&D. Ce n'est pas une action de réunion engageant les participants présents, c'est une intention interne. Mistral ne retient pas cette action dans son plan (focalisé sur MCP et atelier design), ce qui est plus fidèle aux engagements réels de la réunion.",
+          "reference": "Transcript SPEAKER_00 : 'on va itérer avec Gérald pour savoir s'il y a des suites ou pas sur cette généralisation de rapports qui pourrait également intéresser dièse pas que le côté RD'. Mistral n'en fait pas une action du plan.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "Plan d'action (comparaison)",
+          "extrait": "Plan d'action V9 = 3 lignes vs Mistral 2 lignes ; l'action Mistral 'Organiser un atelier purement design pour réfléchir à des cas d'usage et les prioriser' n'apparaît pas explicitement dans le tableau V9",
+          "type": "contenu_manquant",
+          "explication": "L'atelier design (proposition explicite de Jérôme MASSET en fin de réunion) figure comme action n°2 chez Mistral. Dans le tableau V9, il est seulement évoqué dans le texte de la section 6 et 7 mais n'apparaît pas comme ligne d'action dédiée dans le tableau, alors que c'est l'une des deux seules propositions concrètes de la réunion.",
+          "reference": "Transcript SPEAKER_00 : 'qu'on fasse un atelier purement design où on pourrait réfléchir à des cas d'usage les prioriser'. Mistral action n°2 : 'Organiser un atelier purement design pour réfléchir à des cas d'usage et les prioriser'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "5. Solutions pour l'analyse de documents administratifs via IA locale",
+          "extrait": "un système de détection de biais dans les résultats via un visuo-linguistique finetuned",
+          "type": "imprecision",
+          "explication": "V9 dit 'détection de biais'. Le transcript parle de 'détection de fraude' ('outil de détection de froide') et de contrôle d'anomalie, pas de biais. Mistral écrit correctement 'détecter des anomalies (FdR)'. 'Biais' est une déformation factuelle de l'objectif (fraude/conformité).",
+          "reference": "Transcript SPEAKER_01 : 'C'est un outil de détection de froide [fraude]' et 'sur la partie contrôle d'anomalie'. Mistral : 'détecter des anomalies (FdR)'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "moyenne"
+        },
+        {
+          "section": "3. Projet d'automatisation de la rédaction de rapports à partir de PowerPoint",
+          "extrait": "Le processus repose sur cinq étapes clés : une analyse fine des slides... puis leur attribution aux sections prédéfinies... un modèle génère des bullet points par section avant d'enrichir le texte final... une boucle de correction itérative",
+          "type": "imprecision",
+          "explication": "V9 dit 'cinq étapes clés' mais n'en décrit clairement que quatre (analyse, attribution, génération bullets+prose, correction). Le transcript mentionne bien 'une pipeline sur cinq briques' incluant une étape d'intégration distincte (regrouper les sections / enlever redondances), que V9 omet dans son énumération. La promesse de cinq étapes n'est donc pas tenue.",
+          "reference": "Transcript SPEAKER_01 : 'j'ai fait une pipeline sur cinq briques' ; étapes = (1) analyse slides, (2) assignation, (3) rédaction bullets, (4) prose, (5) intégration ('regrouper toutes les sections... enlever tout ce qui est redondance'). V9 fusionne/omet l'intégration.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "basse"
+        },
+        {
+          "section": "3. Projet d'automatisation de la rédaction de rapports à partir de PowerPoint",
+          "extrait": "La solution a été développée dans un cadre PoC en vingt-cinq jours, incluant des ateliers de co-construction avec les équipes concernées.",
+          "type": "imprecision",
+          "explication": "V9 dit 'vingt-cinq jours' (correct selon Jérôme MASSET). Mais ailleurs le transcript mentionne aussi 'cinq semaines' pour la boucle de correction et une durée 'entre septembre et...'. V9 retient 25 jours, ce qui est exact pour le PoC global. Point mineur : la co-construction est correctement rapportée. Faible écart.",
+          "reference": "Transcript SPEAKER_00 : 'on a fait ça en vingt-cinq jours... incluant les ateliers en amont'. Cohérent. Mistral ne donne pas le chiffre de 25 jours.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "mistral_aussi_discutable",
+          "gravite": "basse"
+        },
+        {
+          "section": "Synthese / Section 4 titre",
+          "extrait": "## 4. Orchestration et gestion des systèmes génératifs (N8N, MCP)",
+          "type": "imprecision",
+          "explication": "Le titre N8N est correct (Maya mentionne N8N pour l'outil de réponse aux appels d'offres), mais V9 mélange dans cette section l'orchestration N8N de Maya avec les besoins MCP côté RTE et la rentabilité des moyens de production, créant un amalgame thématique. Le projet N8N (appels d'offres) est en réalité distinct des études de rentabilité EOD. Mistral traite ces sujets de façon plus séparée et n'amalgame pas N8N avec la rentabilité.",
+          "reference": "Transcript SPEAKER_01 : projet N8N = 'outil de rédaction à AO... rédaction de réponses aux appels d'offres' ; rentabilité = projet EOD distinct. V9 les regroupe sous un même chapeau orchestration.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "basse"
+        },
+        {
+          "section": "Objectif (en-tête)",
+          "extrait": "_Objectif_ : Faire connaissance entre les équipes et identifier des pistes concrètes pour une future collaboration, tout en discutant des projets existants.",
+          "type": "imprecision",
+          "explication": "Reformulation acceptable mais légèrement moins précise que Mistral, qui mentionne explicitement les outils (MCP, NLP, VLM) au cœur des échanges. Écart mineur de complétude, pas d'erreur factuelle.",
+          "reference": "Mistral : 'Permettre aux participants de partager leurs expériences et besoins en matière d'IA générative et d'outils associés (MCP, NLP, VLM)...'. Transcript SPEAKER_00 : 'vous discutiez un petit peu justement sur vos besoins sur l'IA générative... voir comment on pourrait potentiellement travailler ensemble'.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "mistral_aussi_discutable",
+          "gravite": "basse"
+        },
+        {
+          "section": "1. Prise de contact",
+          "extrait": "en lien avec la feuille de route *Smart Cockpit*. Lors du tour de table, *Bruno LEMETAYER*, expert data...",
+          "type": "doublon_ou_redondance",
+          "explication": "La feuille de route Smart Cockpit est mentionnée de façon répétée et attribuée de façon flottante (à Bruno puis à Jérôme MASSET en section 1), ce qui crée une redondance confuse aggravée par les erreurs d'attribution croisées entre Bruno et Jérôme MASSET.",
+          "reference": "Transcript : Smart Cockpit = Bruno LEMETAYER uniquement ('je pilote la feuille de route Smart Cockpit interactif'). Mistral attribue Smart Cockpit à Bruno sans redondance.",
+          "verifie_sur_transcript": true,
+          "verdict_transcript": "version_a_tort",
+          "gravite": "basse"
+        }
+      ]
+    }
+  ]
+}

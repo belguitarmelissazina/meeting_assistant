@@ -1,0 +1,51 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table des participants pour présenter leurs rôles et expertises en IA générative. Maya (Elya) a présenté un projet d'automatisation de rédaction de rapports pour RTE en utilisant des modèles multimodaux et des pipelines d'agents. Les besoins de RTE portent sur la synthèse de données hétérogènes et l'interaction conversationnelle via MCP pour les assistants opérationnels.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Prendre contact avec Gérald pour évaluer la généralisation du projet de rédaction automatisée de rapports pour RTE.",
+        "responsable": "SPEAKER_00",
+        "echeance": null
+      },
+      {
+        "action": "Étudier l'adaptation de l'outil de Maya (Elya) pour des cas d'usage sans template prédéfini, en intégrant un agent de sélection de structure.",
+        "responsable": "SPEAKER_01",
+        "echeance": null
+      },
+      {
+        "action": "Explorer les possibilités d'orchestration via MCP pour les besoins de RTE en synthèse de données et interaction conversationnelle.",
+        "responsable": "SPEAKER_02",
+        "echeance": null
+      }
+    ]
+  },
+  {
+    "chunk_id": 1,
+    "resume": "La réunion a abordé plusieurs projets liés à l'orchestration d'outils, la génération de POCs automatisés et l'extraction d'informations à partir de documents scannés. L'accent a été mis sur la souveraineté des outils utilisés en interne et leur cloisonnement pour rester au sein de RTE. Un projet de détection de fraude sur des documents administratifs scannés (manuscrits ou non) a été détaillé, incluant un modèle VLM local et un monitoring des performances.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La réunion a porté sur l'exploration de cas d'usage pour des outils d'IA, notamment autour de l'orchestration de simulations et de la synthèse de données disparates. Les participants ont évoqué des travaux en NLP (traitement du langage naturel) et en MCP (modèles de communication entre outils). L'accent a été mis sur l'automatisation de processus comme la génération de pré-rapports et l'orchestration d'études techniques.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La réunion a porté sur l'avancement des travaux et l'exploration de cas d'usage, notamment autour du MCP. SPEAKER_02 a indiqué qu'il n'y avait pas encore de besoins clairs à ce stade et qu'il faudrait revenir vers SPEAKER_00 si des éléments plus précis émergent. SPEAKER_00 a proposé un atelier design pour prioriser des cas d'usage, ce qui a été noté par SPEAKER_02 comme une piste intéressante.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter la proposition d'un atelier design pour prioriser des cas d'usage et réfléchir à des solutions UX",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Revenir vers SPEAKER_00 si des besoins plus précis (MCP ou NLP) émergent pour concrétiser les échanges",
+        "responsable": "SPEAKER_02"
+      }
+    ]
+  }
+]

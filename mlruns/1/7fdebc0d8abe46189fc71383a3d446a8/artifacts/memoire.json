@@ -1,0 +1,29 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table des participants pour présenter leurs rôles et expertises en IA générative. Maya (Elya) détaille un projet RTE d'automatisation de rédaction de rapports à partir de fichiers PPT, avec une pipeline en 5 briques et une boucle de correction. Discussion sur l'adaptabilité de l'outil à différents templates et l'intérêt pour des cas d'usage de synthèse générative et d'orchestration (N8N, MCP).",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 1,
+    "resume": "La réunion a porté sur des projets d'outils d'IA pour l'orchestration, la synthèse de documents et l'automatisation de tâches. Plusieurs cas d'usage ont été évoqués, notamment l'extraction d'informations à partir de documents scannés (manuscrits ou non), la génération de plans de travail (POC) et l'orchestration de simulations pour des études énergétiques. L'accent a été mis sur la souveraineté des outils et leur intégration locale (ex : RTE).",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La réunion a porté sur l'avancement des travaux et l'exploration de cas d'usage, notamment autour du MCP. SPEAKER_02 a indiqué qu'il n'y avait pas de besoins clairs à ce stade et qu'ils reviendraient vers SPEAKER_00 si des précisions émergent. SPEAKER_00 a proposé un atelier design pour prioriser des cas d'usage, ce qui a été noté par SPEAKER_02 sans engagement immédiat.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter le point concernant un éventuel atelier design pour réfléchir à des cas d'usage et les prioriser.",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Revenir vers SPEAKER_00 si des besoins plus précis (MCP ou NLP) émergent.",
+        "responsable": "SPEAKER_02"
+      }
+    ]
+  }
+]

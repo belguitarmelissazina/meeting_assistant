@@ -1,0 +1,51 @@
+{
+  "architecture": "mistral_all_small",
+  "steps": {
+    "extraction": {
+      "calls": 3,
+      "input_tokens": 12907,
+      "output_tokens": 643,
+      "cached_input_tokens": 144,
+      "latency_s": 9.2,
+      "cost_usd": 0.002302,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "synthese": {
+      "calls": 1,
+      "input_tokens": 443,
+      "output_tokens": 282,
+      "cached_input_tokens": 0,
+      "latency_s": 3.16,
+      "cost_usd": 0.000236,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "planner": {
+      "calls": 1,
+      "input_tokens": 496,
+      "output_tokens": 212,
+      "cached_input_tokens": 0,
+      "latency_s": 2.86,
+      "cost_usd": 0.000202,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "redaction": {
+      "calls": 1,
+      "input_tokens": 9795,
+      "output_tokens": 353,
+      "cached_input_tokens": 80,
+      "latency_s": 3.9,
+      "cost_usd": 0.00167,
+      "model": "mistral-small-latest",
+      "batch": false
+    }
+  },
+  "total": {
+    "input_tokens": 23641,
+    "output_tokens": 1490,
+    "cost_usd": 0.00441,
+    "latency_s": 31.28
+  }
+}

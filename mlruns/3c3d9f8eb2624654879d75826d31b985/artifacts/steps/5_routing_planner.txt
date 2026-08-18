@@ -1,0 +1,4 @@
+Section 1 « Cas d'usage et applications métiers de l'IA générative »  <- chunks [0, 1, 3]
+Section 2 « Traitement et extraction d'informations à partir de documents »  <- chunks [2]
+Section 3 « Souveraineté, sécurité et intégration des outils »  <- chunks [0, 1]
+Section 4 « Méthodologie et priorisation des projets »  <- chunks [4]

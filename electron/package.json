@@ -1,7 +1,7 @@
 {
   "name": "meeting-assistant",
   "productName": "Meeting Assistant",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Diarisation, transcription et compte rendu de réunions — application de bureau.",
   "private": true,
   "main": "main.js",

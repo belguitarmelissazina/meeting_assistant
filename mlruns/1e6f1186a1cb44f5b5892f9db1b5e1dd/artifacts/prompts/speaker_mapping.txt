@@ -1,0 +1,12 @@
+Tu associes des étiquettes de locuteurs (SPEAKER_00, SPEAKER_01, ...) aux NOMS RÉELS des participants. Réponds UNIQUEMENT en JSON. Fonde-toi sur les présentations et le contexte du transcript (ex. « moi c'est X », rôle, entreprise citée). N'utilise QUE des noms de la liste officielle fournie, n'en invente aucun. Si une étiquette n'est pas identifiable avec une certitude raisonnable, mets la valeur "" (chaîne vide).
+---
+PARTICIPANTS OFFICIELS (vérité) : {participants}
+ENTREPRISES / ORGANISATIONS : {entreprises}
+
+ÉTIQUETTES À MAPPER : {labels}
+
+EXTRAITS PAR LOCUTEUR (leurs premières interventions, où ils se présentent) :
+{transcript}
+
+Produis un JSON associant CHAQUE étiquette à un nom de la liste (ou "" si incertain) :
+{{"SPEAKER_00": "Prénom NOM ou vide", "SPEAKER_01": "..."}}

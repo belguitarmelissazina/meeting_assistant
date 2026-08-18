@@ -1,0 +1,46 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien. Des métadonnées (participants, entreprises) peuvent être fournies : pour désigner une personne, utilise EXACTEMENT un nom fourni si le contexte permet de l'identifier, sinon reste générique (« un intervenant ») ; ne reprends JAMAIS un label brut type SPEAKER_00 et n'invente aucun nom.
+
+PARTICIPANTS (noms officiels, vérité — à utiliser EXACTEMENT) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+ENTREPRISES / ORGANISATIONS présentes : Yele Consulting, RTE
+
+Extrait :
+[Matthieu DUSSARTRE]: d’usage-làEst-ce que vous avez des questions?,
+[Bruno LEMETAYER]: ouiOui pardon là sur le scan c’est tu l’as peut-être dit vous l’a peut-être dit et pardon c’était manuscrit ou pas.
+[Maya SAHRAOUI]: lesentrées Il pouvait avoir des documents manuscrits.
+[Maya SAHRAOUI]: oui, D’accord c’était assez horigène que j’avais unagent qui faisait d’abord la classification en manuscrit ou rédigeait donc en non manuscrit et ensuite unagent quivenait faire la classification sur le type de document et il en avait certains cas où on avait des modèles qui défunt une journée
+[Maya SAHRAOUI]: spécialement pour ces cas-là d’autres cas où un coin tout pointfive poitrand et non fineétait.
+[Maya SAHRAOUI]: suffisant Mais on avait donc les deux.
+[Maya SAHRAOUI]: possibilitésEst-ce
+[Matthieu DUSSARTRE]: que ça vous inspire certaines choses par rapport à des cas d’usage donc peut-être que le texte n’est pas trop votre sujet à part pour les rapports côté actif peut-être ou les synthèses à générer est-ce que ça vous inspire quelque chose est-ce que vous vouliez partager les cas d’usage qu’on pourrait
+[Matthieu DUSSARTRE]: peut-êtreessayer de réfléchir et de rebondir sur notre vision pour vous la?
+[Bruno LEMETAYER]: partager Alorseffectivement c’est pour ça qu’on a cet échange-là donceffectivement on est bien sur le même type de cas d’usage après là nos vues de ce que je vois c’est vrai qu’on est peut-être pluseffectivement sur des choses assezorientées parce que alors je parlais un peu de la,
+[Bruno LEMETAYER]: partieorchestration etc parce que va être nous qui peut nous intéresser ça peut être de travailler peut-être plus sur la partie MCP en tant que.
+[Bruno LEMETAYER]: telle, Là c’est les travaux à s’orienterNLP alors encore une, fois ce n’est pas le premiertruc auquel j’avais pensé par rapport au MCP mais c’est aussi les cas d’usage qu’on a comme je le disais le fait de pouvoir synthétiser les choses ou le fait de justement de synthétiser des sources de données
+[Bruno LEMETAYER]: assez disparates n’importe quoi des blocs d’alarme des messages ou des petites choses assez fragmentées puis Derruel estallait synthétiser donc ça correspondait à ce qui a été fait.
+[Bruno LEMETAYER]: ici Je parlais là de l’aspect manuscrit parce que mon sais aussi des choses qu’on regarde même si on a déjà des travaux en cours là-dessus donc mais peut-être dans un temps un peu plus moyenterme on va dire peut-êtrearriver à continuer sur ces questions-là de texte.
+[Bruno LEMETAYER]: manuscritVoilà je vois le coheneffectivement c’est ce qu’on avait vu là de potentialité pour les notes manuscrits de dispatcher en fait c’est quelusage c’est un périle ce quiressentait un peu notre beichman donc c’est pour ça que je le voilà et ça me fait.
+[Bruno LEMETAYER]: penserVoilà donc ça voudrait que là de ce que je vois c’est que ça m’évoque plus un travail assez focalisé enNLP encore une, fois c’est aussi des choses qu’on a peut-être moins MCP, voilà c’est un petit retour comme ça à chaud parce qu’après encore une, fois c’est vrai que sur, leNCP il y a la
+[Bruno LEMETAYER]: question du LLM mais finalement il y a aussi la question du serveur MCP en tant que.
+[Bruno LEMETAYER]: tel Je pense le fait la capacité finalement de dire on a desoutils d’études qui peuvent être voilà assez complexes donc commentarriver à faire cette interaction à.
+[Bruno LEMETAYER]: l’élèmeVoilà c’est un premier retour à chaud donc moi je vois des connexions avec certains cas d’usage qu’on a peut-être moins sur la MCP mais voilà comme ça à chaud ça reste.
+[Bruno LEMETAYER]: pertinent
+[Maya SAHRAOUI]: Mais je vous rejoins aussi sur le MCP ça a faitégalement partie de notre feuille de route entermes justement d’avoir des serveurs MCP où on peut directement se brancher sur desoutils de simulation justement l’idée du poc de l’outil qui puisse perdu un.
+[Maya SAHRAOUI]: pocNoën L’idée n’est pas uniquement d’avoir une proposition d’un plan de travail mais plutôt d’appliquer par la suite le plan de travail donc de prendre le plan de travail qui est généré par le premieragent comme des directives et d’aller chercher dans via un MCP dans lesoutils internes qu’on a ou
+[Maya SAHRAOUI]: lesoutils de simulation quiexistent de récupérer le bonoutil et de faire la simulation avec les données quiont été proposées par le premieragent donc c’est complètement dans notre feuille de.
+[Bruno LEMETAYER]: routeégalement Mais non mais je réagissaiseffectivement plus sur la dans l’immédiat encore une fois à chose sur les travaux que je voyais aprèseux je comprends si vous avez ça dans votre.
+[Matthieu DUSSARTRE]: patrie Si pour ça qu’on avait évoqué avecGérald puisque sur la partie rentabilité des moyens de production en, fait on aeu un scope qui a été ciblé sur les moyens de production mais finalement on a une matrice en attente avec un certain nombre d’études à dérouler et donc l’idée c’était aussi
+[Matthieu DUSSARTRE]: d’avoir finalement ce MCP qui puisse préparer toutes les, simulations lesorchestrer et brancher derrière l’outil de génération de rapports et c’est aussi ce qu’on avait en tête qui pouvait potentiellement intéresser, dèse c’est-à-dire qu’il y a le côté finalement pré-rapport puisque de toute façon
+[Matthieu DUSSARTRE]: il faut toujours qu’il soit, relu ça passe devant des, comités mais ça pourrait aussi faire toute cette partieamont qui est de préparer les, scénarios les, études de les, lancer de faire uncheckpoint sur est-ce que finalement l’étude est équilibrée d’avoir un contrôle humain pour dire ce qu’il
+[Matthieu DUSSARTRE]: faut, modifier voire potentiellement unagent quiarrive à le modifier et de continuer finalement à aider cette partie lancement des simulations deNT et que l’humain puisse derrière avoir la valeur.
+[Matthieu DUSSARTRE]: ajoutée L’étude on sait qu’il y a les, robustes on a l’étude de sensibilité qui a été, faite on a les sorties, d’analyse on a les premiers, résultats on a finalement un, pré-rapport on n’a plus qu’à travailler et donner la bonne direction pour finalement le BP ou le futur.,
+[Bruno LEMETAYER]: énergétiqueOuieffectivement c’est intéressant oui cetteorchestration d’études donc nous en tout, cas alors évidemment le contexte n’est pas le dumentaire donc il y a d’autres types d’outils mais on sera bien un peu sur ce type de choses-là c’est-à-dire savoir naviguer entre des, hypothèses etc
+[Bruno LEMETAYER]: parce que c’est la problématique qu’on peut avoir souvent en temps réel donc récupérer des hypothèses un petit peu à droite à gauche parce que passer déjà récupérer les données d’entrée de l’étude, consommation, production, programmation machin et échange sur chacune de ces choses-làarriver à se
+[Bruno LEMETAYER]: dire des stratégies un petit peu d’hypothèse de scénario et puis derrièrevenir jongler entre un simulateur unoutil, d’études unoutil de, visualisation voilà ce genre de.
+[Bruno LEMETAYER]: choses Donc vous voyez çaressemble un petit peu à ce que vous évoquez sur des échanges différentes mais çaressemble un petit peu à., çaOk bon enfin en tout cas moi j’ai une bonne vision donc c’est vrai que sur le comme disait on aura peut-être plus parlé de la partieNP mais encore une fois qui est
+[Bruno LEMETAYER]: aussi très intéressante pour nous et aussi de ce que vous avez vu dans le futur sur la MCP donc en tout cas moi de mon point de, vue j’ai une bonne vision et puis voilà on peut alorseffectivement vous avez travaillé avec le géral qui est pas très loin de nos.
+[Bruno LEMETAYER]: bureauxVoilà donc très.
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"nom fourni si identifiable, sinon —", "echeance":"— si absente"}]}

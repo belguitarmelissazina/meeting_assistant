@@ -1,0 +1,15 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis.
+
+Participants (vérité) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+
+Résumés des passages :
+- Tour de table des participants pour présenter leurs rôles et expertises en IA générative. Maya (Ely Consulting) détaille un projet d'automatisation de rédaction de rapports pour RTE via une pipeline IA. Bruno (RTE) exprime un besoin de synthèse générative pour des données hétérogènes et des assistants conversationnels (MCP). Discussion sur l'adaptabilité des solutions proposées à différents templates de rapports.
+- Les échanges portent sur l'amélioration des synthèses et propositions pour mieux s'adapter au contexte. La souveraineté des outils et leur cloisonnement au sein de RTE est soulignée. Plusieurs projets sont évoqués : un agent de planification pour des cas d'usage d'orchestration, et un agent pour générer de la bibliographie et des roadmaps automatiquement. L'objectif est de proposer une pipeline rapide pour des POCs, notamment via des hackathons.
+- La réunion a abordé deux projets principaux : un démonstrateur basé sur l'état de l'art pour résoudre des problématiques via R&D (ex. DURKEVX) et un projet de détection de fraude sur documents administratifs scannés (manuscrits ou non) utilisant un outil VLM pour extraire des informations et évaluer la conformité. Le projet inclut du fine-tuning de modèles, du contrôle d'anomalie, du déploiement et un dashboard de monitoring. La qualité des données et la gestion de documents en arabe ont été soulignées comme des défis clés.
+- Les participants ont échangé sur des cas d’usage potentiels pour des outils d’orchestration et de synthèse, notamment autour des serveurs MCP et du NLP. Les discussions ont porté sur l’automatisation des simulations, la préparation de rapports et l’intégration d’outils internes. Une convergence a été observée sur l’intérêt d’un MCP pour orchestrer des études et préparer des scénarios.
+- La réunion a abordé des questions et échanges sur des cas d'usage liés au MCP et au NLP. Une proposition d'atelier design pour prioriser des cas d'usage a été évoquée. Aucune décision concrète n'a été actée, mais des pistes de réflexion et de collaboration futures ont été esquissées.
+
+Produis :
+{"type": "type de réunion (ex: prise de contact, revue projet...)",
+  "objectif": "1-2 phrases : ce que la réunion cherchait à accomplir",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}

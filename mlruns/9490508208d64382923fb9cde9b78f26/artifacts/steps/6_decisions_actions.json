@@ -1,0 +1,15 @@
+{
+  "decisions": [],
+  "actions": [
+    {
+      "action": "Revenir vers SPEAKER_00 avec des besoins plus pr\u00e9cis sur les cas d'usage (MCP ou autres) si ceux-ci se d\u00e9gagent.",
+      "responsable": "SPEAKER_02",
+      "echeance": "\u2014"
+    },
+    {
+      "action": "Organiser un atelier design pour r\u00e9fl\u00e9chir et prioriser des cas d'usage (proposition \u00e0 \u00e9tudier).",
+      "responsable": "\u2014",
+      "echeance": "\u2014"
+    }
+  ]
+}

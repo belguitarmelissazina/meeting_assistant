@@ -1,0 +1,29 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis. Choisis le TYPE de réunion le plus précis d'après la nature GLOBALE des échanges (pas un mot-clé isolé) ; les exemples fournis servent d'inspiration, tu n'es PAS obligé de t'y limiter.
+
+Participants (vérité) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+
+Résumés des passages :
+- Tour de table des participants pour présenter leurs rôles et expertises en IA générative et assistants conversationnels. Discussion sur les besoins et attentes en matière d'IA générative, notamment pour les assistants interactifs. Échanges sur les modèles MCP et LLM pour améliorer l'interface utilisateur. Exploration des collaborations potentielles entre les équipes.
+- La réunion a porté sur la présentation des compétences et projets de SPEAKER_01 en IA générative, notamment un outil automatisant la rédaction de rapports à partir de fichiers PPT pour RTE. L'outil utilise une pipeline en 5 briques (analyse des slides, assignation des sections, rédaction, intégration, correction) et permet une boucle de correction interactive. SPEAKER_02 a questionné l'adaptabilité de l'outil à des templates variés, ce qui a été confirmé possible par SPEAKER_01.
+- La réunion a porté sur la présentation d'un outil de rédaction automatisée pour RTE, incluant des mécanismes de robustesse (artefacts intermédiaires, traçabilité, correction itérative) et des limites identifiées (hors scope : vérification chiffrée, reconstruction de graphiques, commentaires globaux). Une discussion a également abordé des cas d'usage de synthèse générative et d'orchestration d'agents (N8N, MCP) pour des projets internes comme un outil de rédaction d'appels d'offres ou un générateur de synthèses de réunions.
+- La discussion porte sur un projet visant à renforcer la souveraineté et la confidentialité des données énergétiques, notamment en intégrant le LNM (Logiciel de Normalisation Métier) directement sur des données open data. L'objectif est d'avoir un agent spécialisé pour générer des données précises et adaptées aux besoins spécifiques de l'association. Une comparaison est faite avec le bouquet typique ou d'autres marchés pour illustrer cette démarche.
+- Les participants discutent de l'amélioration des synthèses et des propositions pour mieux les adapter. Ils évoquent la nécessité de cloisonner l'outil au sein de RTE pour préserver la souveraineté et l'environnement d'utilisation. Un projet en cours concerne un agent de planification pour la bibliographie et l'élaboration d'une roadmap automatique. L'objectif est de créer une pipeline permettant de proposer un POC minimal sur un sujet donné, accélérant ainsi les hackathons internes.
+- La réunion a abordé des projets liés à l'extraction d'informations à partir de documents scannés, notamment administratifs, avec un focus sur l'utilisation de modèles de vision par ordinateur (VLM) pour détecter des anomalies et évaluer la conformité des données. Un projet spécifique a été présenté par Maya, incluant le prétraitement, l'apprentissage, le fine-tuning de modèles VLM, et le déploiement avec monitoring. La discussion a également évoqué la gestion de documents manuscrits et non manuscrits.
+- Les participants ont échangé sur des cas d’usage liés à l’orchestration de simulations et à l’analyse de données, notamment via des outils MCP et des modèles de langage. L’accent a été mis sur la synthèse de sources disparates, la gestion d’hypothèses et la préparation de rapports pré-études. Une convergence a été observée sur l’intérêt d’un serveur MCP pour automatiser des tâches complexes et faciliter l’interaction entre outils internes.
+- La réunion a abordé des échanges sur les besoins en MCP et NLP sans aboutir à des décisions concrètes. SPEAKER_00 a proposé un atelier design pour prioriser des cas d'usage, tandis que SPEAKER_02 a suggéré de revenir vers eux uniquement en cas de besoins précis. Aucune action ou décision formelle n'a été actée.
+
+Pour le TYPE, voici des EXEMPLES pour t'inspirer (liste NON imposée, tu peux
+en choisir un autre s'il est plus juste) :
+prise de contact, avant-vente, réunion client, revue projet, point d'avancement,
+brainstorm, atelier de travail, comité de pilotage, kick-off, démo, formation.
+
+Classe d'après la nature DOMINANTE et l'intention réelle de la réunion, pas d'après
+un mot isolé ni un sujet simplement évoqué en passant : distingue ce qui se passe
+VRAIMENT en séance (présenter, décider, co-construire, suivre, démontrer...) de ce
+qui n'est que mentionné pour plus tard.
+
+Produis :
+{"type": "un seul type de réunion, le plus précis (inspiré des exemples ou autre)",
+  "type_justification": "1 phrase citant les indices concrets du sommaire",
+  "objectif": "1-2 phrases : le BUT de la réunion (distinct du type)",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}

@@ -1,0 +1,15 @@
+Tu conçois le PLAN thématique de la section 'Sujets abordés' d'un compte rendu. Réponds UNIQUEMENT en JSON. Regroupe par THÈMES (pas un thème par passage). Pour chaque section, choisis les chunk_ids pertinents (d'après les résumés) et écris un brief SCOPÉ qui dit ce que la section couvre ET ce qu'elle NE couvre PAS (déjà traité ailleurs), pour éviter les redites.
+
+Contexte : prise de contact et exploration de cas d'usage — Identifier les expertises des participants en IA générative et assistants conversationnels, et explorer des cas d'usage concrets pour l'automatisation de processus métiers via des outils d'IA.
+
+Résumés par passage (chunk_id : résumé) :
+0 : Tour de table de présentation des participants et de leurs expertises en IA générative et assistants conversationnels. Maya (Ely Consulting) présente un projet d'automatisation de rédaction de rapports pour RTE via une pipeline IA multimodale. Les échanges portent sur l'adaptation de l'outil à différents templates et l'exploration de cas d'usage comme la synthèse de données ou l'orchestration via MCP.
+1 : La réunion a porté sur l'utilisation d'outils d'IA pour l'orchestration de projets, la génération de synthèses et l'analyse de documents (manuscrits ou non). Plusieurs cas d'usage ont été évoqués, notamment l'extraction d'informations structurées, la conformité documentaire et l'automatisation de simulations. L'accent a été mis sur la souveraineté des outils et leur intégration via des serveurs MCP pour une meilleure efficacité. Des projets comme un agent de planification et un outil de détection de fraude ont été présentés.
+2 : La réunion a abordé des échanges sur les besoins en MCP et NLP, sans décision immédiate. SPEAKER_02 suggère d'attendre des besoins plus précis avant d'approfondir. SPEAKER_00 propose un atelier design pour prioriser des cas d'usage, mais sans validation formelle.
+
+Produis :
+{"sections": [
+   {"titre":"Titre de section",
+     "chunk_ids":[0,2],
+     "brief":"Ce que couvre la section ; NE PAS inclure X (couvert ailleurs)."}
+]}

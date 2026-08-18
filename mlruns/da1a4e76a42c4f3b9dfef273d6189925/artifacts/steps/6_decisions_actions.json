@@ -1,0 +1,20 @@
+{
+  "decisions": [],
+  "actions": [
+    {
+      "action": "Identifier et prioriser les cas d\u2019usage concrets pour l\u2019orchestration de simulations via MCP (ex : gestion d\u2019hypoth\u00e8ses, pr\u00e9paration de rapports pr\u00e9-\u00e9tudes)",
+      "responsable": "\u00c9quipe technique / G\u00e9rald",
+      "echeance": "\u00c0 d\u00e9finir"
+    },
+    {
+      "action": "\u00c9tudier la faisabilit\u00e9 technique d\u2019un serveur MCP capable de se brancher sur des outils de simulation internes et de g\u00e9n\u00e9rer des directives pour des agents",
+      "responsable": "\u00c9quipe technique",
+      "echeance": "\u00c0 d\u00e9finir"
+    },
+    {
+      "action": "Explorer les potentialit\u00e9s du NLP pour la synth\u00e8se de donn\u00e9es fragment\u00e9es (ex : blocs d\u2019alarme, messages, notes manuscrites) en compl\u00e9ment des travaux existants",
+      "responsable": "\u00c9quipe NLP",
+      "echeance": "\u00c0 d\u00e9finir"
+    }
+  ]
+}

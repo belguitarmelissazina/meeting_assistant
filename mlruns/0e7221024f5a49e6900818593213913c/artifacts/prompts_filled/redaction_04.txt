@@ -1,0 +1,22 @@
+Tu rédiges UNE section d'un compte rendu de réunion, en français, factuel, fidèle au texte fourni. N'invente rien. Ne mets pas de titre (il est ajouté séparément). Respecte le périmètre du brief. Ne développe pas les sigles.
+
+SYNTHÈSE GLOBALE (pour la cohérence, ne pas recopier) :
+La réunion a débuté par un tour de table où chaque participant a présenté son rôle et ses expertises en IA générative, avec un focus sur des projets comme l'automatisation de rapports pour RTE et des assistants conversationnels. Les échanges ont souligné l'importance de l'adaptabilité des solutions aux templates de rapports et la souveraineté des outils au sein de RTE. Plusieurs projets ont été évoqués, notamment un agent de planification, un outil de génération de bibliographie et de roadmaps, ainsi qu'un démonstrateur basé sur l'état de l'art pour résoudre des problématiques via R&D. Un projet de détection de fraude sur documents administratifs a également été détaillé, avec des défis liés à la qualité des données et à la gestion de documents en arabe. Les discussions ont convergé vers l'intérêt d'un MCP pour orchestrer des études et préparer des scénarios, avec une proposition d'atelier design pour prioriser les cas d'usage. Aucune décision concrète n'a été actée, mais des pistes de réflexion et de collaboration futures ont été esquissées.
+
+BRIEF DE LA SECTION :
+{'couvre': "Les discussions sur l'amélioration des synthèses, l'adaptabilité des solutions au contexte, et la souveraineté des outils (cloisonnement au sein de RTE). Les projets d'agents pour planification, génération de bibliographie/roadmaps, et les pipelines rapides pour POCs (ex. hackathons).", 'ne_couvre_pas': "Les cas d'usage spécifiques pour MCP/NLP ou les projets techniques détaillés (couvert ailleurs)."}
+
+PASSAGES BRUTS (source de vérité) :
+=== passage 1 ===
+[SPEAKER_01]: synthèses et même augmenter les synthèses et faire des propositions plus complètes et mieuxadapter à notre.
+[SPEAKER_01]: contexte
+[SPEAKER_00]: C’est aussi pour cloisonner c’est-à-dire que si onutilise cetoutil par exemple au sein deRTE c’est pour que ça reste côtéRTE et que ce ne soit pas finalement côté gaillé donc il y a tout cet aspect aussi on cherche à avoir une souveraineté qui soitliée à l’outil et à l’environnement dans lequel
+[SPEAKER_00]: l’outil.
+[SPEAKER_00]: estutilisé
+[SPEAKER_01]: Donc pour les deux missionsorchestration au sein de sur lesquelles j’ai travaillé ces deux cas d’usage-là sinon on a unautre projet qui est en courségalement qui est unagent de planification de pok et donc on n’est pas sur de l’orchestration parce que ça se fait autobre l’accès à unoutil qui va
+[SPEAKER_01]: faire de lawebSir tu pourrais récupérer de la bibliographie à partir d’un sujet donné et de proposer uneodmap pour mettre en place un projet donné se fait automatiquement pour l’instant on n’a pas encoreimplémenté de, MCP mais àterme l’idée ça serait d’avoir unagent qui peut où on peututiliser
+[SPEAKER_01]: plusieursoutils donc dans un premier temps faire de la bibliographie grâce à cetoutil-là mais aussi avoiraccès à plusieursoutils de simulation pour pouvoir mettre en place l’époque justement sur lesquelles on veut.
+[SPEAKER_01]: travailler Donc l’idée c’est de vraiment pouvoir avoir une pipeline un peu un twend qui propose un poc minimal sur un sujet donné on fait beaucoup de hackaton par exemple au sein deID et ça nous permettrait d’aller plus vite sur ce genre de.
+[SPEAKER_01]: sujet-là
+
+Rédige la section (1 à 3 paragraphes) :

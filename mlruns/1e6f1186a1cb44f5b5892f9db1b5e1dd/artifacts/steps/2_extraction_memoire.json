@@ -1,0 +1,82 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Matthieu DUSSARTRE et Maya SAHRAOUI se pr\u00e9sentent lors d'un tour de table. Matthieu DUSSARTRE est expert Data & IA Manager chez Yele Consulting, travaillant sur des projets d'IA g\u00e9n\u00e9rative, d'\u00e9quilibre offre-demande et de rentabilit\u00e9 des moyens de base. Maya SAHRAOUI est consultante confirm\u00e9e chez Yele Consulting, sp\u00e9cialis\u00e9e en IA g\u00e9n\u00e9rative et docteure en traitement automatique des langues, avec une exp\u00e9rience chez RTE.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 1,
+    "resume": "Bruno LEMETAYER (RTE) pr\u00e9sente son r\u00f4le dans la feuille de route Smart Cockpit et les assistants interactifs pour les op\u00e9rateurs. Matthieu DUSSARTRE (RTE) \u00e9voque son exp\u00e9rience de 10 ans sur les assistants et les mod\u00e8les d'IA g\u00e9n\u00e9rative (LLM, MCP). La r\u00e9union vise \u00e0 identifier les besoins et attentes en IA g\u00e9n\u00e9rative pour potentiellement collaborer. Bruno LEMETAYER mentionne l'int\u00e9r\u00eat de RTE pour les interfaces conversationnelles via MCP.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "Maya SAHRAOUI pr\u00e9sente un projet r\u00e9alis\u00e9 chez RTE pour automatiser la g\u00e9n\u00e9ration de rapports \u00e0 partir de fichiers PPT, en utilisant des pipelines d'agents IA pour extraire, classifier et r\u00e9diger des sections structur\u00e9es. Le processus inclut une boucle de correction pour it\u00e9rer sur les r\u00e9sultats. Bruno LEMETAYER et Matthieu DUSSARTRE \u00e9changent sur la structure des rapports et les r\u00e8gles d'assignation des slides. Le projet est pr\u00e9sent\u00e9 comme un POC r\u00e9alis\u00e9 en 25 jours avec un REX pour \u00e9valuer les suites possibles.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "\u00c9valuer la g\u00e9n\u00e9ralisation du POC pour la g\u00e9n\u00e9ration de rapports chez RTE avec G\u00e9rald",
+        "responsable": "Matthieu DUSSARTRE",
+        "echeance": "\u2014"
+      },
+      {
+        "action": "Partager le REX du projet avec l'\u00e9quipe pour analyse des suites possibles",
+        "responsable": "Maya SAHRAOUI",
+        "echeance": "\u2014"
+      }
+    ]
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La r\u00e9union a port\u00e9 sur l'adaptation d'un outil de g\u00e9n\u00e9ration de rapports structur\u00e9s pour RTE, initialement con\u00e7u avec des templates, en une version flexible sans templates. Maya SAHRAOUI a pr\u00e9sent\u00e9 les garde-fous impl\u00e9ment\u00e9s pour assurer la robustesse et la tra\u00e7abilit\u00e9 des rapports g\u00e9n\u00e9r\u00e9s. Bruno LEMETAYER a \u00e9voqu\u00e9 des cas d'usage similaires pour la synth\u00e8se de donn\u00e9es ou d'\u00e9v\u00e9nements. Maya SAHRAOUI a \u00e9galement partag\u00e9 des projets internes utilisant des orchestrations multi-agents (N8N) et des outils interactifs (MCP) pour automatiser des t\u00e2ches comme la r\u00e9daction d'appels d'offres ou la synth\u00e8se de r\u00e9unions.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 4,
+    "resume": "Maya SAHRAOUI a pr\u00e9sent\u00e9 plusieurs projets d'agents IA sp\u00e9cialis\u00e9s pour RTE, notamment un agent d'orchestration pour des donn\u00e9es open data \u00e9nergie et un agent de planification de POC avec acc\u00e8s \u00e0 des outils de simulation. Matthieu DUSSARTRE a soulign\u00e9 l'importance de la souverainet\u00e9 et du cloisonnement des outils au sein de RTE. Maya a \u00e9galement \u00e9voqu\u00e9 un projet ant\u00e9rieur de d\u00e9tection de fraude sur des documents administratifs scann\u00e9s, incluant un mod\u00e8le VLM h\u00e9berg\u00e9 en local et un dashboard de monitoring.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 5,
+    "resume": "Les participants ont \u00e9chang\u00e9 sur des cas d\u2019usage li\u00e9s \u00e0 l\u2019orchestration d\u2019\u00e9tudes et \u00e0 l\u2019int\u00e9gration de serveurs MCP pour automatiser des simulations et g\u00e9n\u00e9rer des pr\u00e9-rapports. Bruno LEMETAYER a \u00e9voqu\u00e9 l\u2019int\u00e9r\u00eat pour des travaux en NLP, notamment sur la synth\u00e8se de donn\u00e9es disparates et la gestion de documents manuscrits. Maya SAHRAOUI a confirm\u00e9 que l\u2019int\u00e9gration de serveurs MCP dans leur feuille de route permettrait de brancher des outils de simulation internes. Matthieu DUSSARTRE a soulign\u00e9 l\u2019importance de pr\u00e9parer et orchestrer des sc\u00e9narios pour des \u00e9tudes \u00e9nerg\u00e9tiques avant validation humaine.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Partager un plan de travail d\u00e9taill\u00e9 sur l\u2019int\u00e9gration des serveurs MCP pour l\u2019orchestration d\u2019\u00e9tudes et la simulation, incluant les directives g\u00e9n\u00e9r\u00e9es par un premier agent et leur application via les outils internes",
+        "responsable": "Maya SAHRAOUI",
+        "echeance": "\u2014"
+      },
+      {
+        "action": "\u00c9tudier la faisabilit\u00e9 d\u2019un outil de synth\u00e8se automatique de donn\u00e9es disparates (blocs d\u2019alarme, messages, rapports) pour g\u00e9n\u00e9rer des pr\u00e9-rapports, en collaboration avec Yele Consulting",
+        "responsable": "Bruno LEMETAYER",
+        "echeance": "\u2014"
+      },
+      {
+        "action": "Explorer les cas d\u2019usage sp\u00e9cifiques li\u00e9s au traitement de documents manuscrits pour une int\u00e9gration dans les workflows existants",
+        "responsable": "Bruno LEMETAYER",
+        "echeance": "\u2014"
+      }
+    ]
+  },
+  {
+    "chunk_id": 6,
+    "resume": "Bruno LEMETAYER et Matthieu DUSSARTRE \u00e9changent sur l'opportunit\u00e9 de travailler sur un cas d'usage MCP ou NLP, mais Bruno souligne l'absence de besoins clairs pour l'instant. Matthieu propose un atelier design pour prioriser des cas d'usage. Bruno note l'int\u00e9r\u00eat de cette proposition mais ne s'engage pas imm\u00e9diatement.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Revenir vers Yele Consulting ou RTE si un besoin pr\u00e9cis \u00e9merge (MCP ou NLP)",
+        "responsable": "Bruno LEMETAYER",
+        "echeance": "\u2014"
+      },
+      {
+        "action": "\u00c9valuer la faisabilit\u00e9 d'un atelier design pour prioriser des cas d'usage",
+        "responsable": "Matthieu DUSSARTRE",
+        "echeance": "\u2014"
+      }
+    ]
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "titre": "Tour de table et pr\u00e9sentation des projets en cours",
+      "chunk_ids": [
+        0
+      ],
+      "brief": {
+        "couvre": "Les r\u00f4les et expertises des participants en IA g\u00e9n\u00e9rative, ainsi que les projets initiaux pr\u00e9sent\u00e9s (ex. automatisation de rapports pour RTE, besoins en synth\u00e8se g\u00e9n\u00e9rative et assistants conversationnels MCP). Inclut les discussions sur l'adaptabilit\u00e9 des solutions aux templates de rapports.",
+        "ne_couvre_pas": "Les projets d\u00e9taill\u00e9s ult\u00e9rieurement (ex. d\u00e9monstrateur DURKEVX, d\u00e9tection de fraude, orchestration MCP/NLP), les cas d'usage prioris\u00e9s ou les pistes de collaboration futures."
+      }
+    },
+    {
+      "titre": "Projets techniques et d\u00e9fis op\u00e9rationnels",
+      "chunk_ids": [
+        2
+      ],
+      "brief": {
+        "couvre": "Les projets techniques avanc\u00e9s (ex. d\u00e9monstrateur DURKEVX, d\u00e9tection de fraude sur documents scann\u00e9s avec VLM, fine-tuning, contr\u00f4le d'anomalies, d\u00e9ploiement et monitoring). Les d\u00e9fis cl\u00e9s comme la qualit\u00e9 des donn\u00e9es et la gestion de documents en arabe.",
+        "ne_couvre_pas": "Les \u00e9changes sur les cas d'usage concrets pour MCP/NLP, les ateliers de priorisation ou les discussions sur l'orchestration et la souverainet\u00e9 des outils (couvert ailleurs)."
+      }
+    },
+    {
+      "titre": "Cas d'usage et orchestration avec MCP/NLP",
+      "chunk_ids": [
+        3,
+        4
+      ],
+      "brief": {
+        "couvre": "Les cas d'usage potentiels pour les outils d'orchestration (MCP) et de synth\u00e8se (NLP), notamment l'automatisation des simulations, la pr\u00e9paration de rapports et l'int\u00e9gration d'outils internes. Les discussions sur un MCP pour orchestrer des \u00e9tudes et pr\u00e9parer des sc\u00e9narios. Les \u00e9changes sur les ateliers design pour prioriser les cas d'usage.",
+        "ne_couvre_pas": "Les projets techniques d\u00e9taill\u00e9s (ex. DURKEVX, d\u00e9tection de fraude) ou les pr\u00e9sentations initiales des participants (couvert ailleurs)."
+      }
+    },
+    {
+      "titre": "Souverainet\u00e9 des outils et pipelines rapides",
+      "chunk_ids": [
+        1
+      ],
+      "brief": {
+        "couvre": "Les discussions sur l'am\u00e9lioration des synth\u00e8ses, l'adaptabilit\u00e9 des solutions au contexte, et la souverainet\u00e9 des outils (cloisonnement au sein de RTE). Les projets d'agents pour planification, g\u00e9n\u00e9ration de bibliographie/roadmaps, et les pipelines rapides pour POCs (ex. hackathons).",
+        "ne_couvre_pas": "Les cas d'usage sp\u00e9cifiques pour MCP/NLP ou les projets techniques d\u00e9taill\u00e9s (couvert ailleurs)."
+      }
+    }
+  ],
+  "raw": "{\n  \"sections\": [\n    {\n      \"titre\": \"Tour de table et pr\u00e9sentation des projets en cours\",\n      \"chunk_ids\": [0],\n      \"brief\": {\n        \"couvre\": \"Les r\u00f4les et expertises des participants en IA g\u00e9n\u00e9rative, ainsi que les projets initiaux pr\u00e9sent\u00e9s (ex. automatisation de rapports pour RTE, besoins en synth\u00e8se g\u00e9n\u00e9rative et assistants conversationnels MCP). Inclut les discussions sur l'adaptabilit\u00e9 des solutions aux templates de rapports.\",\n        \"ne_couvre_pas\": \"Les projets d\u00e9taill\u00e9s ult\u00e9rieurement (ex. d\u00e9monstrateur DURKEVX, d\u00e9tection de fraude, orchestration MCP/NLP), les cas d'usage prioris\u00e9s ou les pistes de collaboration futures.\"\n      }\n    },\n    {\n      \"titre\": \"Projets techniques et d\u00e9fis op\u00e9rationnels\",\n      \"chunk_ids\": [2],\n      \"brief\": {\n        \"couvre\": \"Les projets techniques avanc\u00e9s (ex. d\u00e9monstrateur DURKEVX, d\u00e9tection de fraude sur documents scann\u00e9s avec VLM, fine-tuning, contr\u00f4le d'anomalies, d\u00e9ploiement et monitoring). Les d\u00e9fis cl\u00e9s comme la qualit\u00e9 des donn\u00e9es et la gestion de documents en arabe.\",\n        \"ne_couvre_pas\": \"Les \u00e9changes sur les cas d'usage concrets pour MCP/NLP, les ateliers de priorisation ou les discussions sur l'orchestration et la souverainet\u00e9 des outils (couvert ailleurs).\"\n      }\n    },\n    {\n      \"titre\": \"Cas d'usage et orchestration avec MCP/NLP\",\n      \"chunk_ids\": [3, 4],\n      \"brief\": {\n        \"couvre\": \"Les cas d'usage potentiels pour les outils d'orchestration (MCP) et de synth\u00e8se (NLP), notamment l'automatisation des simulations, la pr\u00e9paration de rapports et l'int\u00e9gration d'outils internes. Les discussions sur un MCP pour orchestrer des \u00e9tudes et pr\u00e9parer des sc\u00e9narios. Les \u00e9changes sur les ateliers design pour prioriser les cas d'usage.\",\n        \"ne_couvre_pas\": \"Les projets techniques d\u00e9taill\u00e9s (ex. DURKEVX, d\u00e9tection de fraude) ou les pr\u00e9sentations initiales des participants (couvert ailleurs).\"\n      }\n    },\n    {\n      \"titre\": \"Souverainet\u00e9 des outils et pipelines rapides\",\n      \"chunk_ids\": [1],\n      \"brief\": {\n        \"couvre\": \"Les discussions sur l'am\u00e9lioration des synth\u00e8ses, l'adaptabilit\u00e9 des solutions au contexte, et la souverainet\u00e9 des outils (cloisonnement au sein de RTE). Les projets d'agents pour planification, g\u00e9n\u00e9ration de bibliographie/roadmaps, et les pipelines rapides pour POCs (ex. hackathons).\",\n        \"ne_couvre_pas\": \"Les cas d'usage sp\u00e9cifiques pour MCP/NLP ou les projets techniques d\u00e9taill\u00e9s (couvert ailleurs).\"\n      }\n    }\n  ]\n}"
+}

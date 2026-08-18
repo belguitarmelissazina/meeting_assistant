@@ -1,0 +1,39 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien.
+
+Extrait :
+[SPEAKER_02]: bien En tout cas, voilà pour, moi c’était bon j’avais près
+[SPEAKER_00]: du réponses à mes questions.
+[SPEAKER_00]: éventuelles Très, bien est-ce que vous voulez qu’on fasse une petite réflexion sur un cas d’usage un peu plusorienté sur par exemple le MCP votre si vous présentez finalement le cas d’usage dans lequel vous voulez intégrer un MCP on pourrait peut-être y réfléchir nous de notre côté et présenter
+[SPEAKER_00]: notre vision et puis potentiellement avoir un second échange ou est-ce que finalement vous préférez qu’on se refasse un point sur nos avancées sur nos travaux et qu’on vous représente ce que l’on peut faire côté.
+[SPEAKER_02]: MCP Alors il y a plusieurs possibilités alors sur le cas d’usage que l’on réfléchirait comme je faisais donc à l’EMCP mais il y en a d’autres aussi donc à.
+[SPEAKER_02]: voir Alors je réfléchis un peu tôt mais moi je pense que nous on peut comme je dis on n’a pas là comme ça d’idée de besoins encore.
+[SPEAKER_02]: clairs Donc peut-être qu’au regard de ce qu’on a vu, aujourd’hui il faut tout simplement qu’on regarde et puis qu’on tienne tout simplement informer si jamais il y a quelque chose de plus précis qui se dégage que ce soit MCP ou plusNLP voilà après sur l’avancée de vos, travaux ça peut être
+[SPEAKER_02]: intéressant donc avoir un focus MCP même si là voilà pour être transparent sur le MCP on va on a quand même déjà des actions qui sont prévues pourexplorer cette chose-là donc ce ne serait pas non plus tout de suite c’est-à-dire que si vous nous présentez vos travaux sur la partie, MCP clairement
+[SPEAKER_02]: enfin là ce n’était pas du tout de.
+[SPEAKER_02]: suiteVoilà donc l’aurait tendance à dire que le plus problématique c’est peut-être qu’on revient tout simplementvers vous si on a quelque chose d’un peu plus précis voilà pour éviter qu’on discute mais sans qu’il yait quelque chose de précis, derrière je pense que c’est pas forcément souhaitable
+[SPEAKER_02]: non plus voilà sinon on n’a pas de quoi concrétiser autant qu’on attende voilà moi j’aurais tendance à partir là-dessus et puis voilà on tiens on a vos contacts donc on revientvers vous en tout cas voilà ce qui a été présenté ça pourrait entrer plutôt patronage de ce qu’on fait après avoir dans
+[SPEAKER_02]: l’agenda et dans l’ordonnancement et tout ça des projets qu’on mène parce que aussi pour faire avancer tous ces, projets-là il faut que nous-mêmes soyons, dispos il faut qu’on travaille avec lesopérateurs aussi donc ça c’est peut-être un petit peu une particularité c’est qu’on peut avoir des fois
+[SPEAKER_02]: un petit boulot d’étranglement sur le fait que lesopérateurs et c’est en quantité, finie on va dire leur temps de disposition en tout cas il y a plein d’autres travaux aussi au cours donc voilà on ne peut pas non plus trop pencherempiler les, choses même si voilà on peut vous solliciter en tant
+[SPEAKER_02]: que, partenaireexterne, voilà donc ça peut pas le
+[SPEAKER_00]: contexte..
+[SPEAKER_00]: doncVoilà Alors j’ai une information aussi à vous, donner je pense que c’est peut-être intéressant nous côté galet on travaille aussi avec de l’huileUX design et donc on est en contact avec certains cabinets et on a discuté avecOlivier Maserol pour justement mettre un petit peu ce type de
+[SPEAKER_00]: nouvelleUX nouvelleU pour la contrôleroom du, futur donc ça peut être aussi des choses qu’on pourrait.
+[SPEAKER_00]: envisagerVoilà c’est simplement une information et deuxièmement c’est plutôt une proposition si vous voulez peut-être qu’on fasse un atelier purement design où on pourrait réfléchir à des cas, d’usage les, prioriser.
+[SPEAKER_00]: etc C’est aussi quelque chose qui nous ferait plaisir et qui pourrait peut-êtreaboutir sur vous une, vision nous un partage et
+[SPEAKER_02]: après., onverraOk je note le.
+[SPEAKER_02]: point Il faut voir en pratique là comme, ça je peux pas vous dire mais je peux pas vous dire, oui je comprends l’intérêt
+[SPEAKER_00]: du, point je ne m’attends pas de répons tout de
+[SPEAKER_02]: suite., dessinOuais, d’accord ça.
+[SPEAKER_02]: marcheOk en tout cas c’est, oui c’est intéressant que vous ayez de discuter laisse ma partieUX.
+[SPEAKER_02]: avecOlivierVoilà on n’a pas parlé mais bon il a dû vous en, parler je pense aussi bien voir mieux.,, quoiOkécoutez très, vite elle se doté en tout.
+[SPEAKER_00]: casEh, bien merci beaucoup à moins que d’autres personnes veuillent aussi s’exprimer ou.
+[SPEAKER_00]: non Très, bien merci.
+[SPEAKER_00]: beaucoup Très bon.
+[SPEAKER_00]: après-midi.
+[SPEAKER_00]: Bonweek-end Au.
+[SPEAKER_00]: revoir
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"— si absent", "echeance":"— si absente"}]}

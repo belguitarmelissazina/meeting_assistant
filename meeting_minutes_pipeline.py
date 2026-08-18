@@ -796,10 +796,11 @@ DÉCISION = choix ACTÉ par le groupe ("on décide de", "on valide", "c'est act�
 - Un engagement à faire une action future N'EST PAS une décision (plan d'attaque, traité ailleurs).
 - Si rien n'est acté, tableau vide.
 
-EXEMPLES :
+EXEMPLES DE FORMAT — fictifs et illustratifs. N'EXTRAIS JAMAIS leur contenu :
+ne te sers QUE de l'extrait ci-dessus.
 « J'ai développé un outil N8N avec plusieurs agents. » → {{"decisions": []}}
 « On pourrait faire un atelier UX un jour. » → {{"decisions": []}}
-« On valide le passage en production la semaine prochaine. » → {{"decisions": ["Passage en production validé pour la semaine prochaine"]}}
+« [EXEMPLE FICTIF] On valide un passage en production. » → {{"decisions": ["<décision actée telle que dite dans l'extrait>"]}}
 
 FORMAT JSON STRICT, rien d'autre :
 {{"decisions": ["string", ...]}}"""
@@ -906,11 +907,13 @@ INTERDICTIONS :
 
 LIMITE STRICTE : 0 à 2 items max.
 
-EXEMPLES :
+EXEMPLES DE FORMAT — fictifs et illustratifs. N'EXTRAIS JAMAIS leur contenu :
+ne te sers QUE de l'extrait ci-dessus. Si une phrase d'exemple n'apparaît pas
+dans l'extrait, elle ne doit PAS figurer dans ta sortie.
 « Je vais vous présenter le projet RTE. » → {{"plan": []}}
 « On a un modèle pour la congestion développé chez RTE. » → {{"plan": []}}
-« Alice s'occupe de la doc, vendredi. » → {{"plan": [{{"action": "S'occuper de la doc", "responsable": "Alice", "echeance": "vendredi", "type": "engagement"}}]}}
-« On pourrait faire un atelier UX un jour. » → {{"plan": [{{"action": "Organiser un atelier UX", "responsable": "—", "echeance": "—", "type": "suggestion"}}]}}
+« [EXEMPLE FICTIF] Quelqu'un s'occupe d'un livrable pour une échéance donnée. » → {{"plan": [{{"action": "<action telle que dite>", "responsable": "<nom tel que dit>", "echeance": "<échéance telle que dite>", "type": "engagement"}}]}}
+« [EXEMPLE FICTIF] On évoque une piste sans l'avoir promise. » → {{"plan": [{{"action": "<piste reformulée>", "responsable": "—", "echeance": "—", "type": "suggestion"}}]}}
 
 FORMAT JSON STRICT, rien d'autre :
 {{"plan": [{{"action": "string", "responsable": "string ou —", "echeance": "string ou —", "type": "engagement | suggestion"}}, ...]}}"""
@@ -1169,6 +1172,10 @@ def generate_section_json(chunk: TopicChunk, cfg: Config) -> dict:
         "_chunk_id": chunk.chunk_id,
         "_start_time": chunk.start_time,
         "_end_time": chunk.end_time,
+        # Texte brut transcrit du chunk — source de verite pour les workers
+        # agentiques (Ou & Lapata ACL Findings 2025 : context-aware merging
+        # reduit l'amplification d'hallucinations vs merge sur resumes seuls).
+        "_chunk_text": chunk.text,
     }
 
 

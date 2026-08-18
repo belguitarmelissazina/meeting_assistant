@@ -1,0 +1,17 @@
+Tu conçois le PLAN thématique de la section 'Sujets abordés' d'un compte rendu. Réponds UNIQUEMENT en JSON. Regroupe par THÈMES (pas un thème par passage). Pour chaque section, choisis les chunk_ids pertinents (d'après les résumés) et écris un brief SCOPÉ qui dit ce que la section couvre ET ce qu'elle NE couvre PAS (déjà traité ailleurs), pour éviter les redites.
+
+Contexte : revue projet et exploration de cas d'usage — Faire un état des lieux des projets en cours en IA générative, identifier des pistes d'amélioration et explorer des cas d'usage concrets pour des applications industrielles et administratives. Valider des orientations techniques et organisationnelles pour des pipelines automatisés.
+
+Résumés par passage (chunk_id : résumé) :
+0 : Tour de table des participants pour présenter leurs rôles et expertises en IA générative. Maya (Elya) présente un projet d'automatisation de rédaction de rapports pour RTE en utilisant des modèles multimodaux et des pipelines d'agents. Discussion sur l'adaptabilité de l'outil à différents templates et l'intégration de boucles de correction. Exploration de cas d'usage pour la synthèse de données et l'orchestration via MCP ou N8N.
+1 : Les participants discutent de l'amélioration des synthèses et des propositions pour mieux les adapter au contexte. Ils évoquent la nécessité de cloisonner l'outil pour préserver la souveraineté des données côté RTE. Un projet d'agent de planification automatique (webSir) est en cours, visant à générer des bibliographies et des roadmaps pour des projets, avec une future intégration de plusieurs outils de simulation. L'objectif est de créer une pipeline automatisée pour proposer des POC minimaux rapidement, notamment via des hackathons.
+2 : La réunion a abordé des projets liés à l'extraction d'informations à partir de documents scannés, notamment administratifs, avec un focus sur l'analyse de conformité des données (ex : salaires vs métiers). Un projet spécifique a été présenté par Maya, utilisant des modèles VLM pour extraire et classifier des informations, avec une partie dédiée au fine-tuning de modèles et au déploiement en local. La discussion a également évoqué la gestion de documents manuscrits ou numériques, ainsi que des outils de monitoring pour détecter des anomalies ou des dérives.
+3 : La réunion a porté sur l'exploration de cas d'usage liés à l'orchestration de simulations et à l'analyse de données via des outils MCP et NLP. Les participants ont évoqué des besoins en synthèse de données disparates, en orchestration d'études (notamment énergétiques) et en intégration de serveurs MCP pour automatiser des workflows. Les discussions ont mis en lumière des pistes pour des travaux futurs, notamment sur l'analyse de texte manuscrit et la préparation de pré-rapports automatisés.
+4 : La réunion a abordé des questions sur les cas d'usage MCP et NLP, sans décision immédiate. Une proposition d'atelier design pour réfléchir à des cas d'usage a été évoquée. Les participants ont convenu de revenir vers l'équipe avec des besoins plus précis avant d'approfondir les discussions.
+
+Produis :
+{"sections": [
+   {"titre":"Titre de section",
+     "chunk_ids":[0,2],
+     "brief":"Ce que couvre la section ; NE PAS inclure X (couvert ailleurs)."}
+]}

@@ -1,0 +1,422 @@
+[00:07 - 00:08] Bonjour Nordine.
+[00:12 - 00:16] Et voici Mathieu, tout le monde est là. Bonjour à tous.
+[00:17 - 00:28] Ce que je vous propose c'est un petit tour de table parce que moi je ne connais pas tout le monde. Je peux commencer si vous voulez.
+[00:28 - 00:57] Donc moi c'est Jérôme Massé, je suis expert Data IA, manager de la pratique Data IA au sein de Y des Consulting. Et donc je par exemple travaille avec Maya sur les sujets de l'IA générative. Je travaille aussi avec Dena côté R<unk>D sur la feuille de route équilibre, enfin gouvernance et régulation sur un projet d'équilibre offre-demande et la rentabilité des moyens de base.
+[00:57 - 01:03] Et également côté décoffert sur des analyses plutôt orientées métiers.
+[01:07 - 01:26] Merci Gér. Confirmée chez I travail principally on the project Dia Generation, en moderne and project that I'm on chez RTE with Dana and German.
+[01:27 - 01:31] Et um donc je suis docteur en
+[01:31 - 01:34] Mon deep learning, j'ai fait un doctorat en traitement informatique des langues.
+[01:35 - 01:41] Et um je rejoins l'élé en septembre, donc voilà, je je commence cette émission en ce sens là.
+[01:45 - 01:47] Je vous laisse vous présenter.
+[01:50 - 02:00] Allez, je commence. Donc Bruno Le Métaillier, donc je suis à la RD et je pilote la feuille de route Smart Cockpit Interactive.
+[02:01 - 02:06] Uh the assistants. Uh.
+[02:09 - 02:19] Mathieu Sartre, Monsieur L R D aussi D R T. Uh La Thematic Assistant Bruno, it's a dizain of one.
+[02:20 - 02:22] Qu'elle évolue, qu'on l'a fait mûrir.
+[02:22 - 02:24] Et moi je travaille dessus depuis tout ce temps là.
+[02:25 - 02:25] Yeah.
+[02:29 - 02:38] Dans Dinaka, je suis aussi de la RID. Uh she travaille sur des thématiques d'implémentation des réseaux de neurones pour des cosystèmes.
+[02:40 - 02:40] But
+[02:42 - 02:51] Mais Jérôme Picot, moi je suis plus à la RD, j'y étais, mais je ne suis plus. Je suis dans une direction qui s'appelle maintenant...
+[02:52 - 02:54] uh intelligence artificielle et innovation.
+[02:55 - 03:00] Et je travaille sur des sujets principalement diagénérates.
+[03:00 - 03:02] tour des LM, MCP, etc.
+[03:05 - 03:11] Très bien, est-ce que vous voulez que je présente d'autres sociétés ou il y a pas besoin ?
+[03:27 - 03:28] Toutes vos collègues.
+[03:30 - 03:37] Et plus sur des aspects. Enfin moins recherche en tout cas. Donc voilà, je connais un petit peu.
+[03:54 - 03:55] J'time vous connaître un peu pas.
+[03:57 - 03:57] Oh shit.
+[03:58 - 04:01] Ok, donc on peut zapper oui ou non ?
+[04:01 - 04:02] Landine?
+[04:03 - 04:05] Oui, c'est bon, c'est bon.
+[04:06 - 04:20] Donc ce que je vous propose, c'est que vous discutiez un petit peu justement sur vos besoins sur l'IA générative et qu'on puisse un petit peu comprendre vos besoins, vos attentes et puis...
+[04:20 - 04:22] Puis voir comment on pourrait...
+[04:23 - 04:25] potentiellement travailler ensemble.
+[04:32 - 04:37] Oui alors peut-être euh je lance donc en contexte euh
+[04:38 - 04:42] Euh donc nous effectivement les sujets
+[04:43 - 04:49] Alors je parle sur la partie assistante, puisque dans cette table, on a effectivement Jérôme qui reprendront la partie.
+[04:51 - 05:05] Disciplinary on the IA et NLP, but côté RD on the part assistant, but made in application a bit of that and recherche a little bit on the question plus the interaction.
+[05:06 - 05:17] On s'interesse uh de plus en plus à toute faible avec le LP et puis plus recent aussi sur ce possible. Alors nous en fait ce qu'il nous interesse ça va être
+[05:18 - 05:19] Une fois c'est question de
+[05:20 - 05:21] Un peu uh
+[05:21 - 05:31] l'interface interaction entre le l'opérateur uh and his outils. Le MCP c'est
+[05:31 - 05:35] une promesse en tout cas à ce stade pour développer des
+[05:36 - 05:37] D
+[05:37 - 05:39] Mon interface quasi conversationnelle.
+[05:40 - 05:42] et qui permettent
+[06:05 - 06:09] Là comme ça on n'a pas à date un aujourd'hui de
+[06:09 - 06:12] ou quoi claire à proposer.
+[06:12 - 06:41] Uh the button for me is Nordin's context and you've got these suit. For the site eventually, and in the effectively with a cadre, it's not.
+[06:43 - 06:47] plus un peu de la de la prise de contact, en tout cas en tout cas à mon à mon niveau.
+[06:49 - 06:54] Je peux vous présenter si vous voulez justement les projets sur lesquels j'ai travaillé.
+[06:54 - 06:58] Je vais j'ai pas maintenant pour partager mon écran. Oui.
+[06:59 - 07:00] Uh
+[07:01 - 07:05] Oui, parce que c'est des actifs. Je sais plus qui c'est qui a envoyé la R.
+[07:13 - 07:13] Merci.
+[07:19 - 07:28] Okay, présent un peu les projets IA génératif sur lesquels on travaille de manière générale chez E.
+[07:29 - 07:31] J'ai j'ai travaillé.
+[07:31 - 07:37] Et uh sur d'autres missions aussi que j'ai faites avant de rejoindre les éléments pour vous pour vous présenter un peu
+[07:37 - 07:43] les compétences qu'on a chez sur des uh des use case comme cela donc diagonal d'une
+[07:44 - 07:51] Pour commencer le positionnement en tout cas global que j'ai adopté depuis que j'ai rejoint Yalay ces derniers temps aussi sur
+[07:51 - 07:54] sur les projets diagénératives que
+[07:55 - 08:07] Sur laquelle je suis intervenue, c'était globalement de transformer des contenus, donc des documents complexes et hétérogènes, en général multimodal, en sorties actionnables, soit
+[08:08 - 08:10] extraire de l'information pertinente pour
+[08:11 - 08:17] uh pour faciliter de la prise de décision ou créer des fiches de synthèse à partir de documents hétérogènes.
+[08:18 - 08:20] Donc j'ai aussi um une um
+[08:21 - 08:24] Il y a toujours un volet d'industrialisation, on va dire, où...
+[08:25 - 08:33] Je garde une notion de versioning et une notion de monitoring aussi, donc sur les projets qu'on fait au sein de Yele et sur les missions que j'ai faites auparavant.
+[08:34 - 08:39] Donc en termes de compétences, on va toujours être sur du multimodal. J'ai travaillé sur des...
+[08:39 - 08:46] des modèles ébergés localement donc j'ai directement fait du fine tuning sur des modèles diagénératifs type
+[08:47 - 08:53] Point file, enormously traitement, but that's necessary.
+[08:54 - 08:56] des l'utilisation des PI
+[08:57 - 09:00] Mistral, c'est ce qu'on utilise aujourd'hui chez chez Yale.
+[09:00 - 09:08] et donc avec des dégâts d'usage qui ont nécessité de faire du rag, donc du ranking, du re ranking et de de la vectorisation.
+[09:09 - 09:17] Des notions d'orchestration aussi, donc on a des chez Ella on a des projets où on en est plus sur du N middle, d'autres où on fait du MCP.
+[09:17 - 09:28] Et en termes de déploiement, j'ai travaillé sur des des outils comme VLLM ou Vigorne pour déployer des modèles, les modèles que j'ai préentraînés.
+[09:28 - 09:34] Et uh du streamlit également pour de la livraison de Pock au sein de Y.
+[09:36 - 09:38] Je vais commencer par vous présenter le projet.
+[09:39 - 09:41] que j'ai fait au sein de RTE.
+[09:46 - 09:57] Donc pour le projet que j'ai fait au sein de la de l'équipe équilibre offre et demande de RTE, le sujet était de pouvoir générer des études EOD, rentabilité, des moyens de production.
+[09:58 - 10:06] Donc le contexte c'est que l'équipe se charge de reprendre un peu les bilans prévisionnels ou de les prendre comme référentiel, comme contexte.
+[10:06 - 10:30] We analyze the sensibility of these attitudes to work with their results. A mouth that are developed in the equipe that's L Power, it's a mouth that resemble a little bit to Antares, but that's
+[10:31 - 10:41] reprend the notions of rentability on the retro pas for Interesse.
+[10:42 - 10:44] Ensuite, à la suite de ces études là, donc les...
+[10:45 - 10:46] Les membres de l'équipe.
+[10:47 - 10:58] créer des fichi bppt, ils vont stocker les résultats dans des fichiers ppd. Donc ces fichiers là vont contenir notamment en majeure partie des graphiques, donc on est sur des données qui sont hétérogènes parce qu'on a une
+[10:59 - 11:01] D'image, très peu de très peu de texte.
+[11:02 - 11:09] Et l'idée c'est de pouvoir par la suite par filière rédiger un rapport complet, rédiger un rapport qui soit exhaustif sur toutes les filières.
+[11:10 - 11:16] Donc c'est à ce niveau là, donc au niveau de la rédaction du rapport complet à partir des fichiers PPT.
+[11:16 - 11:20] que moi je suis intervenue pour automatiser justement ce travail là.
+[11:22 - 11:32] Donc ici on est partie d'une structure de rapport can I discuter pendant la mission. On s'est mis d'accord sur une structure and
+[11:33 - 11:42] chain de treatment automatisate so the objective is to accelerate the production of rapport sans degrading the rigueur, but that's the premier.
+[11:42 - 11:44] et de pouvoir
+[11:44 - 12:10] On this, the affirmations that are generated by my outfit on the rapport, they cried on the figure or the text that are directly in the fish PPT, to standardizing the structures on the section on the préalable, and to permit also a boucle of correction, because the idea is to produce an outline, to do action to members of the equipe.
+[12:10 - 12:21] cet outil là, donc d'avoir une interface dédiée, et qu'ils puissent eux-mêmes par la suite itérer sur le rapport qui est rédigé pour le corriger avec des commentaires qu'ils peuvent mettre sur chacune des sections générées.
+[12:22 - 12:25] Donc les entrées de mon modèle ou de mon outil.
+[12:26 - 12:29] Ah c'est ça va être les fichiers PPT, donc ça c'est la source.
+[12:30 - 12:32] principal et nécessaire pour générer le rapport.
+[12:46 - 12:59] He said enregistried in time to repeat the fish BPD on the slide. He said enregistried in time to present.
+[13:00 - 13:11] transformer en fichier TXT et ensuite on peut mettre en entrée cette transcription vocale là, en entrée de l'outil pour ajouter un contexte supplémentaire.
+[13:12 - 13:19] Et donc par la suite la sortie de l'outil ça va être le rapport final donc en markdown et exportable en kicks.
+[13:19 - 13:25] avec donc sur l'interface une possibilité de corriger, enfin une boucle de correction.
+[13:25 - 13:44] The premiere brick is a pipeline agenti, but we've got the agents that are searching of chacune destapes.
+[13:44 - 14:02] At that time I produce the artifacts that I stock for them reprint by the suit, if I'm correct at the sort of attack, modify, it is possible to modify directly the artifact for directly modified the.
+[14:03 - 14:08] corriger les résultats de l'étape suivante, ça nous permet d'avoir du versionning pour en POC.
+[14:08 - 14:10] Euh qu'on peut par la suite
+[14:11 - 14:15] développer encore plus pour avoir une un réversionn directement sur l'interface.
+[14:16 - 14:23] Donc la première étape c'est qui est très importante c'est de prendre le le fichier PPT de le traiter comme des figures.
+[14:24 - 14:40] and analyze slide by slide of PPT, but to create a description as exhaustive of the slide container in the PPT, with a classification which will permit to whether the slide is a slide analytic.
+[14:40 - 14:46] Et euh le contenu du slide détaillé donc avec du de l'OCR pour pouvoir en extraire tout
+[14:47 - 14:52] tout le texte et une analyse complète de du contenu et des graphiques s'il y en a.
+[14:53 - 14:55] Avec donc aussi une une notion de
+[14:56 - 15:02] uh contiene the slide, une analyse de ce que contient le slide.
+[15:03 - 15:07] On a un agent qui prend le l'image en rentrée et qui nous sort une description en sortie.
+[15:07 - 15:13] Ensuite à chaque à chaque étape donc je garde l'historique de ce qui est ce qui est sorti de l'étape précédente.
+[15:14 - 15:17] La deuxième étape va reprendre justement ces descriptions de Snide là.
+[15:18 - 15:31] for an assignment of snipe all section. Come on, the rapport we have two sections different. So the point of this brick is to say
+[15:32 - 15:42] Tell slide devrait appartenir to telle section and descriptive of telle section, and devrait être cités or mentioned in telle section, ou du moins qu'il devrait venir enrichir la rédaction de cette section.
+[15:43 - 15:52] C'est une étape que j'ai ajoutée car elle nous permet justement de ne pas voir apparaître des slides annexes en introduction ou autre.
+[15:53 - 16:19] And the idea of the thing. But the report a little.
+[16:19 - 16:22] En tout cas au niveau général et que
+[16:22 - 16:32] Don't a été capable de vraiment défier une structure assez assez fixe et du coup mon a sous-question c'était le
+[16:32 - 16:53] Is a plus in detail the structure.
+[16:54 - 16:58] X euh et associé à ça ben travail enfin
+[16:58 - 17:02] Description un peu plus détaillée justement pour l'idée, les modèles pour qu'il y ait les agents. Est-ce qu'il y a un travail dessus ?
+[17:03 - 17:09] Oui, euh on a établi donc on a déjà les les descriptions des des différentes fictions, par exemple hypothèses de groupe.
+[17:10 - 17:13] J'ai travaillé avec des notes dans les de des descriptions qui soient assez
+[17:14 - 17:21] asse exhaustive, assez court aussi, pour que ça ne vienne pas trop prendre de place dans la
+[17:22 - 17:31] the fenêtre the context but the description for children and the phase of the selection and the assignment the slide of section.
+[17:32 - 17:34] En plus d'avoir des règles un peu...
+[17:35 - 17:45] uh surcours de règles or example j'ai une section qui contient la comparaison des um des études entre France and other pays in Europe.
+[17:45 - 17:49] Et on s'était dit que par exemple les graphies qu'il venait d'écrire...
+[17:49 - 18:08] It was via the derse where we compare the result of France versus other people. And we have regards like that.
+[18:08 - 18:26] And if it's another people who France on the phase assignment, she assigned automatically in the dark section, France Venezuelan, plutôt que hypotheses.
+[18:26 - 18:31] Je vais compléter un peu.
+[18:31 - 18:32] That's new.
+[18:33 - 18:40] Donc en fait la partie sélection et assignation, on peut apparenter ça de la catégorisation et donc savoir...
+[18:40 - 18:55] dans quel vraiment chapitre ça doit aller, et les chapitres ont une structure identique. Donc en fait on a comme si on avait deux templates finalement, un template de ce que va contenir chaque chapitre et un template des catégories finalement à assigner.
+[18:56 - 18:59] et pour aller aussi pour
+[19:00 - 19:12] Sur le côté interface, on a cherché quelque chose de très simple, ça a été un POC, c'est vraiment pour démontrer que l'IA peut apporter de la valeur sur la génération de rapport. Et on a fait ça en 25 jours.
+[19:15 - 19:20] Incluant les ateliers en amont, donc c'est vraiment quelque chose qui a été...
+[19:21 - 19:31] réalisé rapidement on a un rex aussi sur ce qui fonctionne les les suites à donner et donc là on est plutôt en
+[19:31 - 19:37] en utilisation pour continuer à rédiger le rapport, l'humain passe derrière évidemment puisque ça reste un POC.
+[19:39 - 19:51] Et on va itérer avec Gérald pour savoir s'il y a des suites ou pas sur cette généralisation de rapport qui pourrait également intéresser Diaz, pas que le côté R et D.
+[19:55 - 19:55] Yeah.
+[19:56 - 19:59] Tu veux peut-être parler de la partie suivante, oui.
+[20:00 - 20:00] Vas-y.
+[20:01 - 20:02] Wish
+[20:03 - 20:17] Um aussi for a judiciante detail sur l'assignation, on plus the um the information on the sur les um the different sections, the description des section on that part
+[20:17 - 20:33] the global where we concentrate on one section at a few, but we have a global to two slides. It's very important and the fact that recuperating the slides that represent
+[20:51 - 20:55] des des figures et des slides et un une bonne assignation aux bonnes sections.
+[20:56 - 21:05] And ensuite l'étape d'après qui est celle de la rédaction. Ici la rédaction feu section par section.
+[21:05 - 21:07] Enfin chacune des sections séparément.
+[21:08 - 21:19] And after the assignment. We section by section. In the time I read the bullet points, I concentrate on the front.
+[21:19 - 21:28] sur la forme. Une fois les bullet points produits, je les reprends pouvoir réduire la prose, donc ajouter des...
+[21:29 - 21:32] créer un texte qui qui soit plus lisible et
+[21:33 - 21:50] and the form of value to separate the font and the form on the red action and facilities also the correction because it's simple to correct the bullet points if you swear to
+[21:50 - 21:52] De corriger le
+[21:53 - 21:54] on text complete.
+[21:55 - 22:02] Donc ici la le fait de rédiger section par section aide également au niveau de la boucle de correction.
+[22:02 - 22:11] After the redaction pass on intégration.
+[22:11 - 22:15] et enlever tout ce qui est redondance et incohérence entre les différentes sections.
+[22:15 - 22:27] Et à la fin j'ai une boucle de correction qui permet d'itérer au niveau des sections. Ici on prend les artefacts bullet points qui sont la sortie de la briquer d'action.
+[22:27 - 22:31] Si on veut corriger par exemple une sélection donnée ici dans le
+[22:43 - 22:51] Concernant la section in question won't envoy an agent key charge of re la section in function the
+[22:52 - 22:53] des commentaires qui ont été émis.
+[22:53 - 22:57] Ça permet d'avoir une boucle de correction un peu minimale.
+[22:58 - 23:00] qu'on a réussi à réaliser en cinq semaines.
+[23:00 - 23:06] qu'on peut pousser par la suite plus loin avec une notion de correction plus globale.
+[23:08 - 23:10] Je ne sais pas si vous avez des questions à ce niveau là.
+[23:12 - 23:18] Moi j'ai une petite question. En fait il y a quand même la contrainte d'avoir un time plate ou fin.
+[23:19 - 23:20] Au début.
+[23:20 - 23:35] Uh admitting that on template, but three or two of presentation, is adapted facility, we integrated an agent.
+[23:35 - 23:39] Qui va faire la sélection des tablettes pour faire la suite ou
+[23:40 - 23:47] Je pense que ça peut s'intégrer assez facilement. Le besoin d'avoir un template ici était plus un besoin métier.
+[23:48 - 23:59] vu que le rapport final doit être structuré, donc c'est un besoin de métier de rédiger des rapports qui soient structurés avec un template assez précis. On pouvait pas vraiment sortir de
+[24:00 - 24:01] de ce cadre là.
+[24:02 - 24:08] Mais l'outil en lui même peut être adapté à une utilisation en sans template.
+[24:08 - 24:16] Si bon au lieu de rédiger plusieurs sections, on rédigerait une seule, mais avec des directives de de ton et de de contenu.
+[24:17 - 24:20] Oui,
+[24:25 - 24:34] Si je reviens, l'hypothèse d'un agent avec différents différents templates pourrait aussi fonctionner en fait.
+[24:35 - 24:49] Je pense que l'outil tel qu'on l'a pensé, en fait, il prend un template, donc on peut le faire tourner plusieurs fois. Mais avoir multiples sorties, c'est soit une petite adaptation, soit finalement un...
+[24:50 - 24:52] un agent qui permettrait de
+[24:52 - 25:01] d'orienter la sélection des chapitres, la signation et le contenu de chaque chapitre. Donc les deux approches peuvent se faire.
+[25:09 - 25:16] Donc d'un point de vue robustesse, même si on était sur sur une mission assez courte et que le but était plus de faire un POC.
+[25:17 - 25:25] for how to do that redaction. It's kind of important to have certain notion of robustness.
+[25:25 - 25:34] I see par exemple le fait de prendre en considération la structure finale and séparer la rédaction en sections nous permet d'avoir une meilleure...
+[25:35 - 25:51] a gestion of error that arrive and the fact that the assignment of slide per section permit have also a certain traceability for an error on section and correct.
+[25:51 - 25:53] assez rapidement c'est en
+[25:54 - 26:03] J'ai je ten j'ai tenu à implémenter des gardefou comme cela pour pouvoir avoir des notions de robustesse même sur ce boc là.
+[26:03 - 26:12] Et donc le fait d'avoir aussi des artefacts à la sortie de chacune des briques permet très facilement de de tracer donc de
+[26:22 - 26:31] Et donc ça m'a énormément aidée également pendant le la réalisation de l'outil et pendant en iterant sur les prantes et en itérant aussi sur l'architecture d'avoir ces...
+[26:31 - 26:36] ces artefacts en intermédiaire là, mais ça permet aussi pour
+[26:55 - 27:01] avoir une validation humaine à chacun des niveaux pour avoir un résultat final qui soit
+[27:20 - 27:25] Et donc au final avec un export de kicks qui est reproductible.
+[27:26 - 27:43] On the Rex, but certain limits that have been mentioned on the mission, but scope but important to guard on that.
+[27:44 - 27:50] chiffrer sur les valeurs qu'on dont on faisait l'extraction à partir des des graphiques.
+[27:51 - 27:56] C'était hors scope, l'idée n'était pas de de faire ça dans cette première itération là.
+[27:56 - 28:07] But it's a change that we have anti hallucination or verifying the interval of confiance the different values that are extraited.
+[28:08 - 28:26] We could not at this point also in this iteration, we have reconstruction brut, we have at this point the Excel, but the scope of my mission to reconstruct the graphics at this brutal.
+[28:26 - 28:42] Et le fait que la correction pour l'instant se fasse au niveau des sections et on a un niveau macro, donc on peut pas imposer un ton global sur tour le rapport or donner un commentaire global tour. It's just a commentaire on niveau des sections for l'instant, but it's implementing également.
+[28:44 - 28:51] Donc voilà pour ce premier projet, enfin pour ce projet qui a été fait avec RTE et l'équipe EOD.
+[28:53 - 29:02] I say we have any questions at this niveau line. Sinon I pass a la presentation des de quelques other projects the presentation un peu macro de project sur lesquels j'ai travaillé.
+[29:04 - 29:13] J euh juste peut-être désolé pour le rappel, donc la durée c'était euh j'ai compris pas c'était quelques mois, si ça c'était de entre septembre et
+[29:13 - 29:16] Il n'y a pas longtemps, un peu, c'est tout ça. C'est vingt cinq semaines. Cinq semaines.
+[29:17 - 29:26] Ah oui, vingt jours, c'est ce que tu disais vingt cinq jours. Pardon, j'avais retenu sept ans.
+[29:27 - 29:28] Okay, that's.
+[29:31 - 29:36] Après oui, effectivement, sur les questions donc euh...
+[29:36 - 29:45] Donc là effectivement on est peut-être c'est d'autres cas d'usage qui aussi peuvent nous intéresser, c'est plus la partie effectivement
+[29:46 - 29:47] Un peu synthèse générative.
+[29:47 - 29:54] Donc ça c'est vrai que nous on peut avoir aussi des cas d'usage là-dessus, à savoir la capacité de
+[29:58 - 30:00] Euh voilà, prendre des sources de données hétérogènes.
+[30:01 - 30:06] etc, peut-être pour les aider à synthé des choses, des rapports d'événements par exemple, ce genre de choses.
+[30:07 - 30:13] Il y a toujours cette question de synthèse, c'est un peu dans les deux sens, il y a le tout à l'heure je parlais de trans entrant
+[30:14 - 30:16] Uh donc le le
+[30:17 - 30:40] And sort of that question of synthesis of events, synthesis of donation. So I'm thinking that you'll have and my question on the song, to keep MCP, is the object of this trao.
+[30:40 - 30:41] That was it, too.
+[30:42 - 30:43] L'occasion de
+[30:43 - 30:49] De travailler donc plus dans un dans une optique un petit peu orchestration, quoi, avec plusieurs plusieurs briques.
+[30:50 - 30:56] Uh ici je peux peut-être aller sur l'autre projet qu'on a fait en antenne.
+[30:57 - 31:02] Donc le premier projet c'est un outil de rédaction à eau.
+[31:02 - 31:13] the coup on fait de l'orchestration mais on est plus sur N8N but sur du MCB on a de plusieurs agents qui sont basés sur des rugs qui
+[31:14 - 31:16] qui sont spécialisés donc soit dans
+[31:17 - 31:18] Agent C V.
+[31:19 - 31:22] Enfin l'objectif final c'est de d'assister
+[31:22 - 31:27] à les collaborateurs dans la rédaction de réponse aux appels d'offres.
+[31:27 - 31:32] On a développé plusieurs modèles qui sont des modèles au final des ânes des agents également, donc des raques.
+[31:33 - 31:38] On a un rat qui est fait sur les CV interne yellé, un rat qui est fait sur les références.
+[31:39 - 31:48] And also I'm an out of
+[31:49 - 31:52] modulaire où on peut faire appel à chacun de ces outils là.
+[31:53 - 31:57] Uh si on veut récupérer par exemple enfin ou mettre en entrée un une réponse
+[31:57 - 32:04] un appel d'offres et demander à l'outil de nous générer enfin de nous donner la liste de CV
+[32:05 - 32:11] des CV intéressants pour cette appel d'offres là, la liste de références qui pourraient être intéressants pour cette
+[32:12 - 32:15] C'est à eau ou de rédiger le contexte et la méthode.
+[32:16 - 32:24] Donc ici on est sur du N8N avec plusieurs outils qui peuvent être questionnés avec une orchestration N8N.
+[32:25 - 32:35] Ensuite, on a également un autre projet, enfin c'est un projet sur lequel je suis en train de travailler actuellement, qui est un outil de génération de résumé de réunion.
+[32:36 - 32:38] Ou je... Donc là j'en suis...
+[32:39 - 32:46] debut de l'implémentation de l'outil. Lobjectif final is to pouvoir
+[32:46 - 32:48] A partir donc de
+[32:48 - 33:13] For instance, where I'm with an MCP put appear to be developed on internally, or these API. For instance, I'm not developing on intern.
+[33:13 - 33:17] des notes de de réunion et générer en
+[33:17 - 33:42] synthesis or an out of permit to export the not the synthesis that are generated. Once the idea is to augment our list of outside orchestration by an MCP, not only on a possibility of enregistrement vocal reunion or
+[33:43 - 33:51] ou une possibilité de créer de générer des mind de map, par exemple. On fait ça avec l'interface LLM qui servirait de
+[33:51 - 33:52] Yeah.
+[33:53 - 34:09] et qui va servir de client avec un accès global aux outils qu'on est en train de construire petit à petit toujours autour de ce cas d'usage là qui est de d'augmenter les consultants et d'automatiser la génération de synthèse et
+[34:09 - 34:13] de la compréhension de manière générale des réunions qu'on vit.
+[34:14 - 34:15] Okay.
+[34:16 - 34:23] Pardon, uh du coup ça c'est un travail que vous faites pour entre guillemets gagner en souveraineté par rapport à l'opposition de
+[34:23 - 34:36] Uh là par exemple ça fait penser à notre boucalem typiquement uh marché c'est pour gagner en souveraineté on va dire au sein de au sein de Lé sur le sur des notions de confidentiality
+[34:37 - 34:46] Garner en précision aussi parce que à terme on voudrait avoir le LMR directement sur des données open data.
+[34:46 - 34:56] énergie donc avoir un agent qui sont vraiment spécialisés dans nos sujets à nous et qui puissent générer des synthèses et même augmenter les synthèses et faire des propositions
+[34:57 - 34:58] Complet.
+[34:59 - 35:00] Et mieux adapté à notre contexte.
+[35:01 - 35:23] C'est aussi pour cloisonner, c'est-à-dire que si on utilise cet outil, par exemple, au sein de RTE, c'est pour que ça reste côté RTE et que ce ne soit pas finalement côté Yellé. Donc il y a tout cet aspect aussi où on cherche à avoir une souveraineté qui soit liée à l'outil et à l'environnement dans lequel l'outil est utilisé.
+[35:28 - 35:45] Now for the mission orchestration of Yene on the card usage l. Sinon on another project that's in court again, which is an agent de planification of book, and
+[35:45 - 35:54] On n'est pas sur de l'orchestration parce que c'est autant l'accès au T qui va faire de la web search pour récupérer de la bibliographie.
+[35:55 - 35:58] à partir d'un sujet donné et de proposer des
+[35:59 - 36:06] une roadmap pour mettre en place un projet donné se fait automatiquement. Pour l'instant on n'a pas encore implémenté de MCP.
+[36:06 - 36:10] Mais à terme l'idée ce serait d'avoir un agent qui peut
+[36:10 - 36:14] ou on peut utiliser plusieurs outils, donc dans un premier temps.
+[36:14 - 36:23] faire de la de la bibliographie grâce à cet outil là mais aussi avoir accès à plusieurs outils de simulation.
+[36:24 - 36:45] for the we can travel. The idea is to have a pipeline a little on end to end which proposes a minimal to a day. We have a hackathon, for example in the ED, so we're getting a little bit on this
+[36:45 - 36:46] de ce sujet là.
+[36:49 - 37:01] Donc là c'est aussi une aide pour avoir un côté démonstrateur, donc en allant cherchant à chercher assez rapidement tout ce qui est état de l'art, comprendre finalement.
+[37:02 - 37:09] comment des problématiques peuvent être résolues en étant up to date sur la partie recherche et développement.
+[37:10 - 37:16] en en se basant sur du Archiv X par exemple ou d'autres types de sources
+[37:16 - 37:19] qui permettent d'avoir ces ces nouvelles tendances.
+[37:19 - 37:32] et potentiellement d'arriver à en faire un POC, c'est-à-dire que les agents codent et puissent avoir un effet même Quick and Dirty, mais apporter cette démonstration.
+[37:32 - 37:36] Et ensuite, évidemment, c'est de faire l'ingénierie logicielle qui va derrière.
+[37:42 - 37:42] Okay.
+[37:43 - 37:44] Yeah.
+[37:47 - 37:52] Est-ce que vous avez des questions par rapport à ça ? Ou Maya, je crois que tu avais encore...
+[37:52 - 37:53] Une ou deux.
+[37:54 - 37:56] Un ou deux projets à présenter.
+[37:58 - 38:03] Il me restait un projet. Je n'ai pas mis tous les projets sur lesquels j'ai travaillé, mais il me restait.
+[38:04 - 38:11] Un projet sur lequel j'avais travaillé pour le coup avant de rejoindre Yélé, mais qui est toujours sur de...
+[38:11 - 38:15] de bien générative donc j'ai ajouté ce projet là parce que
+[38:16 - 38:18] Uh pour le coup c'est un
+[38:18 - 38:22] C'est un projet qui était hébergé donc en en crème.
+[38:22 - 38:29] et où j'ai travaillé sur le l'objectif du projet était de pouvoir extraire des informations à partir de
+[38:30 - 38:34] de documents scannés administr de documents administratifs scannés.
+[38:35 - 38:46] And there's an out of VLLM that
+[38:47 - 38:52] Ah nous dire si enfin estimé nous un pourcentage de conformité du document.
+[38:53 - 39:13] The idea is for example to extract the salary and the person and regard to all the documents on the which we have traveled.
+[39:14 - 39:24] And uh part of pre-traitement of documents a as prenant, but the part
+[39:25 - 39:30] également la partie donc apprentissage et fine tuning du modèle
+[39:30 - 39:36] uh visual you visual language modeling the Quen two point five VL.
+[39:37 - 39:48] and récupérant the sort of structural information that we extract.
+[39:48 - 39:52] le déploiement du modèle avec VLLM et UV Corn.
+[39:52 - 40:05] et sur un dashboard donc qui permettait de monitorer toute cette chaîne de traitement là et les résultats qu'on obtenait en prod pouvoir détecter des drift par exemple en performance.
+[40:06 - 40:14] C'est un projet que j'ai cité parce qu'ils sont un peu du lot de ce qu'on a cité des projets que je j'ai cité avant.
+[40:14 - 40:19] parce que ici c'est un modèle qui est qui est hébergé en local.
+[40:19 - 40:31] And fine tuning, for the project that's necessary to fine tuning, sur lequel on the intervenir chez
+[40:34 - 40:37] Et si enfin le fine tuning c'était par rapport à
+[40:38 - 40:44] à la qualité des données en entrée, mais aussi parce que les documents étaient souvent rédigés en arabe, donc ça
+[40:45 - 40:48] Le find est assez adéquate pour ce cas d'usage là.
+[40:56 - 40:58] Vous avez des questions.
+[41:00 - 41:04] Uh oui pardon. Um scan c'est
+[41:05 - 41:10] Tu l'as peut-être dit, vous l'avez peut-être déjà dit, pardon, c'est c'était manuscrit ou pas les entrées ?
+[41:11 - 41:15] Il pouvait avoir des documents manuscrits, oui.
+[41:16 - 41:19] D'accord.
+[41:19 - 41:23] Enfin on a j'avais un agent qui faisait d'abord la classification.
+[41:23 - 41:32] on manuscript or non manuscript, and an agent who had the classification on the type of documents.
+[41:32 - 41:38] Et on avait certains cas où enfin on avait des des modèles qui étaient failli journée spécialement pour ces gars là.
+[41:39 - 41:41] D'autres cas où on coin.
+[41:41 - 41:43] Two point five uh file.
+[41:43 - 41:44] Um
+[41:44 - 41:46] et non faire une journée était suffisante.
+[41:47 - 41:49] Mais on avait les donc les deux possibilités.
+[42:00 - 42:10] Est-ce que ça vous inspire certaines choses par rapport à des cas d'usage ? Donc peut-être que le texte est pas trop votre sujet à part pour les rapports côté.
+[42:11 - 42:15] Euh côté actif peut-être.
+[42:15 - 42:17] ou les synthèses à générer.
+[42:18 - 42:20] que ça vous inspire quelque chose
+[42:21 - 42:26] que vous vouliez partager des cas d'usage qu'on pourrait peut-être essayer de réfléchir et...
+[42:27 - 42:31] et de rebondir sur notre vision pour vous la partager.
+[42:36 - 42:40] Um Al effectivement
+[42:41 - 42:59] Après là au script on est peut-être plus effectivement sur uh the shows uh as oriented um parler un peu la partie orchestration etc parce que
+[43:00 - 43:05] Nous qui peut nous intéresser, ça peut être de travailler peut être plus sur la partie MCP en tant que telle.
+[43:06 - 43:07] Um
+[43:07 - 43:19] Là c'est les travaux assez orientés NLP, alors encore une fois c'est pas le premier truc auquel j'avais pensé par Pro M Cp, mais c'est aussi des cas d'usage qu'on a, comme je disais, le fait de pouvoir synthétiser les choses ou le fait de
+[43:19 - 43:22] Je te synthétiser des sources de données
+[43:23 - 43:24] Assez disparate ou
+[43:25 - 43:27] Des blocs d'alarme, des
+[43:27 - 43:29] And then
+[43:29 - 43:43] There are information as fragments, and synthesis, but that's corresponding to what I feel.
+[43:44 - 43:48] Il y a déjà des travaux en cours là dessus, donc mais peut-être dans un
+[43:48 - 43:49] Dans un temps un peu.
+[44:03 - 44:08] Potentialité pour les notes manuscrits de dispatcher en fait.
+[44:16 - 44:24] Là de ce que je vois, c'est vrai que ça m'évoque plus un travail assez focalisé à N LP, encore une fois c'est aussi des choses qu'on a, peut-être moins MCP, voilà, c'est un petit retour comme ça à chaud.
+[44:25 - 44:29] Euh parce qu'après encore une fois que sur le NCP on
+[44:29 - 44:42] Uh yeah Like the question of server MCP in the capacity final to say we have these out of complex, comment arrive to
+[44:43 - 44:45] uh cette interaction à l'élève.
+[44:45 - 44:48] Euh. Voilà, c'est un premier retour à chaud, donc euh...
+[44:49 - 44:55] Moi je vois des des connexions avec certains cas d'usage qu'on a, uh peut-être moins sur la MCP, mais
+[44:56 - 44:57] Comme ça show.
+[44:57 - 44:58] So I still
+[44:59 - 45:00] That's not.
+[45:02 - 45:08] Mais le vous rejoint aussi sur le MCP, ça fait également partie de votre feuille de route en termes de
+[45:09 - 45:16] Justement d d'avoir des serveurs MCP ou on peut directement se brancher sur des outils de simulation. Justement le l'idée de
+[45:17 - 45:22] de du poc de l'outil qui puisse faire du un un poc euh end to end.
+[45:23 - 45:27] L'idée n'est pas uniquement d'avoir une proposition de
+[45:28 - 45:33] d'un plan de travail, mais plutôt d'appliquer par la suite le plan de travail, donc de prendre...
+[45:33 - 45:44] le plan de travail qui est généré par le premier agent comme des directives et d'aller chercher dans via MCP dans les outils en internes qu'on a ou les outils qui de simulation qui existent.
+[45:45 - 45:49] de récupérer le bon outil et de faire la simulation avec les données qui ont été proposées par le premier agent.
+[45:50 - 45:53] Donc c'est complètement dans notre famille de route également.
+[45:54 - 45:56] Oui,
+[45:57 - 45:57] Mm-hmm.
+[45:59 - 46:07] Oui non mais je je réagis effectivement plus sur le là dans l'immédiat encore une fois la chose sur le travaux que je voyais après oui je
+[46:08 - 46:10] Vous avez ça dans votre
+[46:11 - 46:17] C'est aussi une chose qu'on avait évoquée avec Gérald, puisque sur la partie...
+[46:18 - 46:40] rentabilité des moyens de production en fait, on a eu un scope qui a été ciblé sur les moyens de production, mais finalement on a une matrice en attente avec un certain nombre d'études à dérouler, et donc l'idée c'était aussi d'avoir finalement ce MCP qui puisse préparer toutes les simulations, les orchestrer et brancher derrière l'outil de génération de rapports.
+[46:41 - 47:10] and having en tête that potentially intéresser Diaz, y'all côté final pré-rapport, de toute façon it's so revue, ça pass devant des committees, but that part amont preparing the scenarios, the études, to lancers, to make a checkpoint on is the équilibrée.
+[47:10 - 47:17] d'avoir un contrôle humain pour dire ce qu'il faut modifier, voire potentiellement un agent qui arrive à le modifier.
+[47:18 - 47:21] et de continuer finalement à aider cette partie
+[47:22 - 47:25] lancement des simulations de end to end.
+[47:25 - 47:39] et que l'humain puisse derrière avoir la valeur ajoutée, l'étude, on sait qu'elle est robuste, on a l'étude de sensibilité qui a été faite, on a les sorties d'analyse, on a les premiers résultats, on a finalement un pré-rapport.
+[47:39 - 47:45] on n'a plus qu'à travailler et donner la bonne direction pour finalement le BP ou le futur énergétique.
+[47:48 - 48:05] Oui, bah effectivement, oui, uh cette orchestration de d'études. Alors, évidemment le contexte n'est pas le document, donc il y a des...
+[48:06 - 48:12] savoir naviguer entre des hypothèses, etc. Parce que c'est la problématique qu'on peut avoir souvent en réel.
+[48:13 - 48:18] Euh récupérer des hypothèses un petit peu à droite à gauche Euh parce que bah c'est euh...
+[48:19 - 48:22] Déjà récupérer les données d'entrée de l'étude.
+[48:22 - 48:26] consommation, production, programmation, machine et change.
+[48:27 - 48:32] sur chacune de ces choses là, des stratégies un petit peu de d'hypothèses, de scénario.
+[48:33 - 48:36] Et puis bah derrière, venir un jongler entre...
+[48:36 - 48:38] Un simulateur
+[48:39 - 48:48] an out of visualization, well, the things. So a little we've looked for these changes different, but
+[48:49 - 48:51] Yeah, so it's also pressed out.
+[48:54 - 48:57] Euh... Ok, enfin en tout cas moi je je...
+[48:58 - 49:12] J'ai une vision, donc c'est vrai que sur le plus parler de la partie la partie NPB on the fois qui est aussi intéressant for me and the future MCP.
+[49:13 - 49:16] J'ai une bonne bonne vision et puis bah voilà en plus.
+[49:17 - 49:17] You want
+[49:19 - 49:26] J'avais travaillé avec Gérald qui qui pas très loin de nos bureaux. Voilà, donc...
+[49:29 - 49:32] Voilà, pour moi c'est bon, j'avais à peu près.
+[49:33 - 49:34] On sait mes questions éventuelles.
+[49:35 - 49:46] Très bien. Est-ce que vous voulez qu'on fasse une petite réflexion sur un cas d'usage un peu plus orienté, sur par exemple...
+[49:46 - 49:49] Euh le MCP euh votre
+[49:50 - 49:59] Si vous présentez finalement le cas d'usage dans lequel vous voulez intégrer un MCP, on pourrait peut-être y réfléchir de notre côté et présenter notre vision.
+[50:00 - 50:06] potentiellement avoir un second échange ou est-ce que finalement vous préférez que
+[50:06 - 50:08] on se reface à un point
+[50:09 - 50:15] sur nos avancées sur nos travaux et qu'on vous représente ce que l'on peut faire côté MCP.
+[50:17 - 50:22] Um Al plusieurs possibilités.
+[50:23 - 50:28] On réfléchira comme je dis donc le MCP, mais il y en a d'autres aussi donc à voir.
+[50:29 - 50:30] Um
+[50:33 - 50:35] Alors je réfléchis un peu tôt, mais
+[50:36 - 50:43] Moi je pense que nous on peut quand je disais on n'a pas là comme ça d'idée de besoins encore clair.
+[50:45 - 50:57] Donc uh peut-être au regard de ce qu'on a vu aujourd'hui, ou qu'on simplement qu'on regarde et qu'on tienne tout simplement informé si jamais chose de plus précis dégage que ce soit
+[50:57 - 51:11] MCP ou plus CNP, voilà. Après sur la sur l'avancée de vos travaux, it's interesting about a focus MCP. Même si là pour être transparent sur le MCP on va...
+[51:11 - 51:12] Yeah.
+[51:26 - 51:39] Well, attention to the problem, we're going to simply versus if you a plus précis, for eviting on discute, but it's not fortable not plus, since uh
+[51:40 - 51:42] De quoi concrétiser bon autant qu'on.
+[51:43 - 51:46] En attendant. Moi j'attends ça.
+[51:46 - 51:47] à partir là-dessus.
+[51:48 - 51:48] Yeah.
+[51:49 - 51:50] Que well.
+[51:51 - 51:54] Nou contact on.
+[51:54 - 51:55] On revient vers vous.
+[51:56 - 51:59] Que voilà, ce qui a été présenté, ça rentre ça pourrait rentrer au
+[51:59 - 52:02] Après avoir
+[52:02 - 52:04] Dans l'agenda et dans le
+[52:04 - 52:08] dans l'ordonnancement et tout ça des projets qu'on mène.
+[52:09 - 52:11] Parce que si pour faire avancer tous ces projets-là.
+[52:12 - 52:37] If we men switch dispo, we'll travel with the operators also, but that's a particularity, so we have a few trembling on the fact that the operators are in quantity finished, I'm not their time and disposition to court, but we're not troops on the shows, if uh solicit en tant que partenaire extra. Well, the context.
+[52:38 - 52:45] Alors j'inform aussi à vous donner je pense que c'est peut-être intéressant.
+[52:46 - 52:51] Nous, côté Yélé, on travaille aussi avec de l'UI UX Design.
+[52:52 - 52:55] Et donc on est en contact avec euh...
+[52:55 - 53:03] certains cabinets et on a discuté avec Olivier Mazeroll pour justement mettre un petit peu ce type de
+[53:04 - 53:10] nouvelle UX, nouvelle UI pour la Control Room du futur. Donc ça peut être aussi des choses...
+[53:10 - 53:13] qu'on pourrait envisager
+[53:13 - 53:30] Well, it's simply an information. And deuxièmement, plutôt une proposition, si vous voulez, peut-être qu'on fasse un atelier purement design, where on pourrait réfléchir à des cas d'usage, les prioriser, etc. It's also...
+[53:30 - 53:32] qui nous ferait plaisir.
+[53:33 - 53:39] pourrait peut-être aboutir sur vous une vision, nous un partage et après on verra.
+[53:42 - 53:44] Um
+[53:44 - 53:47] Ok, ben je je note le point.
+[53:48 - 53:49] But for
+[53:50 - 53:58] Là comme ça je peux pas vous dire je peux pas vous dire oui je comprends l'intérêt du point de la
+[53:59 - 54:10] Wait, d'accord, that's we're interesting we had discussed the part of the Olivier. Uh well, he had party.
+[54:11 - 54:15] aussi bien voire mieux que moi. Très bien, très bien, c'est bien en tout cas.
+[54:17 - 54:18] Eh bien...
+[54:18 - 54:21] Merci beaucoup, à moins que d'autres personnes veillent.
+[54:23 - 54:24] aussi s'exprimer ou
+[54:26 - 54:27] No.
+[54:28 - 54:29] Très bien, merci beaucoup.
+[54:31 - 54:32] Très bonne après-midi.
+[54:32 - 54:35] Au.

@@ -1,0 +1,11 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien.
+
+Extrait :
+[SPEAKER_01]: fait Donc
+[SPEAKER_02]: c’est du coup ça c’est un travail que vous faites pour entre guillemets gagner en souveraineté par rapport à l’association de l’apparence ça fait penser à notre bouquet typiquement ou d’autres marché c’est pour gagner en souveraineté on va dire au sein des sureau
+[SPEAKER_01]: pour gagner des notions de confidentialité et gagner peut-être en précision aussi parce qu’àterme on voudrait peut-être avoir le LNM qui soit en rac directement sur des donnéesopen data énergie donc avoir unagent qui soit vraiment spécialisé dans nos sujets à nous et qui puisse générer des
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"— si absent", "echeance":"— si absente"}]}

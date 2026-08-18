@@ -1,0 +1,28 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis. Choisis le TYPE de réunion le plus précis d'après la nature GLOBALE des échanges (pas un mot-clé isolé) ; les exemples fournis servent d'inspiration, tu n'es PAS obligé de t'y limiter.
+
+Participants (vérité) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+
+Résumés des passages :
+- Matthieu DUSSARTRE et Maya SAHRAOUI se présentent lors d'un tour de table. Matthieu DUSSARTRE est expert Data & IA Manager chez Yele Consulting, travaillant sur des projets d'IA générative, d'équilibre offre-demande et de rentabilité des moyens de base. Maya SAHRAOUI est consultante confirmée chez Yele Consulting, spécialisée en IA générative et docteure en traitement automatique des langues, avec une expérience chez RTE.
+- Bruno LEMETAYER (RTE) présente son rôle dans la feuille de route Smart Cockpit et les assistants interactifs pour les opérateurs. Matthieu DUSSARTRE (RTE) évoque son expérience de 10 ans sur les assistants et les modèles d'IA générative (LLM, MCP). La réunion vise à identifier les besoins et attentes en IA générative pour potentiellement collaborer. Bruno LEMETAYER mentionne l'intérêt de RTE pour les interfaces conversationnelles via MCP.
+- Maya SAHRAOUI présente un projet réalisé chez RTE pour automatiser la génération de rapports à partir de fichiers PPT, en utilisant des pipelines d'agents IA pour extraire, classifier et rédiger des sections structurées. Le processus inclut une boucle de correction pour itérer sur les résultats. Bruno LEMETAYER et Matthieu DUSSARTRE échangent sur la structure des rapports et les règles d'assignation des slides. Le projet est présenté comme un POC réalisé en 25 jours avec un REX pour évaluer les suites possibles.
+- La réunion a porté sur l'adaptation d'un outil de génération de rapports structurés pour RTE, initialement conçu avec des templates, en une version flexible sans templates. Maya SAHRAOUI a présenté les garde-fous implémentés pour assurer la robustesse et la traçabilité des rapports générés. Bruno LEMETAYER a évoqué des cas d'usage similaires pour la synthèse de données ou d'événements. Maya SAHRAOUI a également partagé des projets internes utilisant des orchestrations multi-agents (N8N) et des outils interactifs (MCP) pour automatiser des tâches comme la rédaction d'appels d'offres ou la synthèse de réunions.
+- Maya SAHRAOUI a présenté plusieurs projets d'agents IA spécialisés pour RTE, notamment un agent d'orchestration pour des données open data énergie et un agent de planification de POC avec accès à des outils de simulation. Matthieu DUSSARTRE a souligné l'importance de la souveraineté et du cloisonnement des outils au sein de RTE. Maya a également évoqué un projet antérieur de détection de fraude sur des documents administratifs scannés, incluant un modèle VLM hébergé en local et un dashboard de monitoring.
+- Les participants ont échangé sur des cas d’usage liés à l’orchestration d’études et à l’intégration de serveurs MCP pour automatiser des simulations et générer des pré-rapports. Bruno LEMETAYER a évoqué l’intérêt pour des travaux en NLP, notamment sur la synthèse de données disparates et la gestion de documents manuscrits. Maya SAHRAOUI a confirmé que l’intégration de serveurs MCP dans leur feuille de route permettrait de brancher des outils de simulation internes. Matthieu DUSSARTRE a souligné l’importance de préparer et orchestrer des scénarios pour des études énergétiques avant validation humaine.
+- Bruno LEMETAYER et Matthieu DUSSARTRE échangent sur l'opportunité de travailler sur un cas d'usage MCP ou NLP, mais Bruno souligne l'absence de besoins clairs pour l'instant. Matthieu propose un atelier design pour prioriser des cas d'usage. Bruno note l'intérêt de cette proposition mais ne s'engage pas immédiatement.
+
+Pour le TYPE, voici des EXEMPLES pour t'inspirer (liste NON imposée, tu peux
+en choisir un autre s'il est plus juste) :
+prise de contact, avant-vente, réunion client, revue projet, point d'avancement,
+brainstorm, atelier de travail, comité de pilotage, kick-off, démo, formation.
+
+Classe d'après la nature DOMINANTE et l'intention réelle de la réunion, pas d'après
+un mot isolé ni un sujet simplement évoqué en passant : distingue ce qui se passe
+VRAIMENT en séance (présenter, décider, co-construire, suivre, démontrer...) de ce
+qui n'est que mentionné pour plus tard.
+
+Produis :
+{"type": "un seul type de réunion, le plus précis (inspiré des exemples ou autre)",
+  "type_justification": "1 phrase citant les indices concrets du sommaire",
+  "objectif": "1-2 phrases : le BUT de la réunion (distinct du type)",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}

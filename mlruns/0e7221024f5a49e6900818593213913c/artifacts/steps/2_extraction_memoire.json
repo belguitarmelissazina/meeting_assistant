@@ -1,0 +1,59 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table des participants pour pr\u00e9senter leurs r\u00f4les et expertises en IA g\u00e9n\u00e9rative. Maya (Ely Consulting) d\u00e9taille un projet d'automatisation de r\u00e9daction de rapports pour RTE via une pipeline IA. Bruno (RTE) exprime un besoin de synth\u00e8se g\u00e9n\u00e9rative pour des donn\u00e9es h\u00e9t\u00e9rog\u00e8nes et des assistants conversationnels (MCP). Discussion sur l'adaptabilit\u00e9 des solutions propos\u00e9es \u00e0 diff\u00e9rents templates de rapports.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Prendre contact avec Maya pour \u00e9changer sur les d\u00e9tails techniques du projet RTE et \u00e9valuer une possible collaboration ou adaptation pour d'autres besoins.",
+        "responsable": "SPEAKER_00",
+        "echeance": null
+      },
+      {
+        "action": "Documenter les cas d'usage identifi\u00e9s par Bruno (synth\u00e8se de rapports, assistants conversationnels) pour une analyse ult\u00e9rieure par l'\u00e9quipe Ely Consulting.",
+        "responsable": "SPEAKER_00",
+        "echeance": null
+      },
+      {
+        "action": "\u00c9tudier la faisabilit\u00e9 d'int\u00e9grer un agent de s\u00e9lection de templates dans la solution existante pour r\u00e9pondre \u00e0 des besoins sans structure de rapport pr\u00e9d\u00e9finie.",
+        "responsable": "Maya",
+        "echeance": null
+      }
+    ]
+  },
+  {
+    "chunk_id": 1,
+    "resume": "Les \u00e9changes portent sur l'am\u00e9lioration des synth\u00e8ses et propositions pour mieux s'adapter au contexte. La souverainet\u00e9 des outils et leur cloisonnement au sein de RTE est soulign\u00e9e. Plusieurs projets sont \u00e9voqu\u00e9s : un agent de planification pour des cas d'usage d'orchestration, et un agent pour g\u00e9n\u00e9rer de la bibliographie et des roadmaps automatiquement. L'objectif est de proposer une pipeline rapide pour des POCs, notamment via des hackathons.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La r\u00e9union a abord\u00e9 deux projets principaux : un d\u00e9monstrateur bas\u00e9 sur l'\u00e9tat de l'art pour r\u00e9soudre des probl\u00e9matiques via R&D (ex. DURKEVX) et un projet de d\u00e9tection de fraude sur documents administratifs scann\u00e9s (manuscrits ou non) utilisant un outil VLM pour extraire des informations et \u00e9valuer la conformit\u00e9. Le projet inclut du fine-tuning de mod\u00e8les, du contr\u00f4le d'anomalie, du d\u00e9ploiement et un dashboard de monitoring. La qualit\u00e9 des donn\u00e9es et la gestion de documents en arabe ont \u00e9t\u00e9 soulign\u00e9es comme des d\u00e9fis cl\u00e9s.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 3,
+    "resume": "Les participants ont \u00e9chang\u00e9 sur des cas d\u2019usage potentiels pour des outils d\u2019orchestration et de synth\u00e8se, notamment autour des serveurs MCP et du NLP. Les discussions ont port\u00e9 sur l\u2019automatisation des simulations, la pr\u00e9paration de rapports et l\u2019int\u00e9gration d\u2019outils internes. Une convergence a \u00e9t\u00e9 observ\u00e9e sur l\u2019int\u00e9r\u00eat d\u2019un MCP pour orchestrer des \u00e9tudes et pr\u00e9parer des sc\u00e9narios.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 4,
+    "resume": "La r\u00e9union a abord\u00e9 des questions et \u00e9changes sur des cas d'usage li\u00e9s au MCP et au NLP. Une proposition d'atelier design pour prioriser des cas d'usage a \u00e9t\u00e9 \u00e9voqu\u00e9e. Aucune d\u00e9cision concr\u00e8te n'a \u00e9t\u00e9 act\u00e9e, mais des pistes de r\u00e9flexion et de collaboration futures ont \u00e9t\u00e9 esquiss\u00e9es.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Prendre contact avec les interlocuteurs pour informer d'\u00e9ventuels besoins pr\u00e9cis li\u00e9s au MCP ou au NLP",
+        "responsable": "SPEAKER_02",
+        "echeance": "non d\u00e9finie"
+      },
+      {
+        "action": "\u00c9valuer la faisabilit\u00e9 et l'int\u00e9r\u00eat d'un atelier design pour prioriser des cas d'usage",
+        "responsable": "SPEAKER_00",
+        "echeance": "non d\u00e9finie"
+      }
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "sections": [
+    {
+      "titre": "Cas d'usage concrets en IA g\u00e9n\u00e9rative et MCP",
+      "chunk_ids": [
+        0,
+        1,
+        2
+      ],
+      "brief": "Couvre les projets et cas d'usage discut\u00e9s autour de l'IA g\u00e9n\u00e9rative (ex : assistants conversationnels, synth\u00e8se de donn\u00e9es, automatisation de rapports) et du MCP (ex : orchestration d'outils, simulations, optimisation d'\u00e9tudes). Inclut des exemples sp\u00e9cifiques comme l'outil d'orchestration souverain pour RTE, l'agent de planification automatis\u00e9, et l'extraction d'informations \u00e0 partir de documents administratifs. NE PAS inclure les \u00e9changes sur les besoins non pr\u00e9cis\u00e9s de SPEAKER_02 ou les d\u00e9cisions futures non act\u00e9es (couvert dans 'Collaboration et prochaines \u00e9tapes')."
+    },
+    {
+      "titre": "D\u00e9fis techniques et souverainet\u00e9 des donn\u00e9es",
+      "chunk_ids": [
+        0,
+        1
+      ],
+      "brief": "Couvre les enjeux techniques abord\u00e9s, tels que le fine-tuning de mod\u00e8les VLM, le d\u00e9ploiement local avec monitoring, et la garantie de la souverainet\u00e9 des donn\u00e9es (ex : outil d'orchestration interne pour RTE). NE PAS inclure les aspects li\u00e9s \u00e0 l'int\u00e9gration d'outils existants ou aux sc\u00e9narios d'analyse future (couvert dans 'Int\u00e9gration et perspectives technologiques')."
+    },
+    {
+      "titre": "Int\u00e9gration et perspectives technologiques",
+      "chunk_ids": [
+        2
+      ],
+      "brief": "Couvre l'int\u00e9gration d'outils existants (NLP, MCP) et la pr\u00e9paration de sc\u00e9narios pour des analyses futures, comme l'automatisation de simulations ou la g\u00e9n\u00e9ration de rapports. NE PAS inclure les projets sp\u00e9cifiques d\u00e9j\u00e0 d\u00e9taill\u00e9s (ex : extraction de documents, orchestration) ou les d\u00e9fis techniques (couvert ailleurs)."
+    },
+    {
+      "titre": "Collaboration et prochaines \u00e9tapes",
+      "chunk_ids": [
+        3
+      ],
+      "brief": "Couvre les discussions sur les pistes de collaboration future, les propositions d'ateliers (ex : design pour prioriser les cas d'usage), et les \u00e9changes sur les besoins non pr\u00e9cis\u00e9s (ex : position de SPEAKER_02). NE PAS inclure les cas d'usage concrets ou les projets en cours d\u00e9j\u00e0 d\u00e9taill\u00e9s (couvert dans 'Cas d'usage concrets en IA g\u00e9n\u00e9rative et MCP')."
+    }
+  ],
+  "raw": "{\n  \"sections\": [\n    {\n      \"titre\": \"Cas d'usage concrets en IA g\u00e9n\u00e9rative et MCP\",\n      \"chunk_ids\": [0, 1, 2],\n      \"brief\": \"Couvre les projets et cas d'usage discut\u00e9s autour de l'IA g\u00e9n\u00e9rative (ex : assistants conversationnels, synth\u00e8se de donn\u00e9es, automatisation de rapports) et du MCP (ex : orchestration d'outils, simulations, optimisation d'\u00e9tudes). Inclut des exemples sp\u00e9cifiques comme l'outil d'orchestration souverain pour RTE, l'agent de planification automatis\u00e9, et l'extraction d'informations \u00e0 partir de documents administratifs. NE PAS inclure les \u00e9changes sur les besoins non pr\u00e9cis\u00e9s de SPEAKER_02 ou les d\u00e9cisions futures non act\u00e9es (couvert dans 'Collaboration et prochaines \u00e9tapes').\"\n    },\n    {\n      \"titre\": \"D\u00e9fis techniques et souverainet\u00e9 des donn\u00e9es\",\n      \"chunk_ids\": [0, 1],\n      \"brief\": \"Couvre les enjeux techniques abord\u00e9s, tels que le fine-tuning de mod\u00e8les VLM, le d\u00e9ploiement local avec monitoring, et la garantie de la souverainet\u00e9 des donn\u00e9es (ex : outil d'orchestration interne pour RTE). NE PAS inclure les aspects li\u00e9s \u00e0 l'int\u00e9gration d'outils existants ou aux sc\u00e9narios d'analyse future (couvert dans 'Int\u00e9gration et perspectives technologiques').\"\n    },\n    {\n      \"titre\": \"Int\u00e9gration et perspectives technologiques\",\n      \"chunk_ids\": [2],\n      \"brief\": \"Couvre l'int\u00e9gration d'outils existants (NLP, MCP) et la pr\u00e9paration de sc\u00e9narios pour des analyses futures, comme l'automatisation de simulations ou la g\u00e9n\u00e9ration de rapports. NE PAS inclure les projets sp\u00e9cifiques d\u00e9j\u00e0 d\u00e9taill\u00e9s (ex : extraction de documents, orchestration) ou les d\u00e9fis techniques (couvert ailleurs).\"\n    },\n    {\n      \"titre\": \"Collaboration et prochaines \u00e9tapes\",\n      \"chunk_ids\": [3],\n      \"brief\": \"Couvre les discussions sur les pistes de collaboration future, les propositions d'ateliers (ex : design pour prioriser les cas d'usage), et les \u00e9changes sur les besoins non pr\u00e9cis\u00e9s (ex : position de SPEAKER_02). NE PAS inclure les cas d'usage concrets ou les projets en cours d\u00e9j\u00e0 d\u00e9taill\u00e9s (couvert dans 'Cas d'usage concrets en IA g\u00e9n\u00e9rative et MCP').\"\n    }\n  ]\n}"
+}

@@ -1,0 +1,51 @@
+{
+  "architecture": "testprompttypereunionlarge",
+  "steps": {
+    "extraction": {
+      "calls": 4,
+      "input_tokens": 13059,
+      "output_tokens": 667,
+      "cached_input_tokens": 68,
+      "latency_s": 128.82,
+      "cost_usd": 0.007499,
+      "model": "mistral-large-latest",
+      "batch": false
+    },
+    "synthese": {
+      "calls": 1,
+      "input_tokens": 779,
+      "output_tokens": 294,
+      "cached_input_tokens": 0,
+      "latency_s": 8.64,
+      "cost_usd": 0.00083,
+      "model": "mistral-large-latest",
+      "batch": false
+    },
+    "planner": {
+      "calls": 1,
+      "input_tokens": 686,
+      "output_tokens": 534,
+      "cached_input_tokens": 0,
+      "latency_s": 21.64,
+      "cost_usd": 0.001144,
+      "model": "mistral-large-latest",
+      "batch": false
+    },
+    "redaction": {
+      "calls": 4,
+      "input_tokens": 27574,
+      "output_tokens": 1374,
+      "cached_input_tokens": 816,
+      "latency_s": 94.79,
+      "cost_usd": 0.015481,
+      "model": "mistral-large-latest",
+      "batch": false
+    }
+  },
+  "total": {
+    "input_tokens": 42098,
+    "output_tokens": 2869,
+    "cost_usd": 0.024955,
+    "latency_s": 264.48
+  }
+}

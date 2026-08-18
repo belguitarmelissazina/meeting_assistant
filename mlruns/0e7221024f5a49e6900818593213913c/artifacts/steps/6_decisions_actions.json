@@ -1,0 +1,30 @@
+{
+  "decisions": [],
+  "actions": [
+    {
+      "action": "Prendre contact avec Maya pour \u00e9changer sur les d\u00e9tails techniques du projet RTE et \u00e9valuer une possible collaboration ou adaptation pour d'autres besoins.",
+      "responsable": "SPEAKER_00",
+      "echeance": null
+    },
+    {
+      "action": "Documenter les cas d'usage identifi\u00e9s par Bruno (synth\u00e8se de rapports, assistants conversationnels) pour une analyse ult\u00e9rieure par l'\u00e9quipe Ely Consulting.",
+      "responsable": "SPEAKER_00",
+      "echeance": null
+    },
+    {
+      "action": "\u00c9tudier la faisabilit\u00e9 d'int\u00e9grer un agent de s\u00e9lection de templates dans la solution existante pour r\u00e9pondre \u00e0 des besoins sans structure de rapport pr\u00e9d\u00e9finie.",
+      "responsable": "Maya",
+      "echeance": null
+    },
+    {
+      "action": "Prendre contact avec les interlocuteurs pour informer d'\u00e9ventuels besoins pr\u00e9cis li\u00e9s au MCP ou au NLP",
+      "responsable": "SPEAKER_02",
+      "echeance": "non d\u00e9finie"
+    },
+    {
+      "action": "\u00c9valuer la faisabilit\u00e9 et l'int\u00e9r\u00eat d'un atelier design pour prioriser des cas d'usage",
+      "responsable": "SPEAKER_00",
+      "echeance": "non d\u00e9finie"
+    }
+  ]
+}

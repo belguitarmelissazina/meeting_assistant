@@ -1,0 +1,53 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table des participants pour pr\u00e9senter leurs r\u00f4les et expertises en IA g\u00e9n\u00e9rative. Maya pr\u00e9sente un projet d'automatisation de r\u00e9daction de rapports pour RTE en utilisant des mod\u00e8les multimodaux et des pipelines d'agents. Discussion sur l'adaptation de l'outil \u00e0 diff\u00e9rents templates et l'int\u00e9gration de boucles de correction. Identification de cas d'usage potentiels pour la synth\u00e8se de donn\u00e9es et l'orchestration via MCP ou N8N.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 1,
+    "resume": "Les \u00e9changes portent sur l'am\u00e9lioration des synth\u00e8ses et des propositions pour mieux les adapter au contexte. La souverainet\u00e9 des outils et leur cloisonnement au sein de RTE sont soulign\u00e9s pour \u00e9viter une utilisation externe. Un projet d'agent de planification est \u00e9voqu\u00e9, visant \u00e0 automatiser la r\u00e9cup\u00e9ration de bibliographie et la cr\u00e9ation de roadmaps pour des projets, avec une extension future vers l'acc\u00e8s \u00e0 plusieurs outils de simulation. L'objectif est de proposer une POC minimale rapidement, notamment via des hackathons.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La r\u00e9union a abord\u00e9 des projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s, notamment administratifs, avec une approche bas\u00e9e sur des mod\u00e8les visuo-linguistiques (VLM). Un projet sp\u00e9cifique a \u00e9t\u00e9 pr\u00e9sent\u00e9 pour extraire des donn\u00e9es comme les salaires et m\u00e9tiers, avec une classification des documents (manuscrits ou non) et une d\u00e9tection de conformit\u00e9. La discussion a \u00e9galement \u00e9voqu\u00e9 l'\u00e9tat de l'art en R&D et l'utilisation de sources comme RKEVX pour des d\u00e9monstrations rapides.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La r\u00e9union a port\u00e9 sur l'identification de cas d'usage pour l'int\u00e9gration de serveurs MCP et de solutions NLP dans les processus existants. Les \u00e9changes ont mis en lumi\u00e8re des besoins en orchestration d'outils de simulation, de synth\u00e8se de donn\u00e9es disparates et de g\u00e9n\u00e9ration de pr\u00e9-rapports. Les participants ont soulign\u00e9 l'int\u00e9r\u00eat d'un MCP pour pr\u00e9parer et lancer des \u00e9tudes, tout en int\u00e9grant des contr\u00f4les humains et des ajustements automatis\u00e9s. Les discussions ont \u00e9galement \u00e9voqu\u00e9 des travaux en cours sur la synth\u00e8se de textes manuscrits et l'utilisation de LLM.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Identifier et prioriser les cas d'usage concrets pour l'orchestration via MCP (ex : pr\u00e9paration de simulations, synth\u00e8se de donn\u00e9es, g\u00e9n\u00e9ration de pr\u00e9-rapports)",
+        "responsable": "\u00c9quipe technique",
+        "echeance": "\u00c0 d\u00e9finir"
+      },
+      {
+        "action": "\u00c9tudier la faisabilit\u00e9 technique d'un serveur MCP capable de se brancher sur des outils internes de simulation et de g\u00e9n\u00e9ration de rapports",
+        "responsable": "\u00c9quipe technique",
+        "echeance": "\u00c0 d\u00e9finir"
+      },
+      {
+        "action": "Analyser les besoins sp\u00e9cifiques en NLP pour la synth\u00e8se de textes manuscrits et proposer un plan d'action",
+        "responsable": "\u00c9quipe NLP",
+        "echeance": "\u00c0 d\u00e9finir"
+      }
+    ]
+  },
+  {
+    "chunk_id": 4,
+    "resume": "La r\u00e9union a port\u00e9 sur l'avancement des travaux et l'exploration de cas d'usage, notamment autour du MCP. SPEAKER_00 a propos\u00e9 de r\u00e9fl\u00e9chir \u00e0 un cas d'usage ou de pr\u00e9senter les avanc\u00e9es des travaux. SPEAKER_02 a indiqu\u00e9 qu'il n'y avait pas de besoins clairs pour l'instant et a sugg\u00e9r\u00e9 de revenir vers eux si des \u00e9l\u00e9ments pr\u00e9cis \u00e9mergent.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter le point concernant un \u00e9ventuel atelier design pour r\u00e9fl\u00e9chir \u00e0 des cas d'usage et les prioriser",
+        "responsable": "SPEAKER_02"
+      }
+    ]
+  }
+]

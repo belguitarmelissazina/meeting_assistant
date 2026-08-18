@@ -1,0 +1,4 @@
+Section 1 « Cas d'usage concrets en IA générative et MCP »  <- chunks [0, 1, 2]
+Section 2 « Défis techniques et souveraineté des données »  <- chunks [0, 1]
+Section 3 « Intégration et perspectives technologiques »  <- chunks [2]
+Section 4 « Collaboration et prochaines étapes »  <- chunks [3]

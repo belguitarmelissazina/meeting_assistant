@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table de présentation des participants et de leurs expertises en IA générative et assistants conversationnels. Maya (Ely Consulting) présente un projet d'automatisation de rédaction de rapports pour RTE via une pipeline IA multimodale. Les échanges portent sur l'adaptation de l'outil à différents templates et l'exploration de cas d'usage comme la synthèse de données ou l'orchestration via MCP.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Prendre contact avec Gérald (RTE) pour évaluer la généralisation du projet de rédaction automatisée de rapports et identifier des suites possibles.",
+        "responsable": "SPEAKER_00"
+      },
+      {
+        "action": "Partager les détails techniques de la pipeline IA présentée (notamment les artefacts intermédiaires et la boucle de correction) avec l'équipe RD pour étude d'adaptation à d'autres cas d'usage.",
+        "responsable": "SPEAKER_01"
+      },
+      {
+        "action": "Explorer avec l'équipe RD les possibilités d'intégration de l'outil de synthèse générative (projet RTE) pour des besoins internes comme la synthèse de rapports d'événements ou de données.",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Étudier la faisabilité d'un agent dédié à la sélection de templates pour adapter l'outil à des structures de rapports variées.",
+        "responsable": "SPEAKER_01"
+      }
+    ]
+  },
+  {
+    "chunk_id": 1,
+    "resume": "La réunion a porté sur l'utilisation d'outils d'IA pour l'orchestration de projets, la génération de synthèses et l'analyse de documents (manuscrits ou non). Plusieurs cas d'usage ont été évoqués, notamment l'extraction d'informations structurées, la conformité documentaire et l'automatisation de simulations. L'accent a été mis sur la souveraineté des outils et leur intégration via des serveurs MCP pour une meilleure efficacité. Des projets comme un agent de planification et un outil de détection de fraude ont été présentés.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La réunion a abordé des échanges sur les besoins en MCP et NLP, sans décision immédiate. SPEAKER_02 suggère d'attendre des besoins plus précis avant d'approfondir. SPEAKER_00 propose un atelier design pour prioriser des cas d'usage, mais sans validation formelle.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter le point concernant l'atelier design pour réflexion ultérieure",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Tenir informés les partenaires si des besoins plus précis émergent (MCP ou NLP)",
+        "responsable": "—"
+      }
+    ]
+  }
+]

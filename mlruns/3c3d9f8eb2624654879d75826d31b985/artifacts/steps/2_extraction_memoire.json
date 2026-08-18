@@ -1,0 +1,41 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table de pr\u00e9sentation des participants et de leurs expertises en IA g\u00e9n\u00e9rative. Maya (Ely Consulting) pr\u00e9sente un projet d'automatisation de g\u00e9n\u00e9ration de rapports pour RTE \u00e0 partir de fichiers PPT, utilisant des pipelines d'agents et des mod\u00e8les multimodaux. Discussion sur l'adaptabilit\u00e9 de l'outil \u00e0 diff\u00e9rents templates de rapports. Identification de cas d'usage potentiels pour la synth\u00e8se de donn\u00e9es et l'orchestration d'outils via MCP ou N8N.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 1,
+    "resume": "Les \u00e9changes portent sur l'am\u00e9lioration des synth\u00e8ses et des propositions pour mieux les adapter au contexte. L'accent est mis sur la souverainet\u00e9 des outils utilis\u00e9s au sein de RTE, notamment pour cloisonner les donn\u00e9es et \u00e9viter leur diffusion externe. Un projet d'agent de planification est \u00e9voqu\u00e9, avec une premi\u00e8re application pour la bibliographie et une future extension \u00e0 des outils de simulation. L'objectif est de cr\u00e9er une pipeline automatis\u00e9e pour proposer des POC minimaux sur des sujets donn\u00e9s, acc\u00e9l\u00e9rant ainsi les hackathons internes.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La r\u00e9union a abord\u00e9 des projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s, notamment administratifs, avec un focus sur l'utilisation de mod\u00e8les VLM (Vision-Language Models) pour la classification, l'extraction de donn\u00e9es (salaire, m\u00e9tier) et la d\u00e9tection de conformit\u00e9. Un projet sp\u00e9cifique a \u00e9t\u00e9 pr\u00e9sent\u00e9, incluant le pr\u00e9traitement, l'apprentissage, le fine-tuning de mod\u00e8les, le contr\u00f4le d'anomalies et le d\u00e9ploiement avec monitoring. La discussion a \u00e9galement \u00e9voqu\u00e9 la gestion de documents manuscrits ou num\u00e9ris\u00e9s et l'adaptation des mod\u00e8les \u00e0 des langues comme l'arabe.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La r\u00e9union a port\u00e9 sur l'identification de cas d'usage pour des outils d'IA, notamment autour de l'orchestration de simulations, de la synth\u00e8se de donn\u00e9es disparates et de l'analyse de texte manuscrit. Les \u00e9changes ont mis en lumi\u00e8re des pistes pour int\u00e9grer des serveurs MCP et des agents IA dans des processus existants, comme la pr\u00e9paration de rapports ou l'automatisation de t\u00e2ches. Les participants ont soulign\u00e9 l'int\u00e9r\u00eat de travailler sur des sc\u00e9narios d'hypoth\u00e8ses et de navigation entre outils de simulation et de visualisation.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 4,
+    "resume": "La r\u00e9union a abord\u00e9 des \u00e9changes sur les besoins en MCP et NLP sans aboutir \u00e0 des d\u00e9cisions concr\u00e8tes. Une proposition d'atelier design pour prioriser des cas d'usage a \u00e9t\u00e9 \u00e9voqu\u00e9e. Les participants ont convenu de revenir vers l'autre partie si des besoins plus pr\u00e9cis \u00e9mergent.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter le point concernant la proposition d'un atelier design pour r\u00e9fl\u00e9chir \u00e0 des cas d'usage et les prioriser",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Revenir vers l'autre partie si des besoins plus pr\u00e9cis en MCP ou NLP \u00e9mergent",
+        "responsable": "SPEAKER_02"
+      }
+    ]
+  }
+]

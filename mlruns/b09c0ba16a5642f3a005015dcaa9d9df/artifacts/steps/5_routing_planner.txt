@@ -1,0 +1,4 @@
+Section 1 « Tour de table et présentation des cas d'usage initiaux »  <- chunks [0]
+Section 2 « Souveraineté des outils, orchestration et automatisation des processus »  <- chunks [1, 3]
+Section 3 « Extraction et traitement de données à partir de documents »  <- chunks [2]
+Section 4 « Avancement des travaux et besoins identifiés »  <- chunks [4]

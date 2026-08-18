@@ -1,0 +1,16 @@
+Tu conçois le PLAN thématique de la section 'Sujets abordés' d'un compte rendu. Réponds UNIQUEMENT en JSON. Regroupe par THÈMES (pas un thème par passage). Pour chaque section, choisis les chunk_ids pertinents (d'après les résumés) et écris un brief SCOPÉ qui dit ce que la section couvre ET ce qu'elle NE couvre PAS (déjà traité ailleurs), pour éviter les redites.
+
+Contexte : atelier de travail — Explorer et prioriser des cas d'usage concrets autour de l'IA générative et du MCP, tout en identifiant des pistes de collaboration future entre ELEY Consulting et RTE.
+
+Résumés par passage (chunk_id : résumé) :
+0 : La réunion était une prise de contact entre les équipes d'ELEY Consulting et de RTE pour discuter des besoins et attentes en matière d'IA générative, notamment autour des assistants conversationnels et des outils de synthèse. Maya a présenté des projets d'IA générative réalisés, comme l'automatisation de la rédaction de rapports à partir de fichiers PPT pour l'équipe équilibre offre et demande de RTE. Les discussions ont porté sur les cas d'usage potentiels, les défis techniques et les perspectives de collaboration future.
+1 : La réunion a abordé plusieurs projets liés à l'utilisation d'outils d'IA et de traitement de données. Parmi eux, un outil d'orchestration interne pour RTE visant à garantir la souveraineté des données, un agent de planification automatisé pour générer des roadmaps et des POC, ainsi qu'un projet d'extraction d'informations à partir de documents administratifs scannés (y compris manuscrits) pour détecter des anomalies ou fraudes. Le dernier projet inclut également un travail de fine-tuning de modèles VLM et un déploiement en local avec monitoring.
+2 : La réunion a porté sur l'exploration de cas d'usage liés au traitement du texte, à la synthèse de données disparates et à l'orchestration d'outils via des serveurs MCP (Middleware for Computational Processes). Les participants ont discuté des applications potentielles en NLP (Natural Language Processing) et en MCP, notamment pour automatiser des simulations, générer des rapports et optimiser des études. L'accent a été mis sur l'intégration d'outils existants et la préparation de scénarios pour des analyses futures.
+3 : La réunion a abordé la possibilité de collaborer sur des cas d'usage, notamment autour du MCP. SPEAKER_02 a indiqué ne pas avoir de besoins précis pour l'instant et préfère attendre d'avoir des éléments concrets avant d'échanger à nouveau. SPEAKER_00 a proposé un atelier design pour prioriser des cas d'usage et a mentionné une collaboration en cours avec Olivier Maserol sur l'UX de la control room du futur. Aucune décision ferme n'a été actée, mais des pistes de travail futur ont été évoquées.
+
+Produis :
+{"sections": [
+   {"titre":"Titre de section",
+     "chunk_ids":[0,2],
+     "brief":"Ce que couvre la section ; NE PAS inclure X (couvert ailleurs)."}
+]}

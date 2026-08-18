@@ -1,0 +1,15 @@
+[
+  {
+    "index": 1,
+    "titre": "Automatisation des processus op\u00e9rationnels et interaction conversationnelle",
+    "chunk_ids": [
+      0,
+      2
+    ],
+    "brief": {
+      "couvre": "Les cas d'usage li\u00e9s \u00e0 l'automatisation des processus op\u00e9rationnels (ex : r\u00e9daction de rapports, synth\u00e8se de donn\u00e9es h\u00e9t\u00e9rog\u00e8nes) et \u00e0 l'interaction conversationnelle via MCP pour les assistants op\u00e9rationnels. Inclut les projets d'orchestration d'outils et de g\u00e9n\u00e9ration de pr\u00e9-rapports automatis\u00e9s.",
+      "ne_couvre_pas": "Les aspects techniques de souverainet\u00e9 des outils, de cloisonnement interne ou de d\u00e9tection de fraude (trait\u00e9s dans d'autres sections)."
+    },
+    "texte": "Maya SAHRAOUI a pr\u00e9sent\u00e9 un projet d\u2019automatisation de r\u00e9daction de rapports pour RTE, ax\u00e9 sur la transformation de documents complexes et h\u00e9t\u00e9rog\u00e8nes (notamment des fichiers PPT contenant des graphiques et peu de texte) en rapports structur\u00e9s et actionnables. L\u2019objectif \u00e9tait d\u2019acc\u00e9l\u00e9rer la production de rapports sans alt\u00e9rer leur rigueur, en s\u2019appuyant sur une cha\u00eene de traitement en cinq briques : analyse des slides, assignation automatique des sections, r\u00e9daction par sections, int\u00e9gration et boucle de correction it\u00e9rative. L\u2019outil d\u00e9velopp\u00e9 permet une tra\u00e7abilit\u00e9 des erreurs et une correction cibl\u00e9e, avec une interface d\u00e9di\u00e9e pour les \u00e9quipes. Ce projet a d\u00e9montr\u00e9 la faisabilit\u00e9 d\u2019une automatisation rapide (25 jours) et a ouvert des perspectives pour g\u00e9n\u00e9raliser cette approche \u00e0 d\u2019autres types de rapports.\n\nPar ailleurs, Maya a \u00e9voqu\u00e9 un outil de g\u00e9n\u00e9ration de r\u00e9sum\u00e9s de r\u00e9unions en cours de d\u00e9veloppement, reposant sur une orchestration d\u2019agents via MCP pour interagir avec des sources internes (notes de r\u00e9union, outils de simulation) et g\u00e9n\u00e9rer des synth\u00e8ses interactives. L\u2019objectif est d\u2019automatiser la compr\u00e9hension et la restitution des r\u00e9unions, avec une interface de type chatbot pour faciliter l\u2019acc\u00e8s aux outils et aux donn\u00e9es. Ce cas d\u2019usage illustre une volont\u00e9 d\u2019am\u00e9liorer l\u2019efficacit\u00e9 op\u00e9rationnelle par l\u2019automatisation des processus de synth\u00e8se et d\u2019interaction conversationnelle."
+  }
+]

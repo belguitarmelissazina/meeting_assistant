@@ -1,0 +1,71 @@
+{
+  "model": "mistral-large-latest",
+  "target_chunks": 4,
+  "n_chunks": 4,
+  "context": {
+    "types_candidats": [
+      {
+        "type": "prise de contact",
+        "confiance": 0.9,
+        "justification": "Tour de table complet avec présentations des rôles et projets passés, absence de cadrage de mission ou de décision, et mention implicite d'une volonté de faire connaissance."
+      },
+      {
+        "type": "atelier de travail",
+        "confiance": 0.6,
+        "justification": "Échanges techniques détaillés sur des projets existants et propositions d'ateliers futurs pour prioriser des cas d'usage."
+      },
+      {
+        "type": "point d'avancement",
+        "confiance": 0.4,
+        "justification": "Présentations de projets en cours ou passés, mais sans suivi structuré de jalons ou d'avancement formalisé."
+      },
+      {
+        "type": "avant-vente",
+        "confiance": 0.3,
+        "justification": "Présentations de compétences et solutions techniques, mais sans mention explicite d'un client potentiel ou d'une démarche commerciale."
+      }
+    ],
+    "objectif": "Permettre aux participants de partager leurs expériences et besoins en matière d'IA générative et d'outils associés (MCP, NLP, VLM), tout en identifiant des recoupements potentiels pour des collaborations futures.",
+    "synthese": "Cette réunion a réuni des participants issus de différentes entités pour échanger sur leurs travaux et besoins liés à l'IA générative. Les discussions ont débuté par une présentation des rôles et projets en cours, notamment autour de l'automatisation de la rédaction de rapports, de l'orchestration d'outils, et de l'extraction d'informations à partir de documents. Plusieurs cas d'usage concrets ont été évoqués, comme l'utilisation de VLM pour traiter des documents administratifs ou la planification automatisée de projets. Les échanges ont également porté sur les outils NLP et MCP, avec des retours sur leur intégration dans des processus existants ou futurs, comme la feuille de route Smart Cockpit ou la préparation de simulations. La réunion s'est conclue par des propositions d'ateliers ou de réflexions communes sur des cas d'usage MCP et UX design, sans qu'aucune décision formelle ne soit prise. Les participants ont exprimé des intérêts variés, certains manifestant un besoin immédiat tandis que d'autres préféraient être recontactés en cas de besoin concret.",
+    "meeting_type": "prise de contact",
+    "participants": [
+      "Bruno LEMETAYER",
+      "Matthieu DUSSARTRE",
+      "Nourredine HENKA",
+      "Jérôme PICAULT",
+      "Maya SAHRAOUI",
+      "Jérôme MASSET"
+    ]
+  },
+  "plan": [
+    {
+      "section_id": "tour_de_table",
+      "section_title": "Présentations des participants et de leurs projets",
+      "section_type": "list_bullets"
+    },
+    {
+      "section_id": "cas_usage_et_outils",
+      "section_title": "Cas d'usage et outils techniques évoqués",
+      "section_type": "list_bullets"
+    },
+    {
+      "section_id": "collaboration_future",
+      "section_title": "Perspectives de collaboration et prochaines étapes",
+      "section_type": "narrative"
+    },
+    {
+      "section_id": "plan_action",
+      "section_title": "Plan d'action",
+      "section_type": "table_actions"
+    }
+  ],
+  "timings": {
+    "chunking_s": 11.22,
+    "extraction_llm_total_s": 177.89,
+    "context_builder_s": 11.2,
+    "planner_s": 16.77,
+    "designers_total_s": 88.7,
+    "workers_total_s": 79.33,
+    "total_s": 385.13
+  }
+}

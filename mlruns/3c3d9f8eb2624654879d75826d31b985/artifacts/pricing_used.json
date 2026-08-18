@@ -1,0 +1,32 @@
+{
+  "mistral-large-latest": {
+    "input": 0.5,
+    "cached_input": 0.05,
+    "output": 1.5
+  },
+  "mistral-small-latest": {
+    "input": 0.15,
+    "cached_input": 0.015,
+    "output": 0.6
+  },
+  "mistral-medium-latest": {
+    "input": 1.5,
+    "cached_input": 0.15,
+    "output": 7.5
+  },
+  "voxtral-mini-latest": {
+    "input": 0.0,
+    "cached_input": 0.0,
+    "output": 0.0
+  },
+  "local": {
+    "input": 0.0,
+    "cached_input": 0.0,
+    "output": 0.0
+  },
+  "ministral-3b-local": {
+    "input": 0.0,
+    "cached_input": 0.0,
+    "output": 0.0
+  }
+}

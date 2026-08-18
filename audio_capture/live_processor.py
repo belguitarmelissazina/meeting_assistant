@@ -49,7 +49,8 @@ BOOTSTRAP_SIZE = 1000    # ≈ 10 min à hop 0.6s
 class LiveProcessor:
     """Consomme des chunks PCM, produit un transcript aligné sur locuteurs."""
 
-    def __init__(self, enable_live_llm: bool = False) -> None:
+    def __init__(self, enable_live_llm: bool = False,
+                 enable_live_advisor: bool = False) -> None:
         # Queues bornées : ~15 min d'audio max à 16kHz/1024 échantillons =
         # 14000 chunks. Au-delà, on drop (= start() est cassé depuis
         # longtemps, pas la peine d'accumuler).
@@ -76,10 +77,12 @@ class LiveProcessor:
         self._vad_model = None
         # Live LLM (optionnel — activé seulement si le user le demande).
         self._enable_live_llm = enable_live_llm
+        self._enable_live_advisor = enable_live_advisor  # advisor Mistral (API, indépendant du local)
         self._llm_context: dict = {}
         self._turn_builder = None
         self._chunker = None
         self._llm_worker = None
+        self._advisor = None  # advisor live Mistral (recommandations temps réel)
 
     @property
     def error(self) -> str | None:
@@ -88,6 +91,15 @@ class LiveProcessor:
     @property
     def started(self) -> bool:
         return self._started
+
+    def get_suggestions(self) -> list:
+        """Suggestions de l'advisor live (liste de {ts, items:[...]}). [] si inactif."""
+        return self._advisor.get_suggestions() if self._advisor is not None else []
+
+    @property
+    def advisor_active(self) -> bool:
+        """True si l'advisor live (Mistral) est actif pour cette session."""
+        return self._advisor is not None
 
     def set_llm_context(self, context: dict) -> None:
         """À appeler avant start() si on veut activer le LLM live avec un
@@ -137,20 +149,28 @@ class LiveProcessor:
             logger.warning("[LIVE] silero-vad indisponible (%s) — fallback RMS", exc)
             self._vad_model = None
 
-        if self._enable_live_llm:
+        # On a besoin des TURNS dès qu'une brique live les consomme :
+        # le LLM local (CR progressif) OU l'advisor Mistral.
+        need_turns = self._enable_live_llm or self._enable_live_advisor
+        if need_turns:
+            try:
+                from .live_llm import TurnBuilder
+                self._turn_builder = TurnBuilder()
+            except Exception as exc:
+                logger.warning("[LIVE] TurnBuilder KO (%s) — turns indispo", exc)
+                self._turn_builder = None
+
+        # LLM LOCAL (CR progressif) — OPTIONNEL, démarre le llama-server.
+        if self._enable_live_llm and self._turn_builder is not None:
             try:
                 t0 = time.time()
-                from .live_llm import (
-                    TurnBuilder, StreamingTopicChunker, LiveLLMWorker,
-                )
-                self._turn_builder = TurnBuilder()
+                from .live_llm import StreamingTopicChunker, LiveLLMWorker
                 import tempfile as _tf
                 tmp_out = Path(_tf.mkdtemp(prefix="live_llm_"))
                 self._llm_worker = LiveLLMWorker(tmp_out, context=self._llm_context)
                 self._llm_worker.start()
                 if self._llm_worker.error:
-                    logger.warning("[LIVE] LLM worker KO (%s) — désactivation LLM "
-                                   "live, transcript live reste actif",
+                    logger.warning("[LIVE] LLM worker KO (%s) — CR live désactivé",
                                    self._llm_worker.error)
                     self._llm_worker = None
                 if self._llm_worker is not None:
@@ -161,18 +181,34 @@ class LiveProcessor:
                     logger.info("[LIVE] LLM worker + chunker MiniLM prêts "
                                 "(llama-server démarré, %.1fs)", time.time() - t0)
             except Exception as exc:
-                logger.warning("[LIVE] Init chunker/LLM worker KO (%s) — "
-                               "fallback batch au stop", exc)
-                self._turn_builder = None
+                logger.warning("[LIVE] Init chunker/LLM worker KO (%s)", exc)
                 self._chunker = None
                 self._llm_worker = None
+
+        # ADVISOR live (Mistral) — OPTIONNEL, INDÉPENDANT du llama-server local
+        # (n'utilise que l'API Mistral + les turns).
+        if self._enable_live_advisor:
+            try:
+                from .live_advisor_worker import LiveAdvisorWorker
+                adv = LiveAdvisorWorker(
+                    objectif=self._llm_context.get("objectif", ""),
+                    participants=self._llm_context.get("participants", ""),
+                    entreprises=self._llm_context.get("entreprises", ""),
+                )
+                self._advisor = adv if adv.active else None
+                logger.info("[LIVE] Advisor Mistral %s",
+                            "ACTIF" if self._advisor else "inactif (objectif/clé absent)")
+            except Exception as exc:
+                logger.warning("[LIVE] Advisor live indispo : %s", exc)
+                self._advisor = None
 
         t_asr = threading.Thread(target=self._asr_worker, daemon=True, name="live-asr")
         t_emb = threading.Thread(target=self._embed_worker, daemon=True, name="live-embed")
         t_asr.start()
         t_emb.start()
         self._threads = [t_asr, t_emb]
-        if self._llm_worker is not None:
+        # Turn dispatch : requis dès qu'on a des turns (LLM local OU advisor).
+        if self._turn_builder is not None:
             t_turn = threading.Thread(target=self._turn_dispatch_worker,
                                        daemon=True, name="live-turns")
             t_turn.start()
@@ -336,7 +372,7 @@ class LiveProcessor:
                 enable_endpoint_detection=False,
             )
             stream = rec.create_stream()
-            live_llm = self._llm_worker is not None
+            feed_turns = self._turn_builder is not None  # LLM local OU advisor
             logger.info("[LIVE][ASR] Worker démarré, consommation de la file "
                         "(taille courante : %d chunks)", self._asr_q.qsize())
 
@@ -364,7 +400,7 @@ class LiveProcessor:
                         with self._asr_words_lock:
                             self._asr_words = words
                         prev_words_count = len(words)
-                        if live_llm:
+                        if feed_turns:
                             self._feed_words_to_turns(new_words)
                 # Log d'état périodique.
                 if time.time() - last_status_log >= STATUS_INTERVAL:
@@ -385,7 +421,7 @@ class LiveProcessor:
             with self._asr_words_lock:
                 self._asr_words = final_words
             # Émet le reliquat au TurnBuilder.
-            if live_llm and len(final_words) > prev_words_count:
+            if feed_turns and len(final_words) > prev_words_count:
                 self._feed_words_to_turns(final_words[prev_words_count:])
             logger.info("ASR worker : %d mots", len(final_words))
         except Exception as exc:
@@ -439,14 +475,23 @@ class LiveProcessor:
             while self._running or (self._turn_builder and
                                      self._turn_builder._pending_turns):
                 time.sleep(1.0)
-                if self._turn_builder is None or self._chunker is None:
+                if self._turn_builder is None:
                     continue
                 turns = self._turn_builder.drain()
                 for turn in turns:
-                    subs = split_turn_sentences(turn, max_chars=300)
-                    for sub in subs:
-                        self._chunker.add_turn(sub)
-                    total_turns_sent += len(subs)
+                    # Advisor Mistral (indépendant du LLM local).
+                    if self._advisor is not None:
+                        try:
+                            self._advisor.on_turn(getattr(turn, "speaker", ""),
+                                                  getattr(turn, "text", ""))
+                        except Exception:
+                            pass
+                    # CR progressif local (seulement si le chunker/LLM local est actif).
+                    if self._chunker is not None:
+                        subs = split_turn_sentences(turn, max_chars=300)
+                        for sub in subs:
+                            self._chunker.add_turn(sub)
+                        total_turns_sent += len(subs)
                 if time.time() - last_status_log >= STATUS_INTERVAL:
                     last_status_log = time.time()
                     logger.info(

@@ -1,0 +1,13 @@
+Tu conçois le PLAN thématique de la section 'Sujets abordés' d'un compte rendu. Réponds UNIQUEMENT en JSON. Découpe en 3 à 5 sections thématiques DISTINCTES : ni une seule section fourre-tout, ni un thème par passage. Pour chaque section, choisis les chunk_ids pertinents (d'après les résumés) et écris un brief SCOPÉ qui dit ce que la section couvre ET ce qu'elle NE couvre PAS (déjà traité ailleurs), pour éviter les redites.
+---
+Contexte : {type} — {objectif}
+
+Résumés par passage (chunk_id : résumé) :
+{overview}
+
+Produis :
+{{"sections": [
+   {{"titre":"Titre de section",
+     "chunk_ids":[0,2],
+     "brief":"Ce que couvre la section ; NE PAS inclure X (couvert ailleurs)."}}
+]}}

@@ -1,0 +1,51 @@
+{
+  "architecture": "audio_reduce_persection",
+  "steps": {
+    "extraction": {
+      "calls": 8,
+      "input_tokens": 30302,
+      "output_tokens": 7949,
+      "cached_input_tokens": 0,
+      "latency_s": 53.19,
+      "cost_usd": 0.009315,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "reduce_plan": {
+      "calls": 1,
+      "input_tokens": 9415,
+      "output_tokens": 1971,
+      "cached_input_tokens": 0,
+      "latency_s": 12.25,
+      "cost_usd": 0.002595,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "reduce_fill": {
+      "calls": 1,
+      "input_tokens": 11382,
+      "output_tokens": 6714,
+      "cached_input_tokens": 0,
+      "latency_s": 41.44,
+      "cost_usd": 0.005736,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "redaction": {
+      "calls": 9,
+      "input_tokens": 37258,
+      "output_tokens": 3748,
+      "cached_input_tokens": 2288,
+      "latency_s": 39.02,
+      "cost_usd": 0.007529,
+      "model": "mistral-small-latest",
+      "batch": false
+    }
+  },
+  "total": {
+    "input_tokens": 88357,
+    "output_tokens": 20382,
+    "cost_usd": 0.025174,
+    "latency_s": 183.33
+  }
+}

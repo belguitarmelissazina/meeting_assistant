@@ -30,6 +30,9 @@ export default function TrayPopup() {
   const [upcoming, setUpcoming] = useState<CalendarMeeting[]>([]);
   const [jobs, setJobs] = useState<JobSummary[]>([]);
   const [busy, setBusy] = useState(false);
+  const [advisorOn, setAdvisorOn] = useState(false);
+  const [objectif, setObjectif] = useState("");
+  const [mistralKeySet, setMistralKeySet] = useState(false);
 
   // Poll agenda + jobs à 4 s (suffisant pour un popup éphémère).
   useEffect(() => {
@@ -64,6 +67,14 @@ export default function TrayPopup() {
     return () => clearInterval(id);
   }, [status.recording]);
 
+  // Le toggle « Assistant live » n'est accessible que si une clé Mistral existe.
+  useEffect(() => {
+    fetch(apiUrl("/api/settings"))
+      .then((r) => r.json())
+      .then((d) => setMistralKeySet(Boolean(d?.mistralKeySet)))
+      .catch(() => setMistralKeySet(false));
+  }, []);
+
   const now = Date.now();
   const recordedEventIds = new Set(jobs.map((j) => j.calendar?.eventId).filter(Boolean));
   const nextMeeting = upcoming
@@ -87,16 +98,25 @@ export default function TrayPopup() {
       trayWindow?: {
         openMainApp?: (payload?: { meetingId?: string; jobId?: string }) => void;
         quitApp?: () => void;
-        startRecording?: (eventId?: string | null) => void;
+        startRecording?: (opts?: {
+          eventId?: string | null;
+          enableLiveAdvisor?: boolean;
+          objectif?: string;
+        }) => void;
         stopRecording?: () => void;
       };
+      advisor?: { open?: () => void; close?: () => void };
     };
   };
   const w = typeof window !== "undefined" ? (window as unknown as Bridge) : undefined;
 
   function startRecording(meeting?: CalendarMeeting) {
     setBusy(true);
-    w?.electronAPI?.trayWindow?.startRecording?.(meeting?.id ?? null);
+    w?.electronAPI?.trayWindow?.startRecording?.({
+      eventId: meeting?.id ?? null,
+      enableLiveAdvisor: advisorOn && mistralKeySet,
+      objectif,
+    });
     // Le popup se cache de toute façon via le handler IPC côté main —
     // on libère busy au cas où on resterait visible (edge case).
     setTimeout(() => setBusy(false), 500);
@@ -150,7 +170,38 @@ export default function TrayPopup() {
       </header>
 
       {/* ── Bloc principal : état courant ────────────────────────── */}
-      <section className="px-4 py-4 border-b border-surface-border">
+      <section className="space-y-3 px-4 py-4 border-b border-surface-border">
+        {!status.recording && (
+          <div className="space-y-2 rounded-lg border border-surface-border bg-surface-card p-2.5">
+            <label
+              className={`flex items-center gap-2 text-xs font-medium ${
+                mistralKeySet ? "text-ink" : "cursor-not-allowed text-ink-muted"
+              }`}
+            >
+              <input
+                type="checkbox"
+                checked={advisorOn && mistralKeySet}
+                disabled={!mistralKeySet}
+                onChange={(e) => setAdvisorOn(e.target.checked)}
+              />
+              Assistant live (Mistral)
+            </label>
+            {!mistralKeySet && (
+              <p className="text-[10px] text-ink-muted">
+                Clé API Mistral requise (paramètres).
+              </p>
+            )}
+            {advisorOn && mistralKeySet && (
+              <textarea
+                className="w-full resize-none rounded-md border border-surface-border bg-surface px-2 py-1.5 text-xs text-ink outline-none focus:border-brand/50"
+                rows={2}
+                placeholder="Objectif de la réunion"
+                value={objectif}
+                onChange={(e) => setObjectif(e.target.value)}
+              />
+            )}
+          </div>
+        )}
         {status.recording ? (
           <RecordingBlock
             subject={status.calendar?.subject ?? "Enregistrement hors agenda"}
@@ -166,6 +217,15 @@ export default function TrayPopup() {
           />
         ) : (
           <NoActionBlock onStart={() => startRecording()} busy={busy} />
+        )}
+        {status.recording && (
+          <button
+            type="button"
+            onClick={() => w?.electronAPI?.advisor?.open?.()}
+            className="w-full rounded-md border border-surface-border bg-surface-card px-3 py-1.5 text-xs font-medium text-ink-muted transition-colors hover:bg-surface hover:text-ink"
+          >
+            Ouvrir l&apos;assistant live
+          </button>
         )}
       </section>
 

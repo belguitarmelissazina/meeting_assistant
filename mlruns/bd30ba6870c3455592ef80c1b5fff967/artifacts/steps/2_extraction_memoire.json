@@ -1,0 +1,46 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table de pr\u00e9sentation des participants et de leurs expertises en IA g\u00e9n\u00e9rative et assistants conversationnels. Maya (Ely Consulting) pr\u00e9sente un projet d'automatisation de r\u00e9daction de rapports pour RTE via une pipeline IA multimodale. Les \u00e9changes portent sur l'adaptation de l'outil \u00e0 diff\u00e9rents templates et l'exploration de cas d'usage comme la synth\u00e8se de donn\u00e9es ou l'orchestration via MCP.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Prendre contact avec G\u00e9rald (RTE) pour \u00e9valuer la g\u00e9n\u00e9ralisation du projet de r\u00e9daction automatis\u00e9e de rapports et identifier des suites possibles.",
+        "responsable": "SPEAKER_00"
+      },
+      {
+        "action": "Partager les d\u00e9tails techniques de la pipeline IA pr\u00e9sent\u00e9e (notamment les artefacts interm\u00e9diaires et la boucle de correction) avec l'\u00e9quipe RD pour \u00e9tude d'adaptation \u00e0 d'autres cas d'usage.",
+        "responsable": "SPEAKER_01"
+      },
+      {
+        "action": "Explorer avec l'\u00e9quipe RD les possibilit\u00e9s d'int\u00e9gration de l'outil de synth\u00e8se g\u00e9n\u00e9rative (projet RTE) pour des besoins internes comme la synth\u00e8se de rapports d'\u00e9v\u00e9nements ou de donn\u00e9es.",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "\u00c9tudier la faisabilit\u00e9 d'un agent d\u00e9di\u00e9 \u00e0 la s\u00e9lection de templates pour adapter l'outil \u00e0 des structures de rapports vari\u00e9es.",
+        "responsable": "SPEAKER_01"
+      }
+    ]
+  },
+  {
+    "chunk_id": 1,
+    "resume": "La r\u00e9union a port\u00e9 sur l'utilisation d'outils d'IA pour l'orchestration de projets, la g\u00e9n\u00e9ration de synth\u00e8ses et l'analyse de documents (manuscrits ou non). Plusieurs cas d'usage ont \u00e9t\u00e9 \u00e9voqu\u00e9s, notamment l'extraction d'informations structur\u00e9es, la conformit\u00e9 documentaire et l'automatisation de simulations. L'accent a \u00e9t\u00e9 mis sur la souverainet\u00e9 des outils et leur int\u00e9gration via des serveurs MCP pour une meilleure efficacit\u00e9. Des projets comme un agent de planification et un outil de d\u00e9tection de fraude ont \u00e9t\u00e9 pr\u00e9sent\u00e9s.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La r\u00e9union a abord\u00e9 des \u00e9changes sur les besoins en MCP et NLP, sans d\u00e9cision imm\u00e9diate. SPEAKER_02 sugg\u00e8re d'attendre des besoins plus pr\u00e9cis avant d'approfondir. SPEAKER_00 propose un atelier design pour prioriser des cas d'usage, mais sans validation formelle.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter le point concernant l'atelier design pour r\u00e9flexion ult\u00e9rieure",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Tenir inform\u00e9s les partenaires si des besoins plus pr\u00e9cis \u00e9mergent (MCP ou NLP)",
+        "responsable": "\u2014"
+      }
+    ]
+  }
+]

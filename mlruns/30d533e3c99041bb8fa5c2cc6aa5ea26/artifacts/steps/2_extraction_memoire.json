@@ -1,0 +1,52 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table des participants pour pr\u00e9senter leurs r\u00f4les et expertises en IA g\u00e9n\u00e9rative. Maya (Elya) pr\u00e9sente un projet d'automatisation de r\u00e9daction de rapports pour RTE en utilisant des mod\u00e8les multimodaux et des pipelines d'agents. Discussion sur l'adaptabilit\u00e9 de l'outil \u00e0 diff\u00e9rents templates et l'int\u00e9gration de boucles de correction. Exploration de cas d'usage pour la synth\u00e8se de donn\u00e9es et l'orchestration via MCP ou N8N.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 1,
+    "resume": "Les participants discutent de l'am\u00e9lioration des synth\u00e8ses et des propositions pour mieux les adapter au contexte. Ils \u00e9voquent la n\u00e9cessit\u00e9 de cloisonner l'outil pour pr\u00e9server la souverainet\u00e9 des donn\u00e9es c\u00f4t\u00e9 RTE. Un projet d'agent de planification automatique (webSir) est en cours, visant \u00e0 g\u00e9n\u00e9rer des bibliographies et des roadmaps pour des projets, avec une future int\u00e9gration de plusieurs outils de simulation. L'objectif est de cr\u00e9er une pipeline automatis\u00e9e pour proposer des POC minimaux rapidement, notamment via des hackathons.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La r\u00e9union a abord\u00e9 des projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s, notamment administratifs, avec un focus sur l'analyse de conformit\u00e9 des donn\u00e9es (ex : salaires vs m\u00e9tiers). Un projet sp\u00e9cifique a \u00e9t\u00e9 pr\u00e9sent\u00e9 par Maya, utilisant des mod\u00e8les VLM pour extraire et classifier des informations, avec une partie d\u00e9di\u00e9e au fine-tuning de mod\u00e8les et au d\u00e9ploiement en local. La discussion a \u00e9galement \u00e9voqu\u00e9 la gestion de documents manuscrits ou num\u00e9riques, ainsi que des outils de monitoring pour d\u00e9tecter des anomalies ou des d\u00e9rives.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Pr\u00e9senter les projets restants de Maya lors d'une prochaine r\u00e9union pour validation ou approfondissement.",
+        "responsable": "Maya",
+        "echeance": null
+      },
+      {
+        "action": "\u00c9tudier la faisabilit\u00e9 d'int\u00e9grer les projets de Maya (notamment le projet VLM pour documents scann\u00e9s) dans les initiatives en cours, en tenant compte des contraintes de d\u00e9ploiement local et de qualit\u00e9 des donn\u00e9es.",
+        "responsable": null,
+        "echeance": null
+      }
+    ]
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La r\u00e9union a port\u00e9 sur l'exploration de cas d'usage li\u00e9s \u00e0 l'orchestration de simulations et \u00e0 l'analyse de donn\u00e9es via des outils MCP et NLP. Les participants ont \u00e9voqu\u00e9 des besoins en synth\u00e8se de donn\u00e9es disparates, en orchestration d'\u00e9tudes (notamment \u00e9nerg\u00e9tiques) et en int\u00e9gration de serveurs MCP pour automatiser des workflows. Les discussions ont mis en lumi\u00e8re des pistes pour des travaux futurs, notamment sur l'analyse de texte manuscrit et la pr\u00e9paration de pr\u00e9-rapports automatis\u00e9s.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 4,
+    "resume": "La r\u00e9union a abord\u00e9 des questions sur les cas d'usage MCP et NLP, sans d\u00e9cision imm\u00e9diate. Une proposition d'atelier design pour r\u00e9fl\u00e9chir \u00e0 des cas d'usage a \u00e9t\u00e9 \u00e9voqu\u00e9e. Les participants ont convenu de revenir vers l'\u00e9quipe avec des besoins plus pr\u00e9cis avant d'approfondir les discussions.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter le point concernant l'atelier design pur pour r\u00e9fl\u00e9chir \u00e0 des cas d'usage et les prioriser.",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Tenir inform\u00e9s les partenaires si des besoins plus pr\u00e9cis \u00e9mergent sur MCP ou NLP.",
+        "responsable": "SPEAKER_02"
+      }
+    ]
+  }
+]

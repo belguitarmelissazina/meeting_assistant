@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "titre": "Tour de table et pr\u00e9sentation des cas d'usage initiaux",
+      "chunk_ids": [
+        0
+      ],
+      "brief": {
+        "couvre": "Les r\u00f4les et expertises des participants en IA g\u00e9n\u00e9rative, ainsi que les premiers cas d'usage identifi\u00e9s (automatisation de rapports, synth\u00e8se de donn\u00e9es, orchestration via MCP/N8N, boucles de correction, adaptation \u00e0 diff\u00e9rents templates).",
+        "ne_couvre_pas": "Les d\u00e9tails techniques des projets (VLM, extraction de donn\u00e9es, classification de documents, etc.), les aspects de souverainet\u00e9 des outils, ou les discussions sur l'orchestration avanc\u00e9e (simulation, roadmaps, MCP pour \u00e9tudes)."
+      }
+    },
+    {
+      "titre": "Souverainet\u00e9 des outils, orchestration et automatisation des processus",
+      "chunk_ids": [
+        1,
+        3
+      ],
+      "brief": {
+        "couvre": "Les enjeux de souverainet\u00e9 et de cloisonnement des outils au sein de RTE, les projets d'agents de planification (automatisation de roadmaps, r\u00e9cup\u00e9ration de bibliographie), l'orchestration d'outils de simulation, et l'int\u00e9gration de MCP pour pr\u00e9parer/lancer des \u00e9tudes avec contr\u00f4les humains et ajustements automatis\u00e9s. Inclut aussi les discussions sur les POC minimales (hackathons) et l'\u00e9tat de l'art en R&D.",
+        "ne_couvre_pas": "Les d\u00e9tails techniques des projets d'extraction de donn\u00e9es (VLM, classification de documents) ou les pr\u00e9sentations individuelles des participants (tour de table)."
+      }
+    },
+    {
+      "titre": "Extraction et traitement de donn\u00e9es \u00e0 partir de documents",
+      "chunk_ids": [
+        2
+      ],
+      "brief": {
+        "couvre": "Les projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s (administratifs, manuscrits ou non), avec une approche bas\u00e9e sur des mod\u00e8les visuo-linguistiques (VLM). Inclut la classification des documents, la d\u00e9tection de conformit\u00e9, et l'utilisation de sources comme RKEVX pour des d\u00e9monstrations rapides.",
+        "ne_couvre_pas": "Les discussions sur l'orchestration, la souverainet\u00e9 des outils, ou les pr\u00e9sentations des participants (tour de table)."
+      }
+    },
+    {
+      "titre": "Avancement des travaux et besoins identifi\u00e9s",
+      "chunk_ids": [
+        4
+      ],
+      "brief": {
+        "couvre": "L'avancement des travaux autour du MCP, les propositions de cas d'usage ou de pr\u00e9sentations des avanc\u00e9es, et l'absence de besoins clairs identifi\u00e9s \u00e0 ce stade.",
+        "ne_couvre_pas": "Les d\u00e9tails techniques des projets ou les discussions sur la souverainet\u00e9 et l'orchestration (d\u00e9j\u00e0 couverts dans d'autres sections)."
+      }
+    }
+  ],
+  "raw": "{\n  \"sections\": [\n    {\n      \"titre\": \"Tour de table et pr\u00e9sentation des cas d'usage initiaux\",\n      \"chunk_ids\": [0],\n      \"brief\": {\n        \"couvre\": \"Les r\u00f4les et expertises des participants en IA g\u00e9n\u00e9rative, ainsi que les premiers cas d'usage identifi\u00e9s (automatisation de rapports, synth\u00e8se de donn\u00e9es, orchestration via MCP/N8N, boucles de correction, adaptation \u00e0 diff\u00e9rents templates).\",\n        \"ne_couvre_pas\": \"Les d\u00e9tails techniques des projets (VLM, extraction de donn\u00e9es, classification de documents, etc.), les aspects de souverainet\u00e9 des outils, ou les discussions sur l'orchestration avanc\u00e9e (simulation, roadmaps, MCP pour \u00e9tudes).\"\n      }\n    },\n    {\n      \"titre\": \"Souverainet\u00e9 des outils, orchestration et automatisation des processus\",\n      \"chunk_ids\": [1, 3],\n      \"brief\": {\n        \"couvre\": \"Les enjeux de souverainet\u00e9 et de cloisonnement des outils au sein de RTE, les projets d'agents de planification (automatisation de roadmaps, r\u00e9cup\u00e9ration de bibliographie), l'orchestration d'outils de simulation, et l'int\u00e9gration de MCP pour pr\u00e9parer/lancer des \u00e9tudes avec contr\u00f4les humains et ajustements automatis\u00e9s. Inclut aussi les discussions sur les POC minimales (hackathons) et l'\u00e9tat de l'art en R&D.\",\n        \"ne_couvre_pas\": \"Les d\u00e9tails techniques des projets d'extraction de donn\u00e9es (VLM, classification de documents) ou les pr\u00e9sentations individuelles des participants (tour de table).\"\n      }\n    },\n    {\n      \"titre\": \"Extraction et traitement de donn\u00e9es \u00e0 partir de documents\",\n      \"chunk_ids\": [2],\n      \"brief\": {\n        \"couvre\": \"Les projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s (administratifs, manuscrits ou non), avec une approche bas\u00e9e sur des mod\u00e8les visuo-linguistiques (VLM). Inclut la classification des documents, la d\u00e9tection de conformit\u00e9, et l'utilisation de sources comme RKEVX pour des d\u00e9monstrations rapides.\",\n        \"ne_couvre_pas\": \"Les discussions sur l'orchestration, la souverainet\u00e9 des outils, ou les pr\u00e9sentations des participants (tour de table).\"\n      }\n    },\n    {\n      \"titre\": \"Avancement des travaux et besoins identifi\u00e9s\",\n      \"chunk_ids\": [4],\n      \"brief\": {\n        \"couvre\": \"L'avancement des travaux autour du MCP, les propositions de cas d'usage ou de pr\u00e9sentations des avanc\u00e9es, et l'absence de besoins clairs identifi\u00e9s \u00e0 ce stade.\",\n        \"ne_couvre_pas\": \"Les d\u00e9tails techniques des projets ou les discussions sur la souverainet\u00e9 et l'orchestration (d\u00e9j\u00e0 couverts dans d'autres sections).\"\n      }\n    }\n  ]\n}"
+}

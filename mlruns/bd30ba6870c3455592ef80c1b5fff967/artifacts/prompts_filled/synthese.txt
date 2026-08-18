@@ -1,0 +1,13 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis.
+
+Participants (vérité) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+
+Résumés des passages :
+- Tour de table de présentation des participants et de leurs expertises en IA générative et assistants conversationnels. Maya (Ely Consulting) présente un projet d'automatisation de rédaction de rapports pour RTE via une pipeline IA multimodale. Les échanges portent sur l'adaptation de l'outil à différents templates et l'exploration de cas d'usage comme la synthèse de données ou l'orchestration via MCP.
+- La réunion a porté sur l'utilisation d'outils d'IA pour l'orchestration de projets, la génération de synthèses et l'analyse de documents (manuscrits ou non). Plusieurs cas d'usage ont été évoqués, notamment l'extraction d'informations structurées, la conformité documentaire et l'automatisation de simulations. L'accent a été mis sur la souveraineté des outils et leur intégration via des serveurs MCP pour une meilleure efficacité. Des projets comme un agent de planification et un outil de détection de fraude ont été présentés.
+- La réunion a abordé des échanges sur les besoins en MCP et NLP, sans décision immédiate. SPEAKER_02 suggère d'attendre des besoins plus précis avant d'approfondir. SPEAKER_00 propose un atelier design pour prioriser des cas d'usage, mais sans validation formelle.
+
+Produis :
+{"type": "type de réunion (ex: prise de contact, revue projet...)",
+  "objectif": "1-2 phrases : ce que la réunion cherchait à accomplir",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}

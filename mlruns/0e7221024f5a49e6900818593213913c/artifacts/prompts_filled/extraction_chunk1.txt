@@ -1,0 +1,18 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien.
+
+Extrait :
+[SPEAKER_01]: synthèses et même augmenter les synthèses et faire des propositions plus complètes et mieuxadapter à notre.
+[SPEAKER_01]: contexte
+[SPEAKER_00]: C’est aussi pour cloisonner c’est-à-dire que si onutilise cetoutil par exemple au sein deRTE c’est pour que ça reste côtéRTE et que ce ne soit pas finalement côté gaillé donc il y a tout cet aspect aussi on cherche à avoir une souveraineté qui soitliée à l’outil et à l’environnement dans lequel
+[SPEAKER_00]: l’outil.
+[SPEAKER_00]: estutilisé
+[SPEAKER_01]: Donc pour les deux missionsorchestration au sein de sur lesquelles j’ai travaillé ces deux cas d’usage-là sinon on a unautre projet qui est en courségalement qui est unagent de planification de pok et donc on n’est pas sur de l’orchestration parce que ça se fait autobre l’accès à unoutil qui va
+[SPEAKER_01]: faire de lawebSir tu pourrais récupérer de la bibliographie à partir d’un sujet donné et de proposer uneodmap pour mettre en place un projet donné se fait automatiquement pour l’instant on n’a pas encoreimplémenté de, MCP mais àterme l’idée ça serait d’avoir unagent qui peut où on peututiliser
+[SPEAKER_01]: plusieursoutils donc dans un premier temps faire de la bibliographie grâce à cetoutil-là mais aussi avoiraccès à plusieursoutils de simulation pour pouvoir mettre en place l’époque justement sur lesquelles on veut.
+[SPEAKER_01]: travailler Donc l’idée c’est de vraiment pouvoir avoir une pipeline un peu un twend qui propose un poc minimal sur un sujet donné on fait beaucoup de hackaton par exemple au sein deID et ça nous permettrait d’aller plus vite sur ce genre de.
+[SPEAKER_01]: sujet-là
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"— si absent", "echeance":"— si absente"}]}

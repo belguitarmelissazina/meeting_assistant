@@ -1,0 +1,21 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien. Des métadonnées (participants, entreprises) peuvent être fournies : pour désigner une personne, utilise EXACTEMENT un nom fourni si le contexte permet de l'identifier, sinon reste générique (« un intervenant ») ; ne reprends JAMAIS un label brut type SPEAKER_00 et n'invente aucun nom.
+
+PARTICIPANTS (noms officiels, vérité — à utiliser EXACTEMENT) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+ENTREPRISES / ORGANISATIONS présentes : Yele Consulting, RTE
+
+Extrait :
+[Matthieu DUSSARTRE]: BonjourNordine.
+[Matthieu DUSSARTRE]: Bonjourd’hui Et voici, Mathieu tout le monde est.
+[Matthieu DUSSARTRE]: là Bonjour à.
+[Matthieu DUSSARTRE]: tous Ce que je vous propose c’est un petit tour de table parce que moi je ne connais pas tout le.
+[Matthieu DUSSARTRE]: monde Je peux commencer si vous voulez donc moi c’est j’ai, remassé je suisexpert dataIa manager de la pratice DataIa au sein de l’élé consulting et donc par exemple travaille avec Maya sur les sujets de l’IA, générative je travaille aussi avec Della côtéRD sur la feuille de route équilibre
+[Matthieu DUSSARTRE]: gouvernance et régulation sur un projet d’équilibreoffre demande et la rentabilité des moyens de base etégalement côté décoffert sur desanalyses plutôtorientées.
+[Matthieu DUSSARTRE]: métiers
+[Maya SAHRAOUI]: Parce que je peux me présenter aussi donc moi c’est Maya, Saraoi je suis consultante confirmée, chezIVB je travaille principalement sur des projets d’IA génératifs donc en interne et en projet que j’ai menéégalement chezRTE avec Daina etGérald et donc je suis docteur en deep learning j’ai fait un
+[Maya SAHRAOUI]: doctorat en traitement automatique des langues et je rejoins il y a deux en septembre donc, voilà j’en quelques missions en ce.
+[Maya SAHRAOUI]: sens-là
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"nom fourni si identifiable, sinon —", "echeance":"— si absente"}]}

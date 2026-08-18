@@ -1,0 +1,5 @@
+Section 1 « Cadrage stratégique et enjeux organisationnels »  <- chunks [0, 7]
+Section 2 « Automatisation de la rédaction et pipelines génératives »  <- chunks [1, 2]
+Section 3 « Souveraineté des données et agents spécialisés »  <- chunks [3, 4]
+Section 4 « Extraction d'informations et vision par ordinateur »  <- chunks [5]
+Section 5 « Orchestration de simulations et analyse de données »  <- chunks [6]

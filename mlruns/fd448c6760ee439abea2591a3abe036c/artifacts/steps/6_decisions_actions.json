@@ -1,0 +1,28 @@
+{
+  "decisions": [],
+  "actions": [
+    {
+      "action": "Prendre contact avec G\u00e9rald pour \u00e9valuer la g\u00e9n\u00e9ralisation du projet de r\u00e9daction automatis\u00e9e de rapports pour RTE.",
+      "responsable": "SPEAKER_00",
+      "echeance": null
+    },
+    {
+      "action": "\u00c9tudier l'adaptation de l'outil de Maya (Elya) pour des cas d'usage sans template pr\u00e9d\u00e9fini, en int\u00e9grant un agent de s\u00e9lection de structure.",
+      "responsable": "SPEAKER_01",
+      "echeance": null
+    },
+    {
+      "action": "Explorer les possibilit\u00e9s d'orchestration via MCP pour les besoins de RTE en synth\u00e8se de donn\u00e9es et interaction conversationnelle.",
+      "responsable": "SPEAKER_02",
+      "echeance": null
+    },
+    {
+      "action": "Noter la proposition d'un atelier design pour prioriser des cas d'usage et r\u00e9fl\u00e9chir \u00e0 des solutions UX",
+      "responsable": "SPEAKER_02"
+    },
+    {
+      "action": "Revenir vers SPEAKER_00 si des besoins plus pr\u00e9cis (MCP ou NLP) \u00e9mergent pour concr\u00e9tiser les \u00e9changes",
+      "responsable": "SPEAKER_02"
+    }
+  ]
+}

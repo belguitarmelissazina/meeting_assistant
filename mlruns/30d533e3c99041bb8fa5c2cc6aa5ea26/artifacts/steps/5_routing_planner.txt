@@ -1,0 +1,4 @@
+Section 1 « Automatisation et orchestration de pipelines pour la génération de rapports et synthèses »  <- chunks [0, 1]
+Section 2 « Extraction et classification d'informations à partir de documents administratifs »  <- chunks [2]
+Section 3 « Orchestration de simulations et analyse de données via MCP et NLP »  <- chunks [3]
+Section 4 « Cas d'usage MCP/NLP et ateliers de conception »  <- chunks [4]

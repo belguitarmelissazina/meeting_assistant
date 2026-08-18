@@ -1,0 +1,82 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Matthieu DUSSARTRE et Maya SAHRAOUI se présentent lors d'un tour de table. Matthieu DUSSARTRE est expert Data & IA Manager chez Yele Consulting, travaillant sur des projets d'IA générative, d'équilibre offre-demande et de rentabilité des moyens de base. Maya SAHRAOUI est consultante confirmée chez Yele Consulting, spécialisée en IA générative et docteure en traitement automatique des langues, avec une expérience chez RTE.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 1,
+    "resume": "Bruno LEMETAYER (RTE) présente son rôle dans la feuille de route Smart Cockpit et les assistants interactifs pour les opérateurs. Matthieu DUSSARTRE (RTE) évoque son expérience de 10 ans sur les assistants et les modèles d'IA générative (LLM, MCP). La réunion vise à identifier les besoins et attentes en IA générative pour potentiellement collaborer. Bruno LEMETAYER mentionne l'intérêt de RTE pour les interfaces conversationnelles via MCP.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "Maya SAHRAOUI présente un projet réalisé chez RTE pour automatiser la génération de rapports à partir de fichiers PPT, en utilisant des pipelines d'agents IA pour extraire, classifier et rédiger des sections structurées. Le processus inclut une boucle de correction pour itérer sur les résultats. Bruno LEMETAYER et Matthieu DUSSARTRE échangent sur la structure des rapports et les règles d'assignation des slides. Le projet est présenté comme un POC réalisé en 25 jours avec un REX pour évaluer les suites possibles.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Évaluer la généralisation du POC pour la génération de rapports chez RTE avec Gérald",
+        "responsable": "Matthieu DUSSARTRE",
+        "echeance": "—"
+      },
+      {
+        "action": "Partager le REX du projet avec l'équipe pour analyse des suites possibles",
+        "responsable": "Maya SAHRAOUI",
+        "echeance": "—"
+      }
+    ]
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La réunion a porté sur l'adaptation d'un outil de génération de rapports structurés pour RTE, initialement conçu avec des templates, en une version flexible sans templates. Maya SAHRAOUI a présenté les garde-fous implémentés pour assurer la robustesse et la traçabilité des rapports générés. Bruno LEMETAYER a évoqué des cas d'usage similaires pour la synthèse de données ou d'événements. Maya SAHRAOUI a également partagé des projets internes utilisant des orchestrations multi-agents (N8N) et des outils interactifs (MCP) pour automatiser des tâches comme la rédaction d'appels d'offres ou la synthèse de réunions.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 4,
+    "resume": "Maya SAHRAOUI a présenté plusieurs projets d'agents IA spécialisés pour RTE, notamment un agent d'orchestration pour des données open data énergie et un agent de planification de POC avec accès à des outils de simulation. Matthieu DUSSARTRE a souligné l'importance de la souveraineté et du cloisonnement des outils au sein de RTE. Maya a également évoqué un projet antérieur de détection de fraude sur des documents administratifs scannés, incluant un modèle VLM hébergé en local et un dashboard de monitoring.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 5,
+    "resume": "Les participants ont échangé sur des cas d’usage liés à l’orchestration d’études et à l’intégration de serveurs MCP pour automatiser des simulations et générer des pré-rapports. Bruno LEMETAYER a évoqué l’intérêt pour des travaux en NLP, notamment sur la synthèse de données disparates et la gestion de documents manuscrits. Maya SAHRAOUI a confirmé que l’intégration de serveurs MCP dans leur feuille de route permettrait de brancher des outils de simulation internes. Matthieu DUSSARTRE a souligné l’importance de préparer et orchestrer des scénarios pour des études énergétiques avant validation humaine.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Partager un plan de travail détaillé sur l’intégration des serveurs MCP pour l’orchestration d’études et la simulation, incluant les directives générées par un premier agent et leur application via les outils internes",
+        "responsable": "Maya SAHRAOUI",
+        "echeance": "—"
+      },
+      {
+        "action": "Étudier la faisabilité d’un outil de synthèse automatique de données disparates (blocs d’alarme, messages, rapports) pour générer des pré-rapports, en collaboration avec Yele Consulting",
+        "responsable": "Bruno LEMETAYER",
+        "echeance": "—"
+      },
+      {
+        "action": "Explorer les cas d’usage spécifiques liés au traitement de documents manuscrits pour une intégration dans les workflows existants",
+        "responsable": "Bruno LEMETAYER",
+        "echeance": "—"
+      }
+    ]
+  },
+  {
+    "chunk_id": 6,
+    "resume": "Bruno LEMETAYER et Matthieu DUSSARTRE échangent sur l'opportunité de travailler sur un cas d'usage MCP ou NLP, mais Bruno souligne l'absence de besoins clairs pour l'instant. Matthieu propose un atelier design pour prioriser des cas d'usage. Bruno note l'intérêt de cette proposition mais ne s'engage pas immédiatement.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Revenir vers Yele Consulting ou RTE si un besoin précis émerge (MCP ou NLP)",
+        "responsable": "Bruno LEMETAYER",
+        "echeance": "—"
+      },
+      {
+        "action": "Évaluer la faisabilité d'un atelier design pour prioriser des cas d'usage",
+        "responsable": "Matthieu DUSSARTRE",
+        "echeance": "—"
+      }
+    ]
+  }
+]

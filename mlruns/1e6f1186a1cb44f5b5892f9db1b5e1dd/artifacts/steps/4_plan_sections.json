@@ -1,0 +1,36 @@
+{
+  "sections": [
+    {
+      "titre": "Contexte et acteurs de l'atelier",
+      "chunk_ids": [
+        0,
+        1
+      ],
+      "brief": "Pr\u00e9sentation des participants (expertise, r\u00f4les) et cadrage initial de l'atelier. Couvre les objectifs de collaboration et les attentes de RTE en mati\u00e8re d'IA g\u00e9n\u00e9rative. NE PAS inclure les retours d'exp\u00e9rience concrets ou les d\u00e9monstrations de solutions (d\u00e9j\u00e0 d\u00e9taill\u00e9s dans les sections suivantes)."
+    },
+    {
+      "titre": "Automatisation de la g\u00e9n\u00e9ration de rapports et pipelines d'agents IA",
+      "chunk_ids": [
+        2,
+        3
+      ],
+      "brief": "D\u00e9tails des projets concrets d'automatisation de rapports (ex : PPT vers documents structur\u00e9s) et des pipelines multi-agents. Couvre les garde-fous, la tra\u00e7abilit\u00e9, et les adaptations d'outils (templates vs flexibilit\u00e9). NE PAS inclure les cas d'usage li\u00e9s \u00e0 l'orchestration d'\u00e9tudes ou aux serveurs MCP (trait\u00e9s ailleurs)."
+    },
+    {
+      "titre": "Orchestration d'agents IA et int\u00e9gration de serveurs MCP",
+      "chunk_ids": [
+        4,
+        5
+      ],
+      "brief": "Pr\u00e9sentation de projets d'agents IA sp\u00e9cialis\u00e9s (ex : orchestration de donn\u00e9es open data, planification de POC) et int\u00e9gration de serveurs MCP pour automatiser des simulations. Couvre les enjeux de souverainet\u00e9 et les outils interactifs (N8N, MCP). NE PAS inclure les retours sur la g\u00e9n\u00e9ration de rapports ou les besoins NLP non prioritaires (d\u00e9j\u00e0 abord\u00e9s)."
+    },
+    {
+      "titre": "Priorisation des cas d'usage et perspectives de collaboration",
+      "chunk_ids": [
+        6
+      ],
+      "brief": "\u00c9changes sur l'identification et la priorisation des cas d'usage (ex : MCP, NLP) et proposition d'un atelier design. Couvre les freins (besoins non clairs) et les pistes de collaboration future. NE PAS inclure les retours d'exp\u00e9rience techniques ou les d\u00e9monstrations de solutions (d\u00e9j\u00e0 trait\u00e9s dans les sections pr\u00e9c\u00e9dentes)."
+    }
+  ],
+  "raw": "{\n  \"sections\": [\n    {\n      \"titre\": \"Contexte et acteurs de l'atelier\",\n      \"chunk_ids\": [0, 1],\n      \"brief\": \"Pr\u00e9sentation des participants (expertise, r\u00f4les) et cadrage initial de l'atelier. Couvre les objectifs de collaboration et les attentes de RTE en mati\u00e8re d'IA g\u00e9n\u00e9rative. NE PAS inclure les retours d'exp\u00e9rience concrets ou les d\u00e9monstrations de solutions (d\u00e9j\u00e0 d\u00e9taill\u00e9s dans les sections suivantes).\"\n    },\n    {\n      \"titre\": \"Automatisation de la g\u00e9n\u00e9ration de rapports et pipelines d'agents IA\",\n      \"chunk_ids\": [2, 3],\n      \"brief\": \"D\u00e9tails des projets concrets d'automatisation de rapports (ex : PPT vers documents structur\u00e9s) et des pipelines multi-agents. Couvre les garde-fous, la tra\u00e7abilit\u00e9, et les adaptations d'outils (templates vs flexibilit\u00e9). NE PAS inclure les cas d'usage li\u00e9s \u00e0 l'orchestration d'\u00e9tudes ou aux serveurs MCP (trait\u00e9s ailleurs).\"\n    },\n    {\n      \"titre\": \"Orchestration d'agents IA et int\u00e9gration de serveurs MCP\",\n      \"chunk_ids\": [4, 5],\n      \"brief\": \"Pr\u00e9sentation de projets d'agents IA sp\u00e9cialis\u00e9s (ex : orchestration de donn\u00e9es open data, planification de POC) et int\u00e9gration de serveurs MCP pour automatiser des simulations. Couvre les enjeux de souverainet\u00e9 et les outils interactifs (N8N, MCP). NE PAS inclure les retours sur la g\u00e9n\u00e9ration de rapports ou les besoins NLP non prioritaires (d\u00e9j\u00e0 abord\u00e9s).\"\n    },\n    {\n      \"titre\": \"Priorisation des cas d'usage et perspectives de collaboration\",\n      \"chunk_ids\": [6],\n      \"brief\": \"\u00c9changes sur l'identification et la priorisation des cas d'usage (ex : MCP, NLP) et proposition d'un atelier design. Couvre les freins (besoins non clairs) et les pistes de collaboration future. NE PAS inclure les retours d'exp\u00e9rience techniques ou les d\u00e9monstrations de solutions (d\u00e9j\u00e0 trait\u00e9s dans les sections pr\u00e9c\u00e9dentes).\"\n    }\n  ]\n}"
+}

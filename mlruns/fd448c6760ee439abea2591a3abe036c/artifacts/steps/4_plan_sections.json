@@ -1,0 +1,16 @@
+{
+  "sections": [
+    {
+      "titre": "Automatisation des processus op\u00e9rationnels et interaction conversationnelle",
+      "chunk_ids": [
+        0,
+        2
+      ],
+      "brief": {
+        "couvre": "Les cas d'usage li\u00e9s \u00e0 l'automatisation des processus op\u00e9rationnels (ex : r\u00e9daction de rapports, synth\u00e8se de donn\u00e9es h\u00e9t\u00e9rog\u00e8nes) et \u00e0 l'interaction conversationnelle via MCP pour les assistants op\u00e9rationnels. Inclut les projets d'orchestration d'outils et de g\u00e9n\u00e9ration de pr\u00e9-rapports automatis\u00e9s.",
+        "ne_couvre_pas": "Les aspects techniques de souverainet\u00e9 des outils, de cloisonnement interne ou de d\u00e9tection de fraude (trait\u00e9s dans d'autres sections)."
+      }
+    }
+  ],
+  "raw": "{\n  \"sections\": [\n    {\n      \"titre\": \"Automatisation des processus op\u00e9rationnels et interaction conversationnelle\",\n      \"chunk_ids\": [0, 2],\n      \"brief\": {\n        \"couvre\": \"Les cas d'usage li\u00e9s \u00e0 l'automatisation des processus op\u00e9rationnels (ex : r\u00e9daction de rapports, synth\u00e8se de donn\u00e9es h\u00e9t\u00e9rog\u00e8nes) et \u00e0 l'interaction conversationnelle via MCP pour les assistants op\u00e9rationnels. Inclut les projets d'orchestration d'outils et de g\u00e9n\u00e9ration de pr\u00e9-rapports automatis\u00e9s.\",\n        \"ne_couvre_pas\": \"Les aspects techniques de souverainet\u00e9 des outils, de cloisonnement interne ou de d\u00e9tection de fraude (trait\u00e9s dans d'autres sections).\"\n      }\n    }\n  ]\n}"
+}

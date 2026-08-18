@@ -1,0 +1,66 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table des participants pour pr\u00e9senter leurs r\u00f4les et expertises en IA g\u00e9n\u00e9rative et assistants conversationnels. Discussion sur les besoins et attentes en mati\u00e8re d'IA g\u00e9n\u00e9rative, notamment pour les assistants interactifs. \u00c9changes sur les mod\u00e8les MCP et LLM pour am\u00e9liorer l'interface utilisateur. Exploration des collaborations potentielles entre les \u00e9quipes.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 1,
+    "resume": "La r\u00e9union a port\u00e9 sur la pr\u00e9sentation des comp\u00e9tences et projets de SPEAKER_01 en IA g\u00e9n\u00e9rative, notamment un outil automatisant la r\u00e9daction de rapports \u00e0 partir de fichiers PPT pour RTE. L'outil utilise une pipeline en 5 briques (analyse des slides, assignation des sections, r\u00e9daction, int\u00e9gration, correction) et permet une boucle de correction interactive. SPEAKER_02 a questionn\u00e9 l'adaptabilit\u00e9 de l'outil \u00e0 des templates vari\u00e9s, ce qui a \u00e9t\u00e9 confirm\u00e9 possible par SPEAKER_01.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La r\u00e9union a port\u00e9 sur la pr\u00e9sentation d'un outil de r\u00e9daction automatis\u00e9e pour RTE, incluant des m\u00e9canismes de robustesse (artefacts interm\u00e9diaires, tra\u00e7abilit\u00e9, correction it\u00e9rative) et des limites identifi\u00e9es (hors scope : v\u00e9rification chiffr\u00e9e, reconstruction de graphiques, commentaires globaux). Une discussion a \u00e9galement abord\u00e9 des cas d'usage de synth\u00e8se g\u00e9n\u00e9rative et d'orchestration d'agents (N8N, MCP) pour des projets internes comme un outil de r\u00e9daction d'appels d'offres ou un g\u00e9n\u00e9rateur de synth\u00e8ses de r\u00e9unions.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La discussion porte sur un projet visant \u00e0 renforcer la souverainet\u00e9 et la confidentialit\u00e9 des donn\u00e9es \u00e9nerg\u00e9tiques, notamment en int\u00e9grant le LNM (Logiciel de Normalisation M\u00e9tier) directement sur des donn\u00e9es open data. L'objectif est d'avoir un agent sp\u00e9cialis\u00e9 pour g\u00e9n\u00e9rer des donn\u00e9es pr\u00e9cises et adapt\u00e9es aux besoins sp\u00e9cifiques de l'association. Une comparaison est faite avec le bouquet typique ou d'autres march\u00e9s pour illustrer cette d\u00e9marche.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 4,
+    "resume": "Les participants discutent de l'am\u00e9lioration des synth\u00e8ses et des propositions pour mieux les adapter. Ils \u00e9voquent la n\u00e9cessit\u00e9 de cloisonner l'outil au sein de RTE pour pr\u00e9server la souverainet\u00e9 et l'environnement d'utilisation. Un projet en cours concerne un agent de planification pour la bibliographie et l'\u00e9laboration d'une roadmap automatique. L'objectif est de cr\u00e9er une pipeline permettant de proposer un POC minimal sur un sujet donn\u00e9, acc\u00e9l\u00e9rant ainsi les hackathons internes.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 5,
+    "resume": "La r\u00e9union a abord\u00e9 des projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s, notamment administratifs, avec un focus sur l'utilisation de mod\u00e8les de vision par ordinateur (VLM) pour d\u00e9tecter des anomalies et \u00e9valuer la conformit\u00e9 des donn\u00e9es. Un projet sp\u00e9cifique a \u00e9t\u00e9 pr\u00e9sent\u00e9 par Maya, incluant le pr\u00e9traitement, l'apprentissage, le fine-tuning de mod\u00e8les VLM, et le d\u00e9ploiement avec monitoring. La discussion a \u00e9galement \u00e9voqu\u00e9 la gestion de documents manuscrits et non manuscrits.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 6,
+    "resume": "Les participants ont \u00e9chang\u00e9 sur des cas d\u2019usage li\u00e9s \u00e0 l\u2019orchestration de simulations et \u00e0 l\u2019analyse de donn\u00e9es, notamment via des outils MCP et des mod\u00e8les de langage. L\u2019accent a \u00e9t\u00e9 mis sur la synth\u00e8se de sources disparates, la gestion d\u2019hypoth\u00e8ses et la pr\u00e9paration de rapports pr\u00e9-\u00e9tudes. Une convergence a \u00e9t\u00e9 observ\u00e9e sur l\u2019int\u00e9r\u00eat d\u2019un serveur MCP pour automatiser des t\u00e2ches complexes et faciliter l\u2019interaction entre outils internes.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Identifier et prioriser les cas d\u2019usage concrets pour l\u2019orchestration de simulations via MCP (ex : gestion d\u2019hypoth\u00e8ses, pr\u00e9paration de rapports pr\u00e9-\u00e9tudes)",
+        "responsable": "\u00c9quipe technique / G\u00e9rald",
+        "echeance": "\u00c0 d\u00e9finir"
+      },
+      {
+        "action": "\u00c9tudier la faisabilit\u00e9 technique d\u2019un serveur MCP capable de se brancher sur des outils de simulation internes et de g\u00e9n\u00e9rer des directives pour des agents",
+        "responsable": "\u00c9quipe technique",
+        "echeance": "\u00c0 d\u00e9finir"
+      },
+      {
+        "action": "Explorer les potentialit\u00e9s du NLP pour la synth\u00e8se de donn\u00e9es fragment\u00e9es (ex : blocs d\u2019alarme, messages, notes manuscrites) en compl\u00e9ment des travaux existants",
+        "responsable": "\u00c9quipe NLP",
+        "echeance": "\u00c0 d\u00e9finir"
+      }
+    ]
+  },
+  {
+    "chunk_id": 7,
+    "resume": "La r\u00e9union a abord\u00e9 des \u00e9changes sur les besoins en MCP et NLP sans aboutir \u00e0 des d\u00e9cisions concr\u00e8tes. SPEAKER_00 a propos\u00e9 un atelier design pour prioriser des cas d'usage, tandis que SPEAKER_02 a sugg\u00e9r\u00e9 de revenir vers eux uniquement en cas de besoins pr\u00e9cis. Aucune action ou d\u00e9cision formelle n'a \u00e9t\u00e9 act\u00e9e.",
+    "decisions": [],
+    "actions": []
+  }
+]

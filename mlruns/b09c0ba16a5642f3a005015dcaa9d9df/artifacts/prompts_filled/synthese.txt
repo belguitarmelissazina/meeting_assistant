@@ -1,0 +1,21 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis. Choisis le TYPE de réunion le plus précis d'après les indices concrets du sommaire ; les exemples fournis servent d'inspiration, tu n'es PAS obligé de t'y limiter.
+
+Participants (vérité) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+
+Résumés des passages :
+- Tour de table des participants pour présenter leurs rôles et expertises en IA générative. Maya présente un projet d'automatisation de rédaction de rapports pour RTE en utilisant des modèles multimodaux et des pipelines d'agents. Discussion sur l'adaptation de l'outil à différents templates et l'intégration de boucles de correction. Identification de cas d'usage potentiels pour la synthèse de données et l'orchestration via MCP ou N8N.
+- Les échanges portent sur l'amélioration des synthèses et des propositions pour mieux les adapter au contexte. La souveraineté des outils et leur cloisonnement au sein de RTE sont soulignés pour éviter une utilisation externe. Un projet d'agent de planification est évoqué, visant à automatiser la récupération de bibliographie et la création de roadmaps pour des projets, avec une extension future vers l'accès à plusieurs outils de simulation. L'objectif est de proposer une POC minimale rapidement, notamment via des hackathons.
+- La réunion a abordé des projets liés à l'extraction d'informations à partir de documents scannés, notamment administratifs, avec une approche basée sur des modèles visuo-linguistiques (VLM). Un projet spécifique a été présenté pour extraire des données comme les salaires et métiers, avec une classification des documents (manuscrits ou non) et une détection de conformité. La discussion a également évoqué l'état de l'art en R&D et l'utilisation de sources comme RKEVX pour des démonstrations rapides.
+- La réunion a porté sur l'identification de cas d'usage pour l'intégration de serveurs MCP et de solutions NLP dans les processus existants. Les échanges ont mis en lumière des besoins en orchestration d'outils de simulation, de synthèse de données disparates et de génération de pré-rapports. Les participants ont souligné l'intérêt d'un MCP pour préparer et lancer des études, tout en intégrant des contrôles humains et des ajustements automatisés. Les discussions ont également évoqué des travaux en cours sur la synthèse de textes manuscrits et l'utilisation de LLM.
+- La réunion a porté sur l'avancement des travaux et l'exploration de cas d'usage, notamment autour du MCP. SPEAKER_00 a proposé de réfléchir à un cas d'usage ou de présenter les avancées des travaux. SPEAKER_02 a indiqué qu'il n'y avait pas de besoins clairs pour l'instant et a suggéré de revenir vers eux si des éléments précis émergent.
+
+Pour le TYPE, voici des EXEMPLES pour t'inspirer (liste NON imposée, tu peux
+en choisir un autre s'il est plus juste) :
+prise de contact, avant-vente, réunion client, revue projet, point d'avancement,
+brainstorm, atelier de travail, comité de pilotage, kick-off, démo, formation.
+
+Produis :
+{"type": "un seul type de réunion, le plus précis (inspiré des exemples ou autre)",
+  "type_justification": "1 phrase citant les indices concrets du sommaire",
+  "objectif": "1-2 phrases : le BUT de la réunion (distinct du type)",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}

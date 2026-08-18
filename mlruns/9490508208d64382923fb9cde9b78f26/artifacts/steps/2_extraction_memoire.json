@@ -1,0 +1,37 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "La r\u00e9union \u00e9tait une prise de contact entre les \u00e9quipes d'ELEY Consulting et de RTE pour discuter des besoins et attentes en mati\u00e8re d'IA g\u00e9n\u00e9rative, notamment autour des assistants conversationnels et des outils de synth\u00e8se. Maya a pr\u00e9sent\u00e9 des projets d'IA g\u00e9n\u00e9rative r\u00e9alis\u00e9s, comme l'automatisation de la r\u00e9daction de rapports \u00e0 partir de fichiers PPT pour l'\u00e9quipe \u00e9quilibre offre et demande de RTE. Les discussions ont port\u00e9 sur les cas d'usage potentiels, les d\u00e9fis techniques et les perspectives de collaboration future.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 1,
+    "resume": "La r\u00e9union a abord\u00e9 plusieurs projets li\u00e9s \u00e0 l'utilisation d'outils d'IA et de traitement de donn\u00e9es. Parmi eux, un outil d'orchestration interne pour RTE visant \u00e0 garantir la souverainet\u00e9 des donn\u00e9es, un agent de planification automatis\u00e9 pour g\u00e9n\u00e9rer des roadmaps et des POC, ainsi qu'un projet d'extraction d'informations \u00e0 partir de documents administratifs scann\u00e9s (y compris manuscrits) pour d\u00e9tecter des anomalies ou fraudes. Le dernier projet inclut \u00e9galement un travail de fine-tuning de mod\u00e8les VLM et un d\u00e9ploiement en local avec monitoring.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La r\u00e9union a port\u00e9 sur l'exploration de cas d'usage li\u00e9s au traitement du texte, \u00e0 la synth\u00e8se de donn\u00e9es disparates et \u00e0 l'orchestration d'outils via des serveurs MCP (Middleware for Computational Processes). Les participants ont discut\u00e9 des applications potentielles en NLP (Natural Language Processing) et en MCP, notamment pour automatiser des simulations, g\u00e9n\u00e9rer des rapports et optimiser des \u00e9tudes. L'accent a \u00e9t\u00e9 mis sur l'int\u00e9gration d'outils existants et la pr\u00e9paration de sc\u00e9narios pour des analyses futures.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La r\u00e9union a abord\u00e9 la possibilit\u00e9 de collaborer sur des cas d'usage, notamment autour du MCP. SPEAKER_02 a indiqu\u00e9 ne pas avoir de besoins pr\u00e9cis pour l'instant et pr\u00e9f\u00e8re attendre d'avoir des \u00e9l\u00e9ments concrets avant d'\u00e9changer \u00e0 nouveau. SPEAKER_00 a propos\u00e9 un atelier design pour prioriser des cas d'usage et a mentionn\u00e9 une collaboration en cours avec Olivier Maserol sur l'UX de la control room du futur. Aucune d\u00e9cision ferme n'a \u00e9t\u00e9 act\u00e9e, mais des pistes de travail futur ont \u00e9t\u00e9 \u00e9voqu\u00e9es.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Revenir vers SPEAKER_00 avec des besoins plus pr\u00e9cis sur les cas d'usage (MCP ou autres) si ceux-ci se d\u00e9gagent.",
+        "responsable": "SPEAKER_02",
+        "echeance": "\u2014"
+      },
+      {
+        "action": "Organiser un atelier design pour r\u00e9fl\u00e9chir et prioriser des cas d'usage (proposition \u00e0 \u00e9tudier).",
+        "responsable": "\u2014",
+        "echeance": "\u2014"
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis. Choisis le TYPE de réunion le plus précis d'après les indices concrets du sommaire ; les exemples fournis servent d'inspiration, tu n'es PAS obligé de t'y limiter.
+---
+Participants (vérité) : {participants}
+
+Résumés des passages :
+{memoire}
+
+Pour le TYPE, voici des EXEMPLES pour t'inspirer (liste NON imposée, tu peux
+en choisir un autre s'il est plus juste) :
+prise de contact, avant-vente, réunion client, revue projet, point d'avancement,
+brainstorm, atelier de travail, comité de pilotage, kick-off, démo, formation.
+
+Produis :
+{{"type": "un seul type de réunion, le plus précis (inspiré des exemples ou autre)",
+  "type_justification": "1 phrase citant les indices concrets du sommaire",
+  "objectif": "1-2 phrases : le BUT de la réunion (distinct du type)",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}}

@@ -1,0 +1,109 @@
+{
+  "meeting_purpose": "Pr\u00e9senter les expertises et projets d'IA g\u00e9n\u00e9rative de Yele Consulting \u00e0 RTE, explorer des cas d'usage concrets pour l'automatisation et l'orchestration d'outils, et initier des collaborations futures autour des assistants conversationnels et de l'innovation.",
+  "meeting_narrative": "La r\u00e9union s'ouvre avec un tour de table o\u00f9 Bruno LEMETAYER (Yele Consulting) et Maya SAHRAOUI (Yele Consulting) pr\u00e9sentent leurs r\u00f4les et exp\u00e9riences en IA g\u00e9n\u00e9rative, tandis que Nourredine HENKA, J\u00e9r\u00f4me PICAULT et J\u00e9r\u00f4me MASSET (RTE) d\u00e9taillent leurs responsabilit\u00e9s respectives, notamment sur les assistants pour op\u00e9rateurs et l'IA g\u00e9n\u00e9rative. Maya SAHRAOUI expose ensuite plusieurs projets men\u00e9s pour RTE, dont un POC de g\u00e9n\u00e9ration automatis\u00e9e de rapports pour l'\u00e9quipe \u00c9quilibre Offre-Demande, r\u00e9alis\u00e9 en 25 jours et d\u00e9montrant la valeur de l'IA pour acc\u00e9l\u00e9rer la production sans d\u00e9grader la rigueur. Elle pr\u00e9sente \u00e9galement des outils internes comme un agent de planification de POC et un syst\u00e8me de synth\u00e8se de r\u00e9unions via MCP. Les \u00e9changes explorent ensuite les potentialit\u00e9s du MCP pour orchestrer des outils de simulation et des workflows complexes, avec des cas d'usage concrets \u00e9voqu\u00e9s par J\u00e9r\u00f4me PICAULT. Bruno LEMETAYER propose un atelier design pour prioriser les cas d'usage, mais RTE souligne l'absence de besoins clairs imm\u00e9diats sur le MCP et la n\u00e9cessit\u00e9 de concr\u00e9tiser les discussions. La r\u00e9union se conclut sur une note exploratoire, avec des pistes pour des collaborations futures, notamment autour de la souverainet\u00e9 des outils et de l'int\u00e9gration dans l'environnement RTE.",
+  "participants": [
+    {
+      "name": "Bruno LEMETAYER",
+      "role": "Expert Data IA Manager, Yele Consulting",
+      "side": "prestataire"
+    },
+    {
+      "name": "Matthieu DUSSARTRE",
+      "role": "Consultant confirm\u00e9, Yele Consulting",
+      "side": "prestataire"
+    },
+    {
+      "name": "Nourredine HENKA",
+      "role": "Pilote de la feuille de route Smart Cockpit, RTE",
+      "side": "client"
+    },
+    {
+      "name": "J\u00e9r\u00f4me PICAULT",
+      "role": "Responsable IA g\u00e9n\u00e9rative (LLM, MCP) et innovation, RTE",
+      "side": "client"
+    },
+    {
+      "name": "Maya SAHRAOUI",
+      "role": "Consultante confirm\u00e9e en IA g\u00e9n\u00e9rative, Yele Consulting",
+      "side": "prestataire"
+    },
+    {
+      "name": "J\u00e9r\u00f4me MASSET",
+      "role": "Collaborateur RTE sur l'IA g\u00e9n\u00e9rative",
+      "side": "client"
+    }
+  ],
+  "section_plan": [
+    {
+      "title": "Tour de table et pr\u00e9sentation des participants",
+      "description": "Bruno LEMETAYER et Maya SAHRAOUI (Yele Consulting) pr\u00e9sentent leurs r\u00f4les et exp\u00e9riences en IA g\u00e9n\u00e9rative, tandis que Nourredine HENKA, J\u00e9r\u00f4me PICAULT et J\u00e9r\u00f4me MASSET (RTE) d\u00e9taillent leurs responsabilit\u00e9s, notamment sur les assistants pour op\u00e9rateurs et l'innovation.",
+      "source_chunk_ids": [
+        "chunk_000"
+      ]
+    },
+    {
+      "title": "Pr\u00e9sentation des projets d'IA g\u00e9n\u00e9rative de Yele Consulting",
+      "description": "Maya SAHRAOUI expose ses projets en IA g\u00e9n\u00e9rative, incluant des outils de g\u00e9n\u00e9ration de rapports automatis\u00e9s, de r\u00e9daction d'appels d'offres, et de synth\u00e8se de r\u00e9unions, avec une approche ax\u00e9e sur la souverainet\u00e9 des donn\u00e9es et l'orchestration via MCP.",
+      "source_chunk_ids": [
+        "chunk_000",
+        "chunk_001",
+        "chunk_002"
+      ]
+    },
+    {
+      "title": "Retour d'exp\u00e9rience sur le POC de g\u00e9n\u00e9ration automatis\u00e9e de rapports pour RTE",
+      "description": "Maya SAHRAOUI d\u00e9taille le projet de g\u00e9n\u00e9ration automatis\u00e9e de rapports pour l'\u00e9quipe \u00c9quilibre Offre-Demande de RTE, incluant les choix techniques, les garde-fous, et les limites identifi\u00e9es (ex : absence de v\u00e9rification chiffr\u00e9e des graphiques).",
+      "source_chunk_ids": [
+        "chunk_000",
+        "chunk_001"
+      ]
+    },
+    {
+      "title": "Exploration des cas d'usage MCP et orchestration d'outils",
+      "description": "Bruno LEMETAYER et J\u00e9r\u00f4me PICAULT \u00e9changent sur les potentialit\u00e9s du MCP pour orchestrer des outils internes (simulateurs, workflows) et automatiser des processus complexes, avec des exemples concrets comme la pr\u00e9paration de simulations \u00e9nerg\u00e9tiques.",
+      "source_chunk_ids": [
+        "chunk_004",
+        "chunk_005"
+      ]
+    },
+    {
+      "title": "Souverainet\u00e9 des outils IA et ateliers design",
+      "description": "Les participants discutent de l'importance de maintenir les outils et donn\u00e9es au sein de l'environnement RTE pour garantir la souverainet\u00e9. Bruno LEMETAYER propose un atelier design pour prioriser les cas d'usage, mais RTE souligne l'absence de besoins clairs imm\u00e9diats.",
+      "source_chunk_ids": [
+        "chunk_002",
+        "chunk_005"
+      ]
+    }
+  ],
+  "decisions": [],
+  "actions": [
+    {
+      "description": "Pr\u00e9senter les projets d'IA g\u00e9n\u00e9rative de Maya SAHRAOUI \u00e0 l'\u00e9quipe de G\u00e9rald pour \u00e9valuer les suites possibles.",
+      "owner": "Bruno LEMETAYER",
+      "due_date": null,
+      "priority": "medium",
+      "dependencies": []
+    },
+    {
+      "description": "\u00c9valuer la faisabilit\u00e9 pratique d'un atelier design pour prioriser les cas d'usage.",
+      "owner": "Nourredine HENKA",
+      "due_date": null,
+      "priority": "medium",
+      "dependencies": []
+    }
+  ],
+  "risks_blockers": [
+    "RTE n'a pas encore de besoins clairs identifi\u00e9s sur le MCP, ce qui limite la concr\u00e9tisation imm\u00e9diate des discussions.",
+    "Les op\u00e9rateurs de RTE ont un temps de disponibilit\u00e9 limit\u00e9, ce qui peut ralentir l'avancement des projets.",
+    "Le projet de g\u00e9n\u00e9ration automatis\u00e9e de rapports reste un POC et n\u00e9cessite une validation humaine pour les corrections et ajustements.",
+    "L'adaptation de l'outil \u00e0 des templates diff\u00e9rents ou \u00e0 l'absence de template n\u00e9cessite une r\u00e9flexion suppl\u00e9mentaire sur l'int\u00e9gration d'un agent d\u00e9di\u00e9.",
+    "L'absence de v\u00e9rification chiffr\u00e9e des valeurs extraites des graphiques dans le POC de rapports pourrait impacter la rigueur des rapports g\u00e9n\u00e9r\u00e9s.",
+    "La correction it\u00e9rative actuelle se fait au niveau des sections et non \u00e0 un niveau macro, limitant les contraintes globales sur l'ensemble du rapport."
+  ],
+  "key_numbers_dates": [
+    "Projet de g\u00e9n\u00e9ration automatis\u00e9e de rapports : r\u00e9alis\u00e9 en 25 jours",
+    "Projet de d\u00e9tection de fraude : fine-tuning de mod\u00e8les visuo-linguistiques (QuendInfibeVL)",
+    "Projet de r\u00e9daction d'appels d'offres : orchestration via N8N",
+    "Projet de synth\u00e8se de r\u00e9unions : en cours de d\u00e9veloppement avec MCP"
+  ]
+}

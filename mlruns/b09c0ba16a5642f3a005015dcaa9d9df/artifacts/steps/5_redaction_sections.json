@@ -1,0 +1,51 @@
+[
+  {
+    "index": 1,
+    "titre": "Tour de table et pr\u00e9sentation des cas d'usage initiaux",
+    "chunk_ids": [
+      0
+    ],
+    "brief": {
+      "couvre": "Les r\u00f4les et expertises des participants en IA g\u00e9n\u00e9rative, ainsi que les premiers cas d'usage identifi\u00e9s (automatisation de rapports, synth\u00e8se de donn\u00e9es, orchestration via MCP/N8N, boucles de correction, adaptation \u00e0 diff\u00e9rents templates).",
+      "ne_couvre_pas": "Les d\u00e9tails techniques des projets (VLM, extraction de donn\u00e9es, classification de documents, etc.), les aspects de souverainet\u00e9 des outils, ou les discussions sur l'orchestration avanc\u00e9e (simulation, roadmaps, MCP pour \u00e9tudes)."
+    },
+    "texte": "Un tour de table a permis de pr\u00e9senter les r\u00f4les et expertises des participants en IA g\u00e9n\u00e9rative. Maya, consultante confirm\u00e9e chez Ely, a notamment d\u00e9taill\u00e9 son exp\u00e9rience en automatisation de r\u00e9daction de rapports pour RTE, en s\u2019appuyant sur des mod\u00e8les multimodaux et des pipelines d\u2019agents. Elle a soulign\u00e9 l\u2019utilisation de mod\u00e8les locaux (comme Mistral) avec des techniques de fine-tuning, de RAG et d\u2019orchestration, ainsi que des outils de d\u00e9ploiement comme VLHRM ou Vicorne. Ses projets incluent la transformation de documents complexes en contenus actionnables, avec une industrialisation des processus et une approche modulaire adaptable \u00e0 diff\u00e9rents templates.\n\nLes \u00e9changes ont \u00e9galement mis en lumi\u00e8re des cas d\u2019usage concrets, tels que l\u2019automatisation de la g\u00e9n\u00e9ration de rapports \u00e0 partir de fichiers PPT, int\u00e9grant des boucles de correction et une adaptation \u00e0 des structures pr\u00e9d\u00e9finies. Maya a pr\u00e9sent\u00e9 une pipeline en cinq briques, combinant analyse de slides, assignation de sections, r\u00e9daction par \u00e9tapes, int\u00e9gration et correction it\u00e9rative. D\u2019autres projets \u00e9voqu\u00e9s incluent un outil de r\u00e9daction assist\u00e9e pour appels d\u2019offres, orchestr\u00e9 via N8N, et un syst\u00e8me de synth\u00e8se de r\u00e9unions interactif, en d\u00e9veloppement, utilisant un MCP pour f\u00e9d\u00e9rer plusieurs outils internes. L\u2019accent a \u00e9t\u00e9 mis sur la modularit\u00e9, la tra\u00e7abilit\u00e9 et la possibilit\u00e9 d\u2019adapter les solutions \u00e0 des besoins m\u00e9tiers vari\u00e9s."
+  },
+  {
+    "index": 2,
+    "titre": "Souverainet\u00e9 des outils, orchestration et automatisation des processus",
+    "chunk_ids": [
+      1,
+      3
+    ],
+    "brief": {
+      "couvre": "Les enjeux de souverainet\u00e9 et de cloisonnement des outils au sein de RTE, les projets d'agents de planification (automatisation de roadmaps, r\u00e9cup\u00e9ration de bibliographie), l'orchestration d'outils de simulation, et l'int\u00e9gration de MCP pour pr\u00e9parer/lancer des \u00e9tudes avec contr\u00f4les humains et ajustements automatis\u00e9s. Inclut aussi les discussions sur les POC minimales (hackathons) et l'\u00e9tat de l'art en R&D.",
+      "ne_couvre_pas": "Les d\u00e9tails techniques des projets d'extraction de donn\u00e9es (VLM, classification de documents) ou les pr\u00e9sentations individuelles des participants (tour de table)."
+    },
+    "texte": "Les \u00e9changes ont mis en lumi\u00e8re les enjeux de souverainet\u00e9 et de cloisonnement des outils au sein de RTE, avec une volont\u00e9 de maintenir les solutions internes pour \u00e9viter toute externalisation. L\u2019accent a \u00e9t\u00e9 mis sur l\u2019adaptation des synth\u00e8ses et des propositions aux besoins sp\u00e9cifiques du contexte, tout en garantissant que les outils restent ma\u00eetris\u00e9s et prot\u00e9g\u00e9s dans l\u2019environnement RTE.\n\nUn projet d\u2019agent de planification a \u00e9t\u00e9 \u00e9voqu\u00e9, visant \u00e0 automatiser la r\u00e9cup\u00e9ration de bibliographie et la cr\u00e9ation de roadmaps pour des projets, avec une extension future vers l\u2019acc\u00e8s \u00e0 plusieurs outils de simulation. L\u2019objectif est de proposer une preuve de concept minimale rapidement, notamment via des hackathons, afin de valider l\u2019efficacit\u00e9 de ces pipelines avant un d\u00e9ploiement plus large.\n\nL\u2019int\u00e9gration de serveurs MCP a \u00e9galement \u00e9t\u00e9 discut\u00e9e pour orchestrer des outils de simulation et pr\u00e9parer le lancement d\u2019\u00e9tudes, avec des contr\u00f4les humains et des ajustements automatis\u00e9s. Les participants ont soulign\u00e9 l\u2019int\u00e9r\u00eat d\u2019un MCP pour synth\u00e9tiser des donn\u00e9es disparates, g\u00e9n\u00e9rer des pr\u00e9-rapports et faciliter la pr\u00e9paration des sc\u00e9narios avant validation finale. Ces travaux s\u2019inscrivent dans une d\u00e9marche d\u2019am\u00e9lioration continue, avec une attention particuli\u00e8re port\u00e9e \u00e0 l\u2019\u00e9tat de l\u2019art en R&D."
+  },
+  {
+    "index": 3,
+    "titre": "Extraction et traitement de donn\u00e9es \u00e0 partir de documents",
+    "chunk_ids": [
+      2
+    ],
+    "brief": {
+      "couvre": "Les projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s (administratifs, manuscrits ou non), avec une approche bas\u00e9e sur des mod\u00e8les visuo-linguistiques (VLM). Inclut la classification des documents, la d\u00e9tection de conformit\u00e9, et l'utilisation de sources comme RKEVX pour des d\u00e9monstrations rapides.",
+      "ne_couvre_pas": "Les discussions sur l'orchestration, la souverainet\u00e9 des outils, ou les pr\u00e9sentations des participants (tour de table)."
+    },
+    "texte": "Un projet a \u00e9t\u00e9 pr\u00e9sent\u00e9 pour l'extraction d'informations \u00e0 partir de documents scann\u00e9s administratifs, qu'ils soient manuscrits ou non. L'objectif \u00e9tait d'extraire des donn\u00e9es comme les salaires (nets, bruts, totaux) et les m\u00e9tiers des personnes concern\u00e9es, puis de classifier les documents. Une approche bas\u00e9e sur des mod\u00e8les visuo-linguistiques (VLM) a \u00e9t\u00e9 utilis\u00e9e pour estimer un pourcentage de conformit\u00e9 des documents par rapport \u00e0 des intervalles de confiance pr\u00e9d\u00e9finis, permettant ainsi une d\u00e9tection de conformit\u00e9.\n\nLe projet incluait un pr\u00e9traitement des documents, l'apprentissage et le fine-tuning de mod\u00e8les VLM, ainsi que le d\u00e9veloppement d'un contr\u00f4le d'anomalies et d'un tableau de bord pour monitorer la cha\u00eene de traitement. Le mod\u00e8le \u00e9tait h\u00e9berg\u00e9 en local, et des travaux de fine-tuning ont \u00e9t\u00e9 r\u00e9alis\u00e9s pour adapter les mod\u00e8les aux sp\u00e9cificit\u00e9s des documents, notamment lorsqu'ils \u00e9taient r\u00e9dig\u00e9s en arabe. Des agents ont \u00e9t\u00e9 mis en place pour classifier les documents en manuscrits ou non, puis pour d\u00e9terminer leur type, avec des mod\u00e8les sp\u00e9cialis\u00e9s pour certains cas."
+  },
+  {
+    "index": 4,
+    "titre": "Avancement des travaux et besoins identifi\u00e9s",
+    "chunk_ids": [
+      4
+    ],
+    "brief": {
+      "couvre": "L'avancement des travaux autour du MCP, les propositions de cas d'usage ou de pr\u00e9sentations des avanc\u00e9es, et l'absence de besoins clairs identifi\u00e9s \u00e0 ce stade.",
+      "ne_couvre_pas": "Les d\u00e9tails techniques des projets ou les discussions sur la souverainet\u00e9 et l'orchestration (d\u00e9j\u00e0 couverts dans d'autres sections)."
+    },
+    "texte": "SPEAKER_00 a propos\u00e9 d\u2019engager une r\u00e9flexion sur un cas d\u2019usage orient\u00e9 MCP ou de pr\u00e9senter les avanc\u00e9es des travaux en cours. SPEAKER_02 a indiqu\u00e9 qu\u2019aucun besoin clair n\u2019\u00e9tait identifi\u00e9 \u00e0 ce stade, sugg\u00e9rant de revenir vers eux si des \u00e9l\u00e9ments plus pr\u00e9cis \u00e9mergent. Il a \u00e9galement mentionn\u00e9 que des actions \u00e9taient d\u00e9j\u00e0 pr\u00e9vues pour explorer cette piste, sans qu\u2019un focus imm\u00e9diat ne soit n\u00e9cessaire.\n\nSPEAKER_02 a soulign\u00e9 la n\u00e9cessit\u00e9 d\u2019\u00e9viter des \u00e9changes sans concr\u00e9tisation et a propos\u00e9 de les recontacter une fois des \u00e9l\u00e9ments plus pr\u00e9cis disponibles. Il a \u00e9galement \u00e9voqu\u00e9 les contraintes li\u00e9es \u00e0 la disponibilit\u00e9 des op\u00e9rateurs et \u00e0 l\u2019ordonnancement des projets en cours.\n\nSPEAKER_00 a partag\u00e9 une information concernant une collaboration en cours avec des cabinets en UX design, notamment avec Olivier Maserol, et a propos\u00e9 d\u2019organiser un atelier design pour r\u00e9fl\u00e9chir \u00e0 des cas d\u2019usage et les prioriser. SPEAKER_02 a pris note de cette proposition sans s\u2019engager imm\u00e9diatement."
+  }
+]

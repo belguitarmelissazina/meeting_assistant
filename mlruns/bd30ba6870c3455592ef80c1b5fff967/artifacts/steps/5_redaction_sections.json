@@ -1,0 +1,15 @@
+[
+  {
+    "index": 1,
+    "titre": "Expertises des participants et cas d'usage initiaux",
+    "chunk_ids": [
+      0,
+      2
+    ],
+    "brief": {
+      "couvre": "Les expertises des participants en IA g\u00e9n\u00e9rative et assistants conversationnels, ainsi que les premiers cas d'usage explor\u00e9s (automatisation de r\u00e9daction de rapports, synth\u00e8se de donn\u00e9es, orchestration via MCP, extraction d'informations structur\u00e9es, conformit\u00e9 documentaire, automatisation de simulations, agents de planification, outils de d\u00e9tection de fraude). Inclut \u00e9galement les \u00e9changes sur les besoins en MCP/NLP et les propositions d'ateliers design pour prioriser ces cas.",
+      "ne_couvre_pas": "Les d\u00e9tails techniques des outils ou pipelines sp\u00e9cifiques (d\u00e9j\u00e0 abord\u00e9s dans d'autres sections), les d\u00e9cisions finales ou validations de projets, ou les aspects de souverainet\u00e9 des outils (hors du cadre de cette section th\u00e9matique)."
+    },
+    "texte": "Les participants ont pr\u00e9sent\u00e9 leurs expertises en IA g\u00e9n\u00e9rative et assistants conversationnels lors d\u2019un tour de table. Maya SAHRAOUI (Ely Consulting) a d\u00e9taill\u00e9 un projet d\u2019automatisation de r\u00e9daction de rapports pour RTE, bas\u00e9 sur une pipeline IA multimodale adaptable \u00e0 diff\u00e9rents templates. Elle a \u00e9galement \u00e9voqu\u00e9 d\u2019autres projets, comme un outil de g\u00e9n\u00e9ration de r\u00e9sum\u00e9 de r\u00e9unions utilisant une orchestration via N8N et une approche MCP pour des synth\u00e8ses interactives. D\u2019autres interventions ont mis en lumi\u00e8re des travaux sur des assistants conversationnels pour les op\u00e9rateurs, avec un int\u00e9r\u00eat marqu\u00e9 pour l\u2019int\u00e9gration de MCP afin de fluidifier l\u2019interaction via des interfaces quasi conversationnelles.\n\nPlusieurs cas d\u2019usage ont \u00e9t\u00e9 explor\u00e9s, notamment l\u2019automatisation de la r\u00e9daction de rapports \u00e0 partir de documents h\u00e9t\u00e9rog\u00e8nes, la g\u00e9n\u00e9ration de synth\u00e8ses de donn\u00e9es, l\u2019extraction d\u2019informations structur\u00e9es, et la conformit\u00e9 documentaire. Un projet sp\u00e9cifique a permis de transformer des fichiers PPT en rapports exhaustifs, avec une boucle de correction it\u00e9rative pour les utilisateurs. D\u2019autres pistes incluent l\u2019automatisation de simulations, des agents de planification, et des outils de d\u00e9tection de fraude, bien que ces derniers n\u2019aient pas fait l\u2019objet de d\u00e9veloppements concrets lors de la r\u00e9union.\n\nLes \u00e9changes ont \u00e9galement port\u00e9 sur les besoins en MCP et NLP, avec une proposition d\u2019atelier design pour prioriser les cas d\u2019usage sans validation formelle. Aucune d\u00e9cision imm\u00e9diate n\u2019a \u00e9t\u00e9 prise, mais les participants ont exprim\u00e9 leur int\u00e9r\u00eat pour des collaborations futures, notamment autour de l\u2019UX et de l\u2019orchestration d\u2019outils."
+  }
+]

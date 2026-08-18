@@ -1,0 +1,40 @@
+{
+  "decisions": [],
+  "actions": [
+    {
+      "action": "\u00c9valuer la g\u00e9n\u00e9ralisation du POC pour la g\u00e9n\u00e9ration de rapports chez RTE avec G\u00e9rald",
+      "responsable": "Matthieu DUSSARTRE",
+      "echeance": "\u2014"
+    },
+    {
+      "action": "Partager le REX du projet avec l'\u00e9quipe pour analyse des suites possibles",
+      "responsable": "Maya SAHRAOUI",
+      "echeance": "\u2014"
+    },
+    {
+      "action": "Partager un plan de travail d\u00e9taill\u00e9 sur l\u2019int\u00e9gration des serveurs MCP pour l\u2019orchestration d\u2019\u00e9tudes et la simulation, incluant les directives g\u00e9n\u00e9r\u00e9es par un premier agent et leur application via les outils internes",
+      "responsable": "Maya SAHRAOUI",
+      "echeance": "\u2014"
+    },
+    {
+      "action": "\u00c9tudier la faisabilit\u00e9 d\u2019un outil de synth\u00e8se automatique de donn\u00e9es disparates (blocs d\u2019alarme, messages, rapports) pour g\u00e9n\u00e9rer des pr\u00e9-rapports, en collaboration avec Yele Consulting",
+      "responsable": "Bruno LEMETAYER",
+      "echeance": "\u2014"
+    },
+    {
+      "action": "Explorer les cas d\u2019usage sp\u00e9cifiques li\u00e9s au traitement de documents manuscrits pour une int\u00e9gration dans les workflows existants",
+      "responsable": "Bruno LEMETAYER",
+      "echeance": "\u2014"
+    },
+    {
+      "action": "Revenir vers Yele Consulting ou RTE si un besoin pr\u00e9cis \u00e9merge (MCP ou NLP)",
+      "responsable": "Bruno LEMETAYER",
+      "echeance": "\u2014"
+    },
+    {
+      "action": "\u00c9valuer la faisabilit\u00e9 d'un atelier design pour prioriser des cas d'usage",
+      "responsable": "Matthieu DUSSARTRE",
+      "echeance": "\u2014"
+    }
+  ]
+}

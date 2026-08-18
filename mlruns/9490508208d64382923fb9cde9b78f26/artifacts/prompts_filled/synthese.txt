@@ -1,0 +1,20 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis. Choisis le TYPE de réunion le plus précis d'après les indices concrets du sommaire ; les exemples fournis servent d'inspiration, tu n'es PAS obligé de t'y limiter.
+
+Participants (vérité) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+
+Résumés des passages :
+- La réunion était une prise de contact entre les équipes d'ELEY Consulting et de RTE pour discuter des besoins et attentes en matière d'IA générative, notamment autour des assistants conversationnels et des outils de synthèse. Maya a présenté des projets d'IA générative réalisés, comme l'automatisation de la rédaction de rapports à partir de fichiers PPT pour l'équipe équilibre offre et demande de RTE. Les discussions ont porté sur les cas d'usage potentiels, les défis techniques et les perspectives de collaboration future.
+- La réunion a abordé plusieurs projets liés à l'utilisation d'outils d'IA et de traitement de données. Parmi eux, un outil d'orchestration interne pour RTE visant à garantir la souveraineté des données, un agent de planification automatisé pour générer des roadmaps et des POC, ainsi qu'un projet d'extraction d'informations à partir de documents administratifs scannés (y compris manuscrits) pour détecter des anomalies ou fraudes. Le dernier projet inclut également un travail de fine-tuning de modèles VLM et un déploiement en local avec monitoring.
+- La réunion a porté sur l'exploration de cas d'usage liés au traitement du texte, à la synthèse de données disparates et à l'orchestration d'outils via des serveurs MCP (Middleware for Computational Processes). Les participants ont discuté des applications potentielles en NLP (Natural Language Processing) et en MCP, notamment pour automatiser des simulations, générer des rapports et optimiser des études. L'accent a été mis sur l'intégration d'outils existants et la préparation de scénarios pour des analyses futures.
+- La réunion a abordé la possibilité de collaborer sur des cas d'usage, notamment autour du MCP. SPEAKER_02 a indiqué ne pas avoir de besoins précis pour l'instant et préfère attendre d'avoir des éléments concrets avant d'échanger à nouveau. SPEAKER_00 a proposé un atelier design pour prioriser des cas d'usage et a mentionné une collaboration en cours avec Olivier Maserol sur l'UX de la control room du futur. Aucune décision ferme n'a été actée, mais des pistes de travail futur ont été évoquées.
+
+Pour le TYPE, voici des EXEMPLES pour t'inspirer (liste NON imposée, tu peux
+en choisir un autre s'il est plus juste) :
+prise de contact, avant-vente, réunion client, revue projet, point d'avancement,
+brainstorm, atelier de travail, comité de pilotage, kick-off, démo, formation.
+
+Produis :
+{"type": "un seul type de réunion, le plus précis (inspiré des exemples ou autre)",
+  "type_justification": "1 phrase citant les indices concrets du sommaire",
+  "objectif": "1-2 phrases : le BUT de la réunion (distinct du type)",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}

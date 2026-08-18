@@ -1,0 +1,13 @@
+{
+  "decisions": [],
+  "actions": [
+    {
+      "action": "Noter le point concernant la proposition d'un atelier design pour r\u00e9fl\u00e9chir \u00e0 des cas d'usage et les prioriser",
+      "responsable": "SPEAKER_02"
+    },
+    {
+      "action": "Revenir vers l'autre partie si des besoins plus pr\u00e9cis en MCP ou NLP \u00e9mergent",
+      "responsable": "SPEAKER_02"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien. Des métadonnées (participants, entreprises) peuvent être fournies : pour désigner une personne, utilise EXACTEMENT un nom fourni si le contexte permet de l'identifier, sinon reste générique (« un intervenant ») ; ne reprends JAMAIS un label brut type SPEAKER_00 et n'invente aucun nom.
+
+PARTICIPANTS (noms officiels, vérité — à utiliser EXACTEMENT) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+ENTREPRISES / ORGANISATIONS présentes : Yele Consulting, RTE
+
+Extrait :
+[Matthieu DUSSARTRE]: Je vous laisse vous.
+[Matthieu DUSSARTRE]: présenter
+[Bruno LEMETAYER]: Allez je commence donc Bruno le méthélier donc je suis à laRD et je pilote la feuille de route Smart Cockpit.
+[Bruno LEMETAYER]: interactif Donc ça veut dire en gros si on travaille sur les assistants en particulier pour lesopérateurs en soin de.
+[Bruno LEMETAYER]: conduite, Bonjour Mathieu, sort je suis à laRD aussiRTE la thématique assistant là dont parle Bruno là ça fait une dizaine d’années au moins qu’on l’a qu’elle évolue qu’on la fait mûrir et moi je travaille dessus depuis tout ce.
+[Matthieu DUSSARTRE]: temps-là Très.
+[Matthieu DUSSARTRE]: bien Dans, Dinka
+[Bruno LEMETAYER]: je suis aussi de la, ridée je travaille sur des thématiques d’implémentation des réseaux de neurones pour l’écosystème.
+[Bruno LEMETAYER]: principalement
+[Matthieu DUSSARTRE]: MaisJérôme, Picot moi je ne
+[Bruno LEMETAYER]: suis plus à la, grider j’y
+[Matthieu DUSSARTRE]: étais mais si, plus je suis dans une direction
+[Bruno LEMETAYER]: qui
+[Matthieu DUSSARTRE]: s’appelle maintenant intelligenceartificielle et innovation et je travaille sur des
+[Bruno LEMETAYER]: sujets
+[Matthieu DUSSARTRE]: principalement dits et génératives autour des, LLM, MCP.
+[Matthieu DUSSARTRE]: etc Très, bien est-ce que vous voulez que je présente notre société où il n’a pas?
+[Bruno LEMETAYER]: besoin De mon, côté je diseffectivement que j’aieuccasion de travailler qu’il est alors pas dans le même contexte puisqu’avant j’étais au département d’exploitation et puis encore avant j’étais au département, marche etc et.
+[Bruno LEMETAYER]: çaVoilà donc là j’ai dû croiser deux de vos collègues et plus sur des aspects voilà ça veut dire concept à moins recherche en tout cas donc, voilà je connais un petit.
+[Bruno LEMETAYER]: peu Je connais moinseffectivement vos activités là-dessus mais voilà en tout cas je crois qu’on aeu aussi l’occasion de voir de participer à des échanges sur un modèle que vous avez développé pour la gestion des congestions me semble bref voilà en tout cas de mon point de, vue c’estime vous
+[Bruno LEMETAYER]: connaître
+[Matthieu DUSSARTRE]: un.., peuOussiOk donc on peutzapper oui ou non., DandineOui c’est bon.
+[Matthieu DUSSARTRE]: seulement Donc ce que je vous propose c’est que vous discutiez un petit peu justement sur vos besoins sur l’IA générative et qu’on puisse un petit peu justement comprendre vos, besoins vos attentes et puis et puis voir comment on pourrait potentiellement travailler.,
+[Bruno LEMETAYER]: ensembleOui alors peut-être donceffectivement alors je me lance donc en.
+[Bruno LEMETAYER]: contexte Donc nouseffectivement les.
+[Bruno LEMETAYER]: sujets Alors je parle sur la partie assistante puisque donc dans cette table on aeffectivementJérôme Carpendront la partie disciplinaire on va dire il y a lesNLP donc côtéRD on n’est plus sur la partie on va dire assistant donc mise en application un petit peu de tout ça et recherche un peu sur la
+[Bruno LEMETAYER]: question plus de l’interaction après voilà donc de ce point de vue-là, nous on s’intéresse évidemment de plus en plus à tout ce qu’on peut faire avec le LP et puis plus récemment aussi sur ce qu’il est possible de faire avec le MCP alors nous en fait ce qui nous intéresse ça va être encore une fois
+[Bruno LEMETAYER]: ces question un peu voilà l’interface d’interaction entre l’opérateur et sesoutils donc voilà si onouvre un petit peu letruc dans le fond le MCP c’est une promesse en tout cas à ce stade pour développer des mode interface quasi conversationnel et qui permettent en restant dans un taux très fluide
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"nom fourni si identifiable, sinon —", "echeance":"— si absente"}]}

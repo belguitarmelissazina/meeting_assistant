@@ -1,0 +1,24 @@
+{
+  "decisions": [],
+  "actions": [
+    {
+      "action": "Identifier et prioriser les cas d'usage concrets pour l'orchestration via MCP (ex : pr\u00e9paration de simulations, synth\u00e8se de donn\u00e9es, g\u00e9n\u00e9ration de pr\u00e9-rapports)",
+      "responsable": "\u00c9quipe technique",
+      "echeance": "\u00c0 d\u00e9finir"
+    },
+    {
+      "action": "\u00c9tudier la faisabilit\u00e9 technique d'un serveur MCP capable de se brancher sur des outils internes de simulation et de g\u00e9n\u00e9ration de rapports",
+      "responsable": "\u00c9quipe technique",
+      "echeance": "\u00c0 d\u00e9finir"
+    },
+    {
+      "action": "Analyser les besoins sp\u00e9cifiques en NLP pour la synth\u00e8se de textes manuscrits et proposer un plan d'action",
+      "responsable": "\u00c9quipe NLP",
+      "echeance": "\u00c0 d\u00e9finir"
+    },
+    {
+      "action": "Noter le point concernant un \u00e9ventuel atelier design pour r\u00e9fl\u00e9chir \u00e0 des cas d'usage et les prioriser",
+      "responsable": "SPEAKER_02"
+    }
+  ]
+}

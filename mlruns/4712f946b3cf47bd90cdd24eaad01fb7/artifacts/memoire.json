@@ -1,0 +1,61 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Réunion de prise de contact et présentation des participants autour des projets d'IA générative. Maya (Ely Consulting) présente un projet d'automatisation de rédaction de rapports pour RTE via une chaîne de traitement IA (OCR, classification, rédaction, intégration). Bruno (RTE) et Jérôme (RTE) évoquent des besoins en synthèse de données et interfaces conversationnelles (MCP) pour les assistants opérateurs.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Prendre contact avec Maya (Ely Consulting) pour échanger sur les suites possibles du projet RTE (automatisation de rapports)",
+        "responsable": "Bruno (RTE)",
+        "echeance": "À définir"
+      },
+      {
+        "action": "Étudier l'adaptation de l'outil de Maya pour des templates multiples ou une sélection automatique de structure de rapport",
+        "responsable": "Maya (Ely Consulting)",
+        "echeance": "À définir"
+      },
+      {
+        "action": "Explorer les cas d'usage MCP pour les assistants opérateurs (interfaces conversationnelles, orchestration de briques)",
+        "responsable": "Jérôme (RTE)",
+        "echeance": "À définir"
+      }
+    ]
+  },
+  {
+    "chunk_id": 1,
+    "resume": "La réunion a porté sur des projets d'outils d'IA pour l'orchestration, la synthèse de données et l'analyse de documents (scannés ou manuscrits). Les discussions ont souligné l'importance de la souveraineté des outils et de leur intégration locale. Plusieurs cas d'usage ont été évoqués, notamment pour la planification, la génération de rapports et l'analyse de conformité. L'orientation vers des serveurs MCP pour interconnecter des outils internes a été confirmée comme une priorité.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Étudier la faisabilité d'un serveur MCP pour interconnecter des outils internes de simulation et de génération de rapports",
+        "responsable": "SPEAKER_00",
+        "echeance": "non définie"
+      },
+      {
+        "action": "Évaluer l'intégration des outils de synthèse automatique pour les rapports et les données disparates (ex : blocs d'alarmes, messages fragmentés)",
+        "responsable": "SPEAKER_02",
+        "echeance": "non définie"
+      },
+      {
+        "action": "Analyser les besoins pour un outil de traitement de documents manuscrits et scannés, incluant classification et extraction d'informations structurées",
+        "responsable": "SPEAKER_01",
+        "echeance": "non définie"
+      }
+    ]
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La réunion a abordé des échanges sur des cas d'usage liés au MCP et au NLP, mais aucune décision concrète n'a été actée. Une proposition d'atelier design pour prioriser des cas d'usage a été évoquée. Les participants ont convenu de revenir vers l'autre partie si des besoins plus précis émergent.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter le point concernant une éventuelle proposition d'atelier design pour réfléchir à des cas d'usage et les prioriser.",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Tenir informé l'autre partie si des besoins plus précis (MCP ou NLP) émergent.",
+        "responsable": "—"
+      }
+    ]
+  }
+]

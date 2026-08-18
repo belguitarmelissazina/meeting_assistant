@@ -1,0 +1,93 @@
+Tu rédiges UNE section d'un compte rendu de réunion, en français, factuel, fidèle au texte fourni. Tu disposes de la MÉMOIRE PARTAGÉE (résumés de toute la réunion) et de la SYNTHÈSE GLOBALE pour la cohérence d'ensemble, mais tu ne rédiges QUE la section décrite par le brief (ne traite pas ce qui relève d'autres sections). N'invente rien. Ne mets pas de titre (il est ajouté séparément). Respecte le périmètre du brief. Ne développe pas les sigles.
+
+MÉMOIRE PARTAGÉE — résumés de tous les passages (vue d'ensemble, ne pas recopier) :
+- Tour de table des participants pour présenter leurs rôles et expertises en IA générative et assistants conversationnels. Discussion sur les besoins et attentes en matière d'IA générative, notamment pour les assistants interactifs. Échanges sur les modèles MCP et LLM pour améliorer l'interface utilisateur. Exploration des collaborations potentielles entre les équipes.
+- La réunion a porté sur la présentation des compétences et projets de SPEAKER_01 en IA générative, notamment un outil automatisant la rédaction de rapports à partir de fichiers PPT pour RTE. L'outil utilise une pipeline en 5 briques (analyse des slides, assignation des sections, rédaction, intégration, correction) et permet une boucle de correction interactive. SPEAKER_02 a questionné l'adaptabilité de l'outil à des templates variés, ce qui a été confirmé possible par SPEAKER_01.
+- La réunion a porté sur la présentation d'un outil de rédaction automatisée pour RTE, incluant des mécanismes de robustesse (artefacts intermédiaires, traçabilité, correction itérative) et des limites identifiées (hors scope : vérification chiffrée, reconstruction de graphiques, commentaires globaux). Une discussion a également abordé des cas d'usage de synthèse générative et d'orchestration d'agents (N8N, MCP) pour des projets internes comme un outil de rédaction d'appels d'offres ou un générateur de synthèses de réunions.
+- La discussion porte sur un projet visant à renforcer la souveraineté et la confidentialité des données énergétiques, notamment en intégrant le LNM (Logiciel de Normalisation Métier) directement sur des données open data. L'objectif est d'avoir un agent spécialisé pour générer des données précises et adaptées aux besoins spécifiques de l'association. Une comparaison est faite avec le bouquet typique ou d'autres marchés pour illustrer cette démarche.
+- Les participants discutent de l'amélioration des synthèses et des propositions pour mieux les adapter. Ils évoquent la nécessité de cloisonner l'outil au sein de RTE pour préserver la souveraineté et l'environnement d'utilisation. Un projet en cours concerne un agent de planification pour la bibliographie et l'élaboration d'une roadmap automatique. L'objectif est de créer une pipeline permettant de proposer un POC minimal sur un sujet donné, accélérant ainsi les hackathons internes.
+- La réunion a abordé des projets liés à l'extraction d'informations à partir de documents scannés, notamment administratifs, avec un focus sur l'utilisation de modèles de vision par ordinateur (VLM) pour détecter des anomalies et évaluer la conformité des données. Un projet spécifique a été présenté par Maya, incluant le prétraitement, l'apprentissage, le fine-tuning de modèles VLM, et le déploiement avec monitoring. La discussion a également évoqué la gestion de documents manuscrits et non manuscrits.
+- Les participants ont échangé sur des cas d’usage liés à l’orchestration de simulations et à l’analyse de données, notamment via des outils MCP et des modèles de langage. L’accent a été mis sur la synthèse de sources disparates, la gestion d’hypothèses et la préparation de rapports pré-études. Une convergence a été observée sur l’intérêt d’un serveur MCP pour automatiser des tâches complexes et faciliter l’interaction entre outils internes.
+- La réunion a abordé des échanges sur les besoins en MCP et NLP sans aboutir à des décisions concrètes. SPEAKER_00 a proposé un atelier design pour prioriser des cas d'usage, tandis que SPEAKER_02 a suggéré de revenir vers eux uniquement en cas de besoins précis. Aucune action ou décision formelle n'a été actée.
+
+SYNTHÈSE GLOBALE (fil conducteur, ne pas recopier) :
+Les participants, issus de différents horizons techniques, ont présenté leurs expertises et projets en IA générative, notamment des outils de rédaction automatisée, d'extraction de données ou de planification. Les échanges ont porté sur l'adaptabilité des solutions, leur robustesse et leurs limites, avec une attention particulière à la souveraineté des données et à la confidentialité. Plusieurs pistes ont été explorées, comme l'orchestration d'agents (MCP, N8N), l'utilisation de modèles VLM pour l'analyse de documents, ou encore la création de pipelines automatisées pour accélérer des processus internes. Des discussions ont également abordé des cas d'usage spécifiques, tels que la génération de synthèses ou la planification de roadmaps, tout en soulignant l'importance de cloisonner les outils au sein de RTE. Bien que des propositions comme un atelier design aient émergé, aucune décision formelle n'a été actée, reflétant une dynamique de co-construction et d'exploration collective.
+
+BRIEF DE TA SECTION :
+Cette section couvre les échanges initiaux sur les rôles, expertises et attentes des participants en matière d'IA générative, ainsi que les discussions sur les besoins en orchestration (MCP, NLP) et les propositions d'ateliers design pour prioriser les cas d'usage. NE PAS inclure les détails techniques des outils présentés (couvert dans les sections suivantes) ou les projets spécifiques (déjà traités ailleurs).
+
+PASSAGES BRUTS DE TA SECTION (source de vérité) :
+=== passage 0 ===
+[SPEAKER_00]: BonjourNordine.
+[SPEAKER_00]: Bonjourd’hui Et voici, Mathieu tout le monde est.
+[SPEAKER_00]: là Bonjour à.
+[SPEAKER_00]: tous Ce que je vous propose c’est un petit tour de table parce que moi je ne connais pas tout le.
+[SPEAKER_00]: monde Je peux commencer si vous voulez donc moi c’est j’ai, remassé je suisexpert dataIa manager de la pratice DataIa au sein de l’élé consulting et donc par exemple travaille avec Maya sur les sujets de l’IA, générative je travaille aussi avec Della côtéRD sur la feuille de route équilibre
+[SPEAKER_00]: gouvernance et régulation sur un projet d’équilibreoffre demande et la rentabilité des moyens de base etégalement côté décoffert sur desanalyses plutôtorientées.
+[SPEAKER_00]: métiers
+[SPEAKER_01]: Parce que je peux me présenter aussi donc moi c’est Maya, Saraoi je suis consultante confirmée, chezIVB je travaille principalement sur des projets d’IA génératifs donc en interne et en projet que j’ai menéégalement chezRTE avec Daina etGérald et donc je suis docteur en deep learning j’ai fait un
+[SPEAKER_01]: doctorat en traitement automatique des langues et je rejoins il y a deux en septembre donc, voilà j’en quelques missions en ce.
+[SPEAKER_01]: sens-là
+[SPEAKER_00]: Je vous laisse vous.
+[SPEAKER_00]: présenter
+[SPEAKER_02]: Allez je commence donc Bruno le méthélier donc je suis à laRD et je pilote la feuille de route Smart Cockpit.
+[SPEAKER_02]: interactif Donc ça veut dire en gros si on travaille sur les assistants en particulier pour lesopérateurs en soin de.
+[SPEAKER_02]: conduite, Bonjour Mathieu, sort je suis à laRD aussiRTE la thématique assistant là dont parle Bruno là ça fait une dizaine d’années au moins qu’on l’a qu’elle évolue qu’on la fait mûrir et moi je travaille dessus depuis tout ce.
+[SPEAKER_00]: temps-là Très.
+[SPEAKER_00]: bien Dans, Dinka
+[SPEAKER_02]: je suis aussi de la, ridée je travaille sur des thématiques d’implémentation des réseaux de neurones pour l’écosystème.
+[SPEAKER_02]: principalement
+[SPEAKER_00]: MaisJérôme, Picot moi je ne
+[SPEAKER_02]: suis plus à la, grider j’y
+[SPEAKER_00]: étais mais si, plus je suis dans une direction
+[SPEAKER_02]: qui
+[SPEAKER_00]: s’appelle maintenant intelligenceartificielle et innovation et je travaille sur des
+[SPEAKER_02]: sujets
+[SPEAKER_00]: principalement dits et génératives autour des, LLM, MCP.
+[SPEAKER_00]: etc Très, bien est-ce que vous voulez que je présente notre société où il n’a pas?
+[SPEAKER_02]: besoin De mon, côté je diseffectivement que j’aieuccasion de travailler qu’il est alors pas dans le même contexte puisqu’avant j’étais au département d’exploitation et puis encore avant j’étais au département, marche etc et.
+[SPEAKER_02]: çaVoilà donc là j’ai dû croiser deux de vos collègues et plus sur des aspects voilà ça veut dire concept à moins recherche en tout cas donc, voilà je connais un petit.
+[SPEAKER_02]: peu Je connais moinseffectivement vos activités là-dessus mais voilà en tout cas je crois qu’on aeu aussi l’occasion de voir de participer à des échanges sur un modèle que vous avez développé pour la gestion des congestions me semble bref voilà en tout cas de mon point de, vue c’estime vous
+[SPEAKER_02]: connaître
+[SPEAKER_00]: un.., peuOussiOk donc on peutzapper oui ou non., DandineOui c’est bon.
+[SPEAKER_00]: seulement Donc ce que je vous propose c’est que vous discutiez un petit peu justement sur vos besoins sur l’IA générative et qu’on puisse un petit peu justement comprendre vos, besoins vos attentes et puis et puis voir comment on pourrait potentiellement travailler.,
+[SPEAKER_02]: ensembleOui alors peut-être donceffectivement alors je me lance donc en.
+[SPEAKER_02]: contexte Donc nouseffectivement les.
+[SPEAKER_02]: sujets Alors je parle sur la partie assistante puisque donc dans cette table on aeffectivementJérôme Carpendront la partie disciplinaire on va dire il y a lesNLP donc côtéRD on n’est plus sur la partie on va dire assistant donc mise en application un petit peu de tout ça et recherche un peu sur la
+[SPEAKER_02]: question plus de l’interaction après voilà donc de ce point de vue-là, nous on s’intéresse évidemment de plus en plus à tout ce qu’on peut faire avec le LP et puis plus récemment aussi sur ce qu’il est possible de faire avec le MCP alors nous en fait ce qui nous intéresse ça va être encore une fois
+[SPEAKER_02]: ces question un peu voilà l’interface d’interaction entre l’opérateur et sesoutils donc voilà si onouvre un petit peu letruc dans le fond le MCP c’est une promesse en tout cas à ce stade pour développer des mode interface quasi conversationnel et qui permettent en restant dans un taux très fluide
+
+=== passage 7 ===
+[SPEAKER_02]: bien En tout cas, voilà pour, moi c’était bon j’avais près
+[SPEAKER_00]: du réponses à mes questions.
+[SPEAKER_00]: éventuelles Très, bien est-ce que vous voulez qu’on fasse une petite réflexion sur un cas d’usage un peu plusorienté sur par exemple le MCP votre si vous présentez finalement le cas d’usage dans lequel vous voulez intégrer un MCP on pourrait peut-être y réfléchir nous de notre côté et présenter
+[SPEAKER_00]: notre vision et puis potentiellement avoir un second échange ou est-ce que finalement vous préférez qu’on se refasse un point sur nos avancées sur nos travaux et qu’on vous représente ce que l’on peut faire côté.
+[SPEAKER_02]: MCP Alors il y a plusieurs possibilités alors sur le cas d’usage que l’on réfléchirait comme je faisais donc à l’EMCP mais il y en a d’autres aussi donc à.
+[SPEAKER_02]: voir Alors je réfléchis un peu tôt mais moi je pense que nous on peut comme je dis on n’a pas là comme ça d’idée de besoins encore.
+[SPEAKER_02]: clairs Donc peut-être qu’au regard de ce qu’on a vu, aujourd’hui il faut tout simplement qu’on regarde et puis qu’on tienne tout simplement informer si jamais il y a quelque chose de plus précis qui se dégage que ce soit MCP ou plusNLP voilà après sur l’avancée de vos, travaux ça peut être
+[SPEAKER_02]: intéressant donc avoir un focus MCP même si là voilà pour être transparent sur le MCP on va on a quand même déjà des actions qui sont prévues pourexplorer cette chose-là donc ce ne serait pas non plus tout de suite c’est-à-dire que si vous nous présentez vos travaux sur la partie, MCP clairement
+[SPEAKER_02]: enfin là ce n’était pas du tout de.
+[SPEAKER_02]: suiteVoilà donc l’aurait tendance à dire que le plus problématique c’est peut-être qu’on revient tout simplementvers vous si on a quelque chose d’un peu plus précis voilà pour éviter qu’on discute mais sans qu’il yait quelque chose de précis, derrière je pense que c’est pas forcément souhaitable
+[SPEAKER_02]: non plus voilà sinon on n’a pas de quoi concrétiser autant qu’on attende voilà moi j’aurais tendance à partir là-dessus et puis voilà on tiens on a vos contacts donc on revientvers vous en tout cas voilà ce qui a été présenté ça pourrait entrer plutôt patronage de ce qu’on fait après avoir dans
+[SPEAKER_02]: l’agenda et dans l’ordonnancement et tout ça des projets qu’on mène parce que aussi pour faire avancer tous ces, projets-là il faut que nous-mêmes soyons, dispos il faut qu’on travaille avec lesopérateurs aussi donc ça c’est peut-être un petit peu une particularité c’est qu’on peut avoir des fois
+[SPEAKER_02]: un petit boulot d’étranglement sur le fait que lesopérateurs et c’est en quantité, finie on va dire leur temps de disposition en tout cas il y a plein d’autres travaux aussi au cours donc voilà on ne peut pas non plus trop pencherempiler les, choses même si voilà on peut vous solliciter en tant
+[SPEAKER_02]: que, partenaireexterne, voilà donc ça peut pas le
+[SPEAKER_00]: contexte..
+[SPEAKER_00]: doncVoilà Alors j’ai une information aussi à vous, donner je pense que c’est peut-être intéressant nous côté galet on travaille aussi avec de l’huileUX design et donc on est en contact avec certains cabinets et on a discuté avecOlivier Maserol pour justement mettre un petit peu ce type de
+[SPEAKER_00]: nouvelleUX nouvelleU pour la contrôleroom du, futur donc ça peut être aussi des choses qu’on pourrait.
+[SPEAKER_00]: envisagerVoilà c’est simplement une information et deuxièmement c’est plutôt une proposition si vous voulez peut-être qu’on fasse un atelier purement design où on pourrait réfléchir à des cas, d’usage les, prioriser.
+[SPEAKER_00]: etc C’est aussi quelque chose qui nous ferait plaisir et qui pourrait peut-êtreaboutir sur vous une, vision nous un partage et
+[SPEAKER_02]: après., onverraOk je note le.
+[SPEAKER_02]: point Il faut voir en pratique là comme, ça je peux pas vous dire mais je peux pas vous dire, oui je comprends l’intérêt
+[SPEAKER_00]: du, point je ne m’attends pas de répons tout de
+[SPEAKER_02]: suite., dessinOuais, d’accord ça.
+[SPEAKER_02]: marcheOk en tout cas c’est, oui c’est intéressant que vous ayez de discuter laisse ma partieUX.
+[SPEAKER_02]: avecOlivierVoilà on n’a pas parlé mais bon il a dû vous en, parler je pense aussi bien voir mieux.,, quoiOkécoutez très, vite elle se doté en tout.
+[SPEAKER_00]: casEh, bien merci beaucoup à moins que d’autres personnes veuillent aussi s’exprimer ou.
+[SPEAKER_00]: non Très, bien merci.
+[SPEAKER_00]: beaucoup Très bon.
+[SPEAKER_00]: après-midi.
+[SPEAKER_00]: Bonweek-end Au.
+[SPEAKER_00]: revoir
+
+Rédige la section (1 à 3 paragraphes) :

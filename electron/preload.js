@@ -65,8 +65,15 @@ contextBridge.exposeInMainWorld("electronAPI", {
     openMainApp: (payload) =>
       ipcRenderer.send("tray-popup:open-main-app", payload || {}),
     quitApp: () => ipcRenderer.send("tray-popup:quit-app"),
-    startRecording: (eventId) =>
-      ipcRenderer.send("tray-popup:start-recording", { eventId: eventId || null }),
+    startRecording: (opts) =>
+      ipcRenderer.send("tray-popup:start-recording",
+        typeof opts === "object" && opts !== null ? opts : { eventId: opts || null }),
     stopRecording: () => ipcRenderer.send("tray-popup:stop-recording"),
+  },
+
+  // Fenêtre flottante « Assistant live » : ouverture/fermeture à la demande.
+  advisor: {
+    open: () => ipcRenderer.send("advisor:open"),
+    close: () => ipcRenderer.send("advisor:close"),
   },
 });

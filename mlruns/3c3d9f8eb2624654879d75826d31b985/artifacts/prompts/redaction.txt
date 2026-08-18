@@ -1,0 +1,15 @@
+Tu rédiges UNE section d'un compte rendu de réunion, en français, factuel, fidèle au texte fourni. Tu disposes de la MÉMOIRE PARTAGÉE (résumés de toute la réunion) et de la SYNTHÈSE GLOBALE pour la cohérence d'ensemble, mais tu ne rédiges QUE la section décrite par le brief (ne traite pas ce qui relève d'autres sections). N'invente rien. Ne mets pas de titre (il est ajouté séparément). Respecte le périmètre du brief. Ne développe pas les sigles.
+---
+MÉMOIRE PARTAGÉE — résumés de tous les passages (vue d'ensemble, ne pas recopier) :
+{memoire}
+
+SYNTHÈSE GLOBALE (fil conducteur, ne pas recopier) :
+{resume_global}
+
+BRIEF DE TA SECTION :
+{brief}
+
+PASSAGES BRUTS DE TA SECTION (source de vérité) :
+{chunks}
+
+Rédige la section (1 à 3 paragraphes) :

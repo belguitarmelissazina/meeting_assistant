@@ -1,0 +1,282 @@
+{
+  "participants": [
+    {
+      "name": "Bruno LEMETAYER",
+      "role": "Expert Data IA / Manager de la pratique Data IA chez Yele Consulting",
+      "side": "prestataire"
+    },
+    {
+      "name": "Matthieu DUSSARTRE",
+      "role": "Consultant confirm\u00e9 chez Yele Consulting, sp\u00e9cialis\u00e9 en IA g\u00e9n\u00e9rative",
+      "side": "prestataire"
+    },
+    {
+      "name": "Nourredine HENKA",
+      "role": "Pilote de la feuille de route Smart Cockpit (assistants interactifs) chez RTE",
+      "side": "client"
+    },
+    {
+      "name": "J\u00e9r\u00f4me PICAULT",
+      "role": "Responsable de la direction Intelligence Artificielle et Innovation chez RTE, travaillant sur LLM et MCP",
+      "side": "client"
+    },
+    {
+      "name": "Maya SAHRAOUI",
+      "role": "Consultante confirm\u00e9e en IA g\u00e9n\u00e9rative, docteure en deep learning",
+      "side": "prestataire"
+    },
+    {
+      "name": "J\u00e9r\u00f4me MASSET",
+      "role": "Expert en impl\u00e9mentation de r\u00e9seaux de neurones pour l'\u00e9cosyst\u00e8me RTE, anciennement en exploitation et march\u00e9",
+      "side": "client"
+    }
+  ],
+  "meeting_purpose": "Pr\u00e9senter les comp\u00e9tences de Yele Consulting en IA g\u00e9n\u00e9rative, partager les besoins et cas d'usage de RTE, et explorer des pistes de collaboration autour des assistants interactifs, de l'orchestration via MCP et de la souverainet\u00e9 des donn\u00e9es.",
+  "meeting_narrative": "La r\u00e9union s'ouvre avec un tour de table o\u00f9 chaque participant se pr\u00e9sente : Bruno LEMETAYER et Maya SAHRAOUI (Yele Consulting) d\u00e9taillent leurs expertises en IA g\u00e9n\u00e9rative, tandis que Nourredine HENKA, J\u00e9r\u00f4me PICAULT et J\u00e9r\u00f4me MASSET (RTE) exposent leurs r\u00f4les respectifs, notamment sur la feuille de route Smart Cockpit, les LLM/MCP et l'impl\u00e9mentation de r\u00e9seaux de neurones. Bruno LEMETAYER propose ensuite d'identifier les besoins en IA g\u00e9n\u00e9rative, avec un focus de RTE sur les assistants interactifs pour les op\u00e9rateurs via MCP. Maya SAHRAOUI pr\u00e9sente les projets de Yele Consulting, dont un POC r\u00e9ussi pour l'\u00e9quipe \u00c9quilibre Offre-Demande de RTE, automatisant la g\u00e9n\u00e9ration de rapports en 25 jours. Les discussions abordent ensuite l'orchestration via MCP pour des cas d'usage comme la synth\u00e8se g\u00e9n\u00e9rative ou la planification de POC, ainsi que la souverainet\u00e9 des donn\u00e9es pour \u00e9viter toute exposition externe. Nourredine HENKA exprime cependant un manque de besoins clairs imm\u00e9diats, pr\u00e9f\u00e9rant attendre des propositions plus concr\u00e8tes. La r\u00e9union se conclut sur une proposition de Bruno LEMETAYER d'organiser un atelier design pour prioriser les cas d'usage et repenser l'UX de la salle de contr\u00f4le du futur.",
+  "sections": [
+    {
+      "title": "Tour de table et pr\u00e9sentation des participants",
+      "summary": "Bruno LEMETAYER, expert Data IA chez Yele Consulting, initie la r\u00e9union en proposant un tour de table pour faire connaissance. Il se pr\u00e9sente comme manager de la pratique Data IA et \u00e9voque ses collaborations pass\u00e9es avec Maya SAHRAOUI sur des projets d'IA g\u00e9n\u00e9rative et avec Nourredine HENKA sur des sujets d'\u00e9quilibre offre-demande. Maya SAHRAOUI prend ensuite la parole pour d\u00e9tailler son parcours : docteure en deep learning, elle se pr\u00e9sente comme consultante confirm\u00e9e en IA g\u00e9n\u00e9rative chez Yele Consulting, avec une exp\u00e9rience notable chez RTE. Nourredine HENKA explique son r\u00f4le de pilote de la feuille de route Smart Cockpit, centr\u00e9e sur le d\u00e9veloppement d'assistants interactifs pour les op\u00e9rateurs. J\u00e9r\u00f4me PICAULT pr\u00e9cise son implication dans les LLM et le protocole MCP au sein de la direction Intelligence Artificielle et Innovation de RTE. Enfin, J\u00e9r\u00f4me MASSET partage son exp\u00e9rience pass\u00e9e en exploitation et march\u00e9, ainsi que son r\u00f4le actuel dans des projets de recherche li\u00e9s aux r\u00e9seaux de neurones. Ce tour de table permet de poser les bases des \u00e9changes en clarifiant les expertises et les attentes de chacun.",
+      "key_points": [
+        "Bruno LEMETAYER et Maya SAHRAOUI (Yele Consulting) se pr\u00e9sentent comme experts en IA g\u00e9n\u00e9rative, avec des collaborations pass\u00e9es sur des projets concrets.",
+        "Nourredine HENKA (RTE) est responsable de la feuille de route Smart Cockpit, ax\u00e9e sur les assistants interactifs pour les op\u00e9rateurs.",
+        "J\u00e9r\u00f4me PICAULT (RTE) travaille sur les LLM et le protocole MCP, tandis que J\u00e9r\u00f4me MASSET (RTE) a une exp\u00e9rience en exploitation et en impl\u00e9mentation de r\u00e9seaux de neurones.",
+        "Le tour de table a permis de clarifier les r\u00f4les et les attentes de chaque participant, facilitant la suite des discussions."
+      ],
+      "speakers": [
+        "Bruno LEMETAYER",
+        "Maya SAHRAOUI",
+        "Nourredine HENKA",
+        "J\u00e9r\u00f4me PICAULT",
+        "J\u00e9r\u00f4me MASSET"
+      ],
+      "relevant_quotes": [
+        "Bonjour \u00e0 tous Ce que je vous propose c\u2019est un petit tour de table parce que moi je ne connais pas tout le monde",
+        "moi c\u2019est j\u2019ai, remass\u00e9 je suis expert data IA manager de la pratice Data Ia au sein de l\u2019\u00e9l\u00e9 consulting",
+        "Donc nouseffectivement les sujets Alors je parle sur la partie assistante puisque donc dans cette table on aeffectivement J\u00e9r\u00f4me Carpendront la partie disciplinaire on va dire il y a les NLP donc c\u00f4t\u00e9 RD on n\u2019est plus sur la partie on va dire assistant donc mise en application un petit peu de tout \u00e7a"
+      ],
+      "source_chunk_ids": [
+        "chunk_000"
+      ]
+    },
+    {
+      "title": "Identification des besoins et attentes en IA g\u00e9n\u00e9rative",
+      "summary": "Bruno LEMETAYER propose d'aborder directement les besoins et attentes des participants en mati\u00e8re d'IA g\u00e9n\u00e9rative pour identifier des pistes de collaboration concr\u00e8tes. Nourredine HENKA (RTE) pr\u00e9cise que l'int\u00e9r\u00eat de RTE se porte particuli\u00e8rement sur les assistants interactifs pour les op\u00e9rateurs, avec un focus sur les interfaces conversationnelles rendues possibles par le protocole MCP (Model Context Protocol). Il souligne l'enjeu de fluidifier l'interaction entre les op\u00e9rateurs et leurs outils techniques, tout en restant dans un cadre ma\u00eetris\u00e9 et s\u00e9curis\u00e9. Cette discussion permet de recentrer les \u00e9changes sur les priorit\u00e9s op\u00e9rationnelles de RTE, notamment en mati\u00e8re d'assistance aux op\u00e9rateurs et d'automatisation des t\u00e2ches r\u00e9p\u00e9titives.",
+      "key_points": [
+        "Bruno LEMETAYER propose d'identifier les besoins en IA g\u00e9n\u00e9rative pour orienter les discussions vers des cas d'usage concrets.",
+        "Nourredine HENKA (RTE) met en avant l'int\u00e9r\u00eat de RTE pour les assistants interactifs via MCP, afin de faciliter l'interaction entre op\u00e9rateurs et outils techniques.",
+        "Les besoins identifi\u00e9s par RTE sont centr\u00e9s sur l'am\u00e9lioration de l'efficacit\u00e9 op\u00e9rationnelle et la r\u00e9duction des t\u00e2ches manuelles r\u00e9p\u00e9titives.",
+        "Cette section a permis de clarifier les attentes imm\u00e9diates de RTE en mati\u00e8re d'IA g\u00e9n\u00e9rative."
+      ],
+      "speakers": [
+        "Bruno LEMETAYER",
+        "Nourredine HENKA"
+      ],
+      "relevant_quotes": [
+        "ce que je vous propose c\u2019est que vous discutiez un petit peu justement sur vos besoins sur l\u2019IA g\u00e9n\u00e9rative et qu\u2019on puisse un petit peu justement comprendre vos besoins vos attentes",
+        "nous on s\u2019int\u00e9resse \u00e9videmment de plus en plus \u00e0 tout ce qu\u2019on peut faire avec le LP et puis plus r\u00e9cemment aussi sur ce qu\u2019il est possible de faire avec le MCP alors nous en fait ce qui nous int\u00e9resse \u00e7a va \u00eatre encore une fois ces question un peu voil\u00e0 l\u2019interface d\u2019interaction entre l\u2019op\u00e9rateur et ses outils"
+      ],
+      "source_chunk_ids": [
+        "chunk_000"
+      ]
+    },
+    {
+      "title": "Pr\u00e9sentation des comp\u00e9tences de Yele Consulting en IA g\u00e9n\u00e9rative",
+      "summary": "Maya SAHRAOUI prend la parole pour pr\u00e9senter les comp\u00e9tences et exp\u00e9riences de Yele Consulting en IA g\u00e9n\u00e9rative, en s'appuyant sur des projets concrets men\u00e9s par Bruno LEMETAYER. Elle d\u00e9taille les approches techniques adopt\u00e9es par le cabinet : transformation de documents complexes en contenus actionnables, industrialisation des solutions, utilisation de mod\u00e8les multimodaux (notamment Qwen2 et Mistral), et d\u00e9ploiement via des outils comme VLHRM ou Vicorne. Maya SAHRAOUI insiste sur l'importance du RAG (Retrieval-Augmented Generation), de la vectorisation et de l'orchestration dans leurs projets. Elle mentionne \u00e9galement des projets internes o\u00f9 Yele Consulting a orchestr\u00e9 plusieurs agents sp\u00e9cialis\u00e9s pour des t\u00e2ches comme la r\u00e9daction d'appels d'offres ou la g\u00e9n\u00e9ration de r\u00e9sum\u00e9s de r\u00e9union interactifs. Cette pr\u00e9sentation permet \u00e0 RTE de mieux comprendre les capacit\u00e9s techniques et les m\u00e9thodes de travail de Yele Consulting.",
+      "key_points": [
+        "Maya SAHRAOUI pr\u00e9sente les comp\u00e9tences de Yele Consulting en IA g\u00e9n\u00e9rative, avec un focus sur l'industrialisation des solutions et l'utilisation de mod\u00e8les multimodaux (Qwen2, Mistral).",
+        "Les projets pr\u00e9sent\u00e9s incluent des approches bas\u00e9es sur le RAG, la vectorisation et l'orchestration d'agents sp\u00e9cialis\u00e9s.",
+        "Yele Consulting a d\u00e9velopp\u00e9 des outils internes pour des cas d'usage comme la r\u00e9daction d'appels d'offres ou la g\u00e9n\u00e9ration de r\u00e9sum\u00e9s de r\u00e9union.",
+        "Cette pr\u00e9sentation a permis de d\u00e9montrer la maturit\u00e9 technique de Yele Consulting en IA g\u00e9n\u00e9rative."
+      ],
+      "speakers": [
+        "Maya SAHRAOUI"
+      ],
+      "relevant_quotes": [
+        "Donc je vais vous pr\u00e9senter un peu les projets sur lesquels j\u2019ai travaill\u00e9 donc je n\u2019ai pas la manque pour partager.",
+        "Donc pour le projet que j\u2019ai fait au sein de l\u2019\u00e9quipe \u00e9quilibre offre et demande de RTE le sujet \u00e9tait de pouvoir g\u00e9n\u00e9rer des \u00e9tudes EOD rentabilit\u00e9 des moyens de production.",
+        "Donc ici on est parti d\u2019une structure de rapport qu\u2019on a d\u00fb discuter pendant ma mission on s\u2019est mis d\u2019accord sur une structure du rapport et j\u2019ai \u00e9tabli donc une cha\u00eene de traitement pour pouvoir automatiser \u00e7a."
+      ],
+      "source_chunk_ids": [
+        "chunk_001"
+      ]
+    },
+    {
+      "title": "Retour d'exp\u00e9rience sur le POC de g\u00e9n\u00e9ration automatis\u00e9e de rapports",
+      "summary": "Bruno LEMETAYER revient en d\u00e9tail sur le POC (Proof of Concept) men\u00e9 pour l'\u00e9quipe \u00c9quilibre Offre-Demande de RTE, visant \u00e0 automatiser la g\u00e9n\u00e9ration de rapports \u00e0 partir de fichiers PPT. L'objectif principal \u00e9tait d'acc\u00e9l\u00e9rer la production des rapports sans en d\u00e9grader la rigueur, en standardisant la structure des documents et en permettant une boucle de correction via une interface d\u00e9di\u00e9e. Le projet, r\u00e9alis\u00e9 en 25 jours, a inclus des ateliers en amont pour d\u00e9finir la structure du rapport et a d\u00e9montr\u00e9 la valeur ajout\u00e9e de l'IA pour ce type de t\u00e2che. Bruno LEMETAYER explique que l'outil a \u00e9t\u00e9 con\u00e7u pour g\u00e9rer plusieurs templates et g\u00e9n\u00e9rer des sorties multiples, soit par adaptation du template existant, soit via un agent d\u00e9di\u00e9. Maya SAHRAOUI ajoute que la robustesse de l'outil repose sur la s\u00e9paration de la r\u00e9daction en sections, ce qui permet une meilleure gestion des erreurs et une tra\u00e7abilit\u00e9 accrue. Les limites du POC sont \u00e9galement \u00e9voqu\u00e9es : absence de v\u00e9rification chiffr\u00e9e des valeurs extraites, reconstruction de graphiques \u00e0 partir de donn\u00e9es brutes hors scope, et correction limit\u00e9e aux sections.",
+      "key_points": [
+        "Le POC a permis d'automatiser la g\u00e9n\u00e9ration de rapports pour l'\u00e9quipe \u00c9quilibre Offre-Demande de RTE en 25 jours.",
+        "L'outil a \u00e9t\u00e9 con\u00e7u pour g\u00e9rer plusieurs templates et g\u00e9n\u00e9rer des sorties multiples, avec une boucle de correction it\u00e9rative.",
+        "La robustesse de l'outil repose sur la s\u00e9paration de la r\u00e9daction en sections, am\u00e9liorant la gestion des erreurs et la tra\u00e7abilit\u00e9.",
+        "Les limites du POC incluent l'absence de v\u00e9rification chiffr\u00e9e des valeurs extraites et la reconstruction de graphiques hors scope.",
+        "Ce projet a d\u00e9montr\u00e9 la valeur ajout\u00e9e de l'IA pour acc\u00e9l\u00e9rer la production de rapports sans perdre en rigueur."
+      ],
+      "speakers": [
+        "Bruno LEMETAYER",
+        "Maya SAHRAOUI"
+      ],
+      "relevant_quotes": [
+        "Donc l\u2019objectif \u00e9tait d\u2019acc\u00e9l\u00e9rer la production du rapport sans en d\u00e9grader la rigueur donc \u00e7a c\u2019est l\u2019enjeu premier.",
+        "Donc ici on est parti d\u2019une structure de rapport qu\u2019on a d\u00fb discuter pendant ma mission on s\u2019est mis d\u2019accord sur une structure du rapport et j\u2019ai \u00e9tabli donc une cha\u00eene de traitement pour pouvoir automatiser \u00e7a.",
+        "ici par exemple le fait de prendre en consid\u00e9ration la structure finale et de s\u00e9parer la r\u00e9daction en section nous permet d\u2019avoir une meilleure gestion des erreurs qui peuvent arriver et le fait l\u2019assignation des slides par section nous permet d\u2019avoir aussi une certaine tra\u00e7abilit\u00e9 pour savoir d\u2019o\u00f9 vient une erreur au niveau d\u2019une section donc et pouvoir la corriger assez rapidement."
+      ],
+      "source_chunk_ids": [
+        "chunk_001",
+        "chunk_002"
+      ]
+    },
+    {
+      "title": "Discussion sur l'orchestration via MCP et cas d'usage de synth\u00e8se g\u00e9n\u00e9rative",
+      "summary": "Nourredine HENKA (RTE) interroge Yele Consulting sur les capacit\u00e9s d'orchestration via le protocole MCP, notamment pour des cas d'usage de synth\u00e8se g\u00e9n\u00e9rative \u00e0 partir de sources de donn\u00e9es h\u00e9t\u00e9rog\u00e8nes (rapports d'\u00e9v\u00e9nements, etc.). Il souhaite savoir si Yele Consulting peut proposer des solutions pour agr\u00e9ger et synth\u00e9tiser des informations provenant de sources disparates. Maya SAHRAOUI r\u00e9pond en pr\u00e9sentant deux projets internes : un outil de r\u00e9daction d'appels d'offres bas\u00e9 sur N8N avec orchestration de plusieurs agents sp\u00e9cialis\u00e9s (CV, r\u00e9f\u00e9rences, r\u00e9ponses AO), et un outil en d\u00e9veloppement de g\u00e9n\u00e9ration de r\u00e9sum\u00e9s de r\u00e9union interactif utilisant MCP pour orchestrer des outils internes ou des APIs. Elle \u00e9voque \u00e9galement l'ajout futur de fonctionnalit\u00e9s comme l'enregistrement vocal ou la g\u00e9n\u00e9ration de mind maps. Cette discussion permet d'explorer des pistes concr\u00e8tes pour l'orchestration via MCP, un sujet central pour RTE.",
+      "key_points": [
+        "Nourredine HENKA (RTE) interroge Yele Consulting sur les capacit\u00e9s d'orchestration via MCP pour des cas d'usage de synth\u00e8se g\u00e9n\u00e9rative.",
+        "Maya SAHRAOUI pr\u00e9sente deux projets internes utilisant N8N et MCP pour l'orchestration d'agents sp\u00e9cialis\u00e9s.",
+        "Les cas d'usage discut\u00e9s incluent la r\u00e9daction d'appels d'offres et la g\u00e9n\u00e9ration de r\u00e9sum\u00e9s de r\u00e9union interactifs.",
+        "Yele Consulting \u00e9voque des fonctionnalit\u00e9s futures comme l'enregistrement vocal ou la g\u00e9n\u00e9ration de mind maps.",
+        "Cette discussion a permis d'identifier des pistes concr\u00e8tes pour l'orchestration via MCP, un sujet cl\u00e9 pour RTE."
+      ],
+      "speakers": [
+        "Nourredine HENKA",
+        "Maya SAHRAOUI"
+      ],
+      "relevant_quotes": [
+        "Donc l\u00e0 effectivement alors on est peut-\u00eatre ces deux cas d\u2019usage qui nous peuvent nous int\u00e9resser c\u2019est plus la partie effectivement un peu synth\u00e8se g\u00e9n\u00e9rative ou \u00e0 peu pr\u00e8s Donc \u00e7a c\u2019est vrai que nous on peut avoir aussi des cas d\u2019usage l\u00e0-dessus \u00e0 savoir la capacit\u00e9 de pouvoir en fait voil\u00e0 prendre des sources de donn\u00e9es h\u00e9t\u00e9rog\u00e8nes des rapports d\u2019\u00e9v\u00e9nements par exemple Genre de choses Il y a toujours cette question de synth\u00e8se et c\u2019est un peu dans les deux sens.",
+        "ici je peux peut-\u00eatre aller sur d\u2019autres projets qu\u2019on a fait en interne donc le premier projet c\u2019est un outil de r\u00e9daction \u00e0 eau o\u00f9 pour le coup on fait de l\u2019orchestration mais on est plus sur N8N que sur du MCP donc ici on a plusieurs agents qui sont bas\u00e9s sur des racks qui sont sp\u00e9cialis\u00e9s soit dans un agent CV l\u2019objectif final c\u2019est d\u2019assister \u00e0 les collaborateurs dans la r\u00e9daction de r\u00e9ponses aux appels d\u2019offres.",
+        "Ensuite l\u2019id\u00e9e \u00e7a serait de pouvoir donc ajouter les formes augmenter notre liste d\u2019outils qui seraient orchestr\u00e9s par un MCP notamment en ajoutant donc une possibilit\u00e9 d\u2019enregistrement vocal des r\u00e9unions ou une possibilit\u00e9 de g\u00e9n\u00e9rer des mind maps par exemple donc fais \u00e7a avec l\u2019interface LM qui servirait et qui va servir de client avec un acc\u00e8s global aux outils qu\u2019on est en train de construire petit \u00e0 petit toujours autour de ce cas d\u2019usage-l\u00e0."
+      ],
+      "source_chunk_ids": [
+        "chunk_002",
+        "chunk_004"
+      ]
+    },
+    {
+      "title": "Souverainet\u00e9 et cloisonnement des donn\u00e9es dans les projets d'IA g\u00e9n\u00e9rative",
+      "summary": "Les participants abordent la question cruciale de la souverainet\u00e9 des donn\u00e9es et du cloisonnement des outils dans les projets d'IA g\u00e9n\u00e9rative. Bruno LEMETAYER et Maya SAHRAOUI soulignent l'importance de gagner en confidentialit\u00e9 et en pr\u00e9cision en int\u00e9grant des agents sp\u00e9cialis\u00e9s directement sur des donn\u00e9es internes ou open data \u00e9nergie, afin de limiter la d\u00e9pendance \u00e0 des solutions externes. L'objectif est de ma\u00eetriser davantage les donn\u00e9es et les mod\u00e8les utilis\u00e9s, en s'assurant que les outils restent internes \u00e0 RTE et ne soient pas expos\u00e9s \u00e0 des environnements externes. Cette discussion s'inscrit dans la continuit\u00e9 des \u00e9changes sur les assistants interactifs et l'orchestration via MCP, avec une volont\u00e9 claire de renforcer le contr\u00f4le sur les donn\u00e9es sensibles et les processus.",
+      "key_points": [
+        "La souverainet\u00e9 des donn\u00e9es et le cloisonnement des outils sont des enjeux majeurs pour RTE dans les projets d'IA g\u00e9n\u00e9rative.",
+        "L'objectif est d'int\u00e9grer des agents sp\u00e9cialis\u00e9s sur des donn\u00e9es internes ou open data \u00e9nergie pour limiter la d\u00e9pendance \u00e0 des solutions externes.",
+        "Yele Consulting et RTE insistent sur la n\u00e9cessit\u00e9 de ma\u00eetriser les donn\u00e9es et les mod\u00e8les utilis\u00e9s, en gardant les outils internes.",
+        "Cette discussion a permis de clarifier les attentes de RTE en mati\u00e8re de confidentialit\u00e9 et de contr\u00f4le des donn\u00e9es."
+      ],
+      "speakers": [
+        "Bruno LEMETAYER",
+        "Maya SAHRAOUI"
+      ],
+      "relevant_quotes": [
+        "pour gagner des notions de confidentialit\u00e9 et gagner peut-\u00eatre en pr\u00e9cision aussi parce qu\u2019\u00e0 terme on voudrait peut-\u00eatre avoir le LNM qui soit en rac directement sur des donn\u00e9es open data \u00e9nergie donc avoir un agent qui soit vraiment sp\u00e9cialis\u00e9 dans nos sujets \u00e0 nous et qui puisse g\u00e9n\u00e9rer des",
+        "C\u2019est aussi pour cloisonner c\u2019est-\u00e0-dire que si on utilise cet outil par exemple au sein de RTE c\u2019est pour que \u00e7a reste c\u00f4t\u00e9 RTE et que ce ne soit pas finalement c\u00f4t\u00e9 gaill\u00e9 donc il y a tout cet aspect aussi on cherche \u00e0 avoir une souverainet\u00e9 qui soit li\u00e9e \u00e0 l\u2019outil et \u00e0 l\u2019environnement dans lequel l\u2019outil est utilis\u00e9"
+      ],
+      "source_chunk_ids": [
+        "chunk_003",
+        "chunk_004"
+      ]
+    },
+    {
+      "title": "Pr\u00e9sentation d'un projet d'extraction d'informations \u00e0 partir de documents scann\u00e9s",
+      "summary": "Maya SAHRAOUI pr\u00e9sente un projet ant\u00e9rieur \u00e0 son arriv\u00e9e chez Yele Consulting, ax\u00e9 sur l'extraction d'informations \u00e0 partir de documents administratifs scann\u00e9s, incluant des documents manuscrits. L'objectif \u00e9tait d'extraire des donn\u00e9es structur\u00e9es comme les salaires, m\u00e9tiers, et de classifier les documents pour \u00e9valuer leur conformit\u00e9 via un outil VLM (Vision Language Model). Le projet a impliqu\u00e9 un pr\u00e9traitement des documents, l'entra\u00eenement d'un mod\u00e8le visuo-linguistique (fine-tuning de Qwen2VL), un contr\u00f4le d'anomalies, et un d\u00e9ploiement avec monitoring des performances. Maya SAHRAOUI souligne l'importance du fine-tuning pour ce cas sp\u00e9cifique et mentionne que le projet a permis de d\u00e9tecter des d\u00e9rives en production. Cette pr\u00e9sentation illustre la capacit\u00e9 de Yele Consulting \u00e0 traiter des documents complexes et \u00e0 extraire des informations pertinentes, m\u00eame dans des contextes multilingues (documents en arabe).",
+      "key_points": [
+        "Le projet pr\u00e9sent\u00e9 concernait l'extraction d'informations \u00e0 partir de documents administratifs scann\u00e9s, incluant des documents manuscrits.",
+        "L'objectif \u00e9tait d'extraire des donn\u00e9es structur\u00e9es (salaires, m\u00e9tiers) et de classifier les documents pour \u00e9valuer leur conformit\u00e9.",
+        "Le projet a impliqu\u00e9 un fine-tuning de Qwen2VL, un contr\u00f4le d'anomalies et un d\u00e9ploiement avec monitoring des performances.",
+        "Les documents trait\u00e9s incluaient des textes en arabe, d\u00e9montrant la capacit\u00e9 de Yele Consulting \u00e0 g\u00e9rer des contextes multilingues.",
+        "Ce projet a permis de d\u00e9tecter des d\u00e9rives en production, illustrant la robustesse des solutions propos\u00e9es."
+      ],
+      "speakers": [
+        "Maya SAHRAOUI"
+      ],
+      "relevant_quotes": [
+        "l\u2019objectif du projet \u00e9tait de pouvoir extraire des informations \u00e0 partir de documents scann\u00e9s administratifs scann\u00e9s de pouvoir en extraire donc par exemple des salaires nets brut total de les classifier le m\u00e9tier de la personne etc",
+        "d\u2019avoir un outil VLM qui puisse nous dire si estimer un pourcentage de conformit\u00e9 du document",
+        "les documents \u00e9taient souvent r\u00e9dig\u00e9s en arabe donc \u00e7a le fine-tuning \u00e9tait assez ad\u00e9quat pour ce cas"
+      ],
+      "source_chunk_ids": [
+        "chunk_005"
+      ]
+    },
+    {
+      "title": "Orchestration via MCP pour la pr\u00e9paration de simulations et rapports",
+      "summary": "Bruno LEMETAYER et Matthieu DUSSARTRE \u00e9changent sur l'utilisation du protocole MCP pour orchestrer des outils internes, notamment des simulateurs, dans le cadre de la pr\u00e9paration de rapports et d'\u00e9tudes. L'id\u00e9e est de g\u00e9n\u00e9rer un plan de travail via un agent, puis de r\u00e9cup\u00e9rer les donn\u00e9es n\u00e9cessaires via MCP pour ex\u00e9cuter des simulations et produire des pr\u00e9-rapports. Matthieu DUSSARTRE souligne l'int\u00e9r\u00eat de cette approche pour la rentabilit\u00e9 des moyens de production, o\u00f9 une matrice d'\u00e9tudes doit \u00eatre d\u00e9roul\u00e9e avec des simulations et des contr\u00f4les humains interm\u00e9diaires. L'orchestration permettrait de pr\u00e9parer les sc\u00e9narios, lancer les \u00e9tudes, v\u00e9rifier l'\u00e9quilibre des donn\u00e9es et g\u00e9n\u00e9rer un pr\u00e9-rapport avant validation finale. Cette discussion met en lumi\u00e8re le potentiel de MCP pour automatiser des processus complexes et acc\u00e9l\u00e9rer la prise de d\u00e9cision.",
+      "key_points": [
+        "Bruno LEMETAYER et Matthieu DUSSARTRE discutent de l'utilisation de MCP pour orchestrer des outils internes comme des simulateurs.",
+        "L'objectif est de g\u00e9n\u00e9rer un plan de travail via un agent, puis d'ex\u00e9cuter des simulations et de produire des pr\u00e9-rapports.",
+        "Cette approche est particuli\u00e8rement pertinente pour la rentabilit\u00e9 des moyens de production, o\u00f9 des matrices d'\u00e9tudes doivent \u00eatre d\u00e9roul\u00e9es.",
+        "L'orchestration via MCP permettrait d'automatiser des processus complexes et d'acc\u00e9l\u00e9rer la prise de d\u00e9cision.",
+        "Les cas d'usage discut\u00e9s incluent la pr\u00e9paration de sc\u00e9narios, le lancement d'\u00e9tudes et la g\u00e9n\u00e9ration de pr\u00e9-rapports."
+      ],
+      "speakers": [
+        "Bruno LEMETAYER",
+        "Matthieu DUSSARTRE"
+      ],
+      "relevant_quotes": [
+        "l\u2019id\u00e9e du poc de l\u2019outil qui puisse perdu un poc No\u00ebn L\u2019id\u00e9e n\u2019est pas uniquement d\u2019avoir une proposition d\u2019un plan de travail mais plut\u00f4t d\u2019appliquer par la suite le plan de travail donc de prendre le plan de travail qui est g\u00e9n\u00e9r\u00e9 par le premier agent comme des directives et d\u2019aller chercher dans via un MCP dans les outils internes qu\u2019on a ou les outils de simulation qu\u2019existent de r\u00e9cup\u00e9rer le bon outil et de faire la simulation avec les donn\u00e9es qu\u2019ont \u00e9t\u00e9 propos\u00e9es par le premier agent",
+        "l\u2019id\u00e9e \u00e9tait aussi d\u2019avoir finalement ce MCP qui puisse pr\u00e9parer toutes les simulations les orchestrer et brancher derri\u00e8re l\u2019outil de g\u00e9n\u00e9ration de rapports et c\u2019est aussi ce qu\u2019on avait en t\u00eate qui pouvait potentiellement int\u00e9resser",
+        "savoir naviguer entre des hypoth\u00e8ses etc parce que c\u2019est la probl\u00e9matique qu\u2019on peut avoir souvent en temps r\u00e9el donc r\u00e9cup\u00e9rer des hypoth\u00e8ses un petit peu \u00e0 droite \u00e0 gauche parce que passer d\u00e9j\u00e0 r\u00e9cup\u00e9rer les donn\u00e9es d\u2019entr\u00e9e de l\u2019\u00e9tude, consommation, production, programmation machin et \u00e9change sur chacune de ces choses-l\u00e0 arriver \u00e0 se dire des strat\u00e9gies un petit peu d\u2019hypoth\u00e8se de sc\u00e9nario et puis derri\u00e8re venir jongler entre un simulateur un outil d\u2019\u00e9tudes un outil de visualisation voil\u00e0 ce genre de choses"
+      ],
+      "source_chunk_ids": [
+        "chunk_006"
+      ]
+    },
+    {
+      "title": "Retour sur les besoins MCP et NLP pour RTE et proposition d'atelier design",
+      "summary": "Nourredine HENKA (RTE) exprime clairement le manque de besoins clairs et pr\u00e9cis concernant l'int\u00e9gration de MCP ou de solutions NLP pour l'instant. Il souligne que RTE a d\u00e9j\u00e0 des actions pr\u00e9vues pour explorer MCP, mais que ces initiatives ne sont pas encore suffisamment concr\u00e8tes pour justifier un \u00e9change imm\u00e9diat. Il pr\u00e9f\u00e8re attendre que des besoins plus pr\u00e9cis \u00e9mergent avant d'engager des discussions cibl\u00e9es. Il mentionne \u00e9galement les contraintes op\u00e9rationnelles li\u00e9es \u00e0 la disponibilit\u00e9 limit\u00e9e des op\u00e9rateurs, ce qui limite la capacit\u00e9 \u00e0 empiler trop de projets en parall\u00e8le. En r\u00e9ponse, Bruno LEMETAYER (Yele Consulting) propose d'organiser un atelier purement design pour r\u00e9fl\u00e9chir \u00e0 des cas d'usage, les prioriser et les partager avec RTE. Il \u00e9voque \u00e9galement la collaboration de Yele Consulting avec des cabinets sp\u00e9cialis\u00e9s en UX design, notamment avec Olivier Maserol, pour repenser l'exp\u00e9rience utilisateur dans la salle de contr\u00f4le du futur. Maya SAHRAOUI valide l'int\u00e9r\u00eat de cette proposition mais indique qu'elle ne peut pas s'engager imm\u00e9diatement sans plus de d\u00e9tails pratiques.",
+      "key_points": [
+        "Nourredine HENKA (RTE) exprime un manque de besoins clairs et pr\u00e9cis concernant MCP ou NLP, pr\u00e9f\u00e9rant attendre des propositions plus concr\u00e8tes.",
+        "Les contraintes op\u00e9rationnelles de RTE, li\u00e9es \u00e0 la disponibilit\u00e9 limit\u00e9e des op\u00e9rateurs, limitent la capacit\u00e9 \u00e0 mener plusieurs projets en parall\u00e8le.",
+        "Bruno LEMETAYER (Yele Consulting) propose d'organiser un atelier design pour prioriser les cas d'usage et repenser l'UX de la salle de contr\u00f4le du futur.",
+        "Yele Consulting collabore avec des cabinets sp\u00e9cialis\u00e9s en UX design (Olivier Maserol) pour concevoir de nouvelles interfaces utilisateur.",
+        "Maya SAHRAOUI valide l'int\u00e9r\u00eat de l'atelier design mais souligne la n\u00e9cessit\u00e9 de plus de d\u00e9tails pratiques avant de s'engager."
+      ],
+      "speakers": [
+        "Nourredine HENKA",
+        "Bruno LEMETAYER",
+        "Maya SAHRAOUI"
+      ],
+      "relevant_quotes": [
+        "on n\u2019a pas l\u00e0 comme \u00e7a d\u2019id\u00e9e de besoins encore clairs",
+        "si jamais il y a quelque chose de plus pr\u00e9cis qui se d\u00e9gage que ce soit MCP ou plus NLP voil\u00e0 apr\u00e8s sur l\u2019avanc\u00e9e de vos travaux \u00e7a peut \u00eatre int\u00e9ressant",
+        "il faut que nous-m\u00eames soyons dispos il faut qu\u2019on travaille avec les op\u00e9rateurs aussi donc \u00e7a c\u2019est peut-\u00eatre un petit peu une particularit\u00e9 c\u2019est qu\u2019on peut avoir des fois un petit boulot d\u2019\u00e9tranglement sur le fait que les op\u00e9rateurs et c\u2019est en quantit\u00e9 finie",
+        "on pourrait peut-\u00eatre y r\u00e9fl\u00e9chir nous de notre c\u00f4t\u00e9 et pr\u00e9senter notre vision et puis potentiellement avoir un second \u00e9change",
+        "on travaille aussi avec de l\u2019UX design et donc on est en contact avec certains cabinets et on a discut\u00e9 avec Olivier Maserol pour justement mettre un petit peu ce type de nouvelle UX nouvelle UI pour la salle de contr\u00f4le du futur",
+        "Ok je note le point. Il faut voir en pratique l\u00e0 comme \u00e7a je peux pas vous dire, oui je comprends l\u2019int\u00e9r\u00eat"
+      ],
+      "source_chunk_ids": [
+        "chunk_007"
+      ]
+    }
+  ],
+  "decisions": [],
+  "actions": [
+    {
+      "description": "\u00c9valuer la g\u00e9n\u00e9ralisation du POC de g\u00e9n\u00e9ration automatis\u00e9e de rapports pour d'autres \u00e9quipes RTE (notamment RD)",
+      "owner": "G\u00e9rald (RTE)",
+      "due_date": null,
+      "priority": "medium",
+      "dependencies": []
+    },
+    {
+      "description": "Yele Consulting \u00e0 r\u00e9fl\u00e9chir \u00e0 une vision sur l'int\u00e9gration de MCP ou NLP et \u00e0 revenir vers RTE si des besoins plus pr\u00e9cis \u00e9mergent",
+      "owner": "Yele Consulting (Bruno LEMETAYER, Maya SAHRAOUI)",
+      "due_date": null,
+      "priority": "medium",
+      "dependencies": []
+    },
+    {
+      "description": "Organiser un atelier design pour prioriser les cas d'usage et r\u00e9fl\u00e9chir \u00e0 l'UX/UI de la salle de contr\u00f4le du futur",
+      "owner": "Yele Consulting (Bruno LEMETAYER)",
+      "due_date": null,
+      "priority": "medium",
+      "dependencies": []
+    }
+  ],
+  "risks_blockers": [
+    "L'outil de g\u00e9n\u00e9ration automatis\u00e9e de rapports n\u00e9cessite un template pr\u00e9d\u00e9fini, limitant son adaptabilit\u00e9 \u00e0 des structures non standardis\u00e9es.",
+    "Absence de v\u00e9rification chiffr\u00e9e des valeurs extraites dans le POC, et reconstruction de graphiques \u00e0 partir de donn\u00e9es brutes hors scope.",
+    "Manque de besoins clairs et pr\u00e9cis de la part de RTE concernant MCP ou NLP, ce qui limite la capacit\u00e9 \u00e0 engager des discussions cibl\u00e9es imm\u00e9diatement.",
+    "Contraintes op\u00e9rationnelles chez RTE li\u00e9es \u00e0 la disponibilit\u00e9 limit\u00e9e des op\u00e9rateurs, pouvant impacter la capacit\u00e9 \u00e0 mener plusieurs projets en parall\u00e8le."
+  ],
+  "key_numbers_dates": [
+    "Projet de g\u00e9n\u00e9ration automatis\u00e9e de rapports r\u00e9alis\u00e9 en 25 jours",
+    "Utilisation de mod\u00e8les multimodaux (Qwen2, Mistral) par Yele Consulting",
+    "Projet d'extraction d'informations \u00e0 partir de documents scann\u00e9s incluant des documents manuscrits en arabe"
+  ]
+}

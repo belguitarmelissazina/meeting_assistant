@@ -1,0 +1,43 @@
+{
+  "sections": [
+    {
+      "titre": "Cadrage strat\u00e9gique et enjeux organisationnels",
+      "chunk_ids": [
+        0,
+        7
+      ],
+      "brief": "Cette section couvre les \u00e9changes initiaux sur les r\u00f4les, expertises et attentes des participants en mati\u00e8re d'IA g\u00e9n\u00e9rative, ainsi que les discussions sur les besoins en orchestration (MCP, NLP) et les propositions d'ateliers design pour prioriser les cas d'usage. NE PAS inclure les d\u00e9tails techniques des outils pr\u00e9sent\u00e9s (couvert dans les sections suivantes) ou les projets sp\u00e9cifiques (d\u00e9j\u00e0 trait\u00e9s ailleurs)."
+    },
+    {
+      "titre": "Automatisation de la r\u00e9daction et pipelines g\u00e9n\u00e9ratives",
+      "chunk_ids": [
+        1,
+        2
+      ],
+      "brief": "Cette section d\u00e9taille les outils de r\u00e9daction automatis\u00e9e (ex : g\u00e9n\u00e9ration de rapports \u00e0 partir de PPT) et leurs pipelines (analyse, r\u00e9daction, correction it\u00e9rative), ainsi que les m\u00e9canismes de robustesse (artefacts, tra\u00e7abilit\u00e9) et les limites identifi\u00e9es (hors v\u00e9rification chiffr\u00e9e, graphiques, commentaires globaux). NE PAS inclure les cas d'usage d'orchestration d'agents ou les projets de souverainet\u00e9 (d\u00e9j\u00e0 trait\u00e9s ailleurs)."
+    },
+    {
+      "titre": "Souverainet\u00e9 des donn\u00e9es et agents sp\u00e9cialis\u00e9s",
+      "chunk_ids": [
+        3,
+        4
+      ],
+      "brief": "Cette section aborde les projets visant \u00e0 renforcer la confidentialit\u00e9 et l'adaptation des donn\u00e9es (ex : int\u00e9gration du LNM sur des open data, agents pour g\u00e9n\u00e9rer des donn\u00e9es pr\u00e9cises) et les pipelines pour des outils internes (ex : agent de planification, roadmap automatique). NE PAS inclure les d\u00e9tails techniques des outils de r\u00e9daction ou les cas d'usage d'extraction de documents (d\u00e9j\u00e0 trait\u00e9s ailleurs)."
+    },
+    {
+      "titre": "Extraction d'informations et vision par ordinateur",
+      "chunk_ids": [
+        5
+      ],
+      "brief": "Cette section couvre les projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s (administratifs, manuscrits/non manuscrits) via des mod\u00e8les VLM, incluant pr\u00e9traitement, fine-tuning, d\u00e9ploiement et monitoring. NE PAS inclure les pipelines de r\u00e9daction ou les cas d'usage d'orchestration (d\u00e9j\u00e0 trait\u00e9s ailleurs)."
+    },
+    {
+      "titre": "Orchestration de simulations et analyse de donn\u00e9es",
+      "chunk_ids": [
+        6
+      ],
+      "brief": "Cette section traite des cas d'usage li\u00e9s \u00e0 l'orchestration de simulations, l'analyse de donn\u00e9es disparates, et la synth\u00e8se de sources via des outils MCP et LLM, incluant la gestion d'hypoth\u00e8ses et la pr\u00e9paration de rapports pr\u00e9-\u00e9tudes. NE PAS inclure les projets de souverainet\u00e9 ou les outils de r\u00e9daction (d\u00e9j\u00e0 trait\u00e9s ailleurs)."
+    }
+  ],
+  "raw": "{\n  \"sections\": [\n    {\n      \"titre\": \"Cadrage strat\u00e9gique et enjeux organisationnels\",\n      \"chunk_ids\": [0, 7],\n      \"brief\": \"Cette section couvre les \u00e9changes initiaux sur les r\u00f4les, expertises et attentes des participants en mati\u00e8re d'IA g\u00e9n\u00e9rative, ainsi que les discussions sur les besoins en orchestration (MCP, NLP) et les propositions d'ateliers design pour prioriser les cas d'usage. NE PAS inclure les d\u00e9tails techniques des outils pr\u00e9sent\u00e9s (couvert dans les sections suivantes) ou les projets sp\u00e9cifiques (d\u00e9j\u00e0 trait\u00e9s ailleurs).\"\n    },\n    {\n      \"titre\": \"Automatisation de la r\u00e9daction et pipelines g\u00e9n\u00e9ratives\",\n      \"chunk_ids\": [1, 2],\n      \"brief\": \"Cette section d\u00e9taille les outils de r\u00e9daction automatis\u00e9e (ex : g\u00e9n\u00e9ration de rapports \u00e0 partir de PPT) et leurs pipelines (analyse, r\u00e9daction, correction it\u00e9rative), ainsi que les m\u00e9canismes de robustesse (artefacts, tra\u00e7abilit\u00e9) et les limites identifi\u00e9es (hors v\u00e9rification chiffr\u00e9e, graphiques, commentaires globaux). NE PAS inclure les cas d'usage d'orchestration d'agents ou les projets de souverainet\u00e9 (d\u00e9j\u00e0 trait\u00e9s ailleurs).\"\n    },\n    {\n      \"titre\": \"Souverainet\u00e9 des donn\u00e9es et agents sp\u00e9cialis\u00e9s\",\n      \"chunk_ids\": [3, 4],\n      \"brief\": \"Cette section aborde les projets visant \u00e0 renforcer la confidentialit\u00e9 et l'adaptation des donn\u00e9es (ex : int\u00e9gration du LNM sur des open data, agents pour g\u00e9n\u00e9rer des donn\u00e9es pr\u00e9cises) et les pipelines pour des outils internes (ex : agent de planification, roadmap automatique). NE PAS inclure les d\u00e9tails techniques des outils de r\u00e9daction ou les cas d'usage d'extraction de documents (d\u00e9j\u00e0 trait\u00e9s ailleurs).\"\n    },\n    {\n      \"titre\": \"Extraction d'informations et vision par ordinateur\",\n      \"chunk_ids\": [5],\n      \"brief\": \"Cette section couvre les projets li\u00e9s \u00e0 l'extraction d'informations \u00e0 partir de documents scann\u00e9s (administratifs, manuscrits/non manuscrits) via des mod\u00e8les VLM, incluant pr\u00e9traitement, fine-tuning, d\u00e9ploiement et monitoring. NE PAS inclure les pipelines de r\u00e9daction ou les cas d'usage d'orchestration (d\u00e9j\u00e0 trait\u00e9s ailleurs).\"\n    },\n    {\n      \"titre\": \"Orchestration de simulations et analyse de donn\u00e9es\",\n      \"chunk_ids\": [6],\n      \"brief\": \"Cette section traite des cas d'usage li\u00e9s \u00e0 l'orchestration de simulations, l'analyse de donn\u00e9es disparates, et la synth\u00e8se de sources via des outils MCP et LLM, incluant la gestion d'hypoth\u00e8ses et la pr\u00e9paration de rapports pr\u00e9-\u00e9tudes. NE PAS inclure les projets de souverainet\u00e9 ou les outils de r\u00e9daction (d\u00e9j\u00e0 trait\u00e9s ailleurs).\"\n    }\n  ]\n}"
+}

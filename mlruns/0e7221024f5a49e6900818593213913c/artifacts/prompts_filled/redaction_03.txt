@@ -1,0 +1,75 @@
+Tu rédiges UNE section d'un compte rendu de réunion, en français, factuel, fidèle au texte fourni. N'invente rien. Ne mets pas de titre (il est ajouté séparément). Respecte le périmètre du brief. Ne développe pas les sigles.
+
+SYNTHÈSE GLOBALE (pour la cohérence, ne pas recopier) :
+La réunion a débuté par un tour de table où chaque participant a présenté son rôle et ses expertises en IA générative, avec un focus sur des projets comme l'automatisation de rapports pour RTE et des assistants conversationnels. Les échanges ont souligné l'importance de l'adaptabilité des solutions aux templates de rapports et la souveraineté des outils au sein de RTE. Plusieurs projets ont été évoqués, notamment un agent de planification, un outil de génération de bibliographie et de roadmaps, ainsi qu'un démonstrateur basé sur l'état de l'art pour résoudre des problématiques via R&D. Un projet de détection de fraude sur documents administratifs a également été détaillé, avec des défis liés à la qualité des données et à la gestion de documents en arabe. Les discussions ont convergé vers l'intérêt d'un MCP pour orchestrer des études et préparer des scénarios, avec une proposition d'atelier design pour prioriser les cas d'usage. Aucune décision concrète n'a été actée, mais des pistes de réflexion et de collaboration futures ont été esquissées.
+
+BRIEF DE LA SECTION :
+{'couvre': "Les cas d'usage potentiels pour les outils d'orchestration (MCP) et de synthèse (NLP), notamment l'automatisation des simulations, la préparation de rapports et l'intégration d'outils internes. Les discussions sur un MCP pour orchestrer des études et préparer des scénarios. Les échanges sur les ateliers design pour prioriser les cas d'usage.", 'ne_couvre_pas': 'Les projets techniques détaillés (ex. DURKEVX, détection de fraude) ou les présentations initiales des participants (couvert ailleurs).'}
+
+PASSAGES BRUTS (source de vérité) :
+=== passage 3 ===
+[SPEAKER_01]: suffisant Mais on avait donc les deux.
+[SPEAKER_01]: possibilitésEst-ce
+[SPEAKER_00]: que ça vous inspire certaines choses par rapport à des cas d’usage donc peut-être que le texte n’est pas trop votre sujet à part pour les rapports côté actif peut-être ou les synthèses à générer est-ce que ça vous inspire quelque chose est-ce que vous vouliez partager les cas d’usage qu’on pourrait
+[SPEAKER_00]: peut-êtreessayer de réfléchir et de rebondir sur notre vision pour vous la?
+[SPEAKER_02]: partager Alorseffectivement c’est pour ça qu’on a cet échange-là donceffectivement on est bien sur le même type de cas d’usage après là nos vues de ce que je vois c’est vrai qu’on est peut-être pluseffectivement sur des choses assezorientées parce que alors je parlais un peu de la,
+[SPEAKER_02]: partieorchestration etc parce que va être nous qui peut nous intéresser ça peut être de travailler peut-être plus sur la partie MCP en tant que.
+[SPEAKER_02]: telle, Là c’est les travaux à s’orienterNLP alors encore une, fois ce n’est pas le premiertruc auquel j’avais pensé par rapport au MCP mais c’est aussi les cas d’usage qu’on a comme je le disais le fait de pouvoir synthétiser les choses ou le fait de justement de synthétiser des sources de données
+[SPEAKER_02]: assez disparates n’importe quoi des blocs d’alarme des messages ou des petites choses assez fragmentées puis Derruel estallait synthétiser donc ça correspondait à ce qui a été fait.
+[SPEAKER_02]: ici Je parlais là de l’aspect manuscrit parce que mon sais aussi des choses qu’on regarde même si on a déjà des travaux en cours là-dessus donc mais peut-être dans un temps un peu plus moyenterme on va dire peut-êtrearriver à continuer sur ces questions-là de texte.
+[SPEAKER_02]: manuscritVoilà je vois le coheneffectivement c’est ce qu’on avait vu là de potentialité pour les notes manuscrits de dispatcher en fait c’est quelusage c’est un périle ce quiressentait un peu notre beichman donc c’est pour ça que je le voilà et ça me fait.
+[SPEAKER_02]: penserVoilà donc ça voudrait que là de ce que je vois c’est que ça m’évoque plus un travail assez focalisé enNLP encore une, fois c’est aussi des choses qu’on a peut-être moins MCP, voilà c’est un petit retour comme ça à chaud parce qu’après encore une, fois c’est vrai que sur, leNCP il y a la
+[SPEAKER_02]: question du LLM mais finalement il y a aussi la question du serveur MCP en tant que.
+[SPEAKER_02]: tel Je pense le fait la capacité finalement de dire on a desoutils d’études qui peuvent être voilà assez complexes donc commentarriver à faire cette interaction à.
+[SPEAKER_02]: l’élèmeVoilà c’est un premier retour à chaud donc moi je vois des connexions avec certains cas d’usage qu’on a peut-être moins sur la MCP mais voilà comme ça à chaud ça reste.
+[SPEAKER_02]: pertinent
+[SPEAKER_01]: Mais je vous rejoins aussi sur le MCP ça a faitégalement partie de notre feuille de route entermes justement d’avoir des serveurs MCP où on peut directement se brancher sur desoutils de simulation justement l’idée du poc de l’outil qui puisse perdu un.
+[SPEAKER_01]: pocNoën L’idée n’est pas uniquement d’avoir une proposition d’un plan de travail mais plutôt d’appliquer par la suite le plan de travail donc de prendre le plan de travail qui est généré par le premieragent comme des directives et d’aller chercher dans via un MCP dans lesoutils internes qu’on a ou
+[SPEAKER_01]: lesoutils de simulation quiexistent de récupérer le bonoutil et de faire la simulation avec les données quiont été proposées par le premieragent donc c’est complètement dans notre feuille de.
+[SPEAKER_02]: routeégalement Mais non mais je réagissaiseffectivement plus sur la dans l’immédiat encore une fois à chose sur les travaux que je voyais aprèseux je comprends si vous avez ça dans votre.
+[SPEAKER_00]: patrie Si pour ça qu’on avait évoqué avecGérald puisque sur la partie rentabilité des moyens de production en, fait on aeu un scope qui a été ciblé sur les moyens de production mais finalement on a une matrice en attente avec un certain nombre d’études à dérouler et donc l’idée c’était aussi
+[SPEAKER_00]: d’avoir finalement ce MCP qui puisse préparer toutes les, simulations lesorchestrer et brancher derrière l’outil de génération de rapports et c’est aussi ce qu’on avait en tête qui pouvait potentiellement intéresser, dèse c’est-à-dire qu’il y a le côté finalement pré-rapport puisque de toute façon
+[SPEAKER_00]: il faut toujours qu’il soit, relu ça passe devant des, comités mais ça pourrait aussi faire toute cette partieamont qui est de préparer les, scénarios les, études de les, lancer de faire uncheckpoint sur est-ce que finalement l’étude est équilibrée d’avoir un contrôle humain pour dire ce qu’il
+[SPEAKER_00]: faut, modifier voire potentiellement unagent quiarrive à le modifier et de continuer finalement à aider cette partie lancement des simulations deNT et que l’humain puisse derrière avoir la valeur.
+[SPEAKER_00]: ajoutée L’étude on sait qu’il y a les, robustes on a l’étude de sensibilité qui a été, faite on a les sorties, d’analyse on a les premiers, résultats on a finalement un, pré-rapport on n’a plus qu’à travailler et donner la bonne direction pour finalement le BP ou le futur.,
+[SPEAKER_02]: énergétiqueOuieffectivement c’est intéressant oui cetteorchestration d’études donc nous en tout, cas alors évidemment le contexte n’est pas le dumentaire donc il y a d’autres types d’outils mais on sera bien un peu sur ce type de choses-là c’est-à-dire savoir naviguer entre des, hypothèses etc
+[SPEAKER_02]: parce que c’est la problématique qu’on peut avoir souvent en temps réel donc récupérer des hypothèses un petit peu à droite à gauche parce que passer déjà récupérer les données d’entrée de l’étude, consommation, production, programmation machin et échange sur chacune de ces choses-làarriver à se
+[SPEAKER_02]: dire des stratégies un petit peu d’hypothèse de scénario et puis derrièrevenir jongler entre un simulateur unoutil, d’études unoutil de, visualisation voilà ce genre de.
+[SPEAKER_02]: choses Donc vous voyez çaressemble un petit peu à ce que vous évoquez sur des échanges différentes mais çaressemble un petit peu à., çaOk bon enfin en tout cas moi j’ai une bonne vision donc c’est vrai que sur le comme disait on aura peut-être plus parlé de la partieNP mais encore une fois qui est
+[SPEAKER_02]: aussi très intéressante pour nous et aussi de ce que vous avez vu dans le futur sur la MCP donc en tout cas moi de mon point de, vue j’ai une bonne vision et puis voilà on peut alorseffectivement vous avez travaillé avec le géral qui est pas très loin de nos.
+[SPEAKER_02]: bureauxVoilà donc très.
+
+=== passage 4 ===
+[SPEAKER_02]: bien En tout cas, voilà pour, moi c’était bon j’avais près
+[SPEAKER_00]: du réponses à mes questions.
+[SPEAKER_00]: éventuelles Très, bien est-ce que vous voulez qu’on fasse une petite réflexion sur un cas d’usage un peu plusorienté sur par exemple le MCP votre si vous présentez finalement le cas d’usage dans lequel vous voulez intégrer un MCP on pourrait peut-être y réfléchir nous de notre côté et présenter
+[SPEAKER_00]: notre vision et puis potentiellement avoir un second échange ou est-ce que finalement vous préférez qu’on se refasse un point sur nos avancées sur nos travaux et qu’on vous représente ce que l’on peut faire côté.
+[SPEAKER_02]: MCP Alors il y a plusieurs possibilités alors sur le cas d’usage que l’on réfléchirait comme je faisais donc à l’EMCP mais il y en a d’autres aussi donc à.
+[SPEAKER_02]: voir Alors je réfléchis un peu tôt mais moi je pense que nous on peut comme je dis on n’a pas là comme ça d’idée de besoins encore.
+[SPEAKER_02]: clairs Donc peut-être qu’au regard de ce qu’on a vu, aujourd’hui il faut tout simplement qu’on regarde et puis qu’on tienne tout simplement informer si jamais il y a quelque chose de plus précis qui se dégage que ce soit MCP ou plusNLP voilà après sur l’avancée de vos, travaux ça peut être
+[SPEAKER_02]: intéressant donc avoir un focus MCP même si là voilà pour être transparent sur le MCP on va on a quand même déjà des actions qui sont prévues pourexplorer cette chose-là donc ce ne serait pas non plus tout de suite c’est-à-dire que si vous nous présentez vos travaux sur la partie, MCP clairement
+[SPEAKER_02]: enfin là ce n’était pas du tout de.
+[SPEAKER_02]: suiteVoilà donc l’aurait tendance à dire que le plus problématique c’est peut-être qu’on revient tout simplementvers vous si on a quelque chose d’un peu plus précis voilà pour éviter qu’on discute mais sans qu’il yait quelque chose de précis, derrière je pense que c’est pas forcément souhaitable
+[SPEAKER_02]: non plus voilà sinon on n’a pas de quoi concrétiser autant qu’on attende voilà moi j’aurais tendance à partir là-dessus et puis voilà on tiens on a vos contacts donc on revientvers vous en tout cas voilà ce qui a été présenté ça pourrait entrer plutôt patronage de ce qu’on fait après avoir dans
+[SPEAKER_02]: l’agenda et dans l’ordonnancement et tout ça des projets qu’on mène parce que aussi pour faire avancer tous ces, projets-là il faut que nous-mêmes soyons, dispos il faut qu’on travaille avec lesopérateurs aussi donc ça c’est peut-être un petit peu une particularité c’est qu’on peut avoir des fois
+[SPEAKER_02]: un petit boulot d’étranglement sur le fait que lesopérateurs et c’est en quantité, finie on va dire leur temps de disposition en tout cas il y a plein d’autres travaux aussi au cours donc voilà on ne peut pas non plus trop pencherempiler les, choses même si voilà on peut vous solliciter en tant
+[SPEAKER_02]: que, partenaireexterne, voilà donc ça peut pas le
+[SPEAKER_00]: contexte..
+[SPEAKER_00]: doncVoilà Alors j’ai une information aussi à vous, donner je pense que c’est peut-être intéressant nous côté galet on travaille aussi avec de l’huileUX design et donc on est en contact avec certains cabinets et on a discuté avecOlivier Maserol pour justement mettre un petit peu ce type de
+[SPEAKER_00]: nouvelleUX nouvelleU pour la contrôleroom du, futur donc ça peut être aussi des choses qu’on pourrait.
+[SPEAKER_00]: envisagerVoilà c’est simplement une information et deuxièmement c’est plutôt une proposition si vous voulez peut-être qu’on fasse un atelier purement design où on pourrait réfléchir à des cas, d’usage les, prioriser.
+[SPEAKER_00]: etc C’est aussi quelque chose qui nous ferait plaisir et qui pourrait peut-êtreaboutir sur vous une, vision nous un partage et
+[SPEAKER_02]: après., onverraOk je note le.
+[SPEAKER_02]: point Il faut voir en pratique là comme, ça je peux pas vous dire mais je peux pas vous dire, oui je comprends l’intérêt
+[SPEAKER_00]: du, point je ne m’attends pas de répons tout de
+[SPEAKER_02]: suite., dessinOuais, d’accord ça.
+[SPEAKER_02]: marcheOk en tout cas c’est, oui c’est intéressant que vous ayez de discuter laisse ma partieUX.
+[SPEAKER_02]: avecOlivierVoilà on n’a pas parlé mais bon il a dû vous en, parler je pense aussi bien voir mieux.,, quoiOkécoutez très, vite elle se doté en tout.
+[SPEAKER_00]: casEh, bien merci beaucoup à moins que d’autres personnes veuillent aussi s’exprimer ou.
+[SPEAKER_00]: non Très, bien merci.
+[SPEAKER_00]: beaucoup Très bon.
+[SPEAKER_00]: après-midi.
+[SPEAKER_00]: Bonweek-end Au.
+[SPEAKER_00]: revoir
+
+Rédige la section (1 à 3 paragraphes) :

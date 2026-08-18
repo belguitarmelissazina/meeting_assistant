@@ -472,6 +472,7 @@ class RecordStartPayload(BaseModel):
     participants: str | None = None
     entreprises: str | None = None
     contexte: str | None = None
+    objectif: str | None = None  # objectif de réunion -> advisor live (Mistral)
     calendar: CalendarMeta | None = None
 
 
@@ -683,7 +684,7 @@ async def _run_pipeline_locked(job: Job) -> None:
                     "Clé API Mistral absente. Renseigne-la dans les paramètres de l'application."
                 )
             extra_env["MISTRAL_API_KEY"] = api_key
-            job.step = "Compte rendu (Mistral Large)"
+            job.step = "Compte rendu (Mistral)"
 
         _log_start(job.step)
         await _run_subprocess(
@@ -730,7 +731,10 @@ def _cleanup_intermediate_files(job: Job) -> None:
     `traitement_<label>.md` est ailleurs (~/.meeting_assistant/logs/)."""
     keep = {job.audio_path.name, "compte_rendu.md", "compte_rendu.docx",
             ".calendar_event.json",
-            "transcript.txt", "turns.json", "speakers.json"}
+            "transcript.txt", "turns.json", "speakers.json",
+            # compte_rendu.sections.json (avec _chunk_text brut) sert d'entree
+            # au pipeline agentique V2 (Context + Planner + Designer + Workers).
+            "compte_rendu.sections.json"}
     for entry in job.out_dir.iterdir():
         if not entry.is_file() or entry.name in keep:
             continue
@@ -1189,7 +1193,21 @@ async def record_status() -> dict:
         "recording": True,
         "startedAt": _recording_started_at_ms,
         "calendar": _pending_calendar,
+        "advisor": bool(live_processor is not None
+                        and getattr(live_processor, "advisor_active", False)),
     }
+
+
+@app.get("/api/record/suggestions")
+async def record_suggestions() -> dict:
+    """Suggestions de l'advisor live (Mistral). Le frontend poll cet endpoint
+    pendant l'enregistrement. Renvoie [] si pas d'advisor actif."""
+    if live_processor is None:
+        return {"suggestions": []}
+    try:
+        return {"suggestions": live_processor.get_suggestions()}
+    except Exception:
+        return {"suggestions": []}
 
 
 @app.post("/api/record/start")
@@ -1221,21 +1239,31 @@ async def record_start(payload: RecordStartPayload | None = None) -> dict:
             pass
         live_processor = None
 
-    # Mode live ACTIVÉ par défaut pour les enregistrements dans l'app :
-    # diarisation + LLM tournent en parallèle pendant la captation. LLM
-    # désactivable via payload (ex : dev/test sans llama-server).
-    enable_live_llm = True
-    if payload is not None and not payload.enableLiveLlm:
-        # Opt-out explicite : si False fourni, on désactive juste le LLM
-        # (on garde la transcription/diarisation live qui sont légères).
-        enable_live_llm = False
+    # Deux briques live INDÉPENDANTES, toutes deux opt-in via le payload :
+    #  - LLM LOCAL (CR progressif) : démarre le llama-server (lourd). OFF par défaut.
+    #  - ADVISOR (assistant live) : API Mistral, AUCUN llama-server requis.
+    # La transcription + diarisation live restent toujours actives (légères).
+    enable_live_llm = bool(payload is not None and payload.enableLiveLlm)
+    enable_live_advisor = bool(payload is not None and payload.enableLiveAdvisor)
 
-    live_processor = LiveProcessor(enable_live_llm=enable_live_llm)
-    if enable_live_llm and payload is not None:
+    # L'advisor tourne DANS le process backend (pas un subprocess) et lit la clé
+    # Mistral dans l'environnement -> on l'y injecte depuis les paramètres.
+    if enable_live_advisor:
+        _adv_key = (_load_settings().get("mistral_api_key") or "").strip()
+        if _adv_key:
+            _os.environ["MISTRAL_API_KEY"] = _adv_key
+        else:
+            log.warning("Assistant live demandé mais clé Mistral absente — "
+                        "advisor inactif (renseigne la clé dans les paramètres).")
+
+    live_processor = LiveProcessor(enable_live_llm=enable_live_llm,
+                                   enable_live_advisor=enable_live_advisor)
+    if (enable_live_llm or enable_live_advisor) and payload is not None:
         live_processor.set_llm_context({
             "participants": payload.participants or "",
             "entreprises": payload.entreprises or "",
             "contexte": payload.contexte or "",
+            "objectif": payload.objectif or "",
         })
 
     # JobLogger optionnel : créé seulement si MEETING_JOB_LOG=1 (défaut dev).

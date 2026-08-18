@@ -1,0 +1,15 @@
+Tu établis le socle d'un compte rendu à partir des résumés de tous les passages. Réponds UNIQUEMENT en JSON. N'invente aucun nom : les participants te sont fournis.
+
+Participants (vérité) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+
+Résumés des passages :
+- Tour de table de présentation des participants et de leurs expertises en IA générative. Maya (Ely Consulting) présente un projet d'automatisation de génération de rapports pour RTE à partir de fichiers PPT, utilisant des pipelines d'agents et des modèles multimodaux. Discussion sur l'adaptabilité de l'outil à différents templates de rapports. Identification de cas d'usage potentiels pour la synthèse de données et l'orchestration d'outils via MCP ou N8N.
+- Les échanges portent sur l'amélioration des synthèses et des propositions pour mieux les adapter au contexte. L'accent est mis sur la souveraineté des outils utilisés au sein de RTE, notamment pour cloisonner les données et éviter leur diffusion externe. Un projet d'agent de planification est évoqué, avec une première application pour la bibliographie et une future extension à des outils de simulation. L'objectif est de créer une pipeline automatisée pour proposer des POC minimaux sur des sujets donnés, accélérant ainsi les hackathons internes.
+- La réunion a abordé des projets liés à l'extraction d'informations à partir de documents scannés, notamment administratifs, avec un focus sur l'utilisation de modèles VLM (Vision-Language Models) pour la classification, l'extraction de données (salaire, métier) et la détection de conformité. Un projet spécifique a été présenté, incluant le prétraitement, l'apprentissage, le fine-tuning de modèles, le contrôle d'anomalies et le déploiement avec monitoring. La discussion a également évoqué la gestion de documents manuscrits ou numérisés et l'adaptation des modèles à des langues comme l'arabe.
+- La réunion a porté sur l'identification de cas d'usage pour des outils d'IA, notamment autour de l'orchestration de simulations, de la synthèse de données disparates et de l'analyse de texte manuscrit. Les échanges ont mis en lumière des pistes pour intégrer des serveurs MCP et des agents IA dans des processus existants, comme la préparation de rapports ou l'automatisation de tâches. Les participants ont souligné l'intérêt de travailler sur des scénarios d'hypothèses et de navigation entre outils de simulation et de visualisation.
+- La réunion a abordé des échanges sur les besoins en MCP et NLP sans aboutir à des décisions concrètes. Une proposition d'atelier design pour prioriser des cas d'usage a été évoquée. Les participants ont convenu de revenir vers l'autre partie si des besoins plus précis émergent.
+
+Produis :
+{"type": "type de réunion (ex: prise de contact, revue projet...)",
+  "objectif": "1-2 phrases : ce que la réunion cherchait à accomplir",
+  "resume_global": "paragraphe de 4-6 phrases, synthèse fidèle de l'ensemble"}

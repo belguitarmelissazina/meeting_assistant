@@ -1,0 +1,23 @@
+{
+  "decisions": [],
+  "actions": [
+    {
+      "action": "Pr\u00e9senter les projets restants de Maya lors d'une prochaine r\u00e9union pour validation ou approfondissement.",
+      "responsable": "Maya",
+      "echeance": null
+    },
+    {
+      "action": "\u00c9tudier la faisabilit\u00e9 d'int\u00e9grer les projets de Maya (notamment le projet VLM pour documents scann\u00e9s) dans les initiatives en cours, en tenant compte des contraintes de d\u00e9ploiement local et de qualit\u00e9 des donn\u00e9es.",
+      "responsable": null,
+      "echeance": null
+    },
+    {
+      "action": "Noter le point concernant l'atelier design pur pour r\u00e9fl\u00e9chir \u00e0 des cas d'usage et les prioriser.",
+      "responsable": "SPEAKER_02"
+    },
+    {
+      "action": "Tenir inform\u00e9s les partenaires si des besoins plus pr\u00e9cis \u00e9mergent sur MCP ou NLP.",
+      "responsable": "SPEAKER_02"
+    }
+  ]
+}

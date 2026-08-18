@@ -43,6 +43,10 @@ export default function Recorder({
   const [state, setState] = useState<State>("idle");
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [advisorOn, setAdvisorOn] = useState(false);
+  const [mistralKeySet, setMistralKeySet] = useState(false);
+  const [objectif, setObjectif] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>([]);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   // Timestamp ms epoch du début d'enregistrement. Posé soit au clic
   // « Démarrer » (=Date.now()), soit lors d'une reprise d'état après
@@ -92,6 +96,49 @@ export default function Recorder({
     };
   }, [state]);
 
+  // Poll des suggestions de l'advisor live pendant l'enregistrement.
+  useEffect(() => {
+    if (state !== "recording") {
+      setSuggestions([]);
+      return;
+    }
+    let cancel = false;
+    const poll = async () => {
+      try {
+        const r = await fetch(apiUrl("/api/record/suggestions"));
+        if (!r.ok || cancel) return;
+        const d = (await r.json()) as {
+          suggestions: { ts: number; items: string[] }[];
+        };
+        const flat: string[] = [];
+        for (const g of [...(d.suggestions || [])].reverse()) {
+          for (const it of g.items || []) {
+            if (!flat.includes(it)) flat.push(it);
+            if (flat.length >= 8) break;
+          }
+          if (flat.length >= 8) break;
+        }
+        if (!cancel) setSuggestions(flat);
+      } catch {
+        /* ignore — l'advisor peut être inactif */
+      }
+    };
+    poll();
+    const id = setInterval(poll, 4000);
+    return () => {
+      cancel = true;
+      clearInterval(id);
+    };
+  }, [state]);
+
+  // Le toggle « Assistant live » n'est accessible que si une clé Mistral existe.
+  useEffect(() => {
+    fetch(apiUrl("/api/settings"))
+      .then((r) => r.json())
+      .then((d) => setMistralKeySet(Boolean(d?.mistralKeySet)))
+      .catch(() => setMistralKeySet(false));
+  }, []);
+
   async function start() {
     setError(null);
     try {
@@ -99,13 +146,15 @@ export default function Recorder({
       // comportement live d'origine ; `calendar` rattache la réunion.
       const body = meeting
         ? {
-            enableLiveLlm: true,
+            enableLiveLlm: false,
+            enableLiveAdvisor: advisorOn && mistralKeySet,
             participants: meeting.participants,
             entreprises: meeting.entreprises,
             contexte: meeting.contexte,
+            objectif,
             calendar: meeting.calendar,
           }
-        : { enableLiveLlm: true };
+        : { enableLiveLlm: false, enableLiveAdvisor: advisorOn && mistralKeySet, objectif };
 
       const r = await fetch(apiUrl("/api/record/start"), {
         method: "POST",
@@ -170,6 +219,48 @@ export default function Recorder({
 
   return (
     <div className="space-y-5">
+      {state === "idle" && (
+        <div className="space-y-3 rounded-xl border border-surface-border bg-surface p-4">
+          <label
+            className={`flex items-center gap-2 text-sm font-medium ${
+              mistralKeySet ? "text-ink" : "cursor-not-allowed text-ink-muted"
+            }`}
+            title={
+              mistralKeySet
+                ? undefined
+                : "Renseignez la clé API Mistral dans les paramètres pour activer l'assistant live"
+            }
+          >
+            <input
+              type="checkbox"
+              checked={advisorOn && mistralKeySet}
+              disabled={!mistralKeySet}
+              onChange={(e) => setAdvisorOn(e.target.checked)}
+            />
+            Assistant live (suggestions via Mistral)
+          </label>
+          {!mistralKeySet && (
+            <p className="text-xs text-ink-muted">
+              Clé API Mistral requise — renseignez-la dans les paramètres pour
+              activer l&apos;assistant live.
+            </p>
+          )}
+          {advisorOn && mistralKeySet && (
+            <div>
+              <label className="mb-1 block text-xs font-medium text-ink-muted">
+                Objectif de la réunion
+              </label>
+              <textarea
+                className="w-full resize-none rounded-md border border-surface-border bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand/50"
+                rows={2}
+                placeholder="Ex : comprendre les besoins IA du client et faire avancer un POC"
+                value={objectif}
+                onChange={(e) => setObjectif(e.target.value)}
+              />
+            </div>
+          )}
+        </div>
+      )}
       <div
         className={`flex items-center justify-between rounded-xl border p-5 transition-all duration-300 ${
           state === "recording"
@@ -208,6 +299,21 @@ export default function Recorder({
       {error && (
         <div className="rounded-md border border-brand/30 bg-brand/5 px-4 py-3 text-sm text-brand">
           {error}
+        </div>
+      )}
+
+      {state === "recording" && suggestions.length > 0 && (
+        <div className="rounded-xl border border-brand/30 bg-brand/5 p-4">
+          <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand">
+            Suggestions live
+          </div>
+          <ul className="space-y-2">
+            {suggestions.map((s, i) => (
+              <li key={i} className="text-sm text-ink">
+                • {s}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>

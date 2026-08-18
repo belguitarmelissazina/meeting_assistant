@@ -1,0 +1,61 @@
+{
+  "architecture": "mistral_spkmap",
+  "steps": {
+    "speaker_mapping": {
+      "calls": 1,
+      "input_tokens": 1346,
+      "output_tokens": 55,
+      "cached_input_tokens": 0,
+      "latency_s": 0.79,
+      "cost_usd": 0.000235,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "extraction": {
+      "calls": 7,
+      "input_tokens": 14607,
+      "output_tokens": 1315,
+      "cached_input_tokens": 1360,
+      "latency_s": 18.63,
+      "cost_usd": 0.002796,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "synthese": {
+      "calls": 1,
+      "input_tokens": 1217,
+      "output_tokens": 269,
+      "cached_input_tokens": 0,
+      "latency_s": 3.1,
+      "cost_usd": 0.000344,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "planner": {
+      "calls": 1,
+      "input_tokens": 1053,
+      "output_tokens": 486,
+      "cached_input_tokens": 0,
+      "latency_s": 4.24,
+      "cost_usd": 0.00045,
+      "model": "mistral-small-latest",
+      "batch": false
+    },
+    "redaction": {
+      "calls": 4,
+      "input_tokens": 18317,
+      "output_tokens": 1329,
+      "cached_input_tokens": 4080,
+      "latency_s": 15.13,
+      "cost_usd": 0.002994,
+      "model": "mistral-small-latest",
+      "batch": false
+    }
+  },
+  "total": {
+    "input_tokens": 36540,
+    "output_tokens": 3454,
+    "cost_usd": 0.006819,
+    "latency_s": 66.83
+  }
+}

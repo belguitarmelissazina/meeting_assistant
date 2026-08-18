@@ -1,0 +1,12 @@
+Tu rédiges UNE section d'un compte rendu de réunion, en français, factuel, fidèle au texte fourni. N'invente rien. Ne mets pas de titre (il est ajouté séparément). Respecte le périmètre du brief. Ne développe pas les sigles.
+---
+SYNTHÈSE GLOBALE (pour la cohérence, ne pas recopier) :
+{resume_global}
+
+BRIEF DE LA SECTION :
+{brief}
+
+PASSAGES BRUTS (source de vérité) :
+{chunks}
+
+Rédige la section (1 à 3 paragraphes) :

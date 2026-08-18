@@ -1,0 +1,4 @@
+Section 1 « Contexte et acteurs de l'atelier »  <- chunks [0, 1]
+Section 2 « Automatisation de la génération de rapports et pipelines d'agents IA »  <- chunks [2, 3]
+Section 3 « Orchestration d'agents IA et intégration de serveurs MCP »  <- chunks [4, 5]
+Section 4 « Priorisation des cas d'usage et perspectives de collaboration »  <- chunks [6]

@@ -1,0 +1,51 @@
+[
+  {
+    "index": 1,
+    "titre": "Automatisation et orchestration de pipelines pour la g\u00e9n\u00e9ration de rapports et synth\u00e8ses",
+    "chunk_ids": [
+      0,
+      1
+    ],
+    "brief": {
+      "couvre": "Les projets d'automatisation de r\u00e9daction de rapports (ex : pour RTE) via des mod\u00e8les multimodaux et des pipelines d'agents, incluant l'adaptabilit\u00e9 aux templates, les boucles de correction, et l'orchestration via MCP ou N8N. Les discussions sur l'am\u00e9lioration des synth\u00e8ses, leur adaptation au contexte, et la cr\u00e9ation de pipelines automatis\u00e9es pour des POC minimaux (ex : hackathons) via des agents de planification automatique (webSir).",
+      "ne_couvre_pas": "L'extraction d'informations \u00e0 partir de documents scann\u00e9s ou manuscrits, l'analyse de conformit\u00e9 des donn\u00e9es, ou les outils de monitoring pour anomalies (voir section d\u00e9di\u00e9e)."
+    },
+    "texte": "Maya (Elya) a pr\u00e9sent\u00e9 un projet d\u2019automatisation de r\u00e9daction de rapports pour RTE, visant \u00e0 transformer des documents complexes et h\u00e9t\u00e9rog\u00e8nes (notamment des fichiers PPT contenant des graphiques et peu de texte) en rapports structur\u00e9s et actionnables. L\u2019outil d\u00e9velopp\u00e9 repose sur une pipeline d\u2019agents multimodaux, int\u00e9grant des mod\u00e8les locaux fine-tun\u00e9s (dont Mistral) et des m\u00e9canismes d\u2019orchestration via N8N ou MCP. La solution permet une adaptabilit\u00e9 aux templates pr\u00e9d\u00e9finis, une assignation automatique des slides aux sections du rapport, et une boucle de correction it\u00e9rative via une interface d\u00e9di\u00e9e. Les artefacts interm\u00e9diaires g\u00e9n\u00e9r\u00e9s \u00e0 chaque \u00e9tape assurent une tra\u00e7abilit\u00e9 et une robustesse accrues, facilitant les corrections cibl\u00e9es. Ce projet, r\u00e9alis\u00e9 en 25 jours, a d\u00e9montr\u00e9 la faisabilit\u00e9 d\u2019acc\u00e9l\u00e9rer la production de rapports sans alt\u00e9rer leur rigueur, tout en explorant des pistes comme l\u2019int\u00e9gration de transcriptions vocales pour enrichir le contexte.\n\nPar ailleurs, Maya a \u00e9voqu\u00e9 d\u2019autres cas d\u2019usage li\u00e9s \u00e0 l\u2019orchestration d\u2019agents pour des t\u00e2ches de synth\u00e8se et de g\u00e9n\u00e9ration, notamment un outil interne de r\u00e9daction assist\u00e9e pour les appels d\u2019offres (bas\u00e9 sur N8N) et un projet en cours de g\u00e9n\u00e9ration interactive de synth\u00e8ses de r\u00e9unions via MCP. Ces initiatives s\u2019inscrivent dans une d\u00e9marche de souverainet\u00e9 technologique, avec un d\u00e9ploiement local des mod\u00e8les pour pr\u00e9server la confidentialit\u00e9 des donn\u00e9es et une sp\u00e9cialisation progressive des agents sur des domaines m\u00e9tiers (ex : donn\u00e9es \u00e9nerg\u00e9tiques open data). Un agent de planification automatique (webSir) est \u00e9galement en d\u00e9veloppement pour g\u00e9n\u00e9rer des bibliographies et des roadmaps de projets, avec une future int\u00e9gration de plusieurs outils de simulation afin de proposer des POC minimaux, notamment dans le cadre de hackathons."
+  },
+  {
+    "index": 2,
+    "titre": "Extraction et classification d'informations \u00e0 partir de documents administratifs",
+    "chunk_ids": [
+      2
+    ],
+    "brief": {
+      "couvre": "Les projets d'extraction d'informations \u00e0 partir de documents scann\u00e9s ou manuscrits, notamment administratifs, avec un focus sur l'analyse de conformit\u00e9 des donn\u00e9es (ex : salaires vs m\u00e9tiers). Les discussions incluent l'utilisation de mod\u00e8les VLM, le fine-tuning de mod\u00e8les, le d\u00e9ploiement en local, et la gestion des documents num\u00e9riques ou manuscrits.",
+      "ne_couvre_pas": "L'orchestration de simulations, l'analyse de donn\u00e9es via MCP/NLP, ou les pipelines de g\u00e9n\u00e9ration de rapports (voir sections d\u00e9di\u00e9es)."
+    },
+    "texte": "Un projet sp\u00e9cifique a \u00e9t\u00e9 pr\u00e9sent\u00e9 par Maya, portant sur l'extraction d'informations \u00e0 partir de documents administratifs scann\u00e9s, incluant des documents manuscrits. L'objectif \u00e9tait d'extraire des donn\u00e9es comme les salaires (nets, bruts, totaux) et les m\u00e9tiers des personnes, puis de les classifier pour \u00e9valuer un pourcentage de conformit\u00e9 du document. Par exemple, le salaire extrait \u00e9tait compar\u00e9 \u00e0 des intervalles de confiance \u00e9tablis \u00e0 partir de documents pr\u00e9c\u00e9demment trait\u00e9s, afin de d\u00e9tecter d'\u00e9ventuelles anomalies ou non-conformit\u00e9s.\n\nLe projet s'appuyait sur des mod\u00e8les VLM (Vision Language Models), avec une partie d\u00e9di\u00e9e au fine-tuning de ces mod\u00e8les pour am\u00e9liorer leur pr\u00e9cision. La cha\u00eene de traitement incluait \u00e9galement un pr\u00e9traitement des documents, une phase de contr\u00f4le d'anomalies, et un d\u00e9ploiement en local via des outils comme VLM et UVicorn. Un tableau de bord permettait de monitorer les performances du mod\u00e8le en production, notamment pour d\u00e9tecter des d\u00e9rives (drifts) ou des baisses de qualit\u00e9 des r\u00e9sultats. Le projet int\u00e9grait aussi une gestion des documents en arabe, n\u00e9cessitant un fine-tuning adapt\u00e9."
+  },
+  {
+    "index": 3,
+    "titre": "Orchestration de simulations et analyse de donn\u00e9es via MCP et NLP",
+    "chunk_ids": [
+      3
+    ],
+    "brief": {
+      "couvre": "Les besoins en orchestration de simulations (notamment \u00e9nerg\u00e9tiques), l'int\u00e9gration de serveurs MCP pour automatiser des workflows, et l'analyse de donn\u00e9es disparates via MCP et NLP. Les discussions incluent la synth\u00e8se de donn\u00e9es et la pr\u00e9paration de pr\u00e9-rapports automatis\u00e9s.",
+      "ne_couvre_pas": "Les projets d'automatisation de rapports ou d'extraction de donn\u00e9es (voir sections d\u00e9di\u00e9es), ou les aspects organisationnels des pipelines (ex : souverainet\u00e9 des donn\u00e9es)."
+    },
+    "texte": "Les discussions ont mis en lumi\u00e8re des besoins en orchestration de simulations, notamment dans le domaine \u00e9nerg\u00e9tique, avec une int\u00e9gration envisag\u00e9e de serveurs MCP pour automatiser des workflows. L\u2019objectif serait de pr\u00e9parer des sc\u00e9narios, orchestrer des \u00e9tudes et lancer des simulations en s\u2019appuyant sur des outils internes ou des simulateurs existants. Cette approche permettrait de g\u00e9n\u00e9rer des pr\u00e9-rapports automatis\u00e9s, incluant des v\u00e9rifications d\u2019\u00e9quilibre des \u00e9tudes et des analyses de sensibilit\u00e9, avant validation humaine.\n\nUn cas d\u2019usage \u00e9voqu\u00e9 concerne la synth\u00e8se de donn\u00e9es disparates, comme des blocs d\u2019alertes, des messages fragment\u00e9s ou des notes manuscrites, afin de produire des r\u00e9sum\u00e9s coh\u00e9rents. L\u2019int\u00e9gration de serveurs MCP pourrait faciliter cette orchestration en permettant une interaction fluide entre diff\u00e9rents outils, notamment pour naviguer entre des hypoth\u00e8ses vari\u00e9es (consommation, production, programmation, etc.) et g\u00e9n\u00e9rer des strat\u00e9gies de sc\u00e9narios adapt\u00e9s."
+  },
+  {
+    "index": 4,
+    "titre": "Cas d'usage MCP/NLP et ateliers de conception",
+    "chunk_ids": [
+      4
+    ],
+    "brief": {
+      "couvre": "Les explorations de cas d'usage li\u00e9s \u00e0 MCP et NLP, sans d\u00e9cision imm\u00e9diate, et la proposition d'un atelier design pour r\u00e9fl\u00e9chir \u00e0 ces cas. Les participants ont convenu de revenir avec des besoins plus pr\u00e9cis avant d'approfondir les discussions.",
+      "ne_couvre_pas": "Les projets concrets d\u00e9j\u00e0 d\u00e9taill\u00e9s (automatisation de rapports, extraction de donn\u00e9es, orchestration de simulations) ou les aspects techniques de d\u00e9ploiement (ex : fine-tuning, monitoring)."
+    },
+    "texte": "Les \u00e9changes ont port\u00e9 sur les explorations de cas d\u2019usage li\u00e9s \u00e0 MCP et NLP, sans qu\u2019aucune d\u00e9cision imm\u00e9diate n\u2019ait \u00e9t\u00e9 prise. Il a \u00e9t\u00e9 soulign\u00e9 que les besoins actuels ne sont pas encore suffisamment pr\u00e9cis pour engager une r\u00e9flexion approfondie, et qu\u2019il serait pr\u00e9f\u00e9rable de revenir vers l\u2019\u00e9quipe avec des \u00e9l\u00e9ments concrets avant d\u2019avancer davantage. Une action future consisterait \u00e0 solliciter un retour une fois des \u00e9l\u00e9ments plus cibl\u00e9s identifi\u00e9s, afin d\u2019\u00e9viter des discussions sans fondement op\u00e9rationnel.\n\nPar ailleurs, une proposition d\u2019atelier design a \u00e9t\u00e9 formul\u00e9e pour r\u00e9fl\u00e9chir collectivement \u00e0 des cas d\u2019usage, en priorisant et structurant les besoins. Cette initiative s\u2019inscrit dans une d\u00e9marche d\u2019UX design, avec une possible implication d\u2019Olivier Maserol pour encadrer cette approche. L\u2019objectif serait de d\u00e9gager une vision partag\u00e9e et de faciliter l\u2019identification de pistes concr\u00e8tes avant d\u2019engager des travaux suppl\u00e9mentaires."
+  }
+]

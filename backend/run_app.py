@@ -77,11 +77,11 @@ def _run_normalize(argv: list[str]) -> None:
 
 
 def _run_minutes(argv: list[str]) -> None:
-    # meeting_minutes_pipeline.py uses argparse at module bottom under
-    # `if __name__ == "__main__"`. We reproduce that entry point here.
-    sys.argv = ["meeting_minutes_pipeline", *argv]
-    import runpy
-    runpy.run_module("meeting_minutes_pipeline", run_name="__main__")
+    # Moteur LOCAL = orchestrateur agentique V8 (Ministral 3B), via l'adaptateur
+    # local_minutes (même interface CLI que l'ancien meeting_minutes_pipeline).
+    sys.argv = ["local_minutes", *argv]
+    from local_minutes import main
+    main()
 
 
 def _run_mistral_minutes(argv: list[str]) -> None:

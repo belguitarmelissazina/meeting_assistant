@@ -1,0 +1,64 @@
+Tu rédiges UNE section d'un compte rendu de réunion, en français, factuel, fidèle au texte fourni. Tu disposes de la MÉMOIRE PARTAGÉE (résumés de toute la réunion) et de la SYNTHÈSE GLOBALE pour la cohérence d'ensemble, mais tu ne rédiges QUE la section décrite par le brief (ne traite pas ce qui relève d'autres sections). N'invente rien. Ne mets pas de titre (il est ajouté séparément). Respecte le périmètre du brief. Ne développe pas les sigles. Des métadonnées (participants, entreprises) peuvent être fournies : pour nommer les intervenants, utilise EXACTEMENT ces noms quand le contexte permet de les identifier, sinon reste générique (« un intervenant »/« un participant ») ; ne reprends JAMAIS un label brut type SPEAKER_00 et n'invente aucun nom.
+
+PARTICIPANTS (noms officiels, vérité — à utiliser EXACTEMENT) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+ENTREPRISES / ORGANISATIONS présentes : Yele Consulting, RTE
+
+MÉMOIRE PARTAGÉE — résumés de tous les passages (vue d'ensemble, ne pas recopier) :
+- Matthieu DUSSARTRE et Maya SAHRAOUI se présentent lors d'un tour de table. Matthieu DUSSARTRE est expert Data & IA Manager chez Yele Consulting, travaillant sur des projets d'IA générative, d'équilibre offre-demande et de rentabilité des moyens de base. Maya SAHRAOUI est consultante confirmée chez Yele Consulting, spécialisée en IA générative et docteure en traitement automatique des langues, avec une expérience chez RTE.
+- Bruno LEMETAYER (RTE) présente son rôle dans la feuille de route Smart Cockpit et les assistants interactifs pour les opérateurs. Matthieu DUSSARTRE (RTE) évoque son expérience de 10 ans sur les assistants et les modèles d'IA générative (LLM, MCP). La réunion vise à identifier les besoins et attentes en IA générative pour potentiellement collaborer. Bruno LEMETAYER mentionne l'intérêt de RTE pour les interfaces conversationnelles via MCP.
+- Maya SAHRAOUI présente un projet réalisé chez RTE pour automatiser la génération de rapports à partir de fichiers PPT, en utilisant des pipelines d'agents IA pour extraire, classifier et rédiger des sections structurées. Le processus inclut une boucle de correction pour itérer sur les résultats. Bruno LEMETAYER et Matthieu DUSSARTRE échangent sur la structure des rapports et les règles d'assignation des slides. Le projet est présenté comme un POC réalisé en 25 jours avec un REX pour évaluer les suites possibles.
+- La réunion a porté sur l'adaptation d'un outil de génération de rapports structurés pour RTE, initialement conçu avec des templates, en une version flexible sans templates. Maya SAHRAOUI a présenté les garde-fous implémentés pour assurer la robustesse et la traçabilité des rapports générés. Bruno LEMETAYER a évoqué des cas d'usage similaires pour la synthèse de données ou d'événements. Maya SAHRAOUI a également partagé des projets internes utilisant des orchestrations multi-agents (N8N) et des outils interactifs (MCP) pour automatiser des tâches comme la rédaction d'appels d'offres ou la synthèse de réunions.
+- Maya SAHRAOUI a présenté plusieurs projets d'agents IA spécialisés pour RTE, notamment un agent d'orchestration pour des données open data énergie et un agent de planification de POC avec accès à des outils de simulation. Matthieu DUSSARTRE a souligné l'importance de la souveraineté et du cloisonnement des outils au sein de RTE. Maya a également évoqué un projet antérieur de détection de fraude sur des documents administratifs scannés, incluant un modèle VLM hébergé en local et un dashboard de monitoring.
+- Les participants ont échangé sur des cas d’usage liés à l’orchestration d’études et à l’intégration de serveurs MCP pour automatiser des simulations et générer des pré-rapports. Bruno LEMETAYER a évoqué l’intérêt pour des travaux en NLP, notamment sur la synthèse de données disparates et la gestion de documents manuscrits. Maya SAHRAOUI a confirmé que l’intégration de serveurs MCP dans leur feuille de route permettrait de brancher des outils de simulation internes. Matthieu DUSSARTRE a souligné l’importance de préparer et orchestrer des scénarios pour des études énergétiques avant validation humaine.
+- Bruno LEMETAYER et Matthieu DUSSARTRE échangent sur l'opportunité de travailler sur un cas d'usage MCP ou NLP, mais Bruno souligne l'absence de besoins clairs pour l'instant. Matthieu propose un atelier design pour prioriser des cas d'usage. Bruno note l'intérêt de cette proposition mais ne s'engage pas immédiatement.
+
+SYNTHÈSE GLOBALE (fil conducteur, ne pas recopier) :
+La réunion a réuni des experts en IA générative de Yele Consulting et RTE pour échanger sur des projets concrets, notamment l'automatisation de rapports structurés et l'intégration de serveurs MCP. Maya SAHRAOUI a présenté plusieurs POC réalisés pour RTE, incluant des pipelines d'agents IA et des orchestrations multi-agents, tandis que Bruno LEMETAYER et Matthieu DUSSARTRE ont partagé des besoins et des pistes d'amélioration. Les participants ont discuté de l'adaptation d'outils flexibles, de la souveraineté des données et de l'orchestration d'études énergétiques. Matthieu DUSSARTRE a proposé un atelier design pour prioriser des cas d'usage, mais aucune décision immédiate n'a été prise.
+
+BRIEF DE TA SECTION :
+Présentation des participants (expertise, rôles) et cadrage initial de l'atelier. Couvre les objectifs de collaboration et les attentes de RTE en matière d'IA générative. NE PAS inclure les retours d'expérience concrets ou les démonstrations de solutions (déjà détaillés dans les sections suivantes).
+
+PASSAGES BRUTS DE TA SECTION (source de vérité) :
+=== passage 0 ===
+[Matthieu DUSSARTRE]: BonjourNordine.
+[Matthieu DUSSARTRE]: Bonjourd’hui Et voici, Mathieu tout le monde est.
+[Matthieu DUSSARTRE]: là Bonjour à.
+[Matthieu DUSSARTRE]: tous Ce que je vous propose c’est un petit tour de table parce que moi je ne connais pas tout le.
+[Matthieu DUSSARTRE]: monde Je peux commencer si vous voulez donc moi c’est j’ai, remassé je suisexpert dataIa manager de la pratice DataIa au sein de l’élé consulting et donc par exemple travaille avec Maya sur les sujets de l’IA, générative je travaille aussi avec Della côtéRD sur la feuille de route équilibre
+[Matthieu DUSSARTRE]: gouvernance et régulation sur un projet d’équilibreoffre demande et la rentabilité des moyens de base etégalement côté décoffert sur desanalyses plutôtorientées.
+[Matthieu DUSSARTRE]: métiers
+[Maya SAHRAOUI]: Parce que je peux me présenter aussi donc moi c’est Maya, Saraoi je suis consultante confirmée, chezIVB je travaille principalement sur des projets d’IA génératifs donc en interne et en projet que j’ai menéégalement chezRTE avec Daina etGérald et donc je suis docteur en deep learning j’ai fait un
+[Maya SAHRAOUI]: doctorat en traitement automatique des langues et je rejoins il y a deux en septembre donc, voilà j’en quelques missions en ce.
+[Maya SAHRAOUI]: sens-là
+
+=== passage 1 ===
+[Matthieu DUSSARTRE]: Je vous laisse vous.
+[Matthieu DUSSARTRE]: présenter
+[Bruno LEMETAYER]: Allez je commence donc Bruno le méthélier donc je suis à laRD et je pilote la feuille de route Smart Cockpit.
+[Bruno LEMETAYER]: interactif Donc ça veut dire en gros si on travaille sur les assistants en particulier pour lesopérateurs en soin de.
+[Bruno LEMETAYER]: conduite, Bonjour Mathieu, sort je suis à laRD aussiRTE la thématique assistant là dont parle Bruno là ça fait une dizaine d’années au moins qu’on l’a qu’elle évolue qu’on la fait mûrir et moi je travaille dessus depuis tout ce.
+[Matthieu DUSSARTRE]: temps-là Très.
+[Matthieu DUSSARTRE]: bien Dans, Dinka
+[Bruno LEMETAYER]: je suis aussi de la, ridée je travaille sur des thématiques d’implémentation des réseaux de neurones pour l’écosystème.
+[Bruno LEMETAYER]: principalement
+[Matthieu DUSSARTRE]: MaisJérôme, Picot moi je ne
+[Bruno LEMETAYER]: suis plus à la, grider j’y
+[Matthieu DUSSARTRE]: étais mais si, plus je suis dans une direction
+[Bruno LEMETAYER]: qui
+[Matthieu DUSSARTRE]: s’appelle maintenant intelligenceartificielle et innovation et je travaille sur des
+[Bruno LEMETAYER]: sujets
+[Matthieu DUSSARTRE]: principalement dits et génératives autour des, LLM, MCP.
+[Matthieu DUSSARTRE]: etc Très, bien est-ce que vous voulez que je présente notre société où il n’a pas?
+[Bruno LEMETAYER]: besoin De mon, côté je diseffectivement que j’aieuccasion de travailler qu’il est alors pas dans le même contexte puisqu’avant j’étais au département d’exploitation et puis encore avant j’étais au département, marche etc et.
+[Bruno LEMETAYER]: çaVoilà donc là j’ai dû croiser deux de vos collègues et plus sur des aspects voilà ça veut dire concept à moins recherche en tout cas donc, voilà je connais un petit.
+[Bruno LEMETAYER]: peu Je connais moinseffectivement vos activités là-dessus mais voilà en tout cas je crois qu’on aeu aussi l’occasion de voir de participer à des échanges sur un modèle que vous avez développé pour la gestion des congestions me semble bref voilà en tout cas de mon point de, vue c’estime vous
+[Bruno LEMETAYER]: connaître
+[Matthieu DUSSARTRE]: un.., peuOussiOk donc on peutzapper oui ou non., DandineOui c’est bon.
+[Matthieu DUSSARTRE]: seulement Donc ce que je vous propose c’est que vous discutiez un petit peu justement sur vos besoins sur l’IA générative et qu’on puisse un petit peu justement comprendre vos, besoins vos attentes et puis et puis voir comment on pourrait potentiellement travailler.,
+[Bruno LEMETAYER]: ensembleOui alors peut-être donceffectivement alors je me lance donc en.
+[Bruno LEMETAYER]: contexte Donc nouseffectivement les.
+[Bruno LEMETAYER]: sujets Alors je parle sur la partie assistante puisque donc dans cette table on aeffectivementJérôme Carpendront la partie disciplinaire on va dire il y a lesNLP donc côtéRD on n’est plus sur la partie on va dire assistant donc mise en application un petit peu de tout ça et recherche un peu sur la
+[Bruno LEMETAYER]: question plus de l’interaction après voilà donc de ce point de vue-là, nous on s’intéresse évidemment de plus en plus à tout ce qu’on peut faire avec le LP et puis plus récemment aussi sur ce qu’il est possible de faire avec le MCP alors nous en fait ce qui nous intéresse ça va être encore une fois
+[Bruno LEMETAYER]: ces question un peu voilà l’interface d’interaction entre l’opérateur et sesoutils donc voilà si onouvre un petit peu letruc dans le fond le MCP c’est une promesse en tout cas à ce stade pour développer des mode interface quasi conversationnel et qui permettent en restant dans un taux très fluide
+
+Rédige la section (1 à 3 paragraphes) :

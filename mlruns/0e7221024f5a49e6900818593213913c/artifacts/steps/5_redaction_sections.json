@@ -1,0 +1,51 @@
+[
+  {
+    "index": 1,
+    "titre": "Tour de table et pr\u00e9sentation des projets en cours",
+    "chunk_ids": [
+      0
+    ],
+    "brief": {
+      "couvre": "Les r\u00f4les et expertises des participants en IA g\u00e9n\u00e9rative, ainsi que les projets initiaux pr\u00e9sent\u00e9s (ex. automatisation de rapports pour RTE, besoins en synth\u00e8se g\u00e9n\u00e9rative et assistants conversationnels MCP). Inclut les discussions sur l'adaptabilit\u00e9 des solutions aux templates de rapports.",
+      "ne_couvre_pas": "Les projets d\u00e9taill\u00e9s ult\u00e9rieurement (ex. d\u00e9monstrateur DURKEVX, d\u00e9tection de fraude, orchestration MCP/NLP), les cas d'usage prioris\u00e9s ou les pistes de collaboration futures."
+    },
+    "texte": "Le tour de table a permis de pr\u00e9senter les r\u00f4les et expertises des participants en IA g\u00e9n\u00e9rative. [SPEAKER_00], expert data et manager de la pratique DataIa au sein d'\u00c9l\u00e9 Consulting, a \u00e9voqu\u00e9 son travail sur des projets d'IA g\u00e9n\u00e9rative, notamment avec Maya sur l'automatisation de rapports pour RTE et des analyses orient\u00e9es m\u00e9tiers. Maya, consultante confirm\u00e9e chez IVB, a d\u00e9taill\u00e9 son parcours en deep learning et traitement automatique des langues, ainsi que son exp\u00e9rience sur des projets d'IA g\u00e9n\u00e9rative, dont un men\u00e9 chez RTE. [SPEAKER_02], m\u00e9thodologiste \u00e0 la R&D, a pr\u00e9sent\u00e9 son implication dans la feuille de route Smart Cockpit, ax\u00e9e sur les assistants conversationnels pour les op\u00e9rateurs, avec une expertise en impl\u00e9mentation de r\u00e9seaux de neurones. [SPEAKER_03], travaillant sur des sujets li\u00e9s aux LLM et MCP au sein de la direction Intelligence Artificielle et Innovation, a partag\u00e9 son exp\u00e9rience sur des mod\u00e8les conversationnels et son implication dans des \u00e9changes sur des outils d\u00e9velopp\u00e9s pour la gestion des congestions.\n\nLes \u00e9changes ont mis en lumi\u00e8re des besoins en automatisation de rapports et en assistants conversationnels, avec un accent sur l'adaptabilit\u00e9 des solutions aux templates de rapports. Maya a d\u00e9taill\u00e9 un projet r\u00e9alis\u00e9 pour RTE, visant \u00e0 automatiser la g\u00e9n\u00e9ration de rapports \u00e0 partir de fichiers PPT, en structurant le contenu selon des sections pr\u00e9d\u00e9finies et en int\u00e9grant une boucle de correction pour it\u00e9rer sur les sections g\u00e9n\u00e9r\u00e9es. L'outil d\u00e9velopp\u00e9, bas\u00e9 sur une pipeline de cinq briques (traitement des slides, assignation des sections, r\u00e9daction par section, int\u00e9gration et correction), permet de transformer des documents h\u00e9t\u00e9rog\u00e8nes en rapports actionnables, avec une tra\u00e7abilit\u00e9 des artefacts interm\u00e9diaires pour faciliter les corrections. Les discussions ont \u00e9galement abord\u00e9 la possibilit\u00e9 d'adapter l'outil \u00e0 diff\u00e9rents templates, bien que le cadre initial ait n\u00e9cessit\u00e9 une structure pr\u00e9cise pour r\u00e9pondre aux besoins m\u00e9tiers."
+  },
+  {
+    "index": 2,
+    "titre": "Projets techniques et d\u00e9fis op\u00e9rationnels",
+    "chunk_ids": [
+      2
+    ],
+    "brief": {
+      "couvre": "Les projets techniques avanc\u00e9s (ex. d\u00e9monstrateur DURKEVX, d\u00e9tection de fraude sur documents scann\u00e9s avec VLM, fine-tuning, contr\u00f4le d'anomalies, d\u00e9ploiement et monitoring). Les d\u00e9fis cl\u00e9s comme la qualit\u00e9 des donn\u00e9es et la gestion de documents en arabe.",
+      "ne_couvre_pas": "Les \u00e9changes sur les cas d'usage concrets pour MCP/NLP, les ateliers de priorisation ou les discussions sur l'orchestration et la souverainet\u00e9 des outils (couvert ailleurs)."
+    },
+    "texte": "Un projet de d\u00e9tection de fraude sur documents administratifs scann\u00e9s a \u00e9t\u00e9 pr\u00e9sent\u00e9, reposant sur un outil de type VLM (Vision Language Model). L\u2019objectif \u00e9tait d\u2019extraire des informations structur\u00e9es (salaire net, brut, m\u00e9tier, etc.) \u00e0 partir de documents scann\u00e9s, puis d\u2019\u00e9valuer leur conformit\u00e9 en comparant les donn\u00e9es extraites avec des intervalles de confiance pr\u00e9d\u00e9finis. Le projet int\u00e9grait un pr\u00e9traitement des documents, incluant une classification en manuscrit ou non manuscrit, ainsi qu\u2019un fine-tuning du mod\u00e8le VLM pour optimiser l\u2019extraction des donn\u00e9es.\n\nLa cha\u00eene de traitement comprenait \u00e9galement un contr\u00f4le d\u2019anomalies, un d\u00e9ploiement du mod\u00e8le avec des outils comme VLM et UVCorn, et un dashboard de monitoring pour suivre les performances en production. Des alertes \u00e9taient g\u00e9n\u00e9r\u00e9es en cas de d\u00e9rive (*drift*) des r\u00e9sultats. Le projet a soulign\u00e9 les d\u00e9fis li\u00e9s \u00e0 la qualit\u00e9 des donn\u00e9es d\u2019entr\u00e9e, notamment la pr\u00e9sence de documents en arabe, n\u00e9cessitant un fine-tuning adapt\u00e9. Certains documents manuscrits ont \u00e9galement requis des mod\u00e8les sp\u00e9cialis\u00e9s ou des approches hybrides."
+  },
+  {
+    "index": 3,
+    "titre": "Cas d'usage et orchestration avec MCP/NLP",
+    "chunk_ids": [
+      3,
+      4
+    ],
+    "brief": {
+      "couvre": "Les cas d'usage potentiels pour les outils d'orchestration (MCP) et de synth\u00e8se (NLP), notamment l'automatisation des simulations, la pr\u00e9paration de rapports et l'int\u00e9gration d'outils internes. Les discussions sur un MCP pour orchestrer des \u00e9tudes et pr\u00e9parer des sc\u00e9narios. Les \u00e9changes sur les ateliers design pour prioriser les cas d'usage.",
+      "ne_couvre_pas": "Les projets techniques d\u00e9taill\u00e9s (ex. DURKEVX, d\u00e9tection de fraude) ou les pr\u00e9sentations initiales des participants (couvert ailleurs)."
+    },
+    "texte": "Les \u00e9changes ont port\u00e9 sur les cas d\u2019usage potentiels pour les outils d'orchestration (MCP) et de synth\u00e8se (NLP), notamment dans le cadre de l'automatisation des simulations et de la pr\u00e9paration de rapports. Un participant a \u00e9voqu\u00e9 l'int\u00e9r\u00eat d'un MCP pour orchestrer des \u00e9tudes complexes, en permettant de pr\u00e9parer des sc\u00e9narios, de lancer des simulations via des outils internes, et de g\u00e9n\u00e9rer des pr\u00e9-rapports. Cette approche vise \u00e0 faciliter le travail en amont, avec une validation humaine avant finalisation, afin d'optimiser le processus de d\u00e9cision.\n\nUn atelier design a \u00e9t\u00e9 propos\u00e9 pour prioriser les cas d\u2019usage, en s\u2019appuyant sur des m\u00e9thodes d\u2019UX design. Cette initiative pourrait permettre d\u2019identifier des besoins concrets et de concr\u00e9tiser des pistes de collaboration futures, notamment en int\u00e9grant des outils internes et en am\u00e9liorant l\u2019interaction entre les diff\u00e9rents syst\u00e8mes. Aucune d\u00e9cision n\u2019a \u00e9t\u00e9 act\u00e9e, mais les pistes esquiss\u00e9es ont \u00e9t\u00e9 jug\u00e9es pertinentes par les participants."
+  },
+  {
+    "index": 4,
+    "titre": "Souverainet\u00e9 des outils et pipelines rapides",
+    "chunk_ids": [
+      1
+    ],
+    "brief": {
+      "couvre": "Les discussions sur l'am\u00e9lioration des synth\u00e8ses, l'adaptabilit\u00e9 des solutions au contexte, et la souverainet\u00e9 des outils (cloisonnement au sein de RTE). Les projets d'agents pour planification, g\u00e9n\u00e9ration de bibliographie/roadmaps, et les pipelines rapides pour POCs (ex. hackathons).",
+      "ne_couvre_pas": "Les cas d'usage sp\u00e9cifiques pour MCP/NLP ou les projets techniques d\u00e9taill\u00e9s (couvert ailleurs)."
+    },
+    "texte": "Les \u00e9changes ont port\u00e9 sur l\u2019am\u00e9lioration des synth\u00e8ses produites par les outils d\u2019IA g\u00e9n\u00e9rative, avec un accent sur leur adaptation au contexte sp\u00e9cifique de RTE. L\u2019objectif est de proposer des synth\u00e8ses plus compl\u00e8tes et mieux align\u00e9es sur les besoins op\u00e9rationnels. Par ailleurs, la question de la souverainet\u00e9 des outils a \u00e9t\u00e9 abord\u00e9e, avec une volont\u00e9 de cloisonner leur utilisation au sein de l\u2019environnement RTE pour \u00e9viter toute externalisation non ma\u00eetris\u00e9e.\n\nUn projet d\u2019agent de planification a \u00e9t\u00e9 \u00e9voqu\u00e9, visant \u00e0 automatiser la r\u00e9cup\u00e9ration de bibliographie et la g\u00e9n\u00e9ration de roadmaps pour des projets donn\u00e9s. \u00c0 terme, l\u2019int\u00e9gration d\u2019un agent capable d\u2019interfacer plusieurs outils, dont des simulateurs, est envisag\u00e9e pour acc\u00e9l\u00e9rer la mise en place de preuves de concept (POC). Cette approche s\u2019inscrit dans une logique de pipelines rapides, notamment pour r\u00e9pondre aux besoins des hackathons internes."
+  }
+]

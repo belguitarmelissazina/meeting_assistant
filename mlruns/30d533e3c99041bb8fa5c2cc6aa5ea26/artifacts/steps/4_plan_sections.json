@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "titre": "Automatisation et orchestration de pipelines pour la g\u00e9n\u00e9ration de rapports et synth\u00e8ses",
+      "chunk_ids": [
+        0,
+        1
+      ],
+      "brief": {
+        "couvre": "Les projets d'automatisation de r\u00e9daction de rapports (ex : pour RTE) via des mod\u00e8les multimodaux et des pipelines d'agents, incluant l'adaptabilit\u00e9 aux templates, les boucles de correction, et l'orchestration via MCP ou N8N. Les discussions sur l'am\u00e9lioration des synth\u00e8ses, leur adaptation au contexte, et la cr\u00e9ation de pipelines automatis\u00e9es pour des POC minimaux (ex : hackathons) via des agents de planification automatique (webSir).",
+        "ne_couvre_pas": "L'extraction d'informations \u00e0 partir de documents scann\u00e9s ou manuscrits, l'analyse de conformit\u00e9 des donn\u00e9es, ou les outils de monitoring pour anomalies (voir section d\u00e9di\u00e9e)."
+      }
+    },
+    {
+      "titre": "Extraction et classification d'informations \u00e0 partir de documents administratifs",
+      "chunk_ids": [
+        2
+      ],
+      "brief": {
+        "couvre": "Les projets d'extraction d'informations \u00e0 partir de documents scann\u00e9s ou manuscrits, notamment administratifs, avec un focus sur l'analyse de conformit\u00e9 des donn\u00e9es (ex : salaires vs m\u00e9tiers). Les discussions incluent l'utilisation de mod\u00e8les VLM, le fine-tuning de mod\u00e8les, le d\u00e9ploiement en local, et la gestion des documents num\u00e9riques ou manuscrits.",
+        "ne_couvre_pas": "L'orchestration de simulations, l'analyse de donn\u00e9es via MCP/NLP, ou les pipelines de g\u00e9n\u00e9ration de rapports (voir sections d\u00e9di\u00e9es)."
+      }
+    },
+    {
+      "titre": "Orchestration de simulations et analyse de donn\u00e9es via MCP et NLP",
+      "chunk_ids": [
+        3
+      ],
+      "brief": {
+        "couvre": "Les besoins en orchestration de simulations (notamment \u00e9nerg\u00e9tiques), l'int\u00e9gration de serveurs MCP pour automatiser des workflows, et l'analyse de donn\u00e9es disparates via MCP et NLP. Les discussions incluent la synth\u00e8se de donn\u00e9es et la pr\u00e9paration de pr\u00e9-rapports automatis\u00e9s.",
+        "ne_couvre_pas": "Les projets d'automatisation de rapports ou d'extraction de donn\u00e9es (voir sections d\u00e9di\u00e9es), ou les aspects organisationnels des pipelines (ex : souverainet\u00e9 des donn\u00e9es)."
+      }
+    },
+    {
+      "titre": "Cas d'usage MCP/NLP et ateliers de conception",
+      "chunk_ids": [
+        4
+      ],
+      "brief": {
+        "couvre": "Les explorations de cas d'usage li\u00e9s \u00e0 MCP et NLP, sans d\u00e9cision imm\u00e9diate, et la proposition d'un atelier design pour r\u00e9fl\u00e9chir \u00e0 ces cas. Les participants ont convenu de revenir avec des besoins plus pr\u00e9cis avant d'approfondir les discussions.",
+        "ne_couvre_pas": "Les projets concrets d\u00e9j\u00e0 d\u00e9taill\u00e9s (automatisation de rapports, extraction de donn\u00e9es, orchestration de simulations) ou les aspects techniques de d\u00e9ploiement (ex : fine-tuning, monitoring)."
+      }
+    }
+  ],
+  "raw": "{\n  \"sections\": [\n    {\n      \"titre\": \"Automatisation et orchestration de pipelines pour la g\u00e9n\u00e9ration de rapports et synth\u00e8ses\",\n      \"chunk_ids\": [0, 1],\n      \"brief\": {\n        \"couvre\": \"Les projets d'automatisation de r\u00e9daction de rapports (ex : pour RTE) via des mod\u00e8les multimodaux et des pipelines d'agents, incluant l'adaptabilit\u00e9 aux templates, les boucles de correction, et l'orchestration via MCP ou N8N. Les discussions sur l'am\u00e9lioration des synth\u00e8ses, leur adaptation au contexte, et la cr\u00e9ation de pipelines automatis\u00e9es pour des POC minimaux (ex : hackathons) via des agents de planification automatique (webSir).\",\n        \"ne_couvre_pas\": \"L'extraction d'informations \u00e0 partir de documents scann\u00e9s ou manuscrits, l'analyse de conformit\u00e9 des donn\u00e9es, ou les outils de monitoring pour anomalies (voir section d\u00e9di\u00e9e).\"\n      }\n    },\n    {\n      \"titre\": \"Extraction et classification d'informations \u00e0 partir de documents administratifs\",\n      \"chunk_ids\": [2],\n      \"brief\": {\n        \"couvre\": \"Les projets d'extraction d'informations \u00e0 partir de documents scann\u00e9s ou manuscrits, notamment administratifs, avec un focus sur l'analyse de conformit\u00e9 des donn\u00e9es (ex : salaires vs m\u00e9tiers). Les discussions incluent l'utilisation de mod\u00e8les VLM, le fine-tuning de mod\u00e8les, le d\u00e9ploiement en local, et la gestion des documents num\u00e9riques ou manuscrits.\",\n        \"ne_couvre_pas\": \"L'orchestration de simulations, l'analyse de donn\u00e9es via MCP/NLP, ou les pipelines de g\u00e9n\u00e9ration de rapports (voir sections d\u00e9di\u00e9es).\"\n      }\n    },\n    {\n      \"titre\": \"Orchestration de simulations et analyse de donn\u00e9es via MCP et NLP\",\n      \"chunk_ids\": [3],\n      \"brief\": {\n        \"couvre\": \"Les besoins en orchestration de simulations (notamment \u00e9nerg\u00e9tiques), l'int\u00e9gration de serveurs MCP pour automatiser des workflows, et l'analyse de donn\u00e9es disparates via MCP et NLP. Les discussions incluent la synth\u00e8se de donn\u00e9es et la pr\u00e9paration de pr\u00e9-rapports automatis\u00e9s.\",\n        \"ne_couvre_pas\": \"Les projets d'automatisation de rapports ou d'extraction de donn\u00e9es (voir sections d\u00e9di\u00e9es), ou les aspects organisationnels des pipelines (ex : souverainet\u00e9 des donn\u00e9es).\"\n      }\n    },\n    {\n      \"titre\": \"Cas d'usage MCP/NLP et ateliers de conception\",\n      \"chunk_ids\": [4],\n      \"brief\": {\n        \"couvre\": \"Les explorations de cas d'usage li\u00e9s \u00e0 MCP et NLP, sans d\u00e9cision imm\u00e9diate, et la proposition d'un atelier design pour r\u00e9fl\u00e9chir \u00e0 ces cas. Les participants ont convenu de revenir avec des besoins plus pr\u00e9cis avant d'approfondir les discussions.\",\n        \"ne_couvre_pas\": \"Les projets concrets d\u00e9j\u00e0 d\u00e9taill\u00e9s (automatisation de rapports, extraction de donn\u00e9es, orchestration de simulations) ou les aspects techniques de d\u00e9ploiement (ex : fine-tuning, monitoring).\"\n      }\n    }\n  ]\n}"
+}

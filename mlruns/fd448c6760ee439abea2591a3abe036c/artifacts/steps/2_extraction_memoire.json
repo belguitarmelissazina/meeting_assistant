@@ -1,0 +1,51 @@
+[
+  {
+    "chunk_id": 0,
+    "resume": "Tour de table des participants pour pr\u00e9senter leurs r\u00f4les et expertises en IA g\u00e9n\u00e9rative. Maya (Elya) a pr\u00e9sent\u00e9 un projet d'automatisation de r\u00e9daction de rapports pour RTE en utilisant des mod\u00e8les multimodaux et des pipelines d'agents. Les besoins de RTE portent sur la synth\u00e8se de donn\u00e9es h\u00e9t\u00e9rog\u00e8nes et l'interaction conversationnelle via MCP pour les assistants op\u00e9rationnels.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Prendre contact avec G\u00e9rald pour \u00e9valuer la g\u00e9n\u00e9ralisation du projet de r\u00e9daction automatis\u00e9e de rapports pour RTE.",
+        "responsable": "SPEAKER_00",
+        "echeance": null
+      },
+      {
+        "action": "\u00c9tudier l'adaptation de l'outil de Maya (Elya) pour des cas d'usage sans template pr\u00e9d\u00e9fini, en int\u00e9grant un agent de s\u00e9lection de structure.",
+        "responsable": "SPEAKER_01",
+        "echeance": null
+      },
+      {
+        "action": "Explorer les possibilit\u00e9s d'orchestration via MCP pour les besoins de RTE en synth\u00e8se de donn\u00e9es et interaction conversationnelle.",
+        "responsable": "SPEAKER_02",
+        "echeance": null
+      }
+    ]
+  },
+  {
+    "chunk_id": 1,
+    "resume": "La r\u00e9union a abord\u00e9 plusieurs projets li\u00e9s \u00e0 l'orchestration d'outils, la g\u00e9n\u00e9ration de POCs automatis\u00e9s et l'extraction d'informations \u00e0 partir de documents scann\u00e9s. L'accent a \u00e9t\u00e9 mis sur la souverainet\u00e9 des outils utilis\u00e9s en interne et leur cloisonnement pour rester au sein de RTE. Un projet de d\u00e9tection de fraude sur des documents administratifs scann\u00e9s (manuscrits ou non) a \u00e9t\u00e9 d\u00e9taill\u00e9, incluant un mod\u00e8le VLM local et un monitoring des performances.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 2,
+    "resume": "La r\u00e9union a port\u00e9 sur l'exploration de cas d'usage pour des outils d'IA, notamment autour de l'orchestration de simulations et de la synth\u00e8se de donn\u00e9es disparates. Les participants ont \u00e9voqu\u00e9 des travaux en NLP (traitement du langage naturel) et en MCP (mod\u00e8les de communication entre outils). L'accent a \u00e9t\u00e9 mis sur l'automatisation de processus comme la g\u00e9n\u00e9ration de pr\u00e9-rapports et l'orchestration d'\u00e9tudes techniques.",
+    "decisions": [],
+    "actions": []
+  },
+  {
+    "chunk_id": 3,
+    "resume": "La r\u00e9union a port\u00e9 sur l'avancement des travaux et l'exploration de cas d'usage, notamment autour du MCP. SPEAKER_02 a indiqu\u00e9 qu'il n'y avait pas encore de besoins clairs \u00e0 ce stade et qu'il faudrait revenir vers SPEAKER_00 si des \u00e9l\u00e9ments plus pr\u00e9cis \u00e9mergent. SPEAKER_00 a propos\u00e9 un atelier design pour prioriser des cas d'usage, ce qui a \u00e9t\u00e9 not\u00e9 par SPEAKER_02 comme une piste int\u00e9ressante.",
+    "decisions": [],
+    "actions": [
+      {
+        "action": "Noter la proposition d'un atelier design pour prioriser des cas d'usage et r\u00e9fl\u00e9chir \u00e0 des solutions UX",
+        "responsable": "SPEAKER_02"
+      },
+      {
+        "action": "Revenir vers SPEAKER_00 si des besoins plus pr\u00e9cis (MCP ou NLP) \u00e9mergent pour concr\u00e9tiser les \u00e9changes",
+        "responsable": "SPEAKER_02"
+      }
+    ]
+  }
+]

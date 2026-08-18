@@ -1,0 +1,64 @@
+Tu extrais des informations d'un extrait de réunion. Réponds UNIQUEMENT en JSON. Règle : RIEN SI RIEN (tableaux vides si aucune décision/action). Une DÉCISION = un choix ACTÉ en séance (pas un projet passé raconté, pas une discussion). Une ACTION = une tâche post-réunion (engagement ou suggestion). N'invente rien. Des métadonnées (participants, entreprises) peuvent être fournies : pour désigner une personne, utilise EXACTEMENT un nom fourni si le contexte permet de l'identifier, sinon reste générique (« un intervenant ») ; ne reprends JAMAIS un label brut type SPEAKER_00 et n'invente aucun nom.
+
+PARTICIPANTS (noms officiels, vérité — à utiliser EXACTEMENT) : Bruno LEMETAYER, Matthieu DUSSARTRE, Nourredine HENKA, Jérôme PICAULT, Maya SAHRAOUI, Jérôme MASSET
+ENTREPRISES / ORGANISATIONS présentes : Yele Consulting, RTE
+
+Extrait :
+[Matthieu DUSSARTRE]: façons de faire
+[Bruno LEMETAYER]: des présentations est-ce que en fait voilà ce que vous avez fait peut s’adapter facilement où il faut intégrer
+[Matthieu DUSSARTRE]: unagent
+[Bruno LEMETAYER]: qui va faire la sélection destemplates pour faire la suite
+[Maya SAHRAOUI]: au je pense que ça peut s’intégrer assez facilement le besoin d’avoir untemplate iciétait plus un besoin métier a vu que le rapport final doit être structuré donc c’était un besoin métier de rédiger des rapports qui soient structurés avec untemplate assez précis on ne pouvait pas vraiment sortir de
+[Maya SAHRAOUI]: ce, cadre-là mais l’outil en lui-même peut êtreadapté à uneutilisation sanstemplate au lieu de rédiger plusieurs, sections on rédigerait une seule mais avec des directives de temps et de.
+[Maya SAHRAOUI]: contenu Si je comprends bien la.
+[Bruno LEMETAYER]: question C’est, parfait.
+[Matthieu DUSSARTRE]: merci.
+[Matthieu DUSSARTRE]: Merci L’hypothèse donc attend que.
+[Matthieu DUSSARTRE]: moi Si je reviens l’hypothèse d’unagent avec différentstemplates pourrait aussi fonctionner en fait donc je pense que l’outil tel qu’on l’a pensé en fait il prend untemplate donc on peut le faire tourner plusieurs, fois mais avoir multiples, sorties c’est soit une petiteadaptation soit finalement
+[Matthieu DUSSARTRE]: unagent qui permettrait d’orienter la sélection des, chapitres la signation et le contenu de chaque chapitre donc les deux approches peuvent se.
+[Maya SAHRAOUI]: faire Donc d’un point de vue robustesse même si onétait sur une mission assez courte et que le butétait plus de faire un poc pour voir si onarrive à automatiser justement cette tâche de, rédaction-là c’était quand mêmeimportant d’avoir certaines notions de robustesse donc ici par exemple le fait de
+[Maya SAHRAOUI]: prendre en considération la structure finale et de séparer la rédaction en section nous permet d’avoir une meilleure gestion deserreurs qui peuventarriver et le fait, l’assignement l’assignation pardon des slides par section nous permet d’avoir aussi une certaine traçabilité pour savoir d’où vient
+[Maya SAHRAOUI]: uneerreur au niveau d’une section donc et pouvoir la corriger assez rapidement donc j’aitenu àimplémenter des garde-fous comme cela pour pouvoir avoir des notions de robustesse même sur ce pot là et donc le fait d’avoir aussi desartefacts à la sortie de chacune des briques permet très facilement de
+[Maya SAHRAOUI]: tracer donc si on a des hallucinucinations ou deserreurs d’avoir une notion de traçabilité de savoir à quelle brique on doit corriger l’erreur et donc ça m’a énormément aidéégalement pendant la réalisation de l’outil et pendant enitérant sur les prompes et enitérant aussi sur l’architecture d’avoir
+[Maya SAHRAOUI]: cesartefact, intermédiaires-là mais ça permet aussi pour ça fait une notion d’uneversion qui peut être pousse des plus loin avec cesartefacts-là où on pourrait par exemple avoir une notion deYumanine de loupe ou on peut intervenir à la sortie à la fin de chacune des briques corrigées à la sortie de
+[Maya SAHRAOUI]: chacune des briques et donc avoir une validation humaine à chacun des niveaux pour avoir un résultat final qui soit.
+[Maya SAHRAOUI]: robuste Donc il y a aussi la..
+[Maya SAHRAOUI]: partieOui Il y a aussi la notion de la correctionitérative donc ici on a une boucle de correction on peut ajouter des commentairesaux sections et pouvoir régénérer le rapport à la base de ces commentaires-là et donc au final car unexport deX qui est.
+[Maya SAHRAOUI]: reproductible On aégalement je ne vous fais pas tout le rex ici mais on aégalement donc certaines limites qui avaient été déjàmentionnées au début de la mission donc c’était des limites qui étaient horscopes mais qu’il estimportant de garder en tête par exemple le fait qu’on n’ait pasimplémenté
+[Maya SAHRAOUI]: decheckin chiffré sur les valeurs dont on faisait l’extraction à partir des graphiques c’était horscope l’idée n’était pas de faire ça dans cette, premièreitération-là mais c’est quelque chose qui peut se faire avec desargentsanti-hallucination ou en vérifiant des intervalles de confiance des
+[Maya SAHRAOUI]: différentes valeurs qui.
+[Maya SAHRAOUI]: sontextraites On ne peut pas à ce niveau-là aussi donc dans cetteitération-là on ne fait pas de reconstruction depuis des données brutes donc on avait à disposition des, fichiersExcel mais ça ne faisait pas partie du scot de la missionégalement de reconstruire des graphiques à partir de ces données
+[Maya SAHRAOUI]: brutes-là et le fait que la correction pour l’instant se fasse au niveau des sections est non à un niveau macro donc on ne peut pasimposer un temps global sur tout le rapportaux données en commentaire global sur tout le.
+[Maya SAHRAOUI]: rapport C’est plus des commentaires au niveau des sections pour l’instant mais ça peut.
+[Maya SAHRAOUI]: s’implémenterégalement Donc voilà pour ce premier projet pour ce projet qui a été fait avecRTE et.
+[Maya SAHRAOUI]: l’équipeED Je ne sais pas si vous avez des questions déjà à ce, niveau-là sinon je peux passer à la présentation de quelquesautres projets de présentation un peu macro de projets sur lesquels j’ai.
+[Bruno LEMETAYER]: travaillé Ilétait direct pour.
+[Bruno LEMETAYER]: l’appel La durée c’était j’ai beaucoup passé quelques mois si ça c’était entre septembre et il n’y a pas longtemps qu’en fait c’était.
+[Matthieu DUSSARTRE]: ça.
+[Bruno LEMETAYER]: Semaine Les vingt-cinq janvier c’est ce que tu veux, etok tu hés à la, pardon j’avais retenu.,
+[Maya SAHRAOUI]: septansOk., trenteOk.
+[Bruno LEMETAYER]: merci Après, ouieffectivement sur les questions.
+[Bruno LEMETAYER]: donc Donc làeffectivement alors on est peut-être ces deux cas d’usage qui nous peuvent nous intéresser c’est plus la partieeffectivement un peu synthèse générative ou à peu.
+[Bruno LEMETAYER]: près Donc ça c’est vrai que nous on peut avoir aussi des cas d’usage là-dessus à savoir la capacité de pouvoir en fait voilà prendre des sources de données hétérogènes des, spatues.
+[Bruno LEMETAYER]: etc Peut-être pour les aider à sthister les choses lire des rapports d’événements par.
+[Bruno LEMETAYER]: exempleGenre de.
+[Bruno LEMETAYER]: choses Il y a toujours cette question de synthèse et c’est un peu dans les deux sens et s’il y a de tout à l’heure je parlais du tempsentrant donc le sens un peu fronting et là il n’en s’en sortanteffectivement il y a aussi cette question de synthèse d’événements ou synthèse de données donc là je
+[Bruno LEMETAYER]: comprends que ça range un petit peu ce qu’a duZalk et donc du coup voilà d’où ma question justement sur l’autre sens sur justement tout ce qui est MCP est-ce que c’est des donc ça c’était pas l’objet de ces travaux-là est-ce qu’il y a des choses sur lesquelles voilà vous avez pueu l’occasion de
+[Bruno LEMETAYER]: travailler donc plus dans uneoptique un petit peuorchestration quoi avec plusieurs., briquesOui
+[Maya SAHRAOUI]: ici je peux peut-êtrealler sur d’autres projets qu’on a fait en interne donc le premier projet c’est unoutil de rédaction àeau où pour le coup on fait de l’orchestration mais on est plus surN8N que sur du MCP donc ici on a plusieursagents qui sont basés sur des racks qui sont spécialisés donc soit
+[Maya SAHRAOUI]: dans unagent CV l’objectif final c’est d’assister à les collaborateurs dans la rédaction de réponsesaux appels d’offres donc on a développé plusieurs modèles qui sont des modèles au final desagentségalement donc des.
+[Maya SAHRAOUI]: règles On a un rack qui est fait sur les CV entermes y, aillé un rack qui est fait sur les références un sur un sur les réponses AO de manière générale et ensuite on va avoir unoutil qui est modulaire où on peut faire appel à chacun de cesoutils-là si on veut récupérer par exemple mettre enentrée
+[Maya SAHRAOUI]: une réponse un appel d’offre et demander à l’outil de nous générer de nous donner la liste de CV intéressants pour cet appel, d’offres-là la liste de références qui pourrait être intéressant pour cet AO ou de rédiger le contexte et la.
+[Maya SAHRAOUI]: méthode Donc ici on est sur duN8 avec plusieursoutils qui peuvent être questionnés avec.
+[Maya SAHRAOUI]: uneorchestrationN8N, Ensuite on aégalement unautre projet fin c’est un projet sur lequel je suis en train de travailler actuellement qui est unoutil de génération de résumé de réunion où donc là j’en suis au début de l’implémentation de.
+[Maya SAHRAOUI]: l’outil L’objectif final c’est de pouvoir à partir donc d’avoir unoutil qui soit interactif donc que ce soit en chatbod pour l’instant c’est là où j’en suis plus avec un MCP faire appel à plusieursoutils qui sont développés en interne chez elleyégalement ou à desIPI pour l’instant je suis plus sur
+[Maya SAHRAOUI]: desoutils développés en interne donc unoutil qui peutaller chercher directement sur le sherpoint des notes de réunion et générer une synthèse ou unoutil qui peut permettre d’exporter les notes de synthèse qui sont.
+[Maya SAHRAOUI]: générées Ensuite l’idée ça serait de pouvoir donc ajouter lesformes augmenter notre liste d’outils qui seraientorchestrés par un MCP notamment en ajoutant donc une possibilité d’enregistrement vocal des réunions ou une possibilité de générer des mindomad par exemple donc fais ça avec l’interface LM
+[Maya SAHRAOUI]: qui servirait et qui va servir de client avec unaccès globalauxoutils qu’on est en train de construire petit à petit toujours autour de ce cas d’usage-là qui est d’augmenter les consultants et d’automatiser la génération de synthèse et de la compréhension de manière générale des réunions qu’on.
+[Maya SAHRAOUI]: fait Donc
+[Bruno LEMETAYER]: c’est du coup ça c’est un travail que vous faites pour entre guillemets gagner en souveraineté par rapport à l’association de l’apparence ça fait penser à notre bouquet typiquement ou d’autres marché c’est pour gagner en souveraineté on va dire au sein des sureau
+
+Produis ce JSON :
+{"resume": "3-5 phrases fidèles",
+  "decisions": ["décision actée", ...],
+  "actions": [{"action":"...", "responsable":"nom fourni si identifiable, sinon —", "echeance":"— si absente"}]}
